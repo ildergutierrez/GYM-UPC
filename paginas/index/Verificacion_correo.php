@@ -12,7 +12,7 @@ if (isset($_SESSION['usuario'])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recuperar Contraseña</title>
+    <title>Verificación</title>
     <link rel="icon" href="../../img/logo/Logo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
@@ -50,7 +50,7 @@ if (isset($_SESSION['usuario'])) {
                     <div class="oscuro" id="logo">
                         <br><br>
                         <center>
-                            <h1>Recuperar Cuenta</h1>
+                            <h1>Validar Cuenta</h1>
                             <img src="../../img/logo/Logo.png" alt="Logo" width="40%">
                             <br><br>
                             <a type="button" class="btn btn" href="../../index.php" style="background: #0B7F46; color: #ffffff; font-weight: bold; width: 80%">Volver</a>
@@ -67,14 +67,22 @@ if (isset($_SESSION['usuario'])) {
                                 <img src="../../img/user.png" alt="Icono" width="100%">
                             </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Correo *</label>
                             <div class="input-group mb-3">
-                                <input type="email" name="correo" required class="form-control" aria-label="Text input with checkbox">
+                                <input type="email" readonly disabled name="correo" required class="form-control" aria-label="Text input with checkbox">
                                 <div class="input-group-text" style="background: #121A1C; color: #E5E5E5;">
                                     <span class="material-symbols-outlined">
                                         mail
                                     </span>
                                 </div>
+                            </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;"> Codigo de Verificación *</label>
+                            <div class="input-group mb-3">
+                                <input type="email" name="password" id="codigo" required class="form-control" aria-label="Text input with checkbox">
+                                <div class="input-group-text" style="background: #121A1C; color: #E5E5E5;">
+                                    <span class="material-symbols-outlined">
+                                        tag
+                                    </span>
+                                </div>
                             </div>
-                            <button class="btn btn" style="background: #0B7F46; color: #ffffff; font-weight: bold; width: 100%">Enviar</button>
+                            <button class="btn btn" style="background: #0B7F46; color: #ffffff; font-weight: bold; width: 100%">Confirmar</button>
                             <br><br>
                             <br><br>
                         </center>
@@ -132,6 +140,11 @@ if (isset($_SESSION['usuario'])) {
             </div>
         </div>
     </footer>
+    <script>
+        document.getElementById('codigo').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
     <script src="assets/js/script.js"></script>
 </body>
 

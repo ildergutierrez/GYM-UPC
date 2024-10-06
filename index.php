@@ -22,8 +22,8 @@ if (isset($_SESSION['usuario'])) {
     <link
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         rel="stylesheet" />
-    <link rel="stylesheet" href="assets/boostrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <link rel="stylesheet" href="boostrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <style>
     /* Para navegadores basados en WebKit (Chrome, Safari) */
@@ -77,20 +77,14 @@ if (isset($_SESSION['usuario'])) {
                             </div> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Contraseña *</label>
                             <div style="padding: 0;" class="input-group mb-3">
                                 <input id="password" name="password" type="password" required class="form-control">
-                                <button style="background: transparent; padding: 0; border: none;">
-                                    <div id="ver" onclick="contraseña()" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;">
-                                        <span class="material-symbols-outlined" style="vertical-align: middle;"> visibility_off </span>
-                                    </div>
-                                    <div id="no_ver" onclick="contraseña()" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: none;">
-                                        <span class="material-symbols-outlined">
-                                            visibility
-                                        </span>
-                                    </div>
-                                </button>
+                                <div id="ver" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;">
+                                    <span class="material-symbols-outlined span"> key </span>
+                                </div>
+
                             </div>
                             <button class="btn btn" style="background: #0B7F46; color: #ffffff; font-weight: bold; width: 100%">Iniciar Sesión</button>
                             <br><br>
-                            <p>He olvidado mi contraseña <a href="" style="text-decoration: none; color: #0B7F46;">Click Aqui</a></p>
+                            <p>He olvidado mi contraseña <a href="paginas/index/Olvidecontraseña.php" style="text-decoration: none; color: #0B7F46;">Click Aqui</a></p>
                             <br><br>
                         </center>
                     </form>
@@ -164,15 +158,11 @@ if (isset($_SESSION['usuario'])) {
                         <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Contraseña *</label>
                         <div style="padding: 0;" class="input-group mb-3 d-flex">
                             <input id="contra" name="password" style="height: 30px;" type="password" required class="form-control">
-                            <button onclick="R_contraseña()" style="background: transparent; padding: 0; border: none;">
-                                <div id="Remplazo" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 30px;">
-                                    <span style="vertical-align: middle;height: 26px;" class="material-symbols-outlined"> visibility_off </span>
-                                </div>
-                                <div id="Remplazo2" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: none; height: 30px;">
-                                    <span class="material-symbols-outlined" style="vertical-align: middle; height: 26px;"> visibility </span>
-                                </div>
+                            <div id="Remplazo" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 30px;">
 
-                            </button>
+                                <span style="height: 26px;" class="material-symbols-outlined span"> key </span>
+                            </div>
+
                         </div>
                         <!-- Sede -->
                         <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none; font-size: 12px;">Sede * </label>
@@ -293,7 +283,7 @@ if (isset($_SESSION['usuario'])) {
             this.value = this.value.replace(/[^0-9]/g, '');
         });
     </script>
-    <script src="assets/js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

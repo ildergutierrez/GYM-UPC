@@ -65,16 +65,22 @@ if (isset($_SESSION['usuario'])) {
                         <center>
                             <div style="background: #121A1C; border-radius: 100%; width: 30%; padding: 0;">
                                 <img src="../../img/user.png" alt="Icono" width="100%">
-                            </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Correo *</label>
+                            </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Contraseña *</label>
                             <div class="input-group mb-3">
-                                <input type="email" name="correo" required class="form-control" aria-label="Text input with checkbox">
-                                <div class="input-group-text" style="background: #121A1C; color: #E5E5E5;">
-                                    <span class="material-symbols-outlined">
-                                        mail
-                                    </span>
-                                </div>
+                                <input  type="password" name="password" required class="form-control" aria-label="Text input with checkbox">
+                                <div class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 36px;">
+                                        <span class="material-symbols-outlined span"> key </span>
+                                    </div>
+                                   
+                            </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;"> Confirmar Contraseña *</label>
+                            <div class="input-group mb-3" id="CN_password">
+                                <input id="cnc" type="password" name="password_1" required class="form-control" aria-label="Text input with checkbox">
+                                 <div  class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 36px;">
+                                        <span class="material-symbols-outlined span"> key </span>
+                                    </div>
+                                   
                             </div>
-                            <button class="btn btn" style="background: #0B7F46; color: #ffffff; font-weight: bold; width: 100%">Enviar</button>
+                            <button class="btn btn" style="background: #0B7F46; color: #ffffff; font-weight: bold; width: 100%">Actualizar Información</button>
                             <br><br>
                             <br><br>
                         </center>
@@ -132,7 +138,12 @@ if (isset($_SESSION['usuario'])) {
             </div>
         </div>
     </footer>
-    <script src="assets/js/script.js"></script>
+    <script>
+        document.getElementById('codigo').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
+    <script src="../../js/script.js"></script>
 </body>
 
 </html>

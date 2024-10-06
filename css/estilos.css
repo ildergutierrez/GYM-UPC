@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    /* backdrop-filter: blur(10px); */
+}
+
+
+body {
+    background-image: url(../img/GYM.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Poppins';
+    height: 100%;
+}
+
+.span {
+    
+    color: #ffffff;
+    vertical-align: middle;
+    transform: rotate(-45deg) scaleX(-1);
+}
+
+main {
+    width: 100%;
+    padding: 40px;
+    margin: auto;
+}
+
+.oscuro {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin: auto;
+}
+
+.btn:hover {
+    transition: all 0.5s;
+    transform: scale(1.1);
+}
+
+@keyframes logo {
+    0% {
+        transform: translateY(0) scale(0) perspective(1px);
+    }
+
+    50% {
+        transform: translateY(-10px) scale(0.5) perspective(50%);
+    }
+
+    100% {
+        transform: translateY(0px) scale(1) perspective(100%);
+    }
+
+}
+
+
+
+#Iniciar {
+    animation: logo 1.5s;
+}
