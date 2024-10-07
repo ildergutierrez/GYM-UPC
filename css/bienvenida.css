@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    /* backdrop-filter: blur(10px); */
+}
+
+/* Para navegadores basados en WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+body {
+    overflow: auto;
+}
+
+.planes {
+    padding-top: 20px;
+}
+
+.fondo_rutinas {
+    background-image: url(../img/GYM.png);
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.fondo_habitos {
+    background-image: url(../img/habitos.webp);
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.color {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+}
+
+.planes .row .col-md-6 a {
+    color: #000000;
+    font-size: 20px;
+    margin: 0px;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.nombre {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000000;
+    border-bottom-right-radius: 25px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-link:hover {
+    border-bottom: solid 4px #ffcc53;
+}
+
+.dropdown-menu {
+    background: #ffcc53;
+
+}
+
+.dropdown-item {
+    color: #000000;
+    border-bottom: solid 0.5px #ffffff;
+    font-weight: bold;
+}
+
+.dropdown-item:hover {
+    background: #0B7F46;
+    color: #ffffff;
+    border: solid 1px #ffffff;
+    border-radius: 5px;
+}
+
+.Bienvenida {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    width: 70%;
+    display: block;
+    border-bottom: solid 3px #fff;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.carrusel {
+    margin: 0;
+    left: auto;
+    width: 90%;
+    padding: 0;
+    font-size: 15px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin: auto;
+    max-height: 300px;
+
+}
+
+@media screen and (max-width: 900px) {
+    main .container .d-flex img {
+        position: fixed;
+        top: 15px;
+        left: 2px;
+        width: 30%;
+    }
+
+    .row {
+
+        padding: 20px;
+
+    }
+
+    .fondo_rutinas {
+        background-image: url(../img/GYM.png);
+        height: 100px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        border-radius: 15px;
+        width: 70%;
+        margin: auto;
+
+    }
+
+    .fondo_habitos {
+        background-image: url(../img/habitos.webp);
+        height: 100px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 15px;
+        width: 70%;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    .Bienvenida {
+        position: absolute;
+        top: 80px;
+        left: 10px;
+        width: 90%;
+    }
+
+    .Bienvenida h1 {
+        font-size: small;
+        font-weight: bold;
+        display: block;
+    }
+
+    .carrusel {
+        margin: auto;
+        left: auto;
+        width: 90%;
+        padding: 0;
+        font-size: 15px;
+        overflow: hidden;
+        border-radius: 15px;
+        top: 200px;
+    }
+
+    .carousel-control-prev {
+        top: -60px;
+        left: -150px;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        position: relative;
+    }
+
+    .carousel-control-next {
+        top: -90px;
+        right: -150px;
+        padding: 0%;
+        margin: 0;
+        position: relative;
+        width: 100%;
+
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    main .container .d-flex img {
+        position: fixed;
+        top: 15px;
+        left: 8px;
+        width: 13%;
+    }
+
+    .Bienvenida {
+        position: absolute;
+        top: 80px;
+        left: 30px;
+        width: 90%;
+    }
+
+    .Bienvenida h1 {
+        font-size: small;
+        font-weight: bold;
+        display: block;
+    }
+}

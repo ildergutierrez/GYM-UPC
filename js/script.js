@@ -8,8 +8,6 @@ function inicio() {
         Registro.style.display = 'flex';
         inicio.style.display = 'none';
         inputs.style.animation = "logo 2s";
-
-
     }
     else {
         Registro.style.display = 'none';
