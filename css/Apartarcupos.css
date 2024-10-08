@@ -18,7 +18,7 @@ html {
 
 footer {
     position: absolute;
-    bottom: -70%;
+    bottom: 0;
     width: 100%;
 }
 
@@ -26,43 +26,6 @@ body {
     overflow: auto;
 }
 
-.planes {
-    padding-top: 20px;
-}
-
-.fondo_rutinas {
-    background-image: url(../img/GYM.png);
-    height: 200px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.fondo_habitos {
-    background-image: url(../img/habitos.webp);
-    height: 200px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.color {
-    background: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
-}
-
-.planes .row .col-md-6 a {
-    color: #000000;
-    font-size: 20px;
-    margin: 0px;
-    border-radius: 15px;
-    text-decoration: none;
-}
 
 .nombre {
     background: rgba(255, 255, 255, 0.8);
@@ -128,12 +91,148 @@ header {
 
 }
 
+main .formulario {
+    margin: auto;
+    width: 70%;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 80px;
+    margin-bottom: 50px;
+
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background-color: #121A1C;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    width: 90%;
+    padding: 0;
+}
+
+.form-select {
+    border: none;
+    position: fixed;
+    background: #121A1C;
+    color: #FFFFFF;
+    width: 20%;
+    z-index: 1000;
+}
+
+.form-select-2 {
+    border: none;
+    position: fixed;
+    background: #121A1C;
+    color: #FFFFFF;
+    width: 20%;
+    z-index: 1000;
+}
+
+.input-group .form-control {
+    border: none;
+    padding: 10px;
+    background-color: #E5E5E5;
+    color: #000000;
+    width: 85%;
+}
+
+input[type="select"] {
+    border: none;
+    display: none;
+    padding: 10px;
+    background-color: #E5E5E5;
+    color: #000000;
+    width: 85%;
+}
+
+.input-group-text {
+    background-color: transparent;
+    color: #E5E5E5;
+    padding: 0px;
+    border: none;
+
+    display: flex;
+    border-radius: 0;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.material-icons {
+    font-size: 24px;
+
+}
+
+.A_cupos {
+    background: #0b7f46;
+    font-weight: bold;
+    float: inline-end;
+}
+
+.V_registrados {
+    background: #0B7F46;
+    font-weight: bold;
+    float: inline-start;
+}
+
+.A_cupos:hover {
+
+    cursor: pointer;
+    background:#07f884;
+
+
+}
+
+.V_registrados:hover {
+    cursor: pointer;
+    background: #07f884;
+
+}
+
+
 @media screen and (max-width: 500px) {
+
+
     footer {
         position: absolute;
         margin: 0;
         width: 100%;
         bottom: 800px;
+    }
+
+    .form-select {
+        border: none;
+        position: fixed;
+        background: #121A1C;
+        color: #FFFFFF;
+        width: 20%;
+        top: 200px;
+        z-index: 1000;
+    }
+
+    .form-select-2 {
+        border: none;
+        position: fixed;
+        background: #121A1C;
+        color: #FFFFFF;
+        width: 20%;
+        top: 400px;
+        z-index: 1000;
+    }
+
+    .A_cupos {
+        align-items: center;
+        background: #0b7f46;
+        font-weight: bold;
+        float: inline-start;
+    }
+
+    .V_registrados {
+        align-items: center;
+        background: #0B7F46;
+        font-weight: bold;
+        float: inline-start;
     }
 
     main .container #nombre.d-flex.Bienvenida {
@@ -158,7 +257,22 @@ header {
         margin: 0;
         padding: 0;
     }
+
+    .A_cupos {
+        align-items: center;
+        background: #0b7f46;
+        font-weight: bold;
+        float: inline-start;
+    }
+
+    .V_registrados {
+        align-items: center;
+        background: #0B7F46;
+        font-weight: bold;
+        float: inline-start;
+    }
 }
+
 
 @media screen and (max-width: 900px) {
     main .container .d-flex img {
@@ -167,6 +281,33 @@ header {
         left: 2px;
         width: 30%;
     }
+
+    .A_cupos {
+        align-items: center;
+        background: #0b7f46;
+        font-weight: bold;
+        float: inline-start;
+    }
+
+    .V_registrados {
+        align-items: center;
+        background: #0B7F46;
+        font-weight: bold;
+        float: inline-start;
+    }
+
+    .input-group-text {
+        background-color: #121A1C;
+        color: #E5E5E5;
+        padding: 10px;
+        /* border-left: 1px solid #ffffff; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+
 
     footer {
         position: absolute;
@@ -257,7 +398,7 @@ header {
         width: 13%;
     }
 
- 
+
 
     .Bienvenida {
         position: absolute;

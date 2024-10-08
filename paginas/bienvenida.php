@@ -35,7 +35,7 @@
                   INICIO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">calendar_month</span> APARTAR CUPO</a>
+                <a class="nav-link" href="usuarios/apartar_cupos.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">calendar_month</span> APARTAR CUPO</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">qr_code</span> QR</a>
@@ -60,10 +60,11 @@
                     <ul class="dropdown-menu dropdown-menu-end"
                       aria-labelledby="navbarDropdown">
                       <li>
-                        <a class="dropdown-item" href="#">Configuración</a>
+                        <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">Cerrar Sesión</a>
+                        <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
+                          Cerrar Sesión</a>
                       </li>
                     </ul>
                   </div>
@@ -161,7 +162,7 @@
         <br><br>
     </main>
     <footer>
-      <div class="container-fluid" style=" background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
+      <div class="container-fluid" style="width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
         <div class="row">
           <div class="col-8" style="color: #ffffff; text-align: end">
             <h6>
