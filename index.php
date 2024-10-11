@@ -77,7 +77,7 @@ if (isset($_SESSION['usuario'])) {
                             </div> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Contraseña *</label>
                             <div style="padding: 0;" class="input-group mb-3">
                                 <input id="password" name="password" type="password" required class="form-control">
-                                <div id="ver" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;">
+                                <div onclick="Desifrado( document.getElementById('password'))" id="ver" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block; cursor: pointer;">
                                     <span class="material-symbols-outlined span"> key </span>
                                 </div>
 
@@ -158,8 +158,7 @@ if (isset($_SESSION['usuario'])) {
                         <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Contraseña *</label>
                         <div style="padding: 0;" class="input-group mb-3 d-flex">
                             <input id="contra" name="password" style="height: 30px;" type="password" required class="form-control">
-                            <div id="Remplazo" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 30px;">
-
+                            <div id="Remplazo" onclick="Desifrado( document.getElementById('contra'))" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 30px; cursor: pointer;">
                                 <span style="height: 26px;" class="material-symbols-outlined span"> key </span>
                             </div>
 

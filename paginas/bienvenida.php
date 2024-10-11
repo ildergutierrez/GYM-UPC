@@ -41,7 +41,7 @@
                 <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">qr_code</span> QR</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-symbols-outlined" style="vertical-align: middle">cardiology</span>
+                <a class="nav-link" href="usuarios/imc.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-symbols-outlined" style="vertical-align: middle">cardiology</span>
                   IMC</a>
               </li>
             </ul>

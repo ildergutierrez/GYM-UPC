@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IMC</title>
-    <!-- Flatpickr CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <title>Lector QR</title>
 
     <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -18,29 +16,15 @@
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
     <link rel="stylesheet" href="../../boostrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../css/imc.css" />
+    <link rel="stylesheet" href="../../css/leerqr.css" />
     <link rel="icon" href="../../img/logo/Logo.png" />
+    <script src="../../js/instructor/qrCode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body style="background: #1e1e1e">
-    <div class="container-fluid" style="padding: 0; ">
-        <!-- Modal -->
-        <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Alerta</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h5>Por favor, introduce valores válidos para peso y altura.</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" style="background: #0b7f46;" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container-fluid" style="padding: 0;">
         <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
                 <div class="container-fluid" style="color: white">
@@ -49,29 +33,26 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
+                        <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 250%">
                             <li class="nav-item">
                                 <a class="nav-link active" href="../bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; "><span class="material-icons" style="vertical-align: middle">home</span>
                                     INICIO</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="apartar_cupos.php" style="color: #ffffff; padding-right: 30px; font-weight: bold;  border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">calendar_month</span> APARTAR CUPO</a>
+                                <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold; "><span class="material-icons" style="vertical-align: middle">recent_actors</span> Listar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="qr.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">qr_code</span> QR</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-symbols-outlined" style="vertical-align: middle">cardiology</span>
-                                    IMC</a>
+                                <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold;  border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">qr_code_scanner</span>Leer QR</a>
                             </li>
                         </ul>
                         <form
-                            class="d-flex justify-content-center align-items-center">
-                            <div class="container d-flex justify-content-center align-items-center" style=" width: 100%;  background: #ffcc53;                  font-weight: bold;                  border-radius: 10px;                  margin-bottom: 3px;                ">
+                            class="d-flex justify-content-center align-items-center"
+                            style="width: 70%">
+                            <div class="container d-flex justify-content-center align-items-center" style=" width: 100%;  background: #ffcc53; font-weight: bold; border-radius: 10px; margin-bottom: 3px;  ">
                                 <div
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
-                                    <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
+                                    <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 95%; ">
                                         <p>Ilder Alberto Gutierrez Beleño</p>
                                     </div>
                                     <div class="dropdown" style="color: #000000">
@@ -100,8 +81,8 @@
                 <div class="d-flex" style="z-index: 1000; position: fixed; top: 5px; margin-top: 0; padding: 0; left: 10px;  width: 25%;   ">
                     <img id="logo" style=" display: block;" src="../../img/logo/Logo.png" alt="Logo" width="50%" title="Logo" />
                 </div>
-                <div class="d-flex" style="z-index: 1000; position: fixed; top: 25px; left: 40px; width: 10%; ">
-                    <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="width: 25%; display: none" title="Logo" />
+                <div class="d-flex" style="z-index: 1000; position: fixed; top: 25px; left: 40px; width: 20%; ">
+                    <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="width: 15%; display: none" title="Logo" />
                 </div>
             </div>
             <!-- Fin posicion del logo -->
@@ -109,75 +90,31 @@
             <div class="container" style="margin-top: 80px; ">
                 <div id="nombre" class="d-flex Bienvenida" style="display: block;">
                     <p>
-                    <h1 id="x2">IMC (Indice de Masa Corporal)</h1>
+                    <h1 id="x2">Lector QR</h1>
                     </p>
                 </div>
                 <!-- Fin de linea de nombre -->
                 <br>
             </div>
-            <!-- Formulario -->
-            <div class="formulario">
+            <!-- Leer QR -->
+            <div class="container" style="margin-top: 80px;">
+                <div class="row justify-content-center mt-5">
+                    <div class="col-sm-4 shadow p-3">
 
-                <div class="row">
-                    <div class="col-md-6" title="Peso en Kg">
-                        <!-- Peso -->
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Peso * </label>
-                            <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                <input type="text" id="peso" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <div style=" color: #E5E5E5;  width: 10%;">
-                                    <span class="material-symbols-outlined" style=" font-size: 24px;">
-                                        weight
-                                    </span>
-                                </div>
-                            </div>
+                        <div class="row text-center">
+                            <a id="btn-scan-qr" href="#">
+                                <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg" class="img-fluid text-center" width="175">
+                            </a>
+                            <canvas hidden="" id="qr-canvas" class="img-fluid"></canvas>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <!-- Altura -->
-                        <div class="mb-3" title="Altura en Metro">
-                            <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Altura * </label>
-                            <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                <input type="text" id="altura" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <div style=" color: #E5E5E5;  width: 10%;">
-                                    <span class="material-symbols-outlined" style=" font-size: 24px;">
-                                        measuring_tape
-                                    </span>
-                                </div>
-                            </div>
+                        <div class="row mx-5 my-3">
+                            <button class="btn btn-success btn-sm rounded-3 mb-2" id="btn_encendido" style="display: block;" onclick=" encenderCamara()">Encender cámara</button>
+                            <a class="btn btn-danger btn-sm rounded-3" id="btn_apagado" style="display: none;" onclick="cerrarCamara()">Detener cámara</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="container">
-                <center> <a onclick="Calcular(document.getElementById('altura').value, document.getElementById('peso').value)" class="btn btn-success calcular">Calcular</a>
-                </center>
-            </div>
-            <div class="container" id="Resultado" style="display: none; color: #FFFFFF; font-weight: bold; font-family: Poppins;">
-                <br>
-                <center>
-                    <h1 id="valor"></h1>
-                </center>
-                <br>
-                <div class="container-recomendaciones">
-                    <div class="cabeza">
-                        <center>
-                            <h3>Recomendaciones</h3>
-                        </center>
-                    </div>
-                    <div class="row">
-                        <div id="imagen" class="col d-flex justify-content-center align-items-center">
-                            <center><img src="../../img/habitos.webp" alt="" style=" background-size: cover; width: 100%; border-radius: 20px; padding: 10px;">
-                            </center>
-                        </div>
-                        <div class="col-8">
-                            <div id="indice" class="min" style="color: #000000; text-align: justify;  padding: 10px; width: 90%;"></div>
-                        </div>
-                    </div>
-                </div><br><br><br><br>
-            </div>
-            <br><br><br><br><br> <!-- Fin Formulario -->
+            <!-- Fin lector QR -->
         </main>
         <footer>
             <div class=" container-fluid" style="width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
@@ -226,19 +163,10 @@
             </div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="../../js/usuarios/imc.js"></script>
         <script src="../../js/Bienvenida.js"></script>
+        <audio id="audioScaner" src="../../sonido/sonido.mp3"></audio>
+        <script src="../../js/instructor/LeerQR.js"></script>
 
-        <!-- Flatpickr JS -->
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script>
-            document.getElementById('peso').addEventListener('input', function(e) {
-                this.value = this.value.replace(/[^0-9.]/g, '');
-            });
-            document.getElementById('altura').addEventListener('input', function(e) {
-                this.value = this.value.replace(/[^0-9.]/g, '');
-            });
-        </script>
     </div>
 </body>
 

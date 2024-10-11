@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    /* backdrop-filter: blur(10px); */
+}
+
+/* Para navegadores basados en WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.nombre {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000000;
+    border-bottom-right-radius: 25px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-link:hover {
+    border-bottom: solid 4px #ffcc53;
+}
+
+.dropdown-menu {
+    background: #ffcc53;
+
+}
+
+.dropdown-item {
+    color: #000000;
+    border-bottom: solid 0.5px #ffffff;
+    font-weight: bold;
+}
+
+.dropdown-item:hover {
+    background: #0B7F46;
+    color: #ffffff;
+    border: solid 1px #ffffff;
+    border-radius: 5px;
+}
+
+.Bienvenida {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    width: 70%;
+    display: block;
+    border-bottom: solid 3px #fff;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+
+
+
+@keyframes resultados {
+    0% {
+        opacity: 0;
+        transform: translatex(700px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translatex(0);
+    }
+
+}
+
+#Resultado {
+    animation: resultados 1.5s;
+}
+
+@media screen and (max-width: 700px) {
+    main .container .d-flex img {
+        position: fixed;
+        top: 15px;
+        left: 8px;
+        width: 13%;
+    }
+
+    header .navbar {
+        width: 100%;
+        
+        /* display: none; */
+
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    main .container .d-flex img {
+        position: fixed;
+        top: 15px;
+        left: 8px;
+        width: 13%;
+    }
+
+    ul {
+        width: 100%;
+        display: none;
+
+    }
+
+
+
+    .Bienvenida {
+        position: absolute;
+        top: 80px;
+        left: 140px;
+        width: 90%;
+    }
+
+    .Bienvenida h1 {
+        font-size: small;
+        font-weight: bold;
+        display: block;
+    }
+
+    main .container #nombre.d-flex.Bienvenida {
+        top: 80px;
+        left: 10px;
+    }
+
+    body div.container-fluid {
+
+        padding: 0;
+        margin: 0;
+        left: 0;
+        right: 0;
+        overflow: auto;
+    }
+
+    #image {
+        display: none;
+    }
+
+    .col-8 {
+        width: 100%;
+        padding: 12px;
+    }
+
+    img {
+        display: none;
+    }
+
+    footer {
+
+        bottom: -900px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+}
