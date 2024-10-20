@@ -43,7 +43,7 @@ header {
 }
 
 .nav-link:hover {
-    border-bottom: solid 4px #ffcc53;
+    border-bottom: solid 3px #ffcc53;
 }
 
 .dropdown-menu {

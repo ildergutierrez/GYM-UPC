@@ -34,7 +34,6 @@ footer {
     /* Oculta el menú por defecto */
 }
 
-
 body {
     overflow: auto;
 }
@@ -96,7 +95,7 @@ header {
 }
 
 .nav-link:hover {
-    border-bottom: solid 5px #ffcc53;
+    border-bottom: solid 3px #ffcc53;
 }
 
 .dropdown-menu {

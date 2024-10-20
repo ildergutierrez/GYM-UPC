@@ -23,9 +23,9 @@ $rol = 1;
   <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
-  <link rel="stylesheet" href="../boostrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../css/bienvenida.css" />
-  <link rel="icon" href="../img/logo/Logo.png" />
+  <link rel="stylesheet" href="../../boostrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../css/bienvenida.css" />
+  <link rel="icon" href="../../img/logo/Logo.png" />
 </head>
 
 <body style="background: #1e1e1e">
@@ -41,17 +41,17 @@ $rol = 1;
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
                 <li class="nav-item">
-                  <a class="nav-link active" href="../bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">home</span>
+                  <a class="nav-link active" href="#" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">home</span>
                     INICIO</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="apartar_cupos.php" style="color: #ffffff; padding-right: 30px; font-weight: bold;  "><span class="material-icons" style="vertical-align: middle">calendar_month</span> APARTAR CUPO</a>
+                  <a class="nav-link" href="../usuarios/apartar_cupos.php" style="color: #ffffff; padding-right: 30px; font-weight: bold;  "><span class="material-icons" style="vertical-align: middle">calendar_month</span> APARTAR CUPO</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="qr.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">qr_code</span> QR</a>
+                  <a class="nav-link" href="../usuarios/qr.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">qr_code</span> QR</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-symbols-outlined" style="vertical-align: middle">cardiology</span>
+                  <a class="nav-link" href="../usuarios/imc.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-symbols-outlined" style="vertical-align: middle">cardiology</span>
                     IMC</a>
                 </li>
               </ul>
@@ -69,7 +69,7 @@ $rol = 1;
                       <ul class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="navbarDropdown">
                         <li>
-                          <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
+                          <a class="dropdown-item" href="../usuarios/perfil.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
                         </li>
                         <li>
                           <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
@@ -94,14 +94,14 @@ $rol = 1;
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
                 <li class="nav-item">
-                  <a class="nav-link active" href="../bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">home</span>
+                  <a class="nav-link active" href="#" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">home</span>
                     INICIO</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="apartar_cupos.php" style="color: #ffffff; padding-right: 30px; font-weight: bold;  "><span class="material-symbols-outlined" style="vertical-align: middle; border: solid 1px #ffffff;"> user_attributes </span> Listar</a>
+                  <a class="nav-link" href="../instructor/listar.php" style="color: #ffffff; padding-right: 30px; font-weight: bold;  "><span class="material-symbols-outlined" style="vertical-align: middle; border: solid 1px #ffffff;"> user_attributes </span> Listar</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="qr.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">qr_code</span>Leer QR</a>
+                  <a class="nav-link" href="../instructor/leer_qr.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">qr_code</span>Leer QR</a>
                 </li>
               </ul>
               <form
@@ -118,7 +118,7 @@ $rol = 1;
                       <ul class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="navbarDropdown">
                         <li>
-                          <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
+                          <a class="dropdown-item" href="../instructor/perfil.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
                         </li>
                         <li>
                           <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
@@ -143,14 +143,14 @@ $rol = 1;
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
                 <li class="nav-item">
-                  <a class="nav-link active" href="../bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">home</span>
+                  <a class="nav-link active" href="#" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">home</span>
                     INICIO</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="apartar_cupos.php" style="color: #ffffff; padding-right: 30px; font-weight: bold;  "><span class="material-symbols-outlined" style="vertical-align: middle; border: solid 1px #ffffff;"> user_attributes </span> Listar</a>
+                  <a class="nav-link" href="../Administrador/enlistar.php" style="color: #ffffff; padding-right: 30px; font-weight: bold;  "><span class="material-symbols-outlined" style="vertical-align: middle; border: solid 1px #ffffff;"> user_attributes </span> Listar</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="qr.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-symbols-outlined" style="vertical-align: middle;"> person_add </span>Registra</a>
+                  <a class="nav-link" href="../Administrador/registrar.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-symbols-outlined" style="vertical-align: middle;"> person_add </span>Registra</a>
                 </li>
               </ul>
               <form
@@ -167,7 +167,7 @@ $rol = 1;
                       <ul class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="navbarDropdown">
                         <li>
-                          <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
+                          <a class="dropdown-item" href="../Administrador/perfil.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
                         </li>
                         <li>
 
@@ -175,34 +175,19 @@ $rol = 1;
                           <a class="dropdown-item cabeza_cel" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> reduce_capacity </span> &ensp;
                             Capacidad</a>
                           <ul class="dropdown-menu cel" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align:middle;">scatter_plot</span> &ensp; Cupos GYM</a></li>
-                            <li><a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> personal_places </span> &ensp; Asig Instructor</a></li>
+                            <li><a class="dropdown-item" href="../Administrador/capacidad.php"> <span class="material-symbols-outlined" style="vertical-align:middle;">scatter_plot</span> &ensp; Cupos GYM</a></li>
+                            <li><a class="dropdown-item" href="../Administrador/asignar_instructor.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> personal_places </span> &ensp; Asig Instructor</a></li>
                           </ul>
                         </li>
 
                         </li>
                         <li>
-                          <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> local_activity </span> &ensp;
+                          <a class="dropdown-item" href="../Administrador/actividades.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> local_activity </span> &ensp;
                             Actividad</a>
                         </li>
                         <li>
-                          <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> patient_list </span> &ensp;
+                          <a class="dropdown-item" href="../Administrador/activar_afiliados.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> patient_list </span> &ensp;
                             Estado Afiliado</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                          <a class="dropdown-item cabeza_cel" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle; transform: rotate(45deg) scaleX(-1);"> fitness_center </span> &ensp;
-                            Plan y Rutina</a>
-                          <ul class="dropdown-menu cel" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#"><span class="material-symbols-outlined" style="vertical-align: middle;">
-                                  delete
-                                </span> &ensp; Elimiar</a></li>
-                            <li><a class="dropdown-item" href="#"><span class="material-symbols-outlined" style="vertical-align: middle;">
-                                  sync
-                                </span> &ensp; Modificar</a></li>
-                            <li><a class="dropdown-item" href="#"><span class="material-symbols-outlined" style="vertical-align: middle;">
-                                  edit_square
-                                </span> &ensp; Nuevo</a></li>
-                          </ul>
                         </li>
                         <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
                           Cerrar Sesión</a>
@@ -221,10 +206,10 @@ $rol = 1;
       <!-- Logo -->
       <div class="container">
         <div class="d-flex" style="z-index: 1000; position: fixed; top: 5px; margin-top: 0; padding: 0; left: 10px;  width: 25%;   ">
-          <img id="logo" style=" display: block;" src="../img/logo/Logo.png" alt="Logo" width="50%" title="Logo" />
+          <img id="logo" style=" display: block;" src="../../img/logo/Logo.png" alt="Logo" width="50%" title="Logo" />
         </div>
         <div class="d-flex" style="z-index: 1000; position: fixed; top: 25px; left: 40px; width: 20%; ">
-          <img id="logo_2" src="../img/logo/Logo.png" alt="Logo" style="width: 25%; display: none" title="Logo" />
+          <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="width: 25%; display: none" title="Logo" />
         </div>
       </div>
       <!-- Fin posicion del logo -->
@@ -237,29 +222,29 @@ $rol = 1;
         </div>
         <!-- Fin de linea de nombre -->
         <br>
-        <!-- Inicio Carrusel -->
       </div>
+      <!-- Inicio Carrusel -->
       <div class="container " style=" padding:0; margin-top:80px;">
         <div class="carrusel">
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="../img/slider/slider_1.png" class="d-block w-100" alt="...">
+                <img src="../../img/slider/slider_1.png" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="../img/slider/slider_2.png" class="d-block w-100" alt="...">
+                <img src="../../img/slider/slider_2.png" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="../img/slider/slider_3.png" class="d-block w-100" alt="...">
+                <img src="../../img/slider/slider_3.png" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="../img/slider/Sleider_4.png" class="d-block w-100" alt="...">
+                <img src="../../img/slider/Sleider_4.png" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="../img/slider/slider_5.png" class="d-block w-100" alt="...">
+                <img src="../../img/slider/slider_5.png" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="../img/slider/slider_6.png" class="d-block w-100" alt="...">
+                <img src="../../img/slider/slider_6.png" class="d-block w-100" alt="...">
               </div>
             </div>
           </div>
@@ -275,7 +260,9 @@ $rol = 1;
           </div>
           <!-- Fin del carrusel -->
         </div>
-        <br><br><br>
+      </div>
+      <br><br><br>
+      <div class="container">
         <div class="container">
           <center>
             <h1 style="color:#ffffff">DESCUBRE</h1>
@@ -284,14 +271,14 @@ $rol = 1;
         <div class="planes">
           <div class="row">
             <div class="col-md-6">
-              <a href="">
+              <a href="../view/rutinas.php">
                 <div class="fondo_rutinas">
                   <div class="nombre">RUTINAS</div>
                 </div>
               </a>
             </div>
             <div class="col-md-6">
-              <a href="">
+              <a href="../view/habitos.php">
                 <div class="fondo_habitos">
                   <div class="color">
                     <div class="nombre">PLAN HABITOS</div>
@@ -308,7 +295,7 @@ $rol = 1;
         <div class="row">
           <div class="col-8" style="color: #ffffff; text-align: end">
             <h6>
-              © copyright: Universidad Popular del Cesar, seccional Aguachica
+              © copyright: <a href="../view/valores.php" style="text-decoration: none; color: #ffffff;">Universidad Popular del Cesar, seccional Aguachica</a>
             </h6>
           </div>
           <div class="col-4 d-flex justify-content-end">
