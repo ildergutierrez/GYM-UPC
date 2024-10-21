@@ -69,7 +69,7 @@ $rol = 1;
                       <ul class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="navbarDropdown">
                         <li>
-                          <a class="dropdown-item" href="../usuarios/perfil.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
+                          <a class="dropdown-item" href="../usuarios/Configuracion.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
                         </li>
                         <li>
                           <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
@@ -337,7 +337,7 @@ $rol = 1;
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="../js/Bienvenida.js"></script>
+    <script src="../../js/Bienvenida.js"></script>
   </div>
 </body>
 

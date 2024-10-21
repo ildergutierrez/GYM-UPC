@@ -13,7 +13,7 @@ $rol = 1;
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plan Habitos</title>
+    <title>Tren Inferior</title>
     <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet" />
@@ -24,7 +24,7 @@ $rol = 1;
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
     <link rel="stylesheet" href="../../boostrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../css/plan.css" />
+    <link rel="stylesheet" href="../../css/rutinas.css" />
     <link rel="icon" href="../../img/logo/Logo.png" />
 </head>
 
@@ -41,7 +41,7 @@ $rol = 1;
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px;"><span class="material-icons" style="vertical-align: middle">home</span>
+                                    <a class="nav-link active" href="bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; "><span class="material-icons" style="vertical-align: middle">home</span>
                                         INICIO</a>
                                 </li>
                                 <li class="nav-item">
@@ -94,7 +94,7 @@ $rol = 1;
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; "><span class="material-icons" style="vertical-align: middle">home</span>
+                                    <a class="nav-link active" href="#" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px;"><span class="material-icons" style="vertical-align: middle">home</span>
                                         INICIO</a>
                                 </li>
                                 <li class="nav-item">
@@ -143,7 +143,7 @@ $rol = 1;
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; "><span class="material-icons" style="vertical-align: middle">home</span>
+                                    <a class="nav-link active" href="#" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px;"><span class="material-icons" style="vertical-align: middle">home</span>
                                         INICIO</a>
                                 </li>
                                 <li class="nav-item">
@@ -217,65 +217,105 @@ $rol = 1;
             <div class="container" style="margin-top: 80px; ">
                 <div id="nombre" class="d-flex Bienvenida" style="display: block;">
                     <p>
-                    <h1 id="x2">PLAN DE HABITOS</h1>
+                    <h1 id="x2">TREN INFERIOR</h1>
                     </p>
                 </div>
                 <!-- Fin de linea de nombre -->
                 <br>
             </div>
+            <br><br>
             <div class="container main">
-                <div class="row">
-                    <div class="col-12" style="background: #0b7f46; font-weight: bold; color: #ffffff;">
-                        <center>Habitos</center>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
-                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                CUÁDRICEPT
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
+                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-8" style="text-align: justify;">
+                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-8" style="text-align: justify;">
-                        <h2><b>1. Alimentación balanceada</b></h2>
-                        <b>Desayuno:</b> Prioriza proteínas (huevos, yogur griego) y carbohidratos complejos (avena, frutas) para tener energía durante el día.<br>
-                        <b>Almuerzo:</b> Incluye una buena fuente de proteínas (pollo, pescado, tofu), carbohidratos integrales (arroz integral, quinoa) y vegetales frescos.<br>
-                        <b>Cena:</b> Opta por comidas ligeras como ensaladas con proteína o sopas de vegetales.<br>
-                        <b>Snacks saludables:</b> Frutas, frutos secos, batidos de proteínas, barritas saludables.<br>
-                        <b>Hidratación:</b> Bebe al menos 2 litros de agua al día, especialmente antes y después de los entrenamientos.<br><br>
-
-                        <h2><b>2. Sueño reparador</b></h2>
-                        <b>Horas de sueño:</b> Dormir entre 7 y 9 horas por noche. Esto es esencial para la recuperación muscular y la salud mental.<br>
-                        <b>Rutina antes de dormir:</b> Apaga dispositivos electrónicos al menos 30 minutos antes de acostarte, para ayudar a tu cuerpo a relajarse.<br><br>
-
-                        <h2><b>3. Rutina en el gimnasio</b></h2>
-                        <b>Días de entrenamiento:</b> 4-5 días a la semana, alternando ejercicios de fuerza y cardiovasculares.<br>
-                        <b>Entrenamiento de fuerza (3 días a la semana):</b><br>
-                        <b>Día 1:</b> Pecho y tríceps.<br>
-                        <b>Día 2:</b> Piernas y abdomen.<br>
-                        <b>Día 3:</b> Espalda y bíceps.<br>
-                        <b>Cardio (2 días a la semana):</b> 30-40 minutos de correr, bicicleta o natación.<br>
-                        <b>Estiramientos:</b> Dedica 10 minutos antes y después del entrenamiento a estirar y mejorar la flexibilidad.<br><br>
-
-                        <h2><b>4. Bienestar mental</b></h2>
-                        <b>Meditación o mindfulness:</b> 10-15 minutos al día de respiración profunda o meditación para reducir el estrés.<br>
-                        <b>Actividades relajantes:</b> Dedica tiempo a actividades que disfrutes (leer, escuchar música, caminar al aire libre).<br><br>
-
-                        <h2><b>5. Seguimiento y motivación</b></h2>
-                        <b>Objetivos semanales:</b> Establece metas pequeñas como mejorar el tiempo en tu cardio o aumentar el peso en tus ejercicios.<br>
-                        <b>Diario de entrenamiento:</b> Lleva un registro de tus entrenamientos, alimentación y cómo te sientes cada día.<br>
-                        <b>Variedad:</b> Cambia la rutina cada 4-6 semanas para evitar el estancamiento.<br><br>
-
-                        <h2><b>6. Equilibrio y consistencia</b></h2>
-                        <b>Día de descanso activo:</b> Realiza actividades de bajo impacto como caminar, hacer yoga o nadar suavemente.<br>
-                        <b>Evita excesos:</b> No te sobreentrenes; escucha a tu cuerpo para evitar lesiones.<br>
-                        <br><br>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                FEMORAL
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
+                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-8" style="text-align: justify;">
+                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                PANTORRILLA
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
+                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-8" style="text-align: justify;">
+                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingfour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapseThree">
+                                GLUTEOS
+                            </button>
+                        </h2>
+                        <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingfour" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
+                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-8" style="text-align: justify;">
+                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <br><br>
+            <br><br><br> <br>
         </main>
         <footer>
-            <div class="container-fluid" style="width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
+            <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
                 <div class="row">
                     <div class="col-8" style="color: #ffffff; text-align: end">
                         <h6>
@@ -321,7 +361,7 @@ $rol = 1;
             </div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="../../js/Bienvenida.js"></script>
+        <script src="../js/Bienvenida.js"></script>
     </div>
 </body>
 
