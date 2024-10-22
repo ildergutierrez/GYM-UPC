@@ -34,14 +34,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
                             <li class="nav-item">
-                                <a class="nav-link active" href="../bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; "><span class="material-icons" style="vertical-align: middle">home</span>
-                                    INICIO</a>
+                                <a class="nav-link active" href="../view/bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold;"><span class="material-icons" style="vertical-align: middle">home</span>INICIO</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold;  border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">calendar_month</span> APARTAR CUPO</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">qr_code</span> QR</a>
+                                <a class="nav-link" href="imc.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">qr_code</span> QR</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="imc.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-symbols-outlined" style="vertical-align: middle">cardiology</span>
@@ -62,7 +61,7 @@
                                         <ul class="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="navbarDropdown">
                                             <li>
-                                                <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
+                                                <a class="dropdown-item" href="Configuracion.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
@@ -146,7 +145,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-md-6">
                                     <!-- Hora -->
@@ -215,7 +213,6 @@
                 </div>
             </div>
             </form>
-
             <!-- Fin Formulario -->
         </main>
         <footer>
@@ -223,7 +220,7 @@
                 <div class="row">
                     <div class="col-8" style="color: #ffffff; text-align: end">
                         <h6>
-                            © copyright: Universidad Popular del Cesar, seccional Aguachica
+                            © copyright: <a href="../view/valores.php" style="text-decoration: none; color: #ffffff;">Universidad Popular del Cesar, seccional Aguachica</a>
                         </h6>
                     </div>
                     <div class="col-4 d-flex justify-content-end">

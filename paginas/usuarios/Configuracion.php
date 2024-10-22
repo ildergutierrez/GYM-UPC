@@ -30,16 +30,15 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 250%">
+                        <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
                             <li class="nav-item">
-                                <a class="nav-link active" href="../view/bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; "><span class="material-icons" style="vertical-align: middle">home</span>
-                                    INICIO</a>
+                                <a class="nav-link active" href="../view/bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold;"><span class="material-icons" style="vertical-align: middle">home</span>INICIO</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="apartar_cupos.php" style="color: #ffffff; padding-right: 30px; font-weight: bold; "><span class="material-icons" style="vertical-align: middle">calendar_month</span> APARTAR CUPO</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="qr.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">qr_code</span> QR </a>
+                                <a class="nav-link" href="qr.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-icons" style="vertical-align: middle">qr_code</span> QR</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="imc.php" style="color: #ffffff; padding-right: 30px; font-weight: bold"><span class="material-symbols-outlined" style="vertical-align: middle">cardiology</span>
@@ -47,13 +46,12 @@
                             </li>
                         </ul>
                         <form
-                            class="d-flex justify-content-center align-items-center"
-                            style="width: 70%">
+                            class="d-flex justify-content-center align-items-center">
                             <div class="container d-flex justify-content-center align-items-center" style=" width: 100%;  background: #ffcc53;                  font-weight: bold;                  border-radius: 10px;                  margin-bottom: 3px;                ">
                                 <div
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
-                                    <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 95%; ">
+                                    <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
                                         <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
@@ -160,7 +158,7 @@
                             <!-- Nombre -->
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Nombre completo *</label>
-                                <div class="input-group" >
+                                <div class="input-group">
                                     <input type="text" required class="form-control" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" class="input-group-text" style=" font-size: 24px;">
                                             <i class="material-icons">person</i>
@@ -267,9 +265,10 @@
                 <div class="row">
                     <div class="col-8" style="color: #ffffff; text-align: end">
                         <h6>
-                            © copyright: Universidad Popular del Cesar, seccional Aguachica
+                            © copyright: <a href="../view/valores.php" style="text-decoration: none; color: #ffffff;">Universidad Popular del Cesar, seccional Aguachica</a>
                         </h6>
                     </div>
+
                     <div class="col-4 d-flex justify-content-end">
                         <div class="social-icons">
                             <!-- Facebook -->

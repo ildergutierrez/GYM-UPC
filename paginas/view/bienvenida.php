@@ -4,7 +4,7 @@ session_start();
 //   header('Location: ../index.php');
 // }
 // $rol = $_SESSION['rol'];
-$rol = 1;
+$rol = 3;
 ?>
 
 <!DOCTYPE html>
