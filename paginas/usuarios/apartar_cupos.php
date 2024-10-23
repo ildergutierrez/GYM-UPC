@@ -266,6 +266,7 @@
         <script src="../../js/usuarios/Apartar_cupos.js"></script>
 
         <!-- Flatpickr JS -->
+         <!-- Permite desplegar el calendario y al elegir una opcion se le pase al input o label -->
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script>
             const seleccionInput = document.getElementById('seleccion');

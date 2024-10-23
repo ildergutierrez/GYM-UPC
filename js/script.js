@@ -24,3 +24,18 @@ function Desifrado(pass) {
         pass.type = "password";
     }
 }
+function Desifrado_adm() {
+    var pass = document.getElementById('pass')    
+    var ojo = document.getElementById('ojo')
+    var ojo_cerrado = document.getElementById('ojo_cerrado')
+    if (pass.type === "password") {
+        pass.type = "text";
+        ojo.style.display ='none'
+        ojo_cerrado.style.display = 'block'
+
+    } else {
+        pass.type = "password";
+        ojo.style.display ='block'
+        ojo_cerrado.style.display = 'none'
+    }
+}

@@ -44,6 +44,7 @@ header {
     z-index: 1000;
 }
 
+
 .nav-link:hover {
     border-bottom: solid 3px #ffcc53;
 }
@@ -180,6 +181,11 @@ input[type="select"] {
     color: #ffffff;
     vertical-align: middle;
     transform: rotate(-45deg) scaleX(-1);
+}
+.span2{
+    color: #ffffff;
+    vertical-align: middle;
+    transform: rotate(-90deg) scaleX(-1);
 }
 
 .click {
