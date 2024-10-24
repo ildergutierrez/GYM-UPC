@@ -37,7 +37,7 @@
                                 <a class="nav-link active" href="../view/bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold;"><span class="material-icons" style="vertical-align: middle">home</span>INICIO</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold;  "><span class="material-symbols-outlined" style="vertical-align: middle; border: solid 1px #ffffff;"> user_attributes </span> Listar</a>
+                                <a class="nav-link" href="enlistar.php" style="color: #ffffff; padding-right: 30px; font-weight: bold;  "><span class="material-symbols-outlined" style="vertical-align: middle; border: solid 1px #ffffff;"> user_attributes </span> Listar</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="registrar.php" style="color: #ffffff; padding-right: 30px; font-weight: bold; "><span class="material-symbols-outlined" style="vertical-align: middle;">person_add </span>Registra</a>
@@ -57,7 +57,7 @@
                                         <ul class="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="navbarDropdown">
                                             <li>
-                                                <a class="dropdown-item" href="../Administrador/perfil.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
+                                                <a class="dropdown-item" href="perfil.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
                                             </li>
                                             <li>
 
@@ -65,21 +65,21 @@
                                                 <a class="dropdown-item cabeza_cel" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> reduce_capacity </span> &ensp;
                                                     Capacidad</a>
                                                 <ul class="dropdown-menu cel" aria-labelledby="navbarDropdownMenuLink">
-                                                    <li><a class="dropdown-item" href="../Administrador/capacidad.php"> <span class="material-symbols-outlined" style="vertical-align:middle;">scatter_plot</span> &ensp; Cupos GYM</a></li>
-                                                    <li><a class="dropdown-item" href="../Administrador/asignar_instructor.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> personal_places </span> &ensp; Asig Instructor</a></li>
+                                                    <li><a class="dropdown-item" href="capacidad.php"> <span class="material-symbols-outlined" style="vertical-align:middle;">scatter_plot</span> &ensp; Cupos GYM</a></li>
+                                                    <li><a class="dropdown-item" href="asignar_instructor.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> personal_places </span> &ensp; Asig Instructor</a></li>
                                                 </ul>
                                             </li>
 
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="../Administrador/actividades.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> local_activity </span> &ensp;
+                                                <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> local_activity </span> &ensp;
                                                     Actividad</a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="../Administrador/activar_afiliados.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> patient_list </span> &ensp;
+                                                <a class="dropdown-item" href="activar_afiliados.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> patient_list </span> &ensp;
                                                     Estado Afiliado</a>
                                             </li>
-                                            <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
+                                            <a class="dropdown-item" href="../../php/index/cerrar_sesion.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
                                                 Cerrar Sesión</a>
                                             </li>
                                         </ul>
@@ -120,7 +120,7 @@
                             <!-- Accion -->
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Acción *</label>
-                                <div class="input-group" >
+                                <div class="input-group">
                                     <input type="text" require id="s_lugar" disabled class="form-control" placeholder="Seleccionar Acción" aria-label="Lugar">
                                     <div style="color: #E5E5E5;  width: 10%;"> <span id="lugar" onclick="Lugares()" class="input-group-text">
                                             <i class="material-icons">expand_more</i>
@@ -136,9 +136,9 @@
                             </div>
                             <!-- Inicio Fecha -->
                             <div class="mb-3">
-                                <label  class="form-label" style="color: #FFFFFF;">Inicio de restricción * </label>
+                                <label class="form-label" style="color: #FFFFFF;">Inicio de restricción * </label>
                                 <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="text" id="seleccion_i" disabled style="width: 90%; border-radius: 0;" class="form-control" >
+                                    <input type="text" id="seleccion_i" disabled style="width: 90%; border-radius: 0;" class="form-control">
                                     <div style=" color: #E5E5E5;  width: 10%;">
                                         <span class="material-symbols-outlined" style=" font-size: 24px;" id="fecha_i">
                                             today

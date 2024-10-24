@@ -21,6 +21,7 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
 .s2 {
     width: 50%;
 }
@@ -186,9 +187,13 @@ input[type="select"] {
 }
 
 .A_cupos {
-    background: #0B7F46;
-    width: 80%;
+    background: #0b7f46;
     font-weight: bold;
+}
+
+.A_cupos:hover {
+    cursor: pointer;
+    background: #07f884;
 }
 
 .material-icons {
@@ -238,14 +243,48 @@ input[type="select"] {
         border-radius: 4px;
         background: linear-gradient(90deg, #0B7F46, #ffcc53);
     }
+
+    footer {
+        position: fixed;
+        bottom: -20px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .A_cupos {
+        width: 80%;
+    }
+
+    .col-md-6 {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 20px;
+
+    }
+
 }
 
 @media screen and (max-width: 800px) {
     footer {
-        position: absolute;
-        bottom: -950px;
-        margin: 0;
+        position: fixed;
+        bottom: -20px;
+        width: 100%;
         padding: 0;
+        margin: 0;
+    }
+
+    .col-md-6 {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 20px;
+
+    }
+
+    .A_cupos {
+        background: #0B7F46;
+        width: 80%;
+        font-weight: bold;
     }
 
     .nav-item.dropdown:hover .dropdown-menu {
@@ -285,10 +324,11 @@ input[type="select"] {
     }
 
     footer {
-        position: absolute;
-        bottom: -400px;
+        position: fixed;
+        bottom: -20px;
         width: 100%;
         padding: 0;
+        margin: 0;
     }
 
     .col-md-6 {
@@ -310,34 +350,7 @@ input[type="select"] {
         display: block;
     }
 
-    .carrusel {
-        margin: auto;
-        left: auto;
-        width: 90%;
-        padding: 0;
-        font-size: 15px;
-        overflow: hidden;
-        border-radius: 15px;
-        top: 200px;
-    }
 
-    .carousel-control-prev {
-        top: -60px;
-        left: -150px;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        position: relative;
-    }
-
-    .carousel-control-next {
-        top: -90px;
-        right: -150px;
-        padding: 0%;
-        margin: 0;
-        position: relative;
-        width: 100%;
-    }
 
     .nav-item.dropdown:hover .dropdown-menu {
         display: block;
@@ -422,13 +435,13 @@ input[type="select"] {
 
     .A_cupos {
         background: #0B7F46;
-        width: 80%;
+        width: 30%;
         font-weight: bold;
     }
 
     footer {
-        position: static;
-        bottom: -500px;
+        position: fixed;
+        bottom: -20px;
         width: 100%;
         padding: 0;
         margin: 0;

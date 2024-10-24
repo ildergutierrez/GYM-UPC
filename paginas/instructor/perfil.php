@@ -16,7 +16,7 @@
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
     <link rel="stylesheet" href="../../boostrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../css/configuracion.css" />
+    <link rel="stylesheet" href="../../css/perfil.css" />
     <link rel="icon" href="../../img/logo/Logo.png" />
 </head>
 
@@ -184,10 +184,10 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="lugar" class="form-label" style="color: #ffffff;">Rol *</label>
-                                        <div class="input-group" >
-                                            <input type="text" style="background: #E5E5E5;" required  disabled readonly class="form-control"  aria-label="Lugar">
+                                        <div class="input-group">
+                                            <input type="text" style="background: #E5E5E5;" required disabled readonly class="form-control" aria-label="Lugar">
                                             <div style=" color: #E5E5E5;  width: 15%;"> <span id="lugar" class="input-group-text">
-                                                    <i class="material-icons span2" >repeat</i>
+                                                    <i class="material-icons span2">repeat</i>
                                                 </span>
                                             </div><br>
                                         </div>
