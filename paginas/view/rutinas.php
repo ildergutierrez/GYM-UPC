@@ -271,24 +271,25 @@ $rol = 1;
         <div class="planes">
           <div class="row">
             <div class="col-md-4">
-              <a href="../view/tren_superior.php">
+              <a href="tren_superior.php">
                 <div class="fondo_superior">
-                <div class="color">
-                  <div class="nombre">TREN SUPERIOR</div>
-                </div>
+                  <div class="color">
+                    <div class="nombre">TREN SUPERIOR</div>
+                  </div>
                 </div>
               </a>
             </div>
             <div class="col-md-4">
-              <a href="../view/tren_inferior.php">
+              <a href="tren_inferior.php">
                 <div class="fondo_inferior">
-                <div class="color">
-                  <div class="nombre">TREN INFERIOR</div>
-                </div></div>
+                  <div class="color">
+                    <div class="nombre">TREN INFERIOR</div>
+                  </div>
+                </div>
               </a>
             </div>
             <div class="col-md-4">
-              <a href="../view/predefinidas.php">
+              <a href="predefinidas.php">
                 <div class="fondo_predeterminado">
                   <div class="color">
                     <div class="nombre">PREDEFINIDAS</div>
@@ -301,7 +302,7 @@ $rol = 1;
         <br><br>
     </main>
     <footer>
-      <div class="container-fluid" style="width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
+      <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
         <div class="row">
           <div class="col-8" style="color: #ffffff; text-align: end">
             <h6>
@@ -312,34 +313,28 @@ $rol = 1;
             <div class="social-icons">
               <!-- Facebook -->
               <a
-                href="https://www.facebook.com"
+                href="https://www.facebook.com/seccionalupcaguachica"
                 target="_blank"
-                style="color: #ffffff; margin-right: 16px">
+                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                 <i class="fab fa-facebook-f"></i>
               </a>
 
-              <!-- Twitter -->
+              <!-- Pagina web -->
               <a
-                href="https://www.twitter.com"
+                href="https://aguachica.unicesar.edu.co/"
                 target="_blank"
-                style="color: #ffffff; margin-right: 16px">
-                <i class="fab fa-twitter"></i>
+                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                <span class="material-symbols-outlined" style="vertical-align: middle;">
+                  language
+                </span>
               </a>
 
               <!-- Instagram -->
               <a
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/upcseccionalaguachica/"
                 target="_blank"
-                style="color: #ffffff; margin-right: 16px">
+                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                 <i class="fab fa-instagram"></i>
-              </a>
-
-              <!-- LinkedIn -->
-              <a
-                href="https://www.linkedin.com"
-                target="_blank"
-                style="color: #ffffff; margin-right: 16px">
-                <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
           </div>

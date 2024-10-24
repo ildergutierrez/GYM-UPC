@@ -41,7 +41,7 @@ $rol = 1;
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; "><span class="material-icons" style="vertical-align: middle">home</span>
+                                    <a class="nav-link active" href="bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">home</span>
                                         INICIO</a>
                                 </li>
                                 <li class="nav-item">
@@ -72,7 +72,7 @@ $rol = 1;
                                                     <a class="dropdown-item" href="../usuarios/Configuracion.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
                                                 </li>
                                                 <li>
-                                                    <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
+                                                    <a class="dropdown-item" href="../../php/index/cerrar_sesion.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
                                                         Cerrar Sesión</a>
                                                 </li>
                                             </ul>
@@ -94,7 +94,7 @@ $rol = 1;
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px;"><span class="material-icons" style="vertical-align: middle">home</span>
+                                    <a class="nav-link active" href="bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">home</span>
                                         INICIO</a>
                                 </li>
                                 <li class="nav-item">
@@ -121,7 +121,7 @@ $rol = 1;
                                                     <a class="dropdown-item" href="../instructor/perfil.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
                                                 </li>
                                                 <li>
-                                                    <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
+                                                    <a class="dropdown-item" href="../../php/index/cerrar_sesion.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
                                                         Cerrar Sesión</a>
                                                 </li>
                                             </ul>
@@ -143,7 +143,7 @@ $rol = 1;
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 70% ;">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px;"><span class="material-icons" style="vertical-align: middle">home</span>
+                                    <a class="nav-link active" href="bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; font-size: 14px; border-bottom: solid 4px #ffcc53;"><span class="material-icons" style="vertical-align: middle">home</span>
                                         INICIO</a>
                                 </li>
                                 <li class="nav-item">
@@ -189,7 +189,7 @@ $rol = 1;
                                                     <a class="dropdown-item" href="../Administrador/activar_afiliados.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> patient_list </span> &ensp;
                                                         Estado Afiliado</a>
                                                 </li>
-                                                <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
+                                                <a class="dropdown-item" href="../../php/index/cerrar_sesion.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
                                                     Cerrar Sesión</a>
                                                 </li>
                                             </ul>
@@ -368,34 +368,28 @@ $rol = 1;
                         <div class="social-icons">
                             <!-- Facebook -->
                             <a
-                                href="https://www.facebook.com"
+                                href="https://www.facebook.com/seccionalupcaguachica"
                                 target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
 
-                            <!-- Twitter -->
+                            <!-- Pagina web -->
                             <a
-                                href="https://www.twitter.com"
+                                href="https://aguachica.unicesar.edu.co/"
                                 target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
-                                <i class="fab fa-twitter"></i>
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                                <span class="material-symbols-outlined" style="vertical-align: middle;">
+                                    language
+                                </span>
                             </a>
 
                             <!-- Instagram -->
                             <a
-                                href="https://www.instagram.com"
+                                href="https://www.instagram.com/upcseccionalaguachica/"
                                 target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                                 <i class="fab fa-instagram"></i>
-                            </a>
-
-                            <!-- LinkedIn -->
-                            <a
-                                href="https://www.linkedin.com"
-                                target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
-                                <i class="fab fa-linkedin-in"></i>
                             </a>
                         </div>
                     </div>

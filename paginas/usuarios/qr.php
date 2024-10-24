@@ -64,7 +64,7 @@
                                                 <a class="dropdown-item" href="Configuracion.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
+                                                <a class="dropdown-item" href="../../php/index/cerrar_sesion.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
                                                     Cerrar Sesión</a>
                                             </li>
                                         </ul>
@@ -106,56 +106,51 @@
                     </div>
                 </div>
             </div> <!-- Fin Generador QR -->
-            <footer>
-                <div class=" container-fluid" style="width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
-                    <div class="row">
-                        <div class="col-8" style="color: #ffffff; text-align: end">
-                            <h6>
-                                © copyright: <a href="../view/valores.php" style="text-decoration: none; color: #ffffff;">Universidad Popular del Cesar, seccional Aguachica</a>
-                            </h6>
-                        </div>
-                        <div class="col-4 d-flex justify-content-end">
-                            <div class="social-icons">
-                                <!-- Facebook -->
-                                <a
-                                    href="https://www.facebook.com"
-                                    target="_blank"
-                                    style="color: #ffffff; margin-right: 16px">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
+        </main>
+        <footer>
+            <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
+                <div class="row">
+                    <div class="col-8" style="color: #ffffff; text-align: end">
+                        <h6>
+                            © copyright: <a href="../view/valores.php" style="text-decoration: none; color: #ffffff;">Universidad Popular del Cesar, seccional Aguachica</a>
+                        </h6>
+                    </div>
+                    <div class="col-4 d-flex justify-content-end">
+                        <div class="social-icons">
+                            <!-- Facebook -->
+                            <a
+                                href="https://www.facebook.com/seccionalupcaguachica"
+                                target="_blank"
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
 
-                                <!-- Twitter -->
-                                <a
-                                    href="https://www.twitter.com"
-                                    target="_blank"
-                                    style="color: #ffffff; margin-right: 16px">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
+                            <!-- Pagina web -->
+                            <a
+                                href="https://aguachica.unicesar.edu.co/"
+                                target="_blank"
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                                <span class="material-symbols-outlined" style="vertical-align: middle;">
+                                    language
+                                </span>
+                            </a>
 
-                                <!-- Instagram -->
-                                <a
-                                    href="https://www.instagram.com"
-                                    target="_blank"
-                                    style="color: #ffffff; margin-right: 16px">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-
-                                <!-- LinkedIn -->
-                                <a
-                                    href="https://www.linkedin.com"
-                                    target="_blank"
-                                    style="color: #ffffff; margin-right: 16px">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </div>
+                            <!-- Instagram -->
+                            <a
+                                href="https://www.instagram.com/upcseccionalaguachica/"
+                                target="_blank"
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                                <i class="fab fa-instagram"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </footer>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-            <script src="../../js/Bienvenida.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-            <script src="../../js/usuarios/Generar_Qr.js"></script>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="../../js/Bienvenida.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+        <script src="../../js/usuarios/Generar_Qr.js"></script>
 
 
     </div>

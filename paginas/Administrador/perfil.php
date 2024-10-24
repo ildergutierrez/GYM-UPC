@@ -22,7 +22,7 @@
 
 <body style="background: #1e1e1e">
     <div class="container-fluid" style="padding: 0;">
-    <header>
+        <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
                 <div class="container-fluid" style="color: white">
                     <a class="navbar-brand" href="#"></a>
@@ -200,10 +200,10 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="lugar" class="form-label" style="color: #ffffff;">Rol *</label>
-                                        <div class="input-group" >
-                                            <input type="text" style="background: #E5E5E5;" required  disabled readonly class="form-control"  aria-label="Lugar">
+                                        <div class="input-group">
+                                            <input type="text" style="background: #E5E5E5;" required disabled readonly class="form-control" aria-label="Lugar">
                                             <div style=" color: #E5E5E5;  width: 15%;"> <span id="lugar" class="input-group-text">
-                                                    <i class="material-icons span2" >repeat</i>
+                                                    <i class="material-icons span2">repeat</i>
                                                 </span>
                                             </div><br>
                                         </div>
@@ -271,46 +271,39 @@
             <!-- fin de cambiar contraseña -->
         </main> <br><br><br>
         <footer>
-            <div class=" container-fluid" style="width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
+            <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
                 <div class="row">
                     <div class="col-8" style="color: #ffffff; text-align: end">
                         <h6>
                             © copyright: <a href="../view/valores.php" style="text-decoration: none; color: #ffffff;">Universidad Popular del Cesar, seccional Aguachica</a>
                         </h6>
                     </div>
-
                     <div class="col-4 d-flex justify-content-end">
                         <div class="social-icons">
                             <!-- Facebook -->
                             <a
-                                href="https://www.facebook.com"
+                                href="https://www.facebook.com/seccionalupcaguachica"
                                 target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
 
-                            <!-- Twitter -->
+                            <!-- Pagina web -->
                             <a
-                                href="https://www.twitter.com"
+                                href="https://aguachica.unicesar.edu.co/"
                                 target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
-                                <i class="fab fa-twitter"></i>
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                                <span class="material-symbols-outlined" style="vertical-align: middle;">
+                                    language
+                                </span>
                             </a>
 
                             <!-- Instagram -->
                             <a
-                                href="https://www.instagram.com"
+                                href="https://www.instagram.com/upcseccionalaguachica/"
                                 target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                                 <i class="fab fa-instagram"></i>
-                            </a>
-
-                            <!-- LinkedIn -->
-                            <a
-                                href="https://www.linkedin.com"
-                                target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
-                                <i class="fab fa-linkedin-in"></i>
                             </a>
                         </div>
                     </div>
@@ -320,7 +313,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
         <script src="../../js/usuarios/Configuracion_user.js"></script>
-
         <script>
             function Lugares() {
                 const lugar = document.getElementById('lugar');

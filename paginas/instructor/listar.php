@@ -40,13 +40,13 @@ $rol = 1;
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 250%">
                             <li class="nav-item">
-                                <a class="nav-link active" href="../bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold;  "><span class="material-icons" style="vertical-align: middle">home</span>INICIO</a>
+                                <a class="nav-link active" href="../view/bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold;  "><span class="material-icons" style="vertical-align: middle">home</span>INICIO</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" style="color: #ffffff; border-bottom: solid 4px #ffcc53; padding-right: 30px; font-weight: bold; "><span class="material-icons" style="vertical-align: middle">recent_actors</span> Listar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" style="color: #ffffff; padding-right: 30px; font-weight: bold; "><span class="material-icons" style="vertical-align: middle">qr_code_scanner</span>Leer QR</a>
+                                <a class="nav-link" href="leer_qr.php" style="color: #ffffff; padding-right: 30px; font-weight: bold; "><span class="material-icons" style="vertical-align: middle">qr_code_scanner</span>Leer QR</a>
                             </li>
                         </ul>
                         <form
@@ -64,10 +64,10 @@ $rol = 1;
                                         <ul class="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="navbarDropdown">
                                             <li>
-                                                <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
+                                                <a class="dropdown-item" href="perfil.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> person_outline </span> &ensp; Perfil</a>
                                             </li>
                                             <li>
-                                                <a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
+                                                <a class="dropdown-item" href="../../php/index/cerrar_sesion.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> logout </span> &ensp;
                                                     Cerrar Sesión</a>
                                             </li>
                                         </ul>
@@ -164,7 +164,7 @@ $rol = 1;
             <!-- Fin de la tabla -->
         </main>
         <footer>
-            <div class="container-fluid" style="width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
+            <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
                 <div class="row">
                     <div class="col-8" style="color: #ffffff; text-align: end">
                         <h6>
@@ -175,34 +175,28 @@ $rol = 1;
                         <div class="social-icons">
                             <!-- Facebook -->
                             <a
-                                href="https://www.facebook.com"
+                                href="https://www.facebook.com/seccionalupcaguachica"
                                 target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
 
-                            <!-- Twitter -->
+                            <!-- Pagina web -->
                             <a
-                                href="https://www.twitter.com"
+                                href="https://aguachica.unicesar.edu.co/"
                                 target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
-                                <i class="fab fa-twitter"></i>
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                                <span class="material-symbols-outlined" style="vertical-align: middle;">
+                                    language
+                                </span>
                             </a>
 
                             <!-- Instagram -->
                             <a
-                                href="https://www.instagram.com"
+                                href="https://www.instagram.com/upcseccionalaguachica/"
                                 target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
+                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                                 <i class="fab fa-instagram"></i>
-                            </a>
-
-                            <!-- LinkedIn -->
-                            <a
-                                href="https://www.linkedin.com"
-                                target="_blank"
-                                style="color: #ffffff; margin-right: 16px">
-                                <i class="fab fa-linkedin-in"></i>
                             </a>
                         </div>
                     </div>
