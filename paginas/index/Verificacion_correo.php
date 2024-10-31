@@ -3,6 +3,10 @@ session_start();
 
 if (isset($_SESSION['usuario'])) {
     header("location: bienvenida.php");
+} else {
+    if (isset($_GET['correo'])) {
+        $correo = base64_decode($_GET['correo']);
+    }
 }
 
 ?>
@@ -61,13 +65,16 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="col-sm-6" style="color: #000000; background: #E5E5E5; padding-left: 50px; padding-right: 50px;">
                     <br>
-                    <form action="" method="$_POST" class="entrada">
-                        <center>
-                            <div style="background: #121A1C; border-radius: 100%; width: 30%; padding: 0;">
-                                <img src="../../img/user.png" alt="Icono" width="100%">
-                            </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Correo *</label>
+
+                    <center>
+                        <div style="background: #121A1C; border-radius: 100%; width: 30%; padding: 0;">
+                            <img src="../../img/user.png" alt="Icono" width="100%">
+                        </div> <br>
+                        <form id="miFormulario" action="../../php/Validar_usuario.php" method="get">
+                            <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Correo *</label>
                             <div class="input-group mb-3">
-                                <input type="email" readonly disabled name="correo" required class="form-control" aria-label="Text input with checkbox">
+                                <input type="text" readonly  value="<?php echo $correo ?>" required class="form-control" aria-label="Text input with checkbox">
+                                <input type="hidden" readonly  name="correo" value="<?php echo $_GET['correo'] ?>" required class="form-control" aria-label="Text input with checkbox">
                                 <div class="input-group-text" style="background: #121A1C; color: #E5E5E5;">
                                     <span class="material-symbols-outlined">
                                         mail
@@ -75,20 +82,20 @@ if (isset($_SESSION['usuario'])) {
                                 </div>
                             </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;"> Codigo de Verificación *</label>
                             <div class="input-group mb-3">
-                                <input type="email" name="password" id="codigo" required class="form-control" aria-label="Text input with checkbox">
+                                <input type="text" name="codigo" maxlength="8" id="codigo" required class="form-control" aria-label="Text input with checkbox">
                                 <div class="input-group-text" style="background: #121A1C; color: #E5E5E5;">
                                     <span class="material-symbols-outlined">
                                         tag
                                     </span>
                                 </div>
                             </div>
-                            <button class="btn btn" style="background: #0B7F46; color: #ffffff; font-weight: bold; width: 100%">Confirmar</button>
+                            <button class="btn btn" id="boton" style="display: none; background: #0B7F46; color: #ffffff; font-weight: bold; width: 100%">Confirmar</button>
                             <br><br>
-                            <br><br>
-                        </center>
-                    </form>
-                </div>
+                        </form>
+                        <br><br>
+                    </center>
 
+                </div>
             </div>
             <!-- fin inicio -->
 
@@ -96,44 +103,39 @@ if (isset($_SESSION['usuario'])) {
         <br><br>
     </main>
     <footer>
-        <div
-            class="container-fluid"
-            style=" background-color: #0b7f46;  padding-top: 10px;  padding-bottom: 10px;  border-top: solid 4px #ffcc53; position: fixed;   bottom: 0;">
+        <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
             <div class="row">
                 <div class="col-8" style="color: #ffffff; text-align: end">
                     <h6>
-                        © copyright: Universidad Popular del Cesar, seccional Aguachica
+                        © copyright: <a href="../view/valores.php" style="text-decoration: none; color: #ffffff;">Universidad Popular del Cesar, seccional Aguachica</a>
                     </h6>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
                     <div class="social-icons">
                         <!-- Facebook -->
                         <a
-                            href="https://www.facebook.com"
+                            href="https://www.facebook.com/seccionalupcaguachica"
                             target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <!-- Twitter -->
+
+                        <!-- Pagina web -->
                         <a
-                            href="https://www.twitter.com"
+                            href="https://aguachica.unicesar.edu.co/"
                             target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
-                            <i class="fab fa-twitter"></i>
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                            <span class="material-symbols-outlined" style="vertical-align: middle;">
+                                language
+                            </span>
                         </a>
+
                         <!-- Instagram -->
                         <a
-                            href="https://www.instagram.com"
+                            href="https://www.instagram.com/upcseccionalaguachica/"
                             target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <!-- LinkedIn -->
-                        <a
-                            href="https://www.linkedin.com"
-                            target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
-                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
@@ -141,8 +143,17 @@ if (isset($_SESSION['usuario'])) {
         </div>
     </footer>
     <script>
+        const boton = document.getElementById('boton');
         document.getElementById('codigo').addEventListener('input', function(e) {
+            // Reemplaza caracteres no numéricos
             this.value = this.value.replace(/[^0-9]/g, '');
+
+            // Verifica si la longitud del valor es 8
+            if (this.value.length === 8) {
+                boton.style.display = "block";
+            } else {
+                boton.style.display = "none";
+            }
         });
     </script>
     <script src="assets/js/script.js"></script>

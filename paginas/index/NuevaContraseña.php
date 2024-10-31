@@ -67,18 +67,18 @@ if (isset($_SESSION['usuario'])) {
                                 <img src="../../img/user.png" alt="Icono" width="100%">
                             </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Contraseña *</label>
                             <div class="input-group mb-3">
-                                <input  type="password" name="password" required class="form-control" aria-label="Text input with checkbox">
+                                <input type="password" name="password" required class="form-control" aria-label="Text input with checkbox">
                                 <div class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 36px;">
-                                        <span class="material-symbols-outlined span"> key </span>
-                                    </div>
-                                   
+                                    <span class="material-symbols-outlined span"> key </span>
+                                </div>
+
                             </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;"> Confirmar Contraseña *</label>
                             <div class="input-group mb-3" id="CN_password">
                                 <input id="cnc" type="password" name="password_1" required class="form-control" aria-label="Text input with checkbox">
-                                 <div  class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 36px;">
-                                        <span class="material-symbols-outlined span"> key </span>
-                                    </div>
-                                   
+                                <div class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 36px;">
+                                    <span class="material-symbols-outlined span"> key </span>
+                                </div>
+
                             </div>
                             <button class="btn btn" style="background: #0B7F46; color: #ffffff; font-weight: bold; width: 100%">Actualizar Información</button>
                             <br><br>
@@ -94,44 +94,39 @@ if (isset($_SESSION['usuario'])) {
         <br><br>
     </main>
     <footer>
-        <div
-            class="container-fluid"
-            style=" background-color: #0b7f46;  padding-top: 10px;  padding-bottom: 10px;  border-top: solid 4px #ffcc53; position: fixed;   bottom: 0;">
+        <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
             <div class="row">
                 <div class="col-8" style="color: #ffffff; text-align: end">
                     <h6>
-                        © copyright: Universidad Popular del Cesar, seccional Aguachica
+                        © copyright: <a href="../view/valores.php" style="text-decoration: none; color: #ffffff;">Universidad Popular del Cesar, seccional Aguachica</a>
                     </h6>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
                     <div class="social-icons">
                         <!-- Facebook -->
                         <a
-                            href="https://www.facebook.com"
+                            href="https://www.facebook.com/seccionalupcaguachica"
                             target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <!-- Twitter -->
+
+                        <!-- Pagina web -->
                         <a
-                            href="https://www.twitter.com"
+                            href="https://aguachica.unicesar.edu.co/"
                             target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
-                            <i class="fab fa-twitter"></i>
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                            <span class="material-symbols-outlined" style="vertical-align: middle;">
+                                language
+                            </span>
                         </a>
+
                         <!-- Instagram -->
                         <a
-                            href="https://www.instagram.com"
+                            href="https://www.instagram.com/upcseccionalaguachica/"
                             target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <!-- LinkedIn -->
-                        <a
-                            href="https://www.linkedin.com"
-                            target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
-                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>

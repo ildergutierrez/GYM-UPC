@@ -42,6 +42,36 @@ if (isset($_SESSION['usuario'])) {
 
 <body>
 
+    <?php if (isset($_GET['error']) && $_GET['error'] == "1") { ?>
+        <div class="alert alert-primary" role="alert" style="background: #0b7f46; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+            <center>
+                <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                    </span> &ensp; !Upssss, Ocurrio un error!
+                </div>
+            </center>
+        </div>
+    <?php } ?>
+    <?php if (isset($_GET['error']) && $_GET['error'] == "2") { ?>
+        <div class="alert alert-primary" role="alert" style="background: #0b7f46; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+            <center>
+                <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                    </span> &ensp; !Upssss, Ocurrio un error al enviar el correo!
+                </div>
+            </center>
+        </div>
+    <?php } ?>
+    <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "1") { ?>
+        <div class="alert alert-primary" role="alert" style="background: #0b7f46; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+            <center>
+                <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        check
+                    </span> &ensp; !Registro exitoso!
+                </div>
+            </center>
+        </div>
+    <?php } ?>
     <main>
         <div id="Iniciar" class="container" style="margin-top: 0px; ">
             <!--Inicio de sesión  -->
@@ -62,13 +92,16 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="col-sm-6" style="color: #000000; background: #E5E5E5; padding-left: 50px; padding-right: 50px;">
                     <br>
-                    <form action="" method="$_POST" class="entrada">
+                    <form action="php/Login.php" method="post" class="entrada">
                         <center>
                             <div style="background: #121A1C; border-radius: 100%; width: 30%; padding: 0;">
                                 <img src="img/user.png" alt="Icono" width="100%">
                             </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Correo *</label>
+                            <?php if (isset($_GET['error']) && $_GET['error'] == "0") { ?>
+                                <p style="color: red;">El usuario o la contraseña es incorrecta</p>
+                            <?php } ?>
                             <div class="input-group mb-3">
-                                <input type="email" name="correo" required class="form-control" aria-label="Text input with checkbox">
+                                <input name="usuario" type="email" required class="form-control">
                                 <div class="input-group-text" style="background: #121A1C; color: #E5E5E5;">
                                     <span class="material-symbols-outlined">
                                         mail
@@ -113,8 +146,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="col-sm-6 " style="color: #000000; background: #E5E5E5; padding-left: 30px; padding-right: 50px;">
                     <br>
-                    <form action="" method="$_POST" class="entrada">
-
+                    <form action="php/Registros_usuarios.php" method="post" class="entrada">
                         <div style="background: #121A1C; margin: auto; border-radius: 100%; width: 30%; padding: 0; overflow: hidden;">
                             <img src="img/Add.png" alt="Icono" width="100%">
                         </div>
@@ -149,6 +181,7 @@ if (isset($_SESSION['usuario'])) {
                         <!-- Celular -->
                         <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none; font-size: 12px;">Celular* </label>
                         <div class="input-group mb-3">
+                            <input style="height: 26px;" name="rol" type="hidden" value="3">
                             <input style="height: 26px;" id="numerocel" name="celular" type="text" required class="form-control" aria-label="Text input with checkbox">
                             <div class="input-group-text" style=" height: 26px; background: #121A1C; color: #E5E5E5;">
                                 <span class="material-symbols-outlined"> smartphone </span>
@@ -157,7 +190,7 @@ if (isset($_SESSION['usuario'])) {
                         <!-- Contraseña -->
                         <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Contraseña *</label>
                         <div style="padding: 0;" class="input-group mb-3 d-flex">
-                            <input id="contra" name="password" style="height: 30px;" type="password" required class="form-control">
+                            <input id="contra" name="password" style="height: 30px;" type="password" required class="form-control" minlength="8">
                             <div id="Remplazo" onclick="Desifrado( document.getElementById('contra'))" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 30px; cursor: pointer;">
                                 <span style="height: 26px;" class="material-symbols-outlined span"> key </span>
                             </div>
@@ -179,7 +212,6 @@ if (isset($_SESSION['usuario'])) {
                                         <div class="col-2">
                                             <input type="radio" name="sede" required style="margin-top: 0;" value="0">
                                         </div>&ensp; Valledupar
-
                                     </div>
                                 </div>
                             </div>
@@ -218,7 +250,6 @@ if (isset($_SESSION['usuario'])) {
                         </center>
                     </form>
                 </div>
-
             </div>
             <!-- fin Registro -->
 
@@ -226,53 +257,46 @@ if (isset($_SESSION['usuario'])) {
         <br><br>
     </main>
     <footer>
-        <div
-            class="container-fluid"
-            style=" background-color: #0b7f46;  padding-top: 10px;  padding-bottom: 10px;  border-top: solid 4px #ffcc53; position: fixed;   bottom: 0;">
+        <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
             <div class="row">
                 <div class="col-8" style="color: #ffffff; text-align: end">
                     <h6>
-                        © copyright: Universidad Popular del Cesar, seccional Aguachica
+                        © copyright: <a href="../view/valores.php" style="text-decoration: none; color: #ffffff;">Universidad Popular del Cesar, seccional Aguachica</a>
                     </h6>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
                     <div class="social-icons">
                         <!-- Facebook -->
                         <a
-                            href="https://www.facebook.com"
+                            href="https://www.facebook.com/seccionalupcaguachica"
                             target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                             <i class="fab fa-facebook-f"></i>
                         </a>
 
-                        <!-- Twitter -->
+                        <!-- Pagina web -->
                         <a
-                            href="https://www.twitter.com"
+                            href="https://aguachica.unicesar.edu.co/"
                             target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
-                            <i class="fab fa-twitter"></i>
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                            <span class="material-symbols-outlined" style="vertical-align: middle;">
+                                language
+                            </span>
                         </a>
 
                         <!-- Instagram -->
                         <a
-                            href="https://www.instagram.com"
+                            href="https://www.instagram.com/upcseccionalaguachica/"
                             target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                             <i class="fab fa-instagram"></i>
-                        </a>
-
-                        <!-- LinkedIn -->
-                        <a
-                            href="https://www.linkedin.com"
-                            target="_blank"
-                            style="color: #ffffff; margin-right: 16px">
-                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+
 
     <script>
         document.getElementById('numeroIdentidad').addEventListener('input', function(e) {
