@@ -1,3 +1,22 @@
+<?php
+session_start();
+if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSION['rol']) && isset($_SESSION['estado']) && isset($_SESSION['Email'])) {
+    if ($_SESSION['rol'] != '3') {
+        header('Location: ../view/bienvenida.php');
+    }
+    $email = $_SESSION['Email'];
+    $nombre = $_SESSION['nombre'];
+    $documento = $_SESSION['documento'];
+    $rol = $_SESSION['rol'];
+    $estado = $_SESSION['estado'];
+    $sede = "Aguachica";
+    $telefono = $_SESSION['telefono'];
+    $sexo = $_SESSION['genero'];
+} else {
+    header('Location: ../../index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -97,14 +116,15 @@
             </div>
             <!-- Formulario -->
             <div class="formulario">
-                <form action="" method="$_POST">
+                <form action="../../php/perfil.php" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <!-- Docuento -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Documento * </label>
                                 <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="text" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input name="rol" type="hidden" readonly value="<?php echo $rol ?>">
+                                    <input name="documento" type="text" readonly value="<?php echo $documento ?>" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     <div style=" color: #E5E5E5;  width: 10%;">
                                         <span class="material-symbols-outlined" style=" font-size: 24px;">
                                             tag
@@ -116,7 +136,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Correo * </label>
                                 <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="email" required style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input name="correo" type="email" required value="<?php echo $email ?>" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     <div style=" color: #E5E5E5;  width: 10%;">
                                         <span class="material-symbols-outlined" style=" font-size: 24px;">
                                             mail
@@ -132,21 +152,33 @@
                                     <div class="col-4">
                                         <div class="row">
                                             <div class="col-2">
-                                                <input type="radio" required name="op" style="margin-top: 0; padding: 0;" value="0">
+                                                <?php if ($sexo === '0') { ?>
+                                                    <input type="radio" required checked name="op" style="margin-top: 0; padding: 0;" value="0">
+                                                <?php } else { ?>
+                                                    <input type="radio" required name="op" style="margin-top: 0; padding: 0;" value="0">
+                                                <?php } ?>
                                             </div> &ensp; Masculino
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="row ">
                                             <div class="col-2">
-                                                <input type="radio" required name="op" style="margin-top: 0; padding: 0;" value="1">
+                                                <?php if ($sexo === '1') { ?>
+                                                    <input type="radio" required checked name="op" style="margin-top: 0; padding: 0;" value="1">
+                                                <?php } else { ?>
+                                                    <input type="radio" required name="op" style="margin-top: 0; padding: 0;" value="1">
+                                                <?php } ?>
                                             </div> &emsp; Fememino
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="row " title="No aplica / no especifica">
                                             <div class="col-2">
-                                                <input type="radio" required name="op" style="margin-top: 0;" value="2">
+                                                <?php if ($sexo === '2') { ?>
+                                                    <input type="radio" required checked name="op" style="margin-top: 0; padding: 0;" value="2">
+                                                <?php } else { ?>
+                                                    <input type="radio" required name="op" style="margin-top: 0; padding: 0;" value="2">
+                                                <?php } ?>
                                             </div>&ensp; N/A
                                         </div>
                                     </div>
@@ -159,7 +191,7 @@
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Nombre completo *</label>
                                 <div class="input-group">
-                                    <input type="text" required class="form-control" aria-label="Lugar">
+                                    <input name="nombre" type="text" required value="<?php echo $nombre ?>" class="form-control" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" class="input-group-text" style=" font-size: 24px;">
                                             <i class="material-icons">person</i>
                                         </span>
@@ -172,7 +204,7 @@
                                     <div class="mb-3">
                                         <label for="hora" class="form-label" style="color: #FFFFFF;">Telefono *</label>
                                         <div class="input-group">
-                                            <input type="text" required style="width:70%" id="numerocel" class="form-control" aria-label="Lugar">
+                                            <input name="celular" type="text" required value="<?php echo $telefono ?>" style="width:70%" id="numerocel" class="form-control" aria-label="Lugar">
                                             <div style=" color: #E5E5E5;  width: 20%; ">
                                                 <span id="lugar" class="input-group-text">
                                                     <i class="material-icons">call</i>
@@ -185,15 +217,15 @@
                                     <div class="mb-3">
                                         <label for="lugar" class="form-label" style="color: #FFFFFF;">Sede *</label>
                                         <div class="input-group">
-                                            <input type="text" required id="s_lugar" disabled class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
+                                            <input type="text" required value="<?php echo $sede ?>" id="s_lugar"  name="sede" class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
                                             <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" onclick="Lugares()" class="input-group-text">
                                                     <i class="material-icons">expand_more</i>
                                                 </span>
                                             </div><br>
                                             <div id="opc" style="display: none; width: 100%;">
                                                 <select class="form-select" multiple aria-label="multiple select example" id="lugarSelect">
-                                                    <option value="1">Aguachica</option>
-                                                    <option value="2">Valledupar</option>
+                                                    <option  value="1">Aguachica</option>
+                                                    <option  value="2">Valledupar</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -205,9 +237,36 @@
                     </div>
             </div>
             <div class="container-md">
-                <center> <button type="submit" class="btn btn-success A_cupos">Actualizar Informacion</button>
+                <center> <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success A_cupos">Actualizar Informacion</a>
                 </center>
             </div>
+
+            <!-- Modal contraseña -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="background: #121A1C;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel" style="color: #FFFFFF; font-weight: bold;">Ingrese la contraseña actual</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <center>
+                                <div style="padding: 0;" class="input-group mb-3">
+                                    <input id="password" name="password" type="password" required class="form-control">
+                                    <div onclick="Desifrado( document.getElementById('password'))" id="ver" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block; cursor: pointer;">
+                                        <span class="material-symbols-outlined span"> key </span>
+                                    </div>
+                                </div>
+                            </center>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary A_cupos" style="border: none;">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- fin modal de contraseña -->
+
             </form>
             <div id="activar" style="display: block; padding:10px ;">
                 <center> <a onclick="Actualiza_Contrasena()" class="btn btn-success A_cupos">Actualizar Contraseña</a>
@@ -303,7 +362,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
         <script src="../../js/usuarios/Configuracion_user.js"></script>
-
+        <script src="../../js/script.js"></script>
         <script>
             function Lugares() {
                 const lugar = document.getElementById('lugar');

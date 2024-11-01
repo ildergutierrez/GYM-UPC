@@ -7,7 +7,6 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
 } else {
   header('Location: ../../index.php');
 }
-
 ?>
 
 <!DOCTYPE html>

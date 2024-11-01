@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (isset($_SESSION['usuario'])) {
-    header("location: bienvenida.php");
+if (isset($_SESSION['Email'])) {
+    header("location: paginas/view/bienvenida.php");
 }
 
 ?>

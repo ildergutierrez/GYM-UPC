@@ -1,12 +1,14 @@
 <?php
 session_start();
 if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSION['rol']) && isset($_SESSION['estado'])) {
-
+    if ($_SESSION['rol'] != '3') {
+        header('Location: ../view/bienvenida.php');
+    }
     $nombre = $_SESSION['nombre'];
     $documento = $_SESSION['documento'];
     $rol = $_SESSION['rol'];
     $estado = $_SESSION['estado'];
-    if ($estado != '1' && $rol == '3') {
+    if ($estado != '1') {
         header('Location: ../view/bienvenida.php');
     }
 } else {

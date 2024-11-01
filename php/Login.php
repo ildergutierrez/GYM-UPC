@@ -15,6 +15,8 @@ $nombre = "";
 $documento = "";
 $rol = "";
 $estado = "";
+$telefono = "";
+$genero = "";
 
 // Consulta para buscar el usuario en la base de datos
 
@@ -32,6 +34,8 @@ if (verificar($email, $conexion) != false) {
         $estado = $fila['estado'];
         $contrasena_almacenada = $fila['contrasena'];
         $nombre = nombre($fila['id'], $conexion);
+        $telefono = telefono($fila['id'], $conexion);
+        $genero = genero($fila['id'], $conexion);
         $id_user = $fila['id'];
 
         if (password_verify($contraseña, $contrasena_almacenada)) {
@@ -41,6 +45,8 @@ if (verificar($email, $conexion) != false) {
                 $_SESSION['documento'] = trim($id_user);
                 $_SESSION['rol'] = trim($rol);
                 $_SESSION['estado'] = trim($estado);
+                $_SESSION['telefono'] = trim($telefono);
+                $_SESSION['genero'] = trim($genero);
                 // Define la dirección de redirección antes de usarla
                 $direccion = '../paginas/view/bienvenida.php';
                 header("Location: $direccion");
@@ -68,6 +74,22 @@ function nombre($documento, $conexion)
     $busqueda = mysqli_query($conexion, $qerry);
     $fila = mysqli_fetch_assoc($busqueda);
     return $fila['nombre completo'];
+}
+
+function telefono($documento, $conexion)
+{
+    $qerry = "SELECT * FROM persona WHERE documento = '$documento'";
+    $busqueda = mysqli_query($conexion, $qerry);
+    $fila = mysqli_fetch_assoc($busqueda);
+    return $fila['celular'];
+}
+
+function genero($documento, $conexion)
+{
+    $qerry = "SELECT * FROM persona WHERE documento = '$documento'";
+    $busqueda = mysqli_query($conexion, $qerry);
+    $fila = mysqli_fetch_assoc($busqueda);
+    return $fila['sexo'];
 }
 
 function verificar($correo, $conexion)
