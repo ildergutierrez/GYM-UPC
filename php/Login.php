@@ -9,6 +9,8 @@ if (!isset($_POST['usuario']) || !isset($_POST['password'])) {
 session_start();
 include('Conexion_bc.php');
 $conexion = conexion(); // Guarda la conexión en una variable
+$direccion = '../paginas/view/bienvenida.php';
+// Variables
 $email = strtolower($_POST['usuario']);
 $contraseña = $_POST['password'];
 $nombre = "";
@@ -18,10 +20,12 @@ $estado = "";
 $telefono = "";
 $genero = "";
 
-// Consulta para buscar el usuario en la base de datos
+$datos = array();
 
+// Consulta para buscar el usuario en la base de datos
 $qerry = "SELECT * FROM usuarios WHERE correo = '$email'";
 
+//Ejecución de la consulta y asignacion de valores a los $_session
 if (verificar($email, $conexion) != false) {
     $busqueda = mysqli_query($conexion, $qerry);
     if (!$busqueda) {
@@ -33,11 +37,11 @@ if (verificar($email, $conexion) != false) {
         $rol = $fila['rol'];
         $estado = $fila['estado'];
         $contrasena_almacenada = $fila['contrasena'];
-        $nombre = nombre($fila['id'], $conexion);
-        $telefono = telefono($fila['id'], $conexion);
-        $genero = genero($fila['id'], $conexion);
+        $datos = nombre($fila['id'], $conexion);
+        $nombre = $datos[0];
+        $telefono = $datos[1];
+        $genero = $datos[2];
         $id_user = $fila['id'];
-
         if (password_verify($contraseña, $contrasena_almacenada)) {
             if ($fila['verificacion'] == '1') {
                 $_SESSION['Email'] = $email;
@@ -48,7 +52,7 @@ if (verificar($email, $conexion) != false) {
                 $_SESSION['telefono'] = trim($telefono);
                 $_SESSION['genero'] = trim($genero);
                 // Define la dirección de redirección antes de usarla
-                $direccion = '../paginas/view/bienvenida.php';
+
                 header("Location: $direccion");
                 exit();
             } else {
@@ -74,45 +78,29 @@ if (verificar($email, $conexion) != false) {
     exit();
 }
 
-
 // Funciones
 
 
 
-
+//busca el nombre, celular y sexo dentro de la base de datos en la tabla persona
 function nombre($documento, $conexion)
 {
     $qerry = "SELECT * FROM persona WHERE documento = '$documento'";
     $busqueda = mysqli_query($conexion, $qerry);
     $fila = mysqli_fetch_assoc($busqueda);
-    return $fila['nombre completo'];
+    $array = array();
+    $array[0] = $fila['nombre completo'];
+    $array[1] = $fila['celular'];
+    $array[2] = $fila['sexo'];
+    return $array;
 }
 
-function telefono($documento, $conexion)
-{
-    $qerry = "SELECT * FROM persona WHERE documento = '$documento'";
-    $busqueda = mysqli_query($conexion, $qerry);
-    $fila = mysqli_fetch_assoc($busqueda);
-    return $fila['celular'];
-}
-
-function genero($documento, $conexion)
-{
-    $qerry = "SELECT * FROM persona WHERE documento = '$documento'";
-    $busqueda = mysqli_query($conexion, $qerry);
-    $fila = mysqli_fetch_assoc($busqueda);
-    return $fila['sexo'];
-}
-
+//verifica si el correo existe en la base de datos
 function verificar($correo, $conexion)
 {
     $qerry = "SELECT * FROM usuarios WHERE correo = '$correo'";
     $busqueda = mysqli_query($conexion, $qerry);
-    $fila = mysqli_fetch_assoc($busqueda);
-    $verificar = $fila['correo'];
-
-
-    if ($verificar !== null) {
+    if ($busqueda && mysqli_num_rows($busqueda) > 0) {
         return true;
     }
     return false;
