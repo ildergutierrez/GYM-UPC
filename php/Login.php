@@ -67,7 +67,19 @@ if (verificar($email, $conexion) != false) {
     } else {
         echo "No se encontró el usuario.";
     }
+} else {
+    echo "<script>
+    window.location.href = '../index.php?error=0';
+    </script>";
+    exit();
 }
+
+
+// Funciones
+
+
+
+
 function nombre($documento, $conexion)
 {
     $qerry = "SELECT * FROM persona WHERE documento = '$documento'";
@@ -97,8 +109,12 @@ function verificar($correo, $conexion)
     $qerry = "SELECT * FROM usuarios WHERE correo = '$correo'";
     $busqueda = mysqli_query($conexion, $qerry);
     $fila = mysqli_fetch_assoc($busqueda);
-    if ($fila['correo'] != null)
+    $verificar = $fila['correo'];
+
+
+    if ($verificar !== null) {
         return true;
+    }
     return false;
 }
 
