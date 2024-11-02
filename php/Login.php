@@ -10,6 +10,7 @@ session_start();
 include('Conexion_bc.php');
 $conexion = conexion(); // Guarda la conexión en una variable
 $direccion = '../paginas/view/bienvenida.php';
+
 // Variables
 $email = strtolower($_POST['usuario']);
 $contraseña = $_POST['password'];
@@ -22,8 +23,10 @@ $genero = "";
 
 $datos = array();
 
+
 // Consulta para buscar el usuario en la base de datos
 $qerry = "SELECT * FROM usuarios WHERE correo = '$email'";
+
 
 //Ejecución de la consulta y asignacion de valores a los $_session
 if (verificar($email, $conexion) != false) {
@@ -45,7 +48,7 @@ if (verificar($email, $conexion) != false) {
         if (password_verify($contraseña, $contrasena_almacenada)) {
             if ($fila['verificacion'] == '1') {
                 $_SESSION['Email'] = $email;
-                $_SESSION['nombre'] = strtoupper($nombre);
+                $_SESSION['nombre'] = convertirFrase($nombre);
                 $_SESSION['documento'] = trim($id_user);
                 $_SESSION['rol'] = trim($rol);
                 $_SESSION['estado'] = trim($estado);
@@ -79,8 +82,10 @@ if (verificar($email, $conexion) != false) {
 }
 
 // Funciones
-
-
+// Convierte la cadena a minúsculas y pone la primera letra en mayúscula
+function convertirFrase($frase) {
+    return ucwords(strtolower($frase));
+}
 
 //busca el nombre, celular y sexo dentro de la base de datos en la tabla persona
 function nombre($documento, $conexion)

@@ -1,3 +1,23 @@
+<?php
+session_start();
+if (!isset($_SESSION['documento']) || $_SESSION['rol'] != 3) {
+    header('Location: ../../index.php');
+}
+$nombre = $_SESSION['nombre'];
+include('../../php/Generar_qr.php');
+$datos = array();
+$datos = GenaraQR();
+$cantidad = count($datos);
+if ($cantidad > 0) {
+    $documento = $datos[0];
+    $hora = $datos[1];
+    $fecha = $datos[2];
+    $lugar = $datos[3];
+    $limite = $datos[4];
+
+    $qr = "http://localhost/GYM-UPC/php/Leer_QR.php?documento=$documento&hora=$hora&fecha=$fecha&lugar=$lugar&limite=$limite";
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -54,7 +74,7 @@
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
                                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                        <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                        <p> <?php echo $nombre ?></p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -97,15 +117,37 @@
                 <!-- Fin de linea de nombre -->
                 <br>
             </div>
-            <!-- Generador QR -->
-            <div class="container" style="margin-top: 80px;">
-                <div class="d-flex justify-content-center align-items-center">
-                    <input type="hidden" id="input-link" value="https://web.whatsapp.com/">
-                    <div id="qr-container">
-                        <canvas id="qrcode" style="border:solid 2px #1e1e1e; border-radius: 5px;"></canvas>
+            <?php if ($cantidad > 0) { ?>
+                <!-- Generador QR -->
+                <div class="container" style="margin-top: 80px;">
+                    <div class="row" style="padding-left:0; padding-right: 0; position: static; width: 40%; margin: 0 auto;border-radius: 10px;  border-bottom: solid 5px #0b7f46; text-align: center; background: #ffffff;">
+                        <div class="col">
+                            <h6 style="padding-top: 10px; color: #000000; font-weight: bold;"><span class="material-symbols-outlined" style="vertical-align: middle; color: #0b7f46;">
+                                    schedule
+                                </span> PROXIMA SECCIÓN </h6>
+                        </div>
+                        <div class="col">
+                            <h6 style="padding: 10px; color: #0b7f46; font-weight: bold;   "><?php echo $hora; ?> </h6>
+                        </div>
                     </div>
-                </div>
-            </div> <!-- Fin Generador QR -->
+                    <br>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <input type="hidden" id="input-link" value="<?php echo $qr ?>">
+                        <div id="qr-container">
+                            <canvas id="qrcode" style="border:solid 2px #1e1e1e; border-radius: 5px;"></canvas>
+                        </div>
+                    </div>
+                </div> <!-- Fin Generador QR -->
+            <?php } else { ?>
+                <div class="container" style="margin-top: 80px;">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="alert alert-danger" role="alert">
+                            <h4 class="alert-heading">¡No tienes cupos apartados!</h4>
+                            <p>Para poder generar tu código QR, primero debes apartar un cupo.</p>
+                            <hr>
+                            <p class="mb-0">Dirígete a la sección de apartar cupos y realiza el proceso.</p>
+                        </div>
+                    <?php } ?>
         </main>
         <footer>
             <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">

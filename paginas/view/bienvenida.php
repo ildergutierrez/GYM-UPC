@@ -64,7 +64,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
                     class="container d-flex justify-content-center align-items-center"
                     style="padding: 0; width: 100%">
                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                      <p><?php echo strtoupper($nombre) ?></p>&ensp;
+                      <p><?php echo $nombre ?></p>&ensp;
                     </div>
                     <div class="dropdown" style="color: #000000">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -219,7 +219,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
       <div class="container" style="margin-top: 80px; ">
         <div id="nombre" class="d-flex Bienvenida" style="display: block;">
           <p>
-          <h1 id="x2">Bienvenido. Ilder Alberto Gutierrez Beleño</h1>
+          <h1 id="x2">Bienvenido, <?php echo  $nombre ?></h1>
           </p>
         </div>
         <!-- Fin de linea de nombre -->

@@ -14,6 +14,8 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
 } else {
     header('Location: ../../index.php');
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +43,81 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
 </head>
 
 <body style="background: #1e1e1e">
+
+    <!-- Modal -->
+    <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Alerta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5>Primero debe seleccionar la Jornada.</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" style="background: #0b7f46;" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin modal -->
+
+    <!-- Modal Registros -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <?php
+        // Consulta de la base de datos sobre los cupos
+        include('../../php/Conexion_bc.php');
+        $conexion = conexion();
+        $sql = "SELECT * FROM `cupos`";
+        $result = mysqli_query($conexion, $sql);
+        $cardio = 0;
+        $peso = 0;
+        while ($mostrar = mysqli_fetch_array($result)) {
+            if ($mostrar['lugar'] == '137') {
+                $cardio++;
+            } else {
+                $peso++;
+            }
+        }
+
+        ?>
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Registros</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5><b>Cardio: </b><?php echo $cardio ?></h5>
+                    <h><b>Peso: </b> <?php echo $peso ?> </h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" style="background: #0b7f46;" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin modal -->
+
+    <!-- Alertas -->
+    <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == "0") { ?>
+        <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: red;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+            <center>
+                <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                    </span> &ensp; !upss. ocurrio un error!<br>Verifica Fecha y/o Hora. <br>Nota: Tal ves tu cupo ya fue apartado.
+                    <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                        <p style="border-bottom: solid 2px #ffcc53; padding: 0;"> Cerrar</p>
+                    </button>
+
+                </div>
+            </center>
+
+        </div>
+    <?php } ?>
+
+    <!-- Fin de Alertas -->
     <div class="container-fluid" style="padding: 0;">
         <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
@@ -117,14 +194,15 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
             </div>
             <!-- Formulario -->
             <div class="formulario">
-                <form action="" method="$_POST">
+                <form action="../../php/Cupos.php" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <!-- Docuento -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Documento * </label>
                                 <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="text" readonly value="<?php echo $documento ?>" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input name="documento" type="text" readonly value="<?php echo $documento ?>" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input type="hidden" name="url" value="paginas/usuarios/qr.php">
                                     <div style=" color: #E5E5E5;  width: 10%;">
                                         <span class="material-symbols-outlined" style=" font-size: 24px;">
                                             person
@@ -136,7 +214,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                             <div class="mb-3 px">
                                 <label for="fecha" class="form-label" style="color: #FFFFFF;">Fecha *</label>
                                 <div class="input-group" style="width: 90%; border:solid 1px #FFFFFF; border-radius: none;">
-                                    <input type="text" required disabled id="seleccion" style="width: 80%" class="form-control" placeholder="Seleccionar fecha" aria-label="Fecha">
+                                    <input name="fecha" type="text" required readonly id="seleccion" style="width: 80%" class="form-control" placeholder="Seleccionar fecha" aria-label="Fecha">
                                     <div style=" color: #E5E5E5;  width: 10%; border-radius: none; border-left: none;">
                                         <span class="input-group-text " id="fecha">
                                             <i class="material-icons">today</i>
@@ -149,8 +227,8 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                             <!-- Lugar -->
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Sección *</label>
-                                <div class="input-group">
-                                    <input type="text" require id="s_lugar" disabled class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
+                                <div class="input-group" style="width: 100%;">
+                                    <input name="sede" type="text" require id="s_lugar" readonly class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" onclick="Lugares()" class="input-group-text">
                                             <i class="material-icons">expand_more</i>
                                         </span>
@@ -169,17 +247,14 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                                     <div class="mb-3">
                                         <label for="hora" class="form-label" style="color: #FFFFFF;">Hora *</label>
                                         <div class="input-group">
-                                            <input type="text" required style="width:70%" id="s_hora" disabled class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
+                                            <input name="hora" type="text" required style="width:70%" id="s_hora" readonly class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
                                             <div style=" color: #E5E5E5;  width: 20%; ">
                                                 <span id="lugar" onclick="Hora()" class="input-group-text">
                                                     <i class="material-icons">watch_later</i>
                                                 </span>
                                             </div>
                                             <div id="opc_hora" style="display: none;  width: 100%; ">
-                                                <select class="form-select-2" multiple aria-label="multiple select example" id="horaSelect">
-                                                    <option value="1">12</option>
-                                                    <option value="2">4</option>
-                                                </select>
+
                                             </div>
                                         </div>
                                     </div>
@@ -192,21 +267,21 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                                         <div class="col-4">
                                             <div class="row" title="Mañana">
                                                 <div class="col-2">
-                                                    <input type="radio" required name="op" style="margin-top: 0; padding: 0;" value="0">
+                                                    <input type="radio" onclick="Horarios()" required name="op" style="margin-top: 0; padding: 0;" value="0">
                                                 </div> &ensp; M/na
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="row " title="Tarde">
                                                 <div class="col-2">
-                                                    <input type="radio" required name="op" style="margin-top: 0; padding: 0;" value="1">
+                                                    <input type="radio" onclick="Horarios()" required name="op" style="margin-top: 0; padding: 0;" value="1">
                                                 </div> &emsp; Tarde
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="row " title="Noche">
                                                 <div class="col-2">
-                                                    <input type="radio" required name="op" style="margin-top: 0;" value="2">
+                                                    <input type="radio" onclick="Horarios()" required name="op" style="margin-top: 0;" value="2">
                                                 </div>&ensp; Noche
                                             </div>
                                         </div>
@@ -225,7 +300,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                     </div>
                     <div class="col-md-6">
                         <div class="container">
-                            <a type="button" class="btn btn-success V_registrados">Ver Registros</a>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success V_registrados">Ver Registros</a>
                         </div>
                     </div>
                 </div>
@@ -276,6 +351,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
         <script src="../../js/usuarios/Apartar_cupos.js"></script>
+        <script src="../../js/script.js"></script>
 
         <!-- Flatpickr JS -->
         <!-- Permite desplegar el calendario y al elegir una opcion se le pase al input o label -->

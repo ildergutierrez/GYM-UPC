@@ -13,6 +13,8 @@ $conexion = conexion(); // Guarda la conexión en una variable
 $correo = $_SESSION['Email'];
 $rol = $_POST['rol'];
 $url = $_POST['url'];
+
+
 if ($rol !== '0') {
     $contrasena = $_POST['password'];
     $contrasena_nueva = $_POST['password_new'];
@@ -37,8 +39,6 @@ if ($rol !== '0') {
         header("Location: $url?respuesta=0");
        }
 }
-
-
 
 // Funciones
 // Funcion para validar los datos, si la contraseña actual es correcta o no
