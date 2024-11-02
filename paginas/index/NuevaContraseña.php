@@ -1,9 +1,9 @@
 <?php
-session_start();
 
-if (isset($_SESSION['usuario'])) {
-    header("location: bienvenida.php");
+if (!isset($_GET['Email'])) {
+    header("location: ../../index.php");
 }
+$correo = base64_decode( $_GET['Email']);
 
 ?>
 <!DOCTYPE html>
@@ -41,6 +41,17 @@ if (isset($_SESSION['usuario'])) {
 </style>
 
 <body>
+<?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "0") { ?>
+                <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: red;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+                    <center>
+                        <div class="container"  ><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                            </span> &ensp; !upss. ocurrio un error!
+                        </div>
+                    </center>
+
+                </div>
+            <?php } ?>
 
     <main>
         <div id="Iniciar" class="container" style="margin-top: 0px; ">
@@ -61,7 +72,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="col-sm-6" style="color: #000000; background: #E5E5E5; padding-left: 50px; padding-right: 50px;">
                     <br>
-                    <form action="" method="$_POST" class="entrada">
+                    <form action="../../php/Actualizar_Contraseña.php" method="post" class="entrada">
                         <center>
                             <div style="background: #121A1C; border-radius: 100%; width: 30%; padding: 0;">
                                 <img src="../../img/user.png" alt="Icono" width="100%">
@@ -74,16 +85,17 @@ if (isset($_SESSION['usuario'])) {
 
                             </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;"> Confirmar Contraseña *</label>
                             <div class="input-group mb-3" id="CN_password">
-                                <input id="cnc" type="password" name="password_1" required class="form-control" aria-label="Text input with checkbox">
+                                <input id="cnc" type="password" name="confirmar_password" required class="form-control" aria-label="Text input with checkbox">
                                 <div class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 36px;">
                                     <span class="material-symbols-outlined span"> key </span>
                                 </div>
-
+                                <input type="hidden" name="rol" value="0">
                             </div>
                             <button class="btn btn" style="background: #0B7F46; color: #ffffff; font-weight: bold; width: 100%">Actualizar Información</button>
                             <br><br>
                             <br><br>
                         </center>
+                        <input type="hidden" name="correo" value="<?php echo $correo ?>">
                     </form>
                 </div>
 

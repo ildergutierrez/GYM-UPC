@@ -39,3 +39,10 @@ function Desifrado_adm() {
         ojo_cerrado.style.display = 'none'
     }
 }
+
+function Cerrar_Alerta(){
+    var alerta = document.getElementById('accion')
+   if(alerta.style.display === 'block'){
+       alerta.style.display = 'none'
+   }
+}

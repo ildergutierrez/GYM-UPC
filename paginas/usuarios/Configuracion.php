@@ -94,6 +94,39 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
             </nav>
         </header>
         <main>
+
+            <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "1") { ?>
+                <div id="accion"  class="alert alert-primary" role="alert" style="display: block; border: solid 2px #ffcc53; background: #0b7f46; color:#ffffff; font-weight: bold; position: fixed; z-index: 1000; margin-top: 10px; width: 100%;">
+                    <center>
+                        <div class="container"  ><span class="material-symbols-outlined" style="vertical-align: middle;">
+                                check
+                            </span> &ensp; !Actualizacion exitosa!
+                            <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                    <p style="border-bottom: solid 2px #ffcc53; padding: 0;">  Cerrar</p>
+                                </button>
+                            
+                        </div>
+                    </center>
+
+                </div>
+            <?php } ?>
+           
+            <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "0") { ?>
+                <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: red;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+                    <center>
+                        <div class="container"  ><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                            </span> &ensp; !upss. ocurrio un error!
+                            <button onclick="Cerrar_Alerta()"  style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                    <p style="border-bottom: solid 2px #ffcc53; padding: 0;">  Cerrar</p>
+                                </button>
+                            
+                        </div>
+                    </center>
+
+                </div>
+            <?php } ?>
+
             <!-- Logo -->
             <div class="container">
                 <div class="d-flex" style="z-index: 1000; position: fixed; top: 5px; margin-top: 0; padding: 0; left: 10px;  width: 25%;   ">
@@ -114,6 +147,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                 <!-- Fin de linea de nombre -->
                 <br>
             </div>
+
             <!-- Formulario -->
             <div class="formulario">
                 <form action="../../php/perfil.php" method="post">
@@ -217,15 +251,15 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                                     <div class="mb-3">
                                         <label for="lugar" class="form-label" style="color: #FFFFFF;">Sede *</label>
                                         <div class="input-group">
-                                            <input type="text" required value="<?php echo $sede ?>" id="s_lugar"  name="sede" class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
+                                            <input type="text" required value="<?php echo $sede ?>" id="s_lugar" name="sede" class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
                                             <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" onclick="Lugares()" class="input-group-text">
                                                     <i class="material-icons">expand_more</i>
                                                 </span>
                                             </div><br>
                                             <div id="opc" style="display: none; width: 100%;">
                                                 <select class="form-select" multiple aria-label="multiple select example" id="lugarSelect">
-                                                    <option  value="1">Aguachica</option>
-                                                    <option  value="2">Valledupar</option>
+                                                    <option value="1">Aguachica</option>
+                                                    <option value="2">Valledupar</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -275,13 +309,15 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
             <!-- Fin Formulario -->
             <!-- Cambiar contraseña -->
             <div id="contra" class="container" style="display: none; height: 300px;">
-                <form action="" method="$_POST" style="padding:40px">
+                <form action="../../php/Actualizar_Contraseña.php" method="post" style="padding:40px">
+                    <input name="rol" type="hidden" value="<?php echo $rol ?>">
+                    <input name="url" type="hidden" value="../paginas/usuarios/Configuracion.php">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Contraseña Actual *</label>
                                 <div class="input-group">
-                                    <input type="password" require id="C_Actual" class="form-control" placeholder="ingrese su contraseña actual" aria-label="Lugar">
+                                    <input name="password" type="password" require id="C_Actual" class="form-control" placeholder="ingrese su contraseña actual" aria-label="Lugar">
                                     <div style="width: 10%;" onclick="Desifrado(document.getElementById('C_Actual'))">
                                         <span class="input-group-text click">
                                             <i class="material-icons span">key</i>
@@ -294,7 +330,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Nueva Contraseña *</label>
                                 <div class="input-group">
-                                    <input type="password" require id="C_Nueva" class="form-control" placeholder="use caracteres especiales" aria-label="Lugar">
+                                    <input name="password_new" type="password" require id="C_Nueva" class="form-control" placeholder="use caracteres especiales" aria-label="Lugar">
                                     <div style="  width: 10%; " onclick="Desifrado( document.getElementById('C_Nueva'))">
                                         <span class="input-group-text click">
                                             <i class="material-icons ">lock</i>

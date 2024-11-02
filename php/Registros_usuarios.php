@@ -15,6 +15,24 @@ $codigo =  Token();
 $contrasena = Codificar($contrasena);
 
 
+
+if (Validar_datos() && Consulta($correo, $conexion) && Contrasena_guardar($contrasena)) {
+    if ($rol === "3") {
+        if (strpos($correo, "@" . $dominio_especifico) !== false) {
+            Registar();
+        }
+    } else {
+        Registar();
+    }
+} else {
+    echo '<script>
+        window.location ="../index.php?error=1";
+        </script>';
+}
+
+
+//funciones
+//valida que los datos esten llenos
 function Validar_datos()
 {
     //Valida que los datos esten llenos
@@ -29,7 +47,7 @@ function Validar_datos()
         return false;
     }
 }
-
+//verifica que el correo sea de la universidad
 function Consulta($email, $conexion)
 {
     //verificación de correo y usuario
@@ -42,7 +60,7 @@ function Consulta($email, $conexion)
         return true;
     }
 }
-
+//registra los datos
 function Registar()
 {
     global $documento, $nombre_completo, $correo, $celular, $genero, $contrasena, $sede, $rol, $codigo, $fecha, $conexion;
@@ -63,27 +81,29 @@ function Registar()
     }
     cerrar_conexion($conexion);
 }
-
+//genera un token de 8 digitos
 function Token()
 {
     return rand(10000000, 99999999);
 }
-
+//codifica la contraseña
 function Codificar($elemento)
 {
     return password_hash($elemento, PASSWORD_DEFAULT);
 }
 
-if (Validar_datos() && Consulta($correo, $conexion)) {
-    if ($rol === "3") {
-        if (strpos($correo, "@" . $dominio_especifico) !== false) {
-            Registar();
-        }
+//verifica la contraseña
+function Contrasena_guardar($contrasena) {
+    global $caracteresEspeciales;
+    if (strlen($contrasena) >= 8) {
+        if (preg_match('/[A-Z]/', $contrasena) && preg_match('/[a-z]/', $contrasena) &&  preg_match('/[0-9]/', $contrasena)
+                   && preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $contrasena)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
     } else {
-        Registar();
+        return false;
     }
-} else {
-    echo '<script>
-        window.location ="../index.php?error=1";
-        </script>';
+               
 }

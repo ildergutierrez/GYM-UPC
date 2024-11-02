@@ -26,23 +26,28 @@ if ($busqueda && mysqli_num_rows($busqueda) > 0) {
         $busqueda = mysqli_query($conexion, $qerry);
         if ($busqueda) {
             header("Location: $direccion");
+            cerrar_conexion($conexion); // Cierra la conexión con la base de datos
             exit();
         } else {
             echo "<script>
                         window.location ='$error';
                         </script>";
+                        cerrar_conexion($conexion); // Cierra la conexión con la base de datos
             exit();
         }
     } else {
         echo "<script>
                     window.location ='$error';
                     </script>";
+                    cerrar_conexion($conexion); // Cierra la conexión con la base de datos
         exit();
     }
+    
 } else {
     echo "<script>
                     window.location ='$error';
                     </script>";
+                    cerrar_conexion($conexion); // Cierra la conexión con la base de datos
     exit();
 }
-cerrar_conexion($conexion); // Cierra la conexión
+

@@ -190,7 +190,7 @@ if (isset($_SESSION['Email'])) {
                         <!-- Contraseña -->
                         <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Contraseña *</label>
                         <div style="padding: 0;" class="input-group mb-3 d-flex">
-                            <input id="contra" name="password" style="height: 30px;" type="password" required class="form-control" minlength="8">
+                            <input id="contra" name="password" style="height: 30px;" type="password" required class="form-control" minlength="8" placeholder="debe contener Numero, mayusculas, menusculas y caractere especial">
                             <div id="Remplazo" onclick="Desifrado( document.getElementById('contra'))" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 30px; cursor: pointer;">
                                 <span style="height: 26px;" class="material-symbols-outlined span"> key </span>
                             </div>

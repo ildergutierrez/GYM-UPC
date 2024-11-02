@@ -43,8 +43,13 @@ main {
     transform: scale(1.1);
 }
 
-
-
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+   
+   
+}
 @keyframes logo {
     0% {
         transform: translateY(0) scale(0) perspective(1px);
