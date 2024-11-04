@@ -1,9 +1,9 @@
 <?php
 
-if (!isset($_GET['Email'])) {
+if (!isset($_GET['correo'])) {
     header("location: ../../index.php");
 }
-$correo = base64_decode( $_GET['Email']);
+$correo = base64_decode($_GET['correo']);
 
 ?>
 <!DOCTYPE html>
@@ -41,17 +41,29 @@ $correo = base64_decode( $_GET['Email']);
 </style>
 
 <body>
-<?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "0") { ?>
-                <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: red;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
-                    <center>
-                        <div class="container"  ><span class="material-symbols-outlined" style="vertical-align: middle;">
+    <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "0") { ?>
+        <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: red;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+            <center>
+                <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
                         warning
-                            </span> &ensp; !upss. ocurrio un error!
-                        </div>
-                    </center>
-
+                    </span> &ensp; !upss. ocurrio un error!
                 </div>
-            <?php } ?>
+            </center>
+
+        </div>
+    <?php } ?>
+
+    <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "1") { ?>
+        <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: red;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+            <center>
+                <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        check
+                    </span> &ensp; !Actización realizada!
+                </div>
+            </center>
+
+        </div>
+    <?php } ?>
 
     <main>
         <div id="Iniciar" class="container" style="margin-top: 0px; ">
@@ -78,15 +90,14 @@ $correo = base64_decode( $_GET['Email']);
                                 <img src="../../img/user.png" alt="Icono" width="100%">
                             </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Contraseña *</label>
                             <div class="input-group mb-3">
-                                <input type="password" name="password" required class="form-control" aria-label="Text input with checkbox">
-                                <div class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 36px;">
+                                <input type="password" name="password" id="cont" required class="form-control" minlength="8" aria-label="Text input with checkbox">
+                                <div class="input-group-text" onclick="Desifrado(document.getElementById('cont'))" style="background: #121A1C; color: #E5E5E5; display: block;  height: 36px;">
                                     <span class="material-symbols-outlined span"> key </span>
                                 </div>
-
                             </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;"> Confirmar Contraseña *</label>
                             <div class="input-group mb-3" id="CN_password">
-                                <input id="cnc" type="password" name="confirmar_password" required class="form-control" aria-label="Text input with checkbox">
-                                <div class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 36px;">
+                                <input id="cnc" minlength="8" type="password" name="password_new" required class="form-control" aria-label="Text input with checkbox">
+                                <div  onclick="Desifrado(document.getElementById('cnc'))" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 36px;">
                                     <span class="material-symbols-outlined span"> key </span>
                                 </div>
                                 <input type="hidden" name="rol" value="0">
@@ -95,7 +106,8 @@ $correo = base64_decode( $_GET['Email']);
                             <br><br>
                             <br><br>
                         </center>
-                        <input type="hidden" name="correo" value="<?php echo $correo ?>">
+                        <input type="hidden" name="Email" value="<?php echo $correo ?>">
+                        <input type="hidden" name="url" value="../paginas/index/NuevaContrasena.php">
                     </form>
                 </div>
 

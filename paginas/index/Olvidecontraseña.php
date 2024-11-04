@@ -41,6 +41,39 @@ if (isset($_SESSION['usuario'])) {
 </style>
 
 <body>
+    <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "0") { ?>
+        <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: red;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+            <center>
+                <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                    </span> &ensp; !upss. ocurrio un error, Verifica el correo!
+                </div>
+            </center>
+
+        </div>
+    <?php } ?>
+    <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "1") { ?>
+        <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: red;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+            <center>
+                <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                    </span> &ensp; !upss. ocurrio un error, No se envio el correo!<br>Intenta de nuevo, Verifica tu conexión a internet.
+                </div>
+            </center>
+
+        </div>
+    <?php } ?>
+    <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "2") { ?>
+        <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: #0b7f46;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+            <center>
+                <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        check
+                    </span> &ensp; !Revisa el correo!<br>Se envio un link para Recuperar la Cuenta.
+                </div>
+            </center>
+
+        </div>
+    <?php } ?>
 
     <main>
         <div id="Iniciar" class="container" style="margin-top: 0px; ">
@@ -61,7 +94,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="col-sm-6" style="color: #000000; background: #E5E5E5; padding-left: 50px; padding-right: 50px;">
                     <br>
-                    <form action="" method="$_POST" class="entrada">
+                    <form action="../../php/vendor_Recuperarcontraseña.php" method="post" class="entrada">
                         <center>
                             <div style="background: #121A1C; border-radius: 100%; width: 30%; padding: 0;">
                                 <img src="../../img/user.png" alt="Icono" width="100%">

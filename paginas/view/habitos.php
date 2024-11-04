@@ -3,6 +3,7 @@ session_start();
 if (isset($_SESSION['Email']) && isset($_SESSION['nombre'])) {
   $email = $_SESSION['Email'];
   $nombre = $_SESSION['nombre'];
+  $rol =  $_SESSION['rol'];
 } else {
   header('Location: ../../index.php');
 }

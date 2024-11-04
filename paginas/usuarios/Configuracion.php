@@ -317,7 +317,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Contraseña Actual *</label>
                                 <div class="input-group">
-                                    <input name="password" type="password" require id="C_Actual" class="form-control" placeholder="ingrese su contraseña actual" aria-label="Lugar">
+                                    <input name="password" minlength="8" type="password" require id="C_Actual" class="form-control" placeholder="ingrese su contraseña actual" aria-label="Lugar">
                                     <div style="width: 10%;" onclick="Desifrado(document.getElementById('C_Actual'))">
                                         <span class="input-group-text click">
                                             <i class="material-icons span">key</i>
@@ -330,7 +330,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Nueva Contraseña *</label>
                                 <div class="input-group">
-                                    <input name="password_new" type="password" require id="C_Nueva" class="form-control" placeholder="use caracteres especiales" aria-label="Lugar">
+                                    <input name="password_new" minlength="8" type="password" require id="C_Nueva" class="form-control" placeholder="use caracteres especiales" aria-label="Lugar">
                                     <div style="  width: 10%; " onclick="Desifrado( document.getElementById('C_Nueva'))">
                                         <span class="input-group-text click">
                                             <i class="material-icons ">lock</i>

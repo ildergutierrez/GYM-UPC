@@ -1,11 +1,16 @@
 <?php
+session_start();
 date_default_timezone_set('America/Bogota'); //configuración de zona horaria a colombia
-if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
-    $rol = $_SESSION['rol'];
+if (!isset($_SESSION['Email']) && !isset($_SESSION['nombre']) && !isset($_SESSION['rol'])) {
+    
+        header("location: ../view/bienvenida.php");
+    
+}
+
+$rol = $_SESSION['rol'];
     if ($rol !== "2") {
         header("location: ../view/bienvenida.php");
     }
-}
 //clases
 include('../../php/Conexion_bc.php');
 require_once('../../php/usuario/Actualizar_cupos.php');

@@ -1,101 +1,110 @@
 <?php
-session_start();
-if (!isset($_SESSION['Email'])) {
-    header('Location: ../index.php');
-    exit();
+
+$rol = $_POST['rol'];
+if ($rol !== '0') {
+    session_start();
+    if (!isset($_SESSION['Email'])) {
+        header('Location: ../index.php');
+        exit();
+    }
 }
-class Actualizar_Contraseña{
-
-// Funciones
-// Funcion para validar los datos, si la contraseña actual es correcta o no
-function Validar_pass($contrasena, $correo, $conexion): bool
+include('Conexion_bc.php');
+class Actualizar_Contraseña
 {
-    $qerry = "SELECT * FROM usuarios WHERE correo = '$correo'";
-    $busqueda = mysqli_query($conexion, $qerry);
-    if ($busqueda && mysqli_num_rows($busqueda) > 0) {
-        $fila = mysqli_fetch_assoc($busqueda);
-        $contrasena_almacenada = $fila['contrasena'];
-        if (password_verify($contrasena, $contrasena_almacenada)) {
-            return true;
-        } else {
 
+    private $correo;
+    private  $conexion;
+    private $rol;
+    private $url;
+    private $contrasena_actual;
+    private $n_contrasena;
+
+    public function __construct($conexion, $rol, $url, $contrasena_actual, $n_contrasena, $correo)
+    {
+        $this->conexion = $conexion;
+        $this->rol = $rol;
+        $this->url = $url;
+        $this->contrasena_actual = $contrasena_actual;
+        $this->n_contrasena = $n_contrasena;
+        $this->correo = $correo;
+        $this->Update();
+    }
+
+
+    // Funciones
+    // Funcion para validar los datos, si la contraseña actual es correcta o no
+    function Validar_pass(): bool
+    {
+        $qerry = "SELECT * FROM usuarios WHERE correo = '$this->correo'";
+        $busqueda = mysqli_query($this->conexion, $qerry);
+        if ($busqueda && mysqli_num_rows($busqueda) > 0) {
+            $fila = mysqli_fetch_assoc($busqueda);
+            $contrasena_almacenada = $fila['contrasena'];
+            if (password_verify($this->contrasena_actual, $contrasena_almacenada)) {
+                return true;
+            } else {
+
+                return false;
+            }
+        } else {
             return false;
         }
-    } else {
-        return false;
     }
-}
 
-// Funcion para validar la contraseña nueva que cumpla con los requisitos
-function Contraseña_Nueva($contrasena) {
-    global $caracteresEspeciales;
-    if (strlen($contrasena) >= 8) {
-        if (preg_match('/[A-Z]/', $contrasena) && preg_match('/[a-z]/', $contrasena) &&  preg_match('/[0-9]/', $contrasena)
-                   && preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $contrasena)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-    } else {
-        return false;
-    }
-               
-}
-
-// Funcion para registrar la nueva contraseña
-function Registrar(){
-    global $conexion;
-    global $correo;
-    global $contrasena_nueva;
-    $contrasena_nueva = password_hash($contrasena_nueva, PASSWORD_DEFAULT);
-    $qerry = "UPDATE usuarios SET contrasena = '$contrasena_nueva' WHERE correo = '$correo'";
-    $busqueda = mysqli_query($conexion, $qerry);
-    if ($busqueda) {
-        return true;
-    } else {
-        return false;
-    }
-}}
-
-$actualizar = new Actualizar_Contraseña();
-
-
-$caracteresEspeciales = ['@','#','$','%','^','&','*','!','(',')','-','+','=','{','}','[',']','|',':',';','"','\'','<','>','-',',','.','?','/','\\','~','`'];
-
-
-include('Conexion_bc.php');
-$conexion = conexion(); // Guarda la conexión en una variable
-
-$correo = $_SESSION['Email'];
-$rol = $_POST['rol'];
-$url = $_POST['url'];
-
-
-if ($rol !== '0') {
-    $contrasena = $_POST['password'];
-    $contrasena_nueva = $_POST['password_new'];
-    if($actualizar->Validar_pass($contrasena, $correo, $conexion) && $actualizar->Contraseña_Nueva($contrasena_nueva)){
-        $actualizar-> Registrar();
-        cerrar_conexion($conexion);
-    }
-       else{
-        header("Location: $url?respuesta=0");
-       }
-   
-} else {
-    $contrasena = $_POST['password'];
-    $c_contrasena= $_POST['confirmar_password'];
-    if($contrasena === $c_contrasena){
-        if( $actualizar-> Validar_pass($contrasena, $correo, $conexion) &&  $actualizar-> Contraseña_Nueva($contrasena_nueva)){
-            $actualizar-> Registrar();
-            cerrar_conexion($conexion);
+    // Funcion para validar la contraseña nueva que cumpla con los requisitos
+    function Contraseña_Nueva()
+    {
+        if (strlen($this->n_contrasena) >= 8) {
+            if (
+                preg_match('/[A-Z]/', $this->n_contrasena) && preg_match('/[a-z]/', $this->n_contrasena) &&  preg_match('/[0-9]/', $this->n_contrasena)
+                && preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $this->n_contrasena)
+            ) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
-           else{
-            cerrar_conexion($conexion);
-            header("Location: $url?respuesta=0");
-           }
-    } else{
-        cerrar_conexion($conexion);
-        header("Location: $url?respuesta=0");
-       }
+    }
+
+    // Funcion para registrar la nueva contraseña
+    function Registrar()
+    {
+        $contrasena_nueva = password_hash($this->n_contrasena, PASSWORD_DEFAULT);
+        $qerry = "UPDATE usuarios SET contrasena = '$contrasena_nueva' WHERE correo = '$this->correo'";
+        $busqueda = mysqli_query($this->conexion, $qerry);
+        if ($busqueda) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function Update()
+    {
+        if ($this->rol !== '0') {
+
+            if ($this->Validar_pass() && $this->Contraseña_Nueva()) {
+                $this->Registrar();
+                cerrar_conexion($this->conexion);
+                header("Location: $this->url?respuesta=1");
+            } else {
+                cerrar_conexion($this->conexion);
+                header("Location: $this->url?respuesta=0");
+            }
+        } else {
+            if ($this->contrasena_actual === $this->n_contrasena) {
+                $this->Registrar();
+                cerrar_conexion($this->conexion);
+                header("Location: $this->url?respuesta=1");
+            } else {
+                cerrar_conexion($this->conexion);
+                header("Location: $this->url?respuesta=0");
+            }
+        }
+    }
 }
+
+$conexion = conexion();
+$actualizar = new Actualizar_Contraseña($conexion, $_POST['rol'], $_POST['url'], $_POST['password'],  $_POST['password_new'], $_POST['Email']);
