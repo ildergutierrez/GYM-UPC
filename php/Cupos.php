@@ -4,55 +4,14 @@ if (!isset($_SESSION['documento']) && !isset($_SESSION['rol']) === "3") {
     header('Location: ../index.php');
     exit();
 }
+
 if (empty($_POST['documento']) || empty($_POST['sede'])  || empty($_POST['fecha']) || empty($_POST['hora'])) {
     header('Location: ../index.php');
     exit();
 }
-include('Conexion_bc.php');
-$conexion = conexion(); // Guarda la conexión en una variable
-date_default_timezone_set('America/Bogota'); //configuración de zona horaria a colombia
 
 
-//------------------- Variables ----------------------------------
-$documento = $_POST['documento'];
-$sede = $_POST['sede'];
-if ($sede == "Cardio") {
-    $sede = "137";
-} else {
-    $sede = "125";
-}
-$rol = $_SESSION['rol'];
-$url = $_POST['url'];
-$fecha = $_POST['fecha'];
-$hora = $_POST['hora'];
-$hora = date("H:i ", strtotime($hora));
-//--------------------------------------------
-
-if (Validar_Hora($hora) && Validar_Fecha($fecha) >= 0) {
-   
-    if (!Estado($documento, $conexion)) {
-
-       if (Registros($conexion)) {
-        
-            header("Location: ../$url");
-            exit();
-        } else {
-            
-            header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");  
-            exit();
-        }
-    } else {
-       
-        header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");  
-        exit();
-    }
-    
-}else {
-       
-    header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");  
-    exit();
-}
-
+class Cupos{
 //Registrar cupos
 function Registros($conexion): bool
 {
@@ -73,7 +32,7 @@ function Registros($conexion): bool
 function Validar_Hora($hora): bool
 {
     global $fecha;
-    if(Validar_Fecha($fecha)==2){
+    if( $this->Validar_Fecha($fecha)==2){
     $hora_actual = date("H:i ");
     $hora1 = strtotime($hora);
     $hora2 = strtotime($hora_actual);
@@ -125,4 +84,53 @@ function Estado($documento, $conexion): bool
     } else {
         return false;
     }
+}
+}
+
+$c_afiliado = new Cupos();
+
+include('Conexion_bc.php');
+$conexion = conexion(); // Guarda la conexión en una variable
+date_default_timezone_set('America/Bogota'); //configuración de zona horaria a colombia
+
+
+//------------------- Variables ----------------------------------
+$documento = $_POST['documento'];
+$sede = $_POST['sede'];
+if ($sede == "Cardio") {
+    $sede = "137";
+} else {
+    $sede = "125";
+}
+$rol = $_SESSION['rol'];
+$url = $_POST['url'];
+$fecha = $_POST['fecha'];
+$hora = $_POST['hora'];
+$hora = date("H:i ", strtotime($hora));
+//--------------------------------------------
+
+
+if ($c_afiliado-> Validar_Hora($hora) && $c_afiliado->Validar_Fecha($fecha) >= 0) {
+   
+    if (!$c_afiliado->Estado($documento, $conexion)) {
+
+       if ($c_afiliado->Registros($conexion)) {
+        
+            header("Location: ../$url");
+            exit();
+        } else {
+            
+            header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");  
+            exit();
+        }
+    } else {
+       
+        header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");  
+        exit();
+    }
+    
+}else {
+       
+    header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");  
+    exit();
 }

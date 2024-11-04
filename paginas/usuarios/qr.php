@@ -3,20 +3,37 @@ session_start();
 if (!isset($_SESSION['documento']) || $_SESSION['rol'] != 3) {
     header('Location: ../../index.php');
 }
-$nombre = $_SESSION['nombre'];
+
+//clases
+include('../../php/Conexion_bc.php');
+require_once('../../php/usuario/Actualizar_cupos.php');
 include('../../php/Generar_qr.php');
+include('../../php/seguimientos.php');
+
+$documento = $_SESSION['documento'];
+$conexion = conexion();
+$nombre = $_SESSION['nombre'];
+
+//creacion de la cleses
+$actualizar = new Actualizar_cupos($conexion);
+$actualizar->Actualizar_cupos();
+$qr = new Generar_qr();
 $datos = array();
-$datos = GenaraQR();
+$datos = $qr->GenaraQR($documento, $conexion);
 $cantidad = count($datos);
+
 if ($cantidad > 0) {
     $documento = $datos[0];
     $hora = $datos[1];
+    $hora_2 = strtotime($hora);
+    $hora_2 = date("g:i a", $hora_2);
     $fecha = $datos[2];
     $lugar = $datos[3];
     $limite = $datos[4];
-
     $qr = "http://localhost/GYM-UPC/php/Leer_QR.php?documento=$documento&hora=$hora&fecha=$fecha&lugar=$lugar&limite=$limite";
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -44,6 +61,30 @@ if ($cantidad > 0) {
 
 <body style="background: #1e1e1e">
     <div class="container-fluid" style="padding: 0;">
+        <!-- Modal -->
+        <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Advertencia</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>El sistema a detectado que ha faltado a su cita en el GYM-UPC. <br>Se procede a asignarle una falla, si se acomulan 3, no podra volver a sacar cita hasta que se levante la sanción. <br>Nota: si tiene excusa justificable debe dirigirse al administrador</p>
+                    </div>
+                    <?php
+                    if($lugar === "0"){
+                        $segimiento = new seguimeintos($conexion, $documento);
+                    }
+                    ?>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" style="background: #0b7f46;" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php cerrar_conexion($conexion); ?>
+        <!-- fin modal -->
         <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
                 <div class="container-fluid" style="color: white">
@@ -117,7 +158,7 @@ if ($cantidad > 0) {
                 <!-- Fin de linea de nombre -->
                 <br>
             </div>
-            <?php if ($cantidad > 0) { ?>
+            <?php if ($cantidad > 0 && $lugar !== "0") { ?>
                 <!-- Generador QR -->
                 <div class="container" style="margin-top: 80px;">
                     <div class="row" style="padding-left:0; padding-right: 0; position: static; width: 40%; margin: 0 auto;border-radius: 10px;  border-bottom: solid 5px #0b7f46; text-align: center; background: #ffffff;">
@@ -127,7 +168,7 @@ if ($cantidad > 0) {
                                 </span> PROXIMA SECCIÓN </h6>
                         </div>
                         <div class="col">
-                            <h6 style="padding: 10px; color: #0b7f46; font-weight: bold;   "><?php echo $hora; ?> </h6>
+                            <h6 style="padding: 10px; color: #0b7f46; font-weight: bold;   "><?php echo $hora_2; ?> </h6>
                         </div>
                     </div>
                     <br>
@@ -148,6 +189,7 @@ if ($cantidad > 0) {
                             <p class="mb-0">Dirígete a la sección de apartar cupos y realiza el proceso.</p>
                         </div>
                     <?php } ?>
+                    <br><br><br><br>
         </main>
         <footer>
             <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
@@ -189,6 +231,18 @@ if ($cantidad > 0) {
                 </div>
             </div>
         </footer>
+
+         <!-- Activa el modal de advectencia -->
+          <?php if(count($datos) > 0){ 
+            if ($lugar==="0") { ?>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var modal = new bootstrap.Modal(document.getElementById('miModal'));
+                    modal.show();
+                });
+            </script>
+        <?php } }?>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>

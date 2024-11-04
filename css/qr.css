@@ -19,6 +19,7 @@ html {
 footer {
     position: absolute;
     bottom: 0;
+   margin-bottom: 0px;
     width: 100%;
 }
 
@@ -109,7 +110,9 @@ header {
     }
 
 
-
+main{
+    padding: 20px;
+}
     .Bienvenida {
         position: absolute;
         top: 80px;

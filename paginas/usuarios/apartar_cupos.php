@@ -8,9 +8,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
     $documento = $_SESSION['documento'];
     $rol = $_SESSION['rol'];
     $estado = $_SESSION['estado'];
-    if ($estado != '1') {
-        header('Location: ../view/bienvenida.php');
-    }
 } else {
     header('Location: ../../index.php');
 }
@@ -43,7 +40,28 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
 </head>
 
 <body style="background: #1e1e1e">
+    <!-- Modal -->
+    <div class="modal fade" id="estado" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Advertencia</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>El sistema a detectado que ha faltado a 3  citas en el GYM-UPC. <br>
+                        Esa es la razón por la cual no puede apartar cupos. <br><br>
+                        <b>Nota:</b> Si tiene alguna excusa justificable, por favor comuníquese con el administrador del sistema.
 
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" style="background: #0b7f46;" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -348,6 +366,23 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                 </div>
             </div>
         </footer>
+
+        <?php if ($estado === "0") { ?>
+            <script>
+                var modal = document.getElementById('estado');
+                modal.addEventListener('hidden.bs.modal', function(event) {
+                    // Aquí puedes realizar la acción que desees, por ejemplo redireccionar
+                    window.location.href = '../view/bienvenida.php'; // Cambia esto según tu lógica
+                });
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    var modal = new bootstrap.Modal(document.getElementById('estado'));
+                    modal.show();
+                });
+            </script>
+        <?php } ?>
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
         <script src="../../js/usuarios/Apartar_cupos.js"></script>

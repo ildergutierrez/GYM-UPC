@@ -1,4 +1,5 @@
 <?php
+
 $basedd = 'gymupc';
 $usuario = 'root';
 $contrasena = '';
@@ -13,7 +14,6 @@ function cerrar_conexion($conexion)
 {
     mysqli_close($conexion);
 }
-
 
 // $conexion = mysqli_connect("localhost", "root", "", "gymupc");
 // if ($conexion) {

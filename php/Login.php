@@ -1,10 +1,48 @@
 <?php
+class Login{
+
+
+// Funciones
+// Convierte la cadena a minúsculas y pone la primera letra en mayúscula
+public function convertirFrase($frase) {
+    return ucwords(strtolower($frase));
+}
+
+//busca el nombre, celular y sexo dentro de la base de datos en la tabla persona
+function nombre($documento, $conexion)
+{
+    $qerry = "SELECT * FROM persona WHERE documento = '$documento'";
+    $busqueda = mysqli_query($conexion, $qerry);
+    $fila = mysqli_fetch_assoc($busqueda);
+    $array = array();
+    $array[0] = $fila['nombre completo'];
+    $array[1] = $fila['celular'];
+    $array[2] = $fila['sexo'];
+    return $array;
+}
+
+//verifica si el correo existe en la base de datos
+function verificar($correo, $conexion)
+{
+    $qerry = "SELECT * FROM usuarios WHERE correo = '$correo'";
+    $busqueda = mysqli_query($conexion, $qerry);
+    if ($busqueda && mysqli_num_rows($busqueda) > 0) {
+        return true;
+    }
+    return false;
+}
+
+}
 if (!isset($_POST['usuario']) || !isset($_POST['password'])) {
     echo '<script>
     window.location="../index.php";
     </script>';
     exit();
 }
+
+$login = new Login();
+
+
 
 session_start();
 include('Conexion_bc.php');
@@ -29,7 +67,7 @@ $qerry = "SELECT * FROM usuarios WHERE correo = '$email'";
 
 
 //Ejecución de la consulta y asignacion de valores a los $_session
-if (verificar($email, $conexion) != false) {
+if ($login->verificar($email, $conexion) != false) {
     $busqueda = mysqli_query($conexion, $qerry);
     if (!$busqueda) {
         die("Error en la consulta: " . mysqli_error($conexion));
@@ -40,7 +78,7 @@ if (verificar($email, $conexion) != false) {
         $rol = $fila['rol'];
         $estado = $fila['estado'];
         $contrasena_almacenada = $fila['contrasena'];
-        $datos = nombre($fila['id'], $conexion);
+        $datos = $login->nombre($fila['id'], $conexion);
         $nombre = $datos[0];
         $telefono = $datos[1];
         $genero = $datos[2];
@@ -48,7 +86,7 @@ if (verificar($email, $conexion) != false) {
         if (password_verify($contraseña, $contrasena_almacenada)) {
             if ($fila['verificacion'] == '1') {
                 $_SESSION['Email'] = $email;
-                $_SESSION['nombre'] = convertirFrase($nombre);
+                $_SESSION['nombre'] = $login->convertirFrase($nombre);
                 $_SESSION['documento'] = trim($id_user);
                 $_SESSION['rol'] = trim($rol);
                 $_SESSION['estado'] = trim($estado);
@@ -80,35 +118,4 @@ if (verificar($email, $conexion) != false) {
     </script>";
     exit();
 }
-
-// Funciones
-// Convierte la cadena a minúsculas y pone la primera letra en mayúscula
-function convertirFrase($frase) {
-    return ucwords(strtolower($frase));
-}
-
-//busca el nombre, celular y sexo dentro de la base de datos en la tabla persona
-function nombre($documento, $conexion)
-{
-    $qerry = "SELECT * FROM persona WHERE documento = '$documento'";
-    $busqueda = mysqli_query($conexion, $qerry);
-    $fila = mysqli_fetch_assoc($busqueda);
-    $array = array();
-    $array[0] = $fila['nombre completo'];
-    $array[1] = $fila['celular'];
-    $array[2] = $fila['sexo'];
-    return $array;
-}
-
-//verifica si el correo existe en la base de datos
-function verificar($correo, $conexion)
-{
-    $qerry = "SELECT * FROM usuarios WHERE correo = '$correo'";
-    $busqueda = mysqli_query($conexion, $qerry);
-    if ($busqueda && mysqli_num_rows($busqueda) > 0) {
-        return true;
-    }
-    return false;
-}
-
 cerrar_conexion($conexion); // Cierra la conexión

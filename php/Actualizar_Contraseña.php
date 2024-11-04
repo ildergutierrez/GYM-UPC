@@ -4,41 +4,7 @@ if (!isset($_SESSION['Email'])) {
     header('Location: ../index.php');
     exit();
 }
-$caracteresEspeciales = ['@','#','$','%','^','&','*','!','(',')','-','+','=','{','}','[',']','|',':',';','"','\'','<','>','-',',','.','?','/','\\','~','`'];
-
-
-include('Conexion_bc.php');
-$conexion = conexion(); // Guarda la conexión en una variable
-
-$correo = $_SESSION['Email'];
-$rol = $_POST['rol'];
-$url = $_POST['url'];
-
-
-if ($rol !== '0') {
-    $contrasena = $_POST['password'];
-    $contrasena_nueva = $_POST['password_new'];
-    if(Validar_pass($contrasena, $correo, $conexion) && Contraseña_Nueva($contrasena_nueva)){
-        Registrar();
-    }
-       else{
-        header("Location: $url?respuesta=0");
-       }
-   
-} else {
-    $contrasena = $_POST['password'];
-    $c_contrasena= $_POST['confirmar_password'];
-    if($contrasena === $c_contrasena){
-        if(Validar_pass($contrasena, $correo, $conexion) && Contraseña_Nueva($contrasena_nueva)){
-            Registrar();
-        }
-           else{
-            header("Location: $url?respuesta=0");
-           }
-    } else{
-        header("Location: $url?respuesta=0");
-       }
-}
+class Actualizar_Contraseña{
 
 // Funciones
 // Funcion para validar los datos, si la contraseña actual es correcta o no
@@ -89,4 +55,47 @@ function Registrar(){
     } else {
         return false;
     }
+}}
+
+$actualizar = new Actualizar_Contraseña();
+
+
+$caracteresEspeciales = ['@','#','$','%','^','&','*','!','(',')','-','+','=','{','}','[',']','|',':',';','"','\'','<','>','-',',','.','?','/','\\','~','`'];
+
+
+include('Conexion_bc.php');
+$conexion = conexion(); // Guarda la conexión en una variable
+
+$correo = $_SESSION['Email'];
+$rol = $_POST['rol'];
+$url = $_POST['url'];
+
+
+if ($rol !== '0') {
+    $contrasena = $_POST['password'];
+    $contrasena_nueva = $_POST['password_new'];
+    if($actualizar->Validar_pass($contrasena, $correo, $conexion) && $actualizar->Contraseña_Nueva($contrasena_nueva)){
+        $actualizar-> Registrar();
+        cerrar_conexion($conexion);
+    }
+       else{
+        header("Location: $url?respuesta=0");
+       }
+   
+} else {
+    $contrasena = $_POST['password'];
+    $c_contrasena= $_POST['confirmar_password'];
+    if($contrasena === $c_contrasena){
+        if( $actualizar-> Validar_pass($contrasena, $correo, $conexion) &&  $actualizar-> Contraseña_Nueva($contrasena_nueva)){
+            $actualizar-> Registrar();
+            cerrar_conexion($conexion);
+        }
+           else{
+            cerrar_conexion($conexion);
+            header("Location: $url?respuesta=0");
+           }
+    } else{
+        cerrar_conexion($conexion);
+        header("Location: $url?respuesta=0");
+       }
 }

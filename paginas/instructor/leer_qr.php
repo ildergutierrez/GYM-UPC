@@ -1,3 +1,21 @@
+<?php
+date_default_timezone_set('America/Bogota'); //configuración de zona horaria a colombia
+if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+    $rol = $_SESSION['rol'];
+    if ($rol !== "2") {
+        header("location: ../view/bienvenida.php");
+    }
+}
+//clases
+include('../../php/Conexion_bc.php');
+require_once('../../php/usuario/Actualizar_cupos.php');
+$conexion = conexion();
+//creacion de la cleses
+$actualizar = new Actualizar_cupos($conexion);
+$actualizar->Actualizar_cupos();
+cerrar_conexion($conexion)
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,6 +42,83 @@
 </head>
 
 <body style="background: #1e1e1e">
+    <!-- Modal -->
+    <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Verificación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5>Los Datos son correctos.</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" style="background: #0b7f46;" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin modal -->
+    <!-- Modal de informacion -->
+    <div class="modal fade" id="razon" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Informacion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == "2") { ?>
+                        <?php
+                        $hora = $_GET['hora'];
+                        $hora = date("H:i a", strtotime($hora));
+                        $hora_limite = $_GET['limite'];
+                        $hora_limite = date("H:i a", strtotime($hora_limite));
+                        $lugar =  $_GET['lugar'];
+                        if ($lugar === "137") {
+                            $lugar = "Cardio";
+                        } else {
+                            $lugar = "Peso";
+                        }
+                        ?>
+                        <h5>Falta en la asistencia del Afiliado.</h5>
+                        <p>Fecha: <?php echo $_GET['fecha']; ?></p>
+                        <p>Hora: <?php echo $hora; ?></p>
+                        <p>Sede: <?php echo $lugar ?></p>
+                        <p>Limite: <?php echo $hora_limite; ?></p>
+                        <p>Hora Actual: <?php echo date("h:m a"); ?></p>
+
+                    <?php } ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" style="background: #0b7f46;" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin modal de informacion -->
+
+    <!-- Modal de informacion -->
+    <div class="modal fade" id="error" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Upss, No se encontro dentro de la base de datos.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" style="background: #0b7f46;" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin modal de informacion -->
+
     <div class="container-fluid" style="padding: 0;">
         <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
@@ -114,6 +209,7 @@
                 </div>
             </div>
             <!-- Fin lector QR -->
+
         </main>
         <footer>
             <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
@@ -155,6 +251,35 @@
                 </div>
             </div>
         </footer>
+        <!-- Activa el modal de confirmacion -->
+        <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == "1") { ?>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var modal = new bootstrap.Modal(document.getElementById('miModal'));
+                    modal.show();
+                });
+            </script>
+        <?php } ?>
+
+        <!-- Activa el modal de no confirmación -->
+        <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == "2") { ?>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var modal = new bootstrap.Modal(document.getElementById('razon'));
+                    modal.show();
+                });
+            </script>
+        <?php } ?>
+
+        <!-- Activa el modal de no esta registrado -->
+        <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == "3") { ?>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var modal = new bootstrap.Modal(document.getElementById('error'));
+                    modal.show();
+                });
+            </script>
+        <?php } ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
         <audio id="audioScaner" src="../../sonido/sonido.mp3"></audio>
