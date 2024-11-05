@@ -19,21 +19,24 @@ class seguimeintos
 
     private function  Fallas()
     {
-        if ($this->Sumar() >= 3) {
-            echo "Sancion";
-            $this->sancion = new Sancion($this->conexion, $this->documento);
-        } else {
-            $sql = "INSERT INTO `seguimeintos`(`id`, `fallas`) VALUES ('$this->documento','1')";
-            mysqli_query($this->conexion, $sql);
+        if ($this->Existe()) {
+            if ($this->Sumar() >= 3) {
+                $this->sancion = new Sancion($this->conexion, $this->documento);
+            } else {
+                $sql = "INSERT INTO `seguimeintos`(`id`, `fallas`) VALUES ('$this->documento','1')";
+                mysqli_query($this->conexion, $sql);
 
-            $stmt = $this->conexion->prepare("DELETE FROM `cupos` WHERE  `id` = ?");
-            $stmt->bind_param("s", $this->documento);
-            $stmt->execute();
+                $stmt = $this->conexion->prepare("DELETE FROM `cupos` WHERE  `id` = ?");
+                $stmt->bind_param("s", $this->documento);
+                $stmt->execute();
+            }
         }
+
     }
 
     private function Sumar()
     {
+
         $sql = "SELECT * FROM `seguimeintos` WHERE `id` = '$this->documento'";
         $respuesta = mysqli_query($this->conexion, $sql);
         if ($respuesta && mysqli_num_rows($respuesta) > 0) {
@@ -47,5 +50,15 @@ class seguimeintos
             return $cont;
         }
         return 0;
+    }
+
+    private function Existe(): bool
+    {
+        $sql = "SELECT * FROM `cupos` WHERE `id` = '$this->documento'";
+        $respuesta = mysqli_query($this->conexion, $sql);
+        if ($respuesta && mysqli_num_rows($respuesta) > 0) {
+            return true;
+        }
+        return false;
     }
 }

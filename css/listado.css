@@ -185,6 +185,18 @@ header {
 }
 
 @media screen and (max-width: 500px) {
+    
+    .tablas {
+        margin-top: 80px;
+        width: 90%;
+        overflow: hidden;
+        border-radius: 15px;
+        background: #ffffff;
+        padding: 0px;
+        overflow-x: auto;  /* Activa el scrollbar horizontal */
+        overflow-y: hidden; /* Desactiva el scrollbar vertical */
+        scrollbar-width: thin;
+    }
     footer {
         position: absolute;
         margin: 0;
@@ -234,6 +246,18 @@ header {
 }
 
 @media screen and (max-width: 800px) {
+    .tablas {
+        margin-top: 80px;
+        width: 90%;
+        overflow: hidden;
+        border-radius: 15px;
+        background: #ffffff;
+        padding: 0px;
+        overflow-x: auto;  /* Activa el scrollbar horizontal */
+        overflow-y: hidden; /* Desactiva el scrollbar vertical */
+        scrollbar-width: thin;
+    }
+   
     footer {
         position: absolute;
         bottom: -950px;
@@ -270,6 +294,18 @@ header {
 }
 
 @media screen and (max-width: 900px) {
+  
+    .tablas {
+        margin-top: 80px;
+        width: 90%;
+        overflow: hidden;
+        border-radius: 15px;
+        background: #ffffff;
+        padding: 0px;
+        overflow-x: auto;  /* Activa el scrollbar horizontal */
+        overflow-y: hidden; /* Desactiva el scrollbar vertical */
+        scrollbar-width: thin;
+    }
     main .container .d-flex img {
         position: fixed;
         top: 15px;
@@ -361,6 +397,7 @@ header {
 }
 
 @media screen and (max-width: 1150px) {
+ 
     main .container .d-flex img {
         position: fixed;
         top: 15px;

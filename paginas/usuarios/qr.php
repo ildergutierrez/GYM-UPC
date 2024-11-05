@@ -9,13 +9,15 @@ include('../../php/Conexion_bc.php');
 require_once('../../php/usuario/Actualizar_cupos.php');
 include('../../php/Generar_qr.php');
 include('../../php/seguimientos.php');
+$conexion = conexion();
 
 $documento = $_SESSION['documento'];
-$conexion = conexion();
-$nombre = $_SESSION['nombre'];
 
+$nombre = $_SESSION['nombre'];
+$segimiento = new seguimeintos($conexion, $documento);
 //creacion de la cleses
 $actualizar = new Actualizar_cupos($conexion);
+
 $actualizar->Actualizar_cupos();
 $qr = new Generar_qr();
 $datos = array();
@@ -32,7 +34,6 @@ if ($cantidad > 0) {
     $limite = $datos[4];
     $qr = "http://localhost/GYM-UPC/php/Leer_QR.php?documento=$documento&hora=$hora&fecha=$fecha&lugar=$lugar&limite=$limite";
 }
-
 
 ?>
 <!DOCTYPE html>

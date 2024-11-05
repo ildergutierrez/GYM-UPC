@@ -1,13 +1,17 @@
 <?php
 session_start();
-if (isset($_SESSION['Email']) && isset($_SESSION['nombre'])) {
-  $email = $_SESSION['Email'];
+if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
   $nombre = $_SESSION['nombre'];
   $rol =  $_SESSION['rol'];
+  $documento = $_SESSION['documento'];
 } else {
   header('Location: ../../index.php');
 }
-
+include('../../php/Conexion_bc.php');
+include('../../php/seguimientos.php');
+$conexion = conexion();
+$segimiento = new seguimeintos($conexion, $documento);
+cerrar_conexion($conexion);
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +69,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre'])) {
                     class="container d-flex justify-content-center align-items-center"
                     style="padding: 0; width: 100%">
                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                      <p><?php echo strtoupper($nombre) ?></p>&ensp;
+                      <p><?php echo $nombre ?></p>&ensp;
                     </div>
                     <div class="dropdown" style="color: #000000">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -114,7 +118,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre'])) {
                     class="container d-flex justify-content-center align-items-center"
                     style="padding: 0; width: 100%">
                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                      <p><?php echo strtoupper($nombre) ?></p>&ensp;
+                      <p><?php echo  $nombre ?></p>&ensp;
                     </div>
                     <div class="dropdown" style="color: #000000">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -163,7 +167,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre'])) {
                     class="container d-flex justify-content-center align-items-center"
                     style="padding: 0; width: 100%">
                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                      <p><?php echo strtoupper($nombre) ?></p>&ensp;
+                      <p><?php echo  $nombre ?></p>&ensp;
                     </div>
                     <div class="dropdown" style="color: #000000">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>

@@ -5,6 +5,15 @@ session_start();
 // }
 // $rol = $_SESSION['rol'];
 $rol = 1;
+include('../../php/Listar.php');
+include('../../php/Conexion_bc.php');
+$array = array();
+$conexion = conexion();
+$listar = new Listar($conexion);
+$array = $listar->Lista('1007246311');
+cerrar_conexion($conexion);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -132,30 +141,18 @@ $rol = 1;
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
+                        <?php foreach ($array as $key => $value) {
+                            $datos = explode(";", $value);
+                        ?>
+                            <tr>
+                                <td scope="row"><?php echo $datos[0]; ?></td>
+                                <td><?php echo $datos[1]; ?></td>
+                                <td><?php echo $datos[2]; ?></td>
+                                <td><?php echo $datos[3]; ?></td>
+                                <td><?php echo $datos[4]; ?></td>
+                            </tr>
+                        <?php } ?>
 
-                        </tr>
-                        <tr>
-                            <td scope="row">2</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-
-                        </tr>
-                        <tr>
-                            <td scope="row">3</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-
-                        </tr>
                     </tbody>
 
                 </table>

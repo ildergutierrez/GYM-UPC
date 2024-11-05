@@ -1,10 +1,14 @@
 <?php
 session_start();
-// if (!isset($_SESSION['email'])) {
-//   header('Location: ../index.php');
-// }
-// $rol = $_SESSION['rol'];
-$rol = 1;
+if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+  $email = $_SESSION['Email'];
+  $nombre = $_SESSION['nombre'];
+  $rol =  $_SESSION['rol'];
+} else {
+  header('Location: ../../index.php');
+}
+include('../../php/seguimientos.php');
+$segimiento = new seguimeintos($conexion, $documento);
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +66,7 @@ $rol = 1;
                                         class="container d-flex justify-content-center align-items-center"
                                         style="padding: 0; width: 100%">
                                         <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                            <p>Ilder Alberto Gutierrez Beleño</p>&ensp;
+                                            <p><?php echo $nombre ?></p>&ensp;
                                         </div>
                                         <div class="dropdown" style="color: #000000">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -111,7 +115,7 @@ $rol = 1;
                                         class="container d-flex justify-content-center align-items-center"
                                         style="padding: 0; width: 100%">
                                         <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                            <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                            <p><?php echo $nombre ?></p> &ensp;
                                         </div>
                                         <div class="dropdown" style="color: #000000">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -160,7 +164,7 @@ $rol = 1;
                                         class="container d-flex justify-content-center align-items-center"
                                         style="padding: 0; width: 100%">
                                         <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                            <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                            <p> <?php echo $nombre ?> </p> &ensp;
                                         </div>
                                         <div class="dropdown" style="color: #000000">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>

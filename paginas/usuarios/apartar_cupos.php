@@ -4,14 +4,28 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
     if ($_SESSION['rol'] != '3') {
         header('Location: ../view/bienvenida.php');
     }
+
+    include('../../php/Conexion_bc.php');
+    $conexion = conexion();
+    function Estado($documento): int
+    {
+        global $conexion;
+        $sql = "SELECT * FROM `usuarios` WHERE `id` = '$documento'";
+        $result = mysqli_query($conexion, $sql);
+        $mostrar = mysqli_fetch_array($result);
+        if ($mostrar['estado'] == 0) {
+            return 0;
+        }
+        return 1;
+    }
+
     $nombre = $_SESSION['nombre'];
     $documento = $_SESSION['documento'];
     $rol = $_SESSION['rol'];
-    $estado = $_SESSION['estado'];
+    $estado = Estado($documento);
 } else {
     header('Location: ../../index.php');
 }
-
 
 ?>
 
@@ -49,7 +63,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>El sistema a detectado que ha faltado a 3  citas en el GYM-UPC. <br>
+                    <p>El sistema a detectado que ha faltado a 3 citas en el GYM-UPC. <br>
                         Esa es la razón por la cual no puede apartar cupos. <br><br>
                         <b>Nota:</b> Si tiene alguna excusa justificable, por favor comuníquese con el administrador del sistema.
 
@@ -85,8 +99,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <?php
         // Consulta de la base de datos sobre los cupos
-        include('../../php/Conexion_bc.php');
-        $conexion = conexion();
+       
         $sql = "SELECT * FROM `cupos`";
         $result = mysqli_query($conexion, $sql);
         $cardio = 0;
@@ -367,7 +380,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
             </div>
         </footer>
 
-        <?php if ($estado === "0") { ?>
+        <?php if ($estado === 0) { ?>
             <script>
                 var modal = document.getElementById('estado');
                 modal.addEventListener('hidden.bs.modal', function(event) {

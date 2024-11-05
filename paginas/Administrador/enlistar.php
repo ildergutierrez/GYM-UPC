@@ -1,10 +1,21 @@
 <?php
 session_start();
-// if (!isset($_SESSION['email'])) {
-//   header('Location: ../index.php');
-// }
-// $rol = $_SESSION['rol'];
-$rol = 1;
+$rol = $_SESSION['rol'];
+if (!isset($_SESSION['Email'])||$rol!='1') {
+  header('Location: ../../index.php');
+}
+
+$nombre = $_SESSION['nombre'];
+
+include('../../php/Listar.php');
+include('../../php/Conexion_bc.php');
+$array = array();
+$conexion = conexion();
+$listar = new Listar($conexion);
+$array = $listar->Listado();
+cerrar_conexion($conexion);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +67,7 @@ $rol = 1;
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
                                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                        <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                        <p><?php echo $nombre?></p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -153,30 +164,18 @@ $rol = 1;
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td scope="row">2</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">3</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                        </tr>
+                    <?php foreach ($array as $key => $value) {
+                            $datos = explode(";", $value);
+                        ?>
+                            <tr>
+                                <td scope="row"><?php echo $datos[0]; ?></td>
+                                <td><?php echo $datos[1]; ?></td>
+                                <td><?php echo $datos[2]; ?></td>
+                                <td><?php echo $datos[3]; ?></td>
+                                <td><?php echo $datos[4]; ?></td>
+                                <td><?php echo $datos[5]; ?></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
