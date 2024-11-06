@@ -129,7 +129,7 @@ class Cupos
         $id = "";
         $consulta = "SELECT * FROM lugares where nombre = '$nombre'";
         $retorno = mysqli_query($this->conexion, $consulta);
-        if($consulta && $retorno->num_rows > 0){
+        if($retorno && $retorno->num_rows > 0){
             $fila = mysqli_fetch_array($retorno);
             $id = $fila['id'];
         }

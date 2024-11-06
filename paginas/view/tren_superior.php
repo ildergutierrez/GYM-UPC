@@ -1,15 +1,19 @@
 <?php
 session_start();
 if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
-  $email = $_SESSION['Email'];
-  $nombre = $_SESSION['nombre'];
-  $rol =  $_SESSION['rol'];
+    $nombre = $_SESSION['nombre'];
+    $rol =  $_SESSION['rol'];
+    $documento = $_SESSION['documento'];
 } else {
-  header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
+include('../../php/Conexion_bc.php');
 include('../../php/seguimientos.php');
+$conexion = conexion();
 $segimiento = new seguimeintos($conexion, $documento);
+cerrar_conexion($conexion);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -402,6 +406,7 @@ $segimiento = new seguimeintos($conexion, $documento);
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
+     
     </div>
 </body>
 

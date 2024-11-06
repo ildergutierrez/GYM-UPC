@@ -9,9 +9,7 @@ include('Conexion_bc.php');
 
 class Perfil
 {
-
-    private  $conexion = conexion(); // Guarda la conexión en una variable
-
+    private  $conexion; // Guarda la conexión en una variable
     private $rol ;
     private $documento ;
     private $correo ;
@@ -36,7 +34,6 @@ class Perfil
     }
 
     // Funciones
-
     private function Sede($sede): int
     {
         if ($this->sede === "Aguachica") {
@@ -45,11 +42,9 @@ class Perfil
             return 2;
         }
     }
-
     // Funcion para validar los datos, si estan vacios o no
     function Validar_Datos(): bool
     {
-
         if (empty($this->correo) || empty($this->nombre) || empty($$this->elular) || empty($this->genero) || empty($this->sede) || empty($this->contrasena) || empty($this->documento) || empty($this->rol)) {
             if ($this->rol === "3" && str_contains($this->correo, "@unicesar.edu.co") && $this->sede === 1) {
                 return true;

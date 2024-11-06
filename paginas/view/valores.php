@@ -14,7 +14,6 @@ $segimiento = new seguimeintos($conexion, $documento);
 cerrar_conexion($conexion);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 

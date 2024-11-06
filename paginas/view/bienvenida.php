@@ -1,16 +1,21 @@
 <?php
 session_start();
-if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+//session_cache_expire(15); // 15 minutos de inactividad
+if (!isset($_SESSION['Email'])) {
+  header('Location: ../../index.php');
+  exit();
+} else {
   $nombre = $_SESSION['nombre'];
   $rol =  $_SESSION['rol'];
   $documento = $_SESSION['documento'];
-} else {
-  header('Location: ../../index.php');
 }
+
+include('../../php/Activar_Afiliado.php');
 include('../../php/Conexion_bc.php');
 include('../../php/seguimientos.php');
 $conexion = conexion();
 $segimiento = new seguimeintos($conexion, $documento);
+$Activar_Afiliado = new Activar_Afiliado($conexion);
 cerrar_conexion($conexion);
 ?>
 

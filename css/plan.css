@@ -45,8 +45,6 @@ body {
     padding-top: 20px;
 }
 
-
-
 .color {
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -179,11 +177,12 @@ header {
     }
 
     .main {
-       
         width: 90%;
         border-radius: 15px;
         overflow: hidden;
     }
+
+    
 
     main .col-8 {
         width: 100%;

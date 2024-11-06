@@ -16,13 +16,10 @@ class Sancion
         $this->conexion = $conexion;
         $this->documento = $documento;
         $this->Accion();
-
     }
 
 private function Accion(){
-   
         $this->Bloqueo();
-    
 }
 
     private function Eliminar_segimineto(): void
@@ -31,7 +28,6 @@ private function Accion(){
         $stmt = $this->conexion->prepare("DELETE FROM `seguimeintos` WHERE `id` = ?");
         $stmt->bind_param("s", $this->documento); // "s" indica que el parámetro es una cadena
         $resultado = $stmt->execute();
-
         if ($resultado) {
             // Preparar la consulta para actualizar el estado del usuario
             $stmt = $this->conexion->prepare("UPDATE `usuarios` SET `estado` = '0' WHERE `id` = ?");

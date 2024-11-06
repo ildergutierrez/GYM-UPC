@@ -1,3 +1,26 @@
+<?php
+session_start();
+if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+  $nombre = $_SESSION['nombre'];
+  $rol =  $_SESSION['rol'];
+ if ($rol != 1) {
+    header('Location: ../../index.php');
+  }
+
+} else {
+  header('Location: ../../index.php');
+}
+include('../../php/Activar_Afiliado.php');
+include('../../php/Conexion_bc.php');
+include('../../php/seguimientos.php');
+$conexion = conexion();
+$segimiento = new seguimeintos($conexion, $documento);
+$Activar_Afiliado = new Activar_Afiliado($conexion);
+cerrar_conexion($conexion);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,8 +28,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activar Afiliado</title>
-    <!-- Flatpickr CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -24,6 +45,30 @@
 
 <body>
     <div class="container-fluid" style="padding: 0;">
+
+        <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Alerta</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <?php if (isset($_GET['activado']) && $_GET['activado'] == 'true') { ?>
+
+                        <div class="modal-body">
+                        <h5>El afiliado a  sido Reactivado de forma satisfactoria</h5>
+                    </div>
+                        <?php } 
+                        else {?>
+                    <div class="modal-body">
+                        <h5>Por favor, introduce el numero de identificación.</h5>
+                    </div><?php } ?>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" style="background: #0b7f46;" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
                 <div class="container-fluid" style="color: white">
@@ -114,51 +159,67 @@
                 <br>
             </div>
             <div class="formulario">
-                <form action="" method="$_POST">
-                    <div class="row">
-                        <div class="col-md">
-                            <!-- Docuento -->
+
+                <div class="row">
+                    <div class="col-md">
+                        <!-- Docuento -->
+                        <form action="../../php/Adm/Buscar.php" method="POST">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Documento * </label>
                                 <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="text" required id="documento" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    <div style=" color: #E5E5E5;  width: 10%;">
-                                        <span class="material-symbols-outlined" style=" font-size: 24px;">
-                                            tag
-                                        </span>
+                                    <?php if (isset($_GET['id']) != null) { ?> <input value="<?php echo $_GET['id'] ?>" type="text" required id="documento" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <?php } else { ?>
+                                        <input name="id" type="text" required id="documento" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <?php } ?> <div style=" color: #E5E5E5;  width: 10%;">
+                                        <button title="Buscar" type="submit" style="background: transparent; color: #FFFFFF; border: none;">
+                                            <span class="material-symbols-outlined" style=" font-size: 24px;">
+                                                tag
+                                            </span></button>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Inicio Fecha -->
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Inicio de restricción * </label>
-                                <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="email" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    <div style=" color: #E5E5E5;  width: 10%;">
-                                        <span class="material-symbols-outlined" style=" font-size: 24px;">
-                                            today
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Fin fechas -->
-                            <div class="mb-3">
-                                <label for="lugar" class="form-label" style="color: #FFFFFF;">Fecha de Finalización *</label>
-                                <div class="input-group">
-                                    <input type="text" readonly required id="seleccion" class="form-control" aria-label="Lugar">
-                                    <div title="Seleccionar fecha" style=" color: #E5E5E5;  width: 10%;"> <span class="input-group-text">
-                                            <i class="material-icons" id="fecha">today</i>
-
-                                        </span>
-                                    </div><br>
+                        </form>
+                        <!-- Inicio Fecha -->
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Inicio de restricción * </label>
+                            <div class="input-group-text" style=" padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
+                                <?php if (isset($_GET['finicio']) != null) { ?>
+                                    <input type="text" value="<?php echo $_GET['finicio'] ?>" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <?php } else { ?>
+                                    <input type="text" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <?php } ?> <div style=" color: #E5E5E5;  width: 10%;">
+                                    <span class="material-symbols-outlined" style=" font-size: 24px;">
+                                        today
+                                    </span>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Fin fechas -->
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Fecha de Finalización * </label>
+                            <div class="input-group-text" style=" padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
+                                <?php if (isset($_GET['ffin']) != null) { ?>
+                                    <input type="text" value="<?php echo $_GET['ffin'] ?>" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <?php } else { ?>
+                                    <input type="text" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <?php } ?> <div style=" color: #E5E5E5;  width: 10%;">
+                                    <span class="material-symbols-outlined" style=" font-size: 24px;">
+                                        today
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <br>
+                </div>
+                <br>
+                <form action="../../php/Activar_Afiliado.php" method="post">
+                    <?php if (isset($_GET['id']) != null) {
+                        $id = $_GET['id'];
+                    } ?><input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div class="container s2">
-                        <center> <button type="submit" class="btn btn-success A_cupos ">Reactivar Afiliado</button>
+                        <center> <button onclick="Activar()" type="submit" class="btn btn-success A_cupos ">Reactivar Afiliado</button>
                         </center>
                     </div>
                 </form>
@@ -204,6 +265,29 @@
                 </div>
             </div>
         </footer>
+        <?php if (isset($_GET['activado']) && $_GET['activado'] == 'true') { ?>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var modal = new bootstrap.Modal(document.getElementById('miModal'));
+                    modal.show();
+                });
+            </script>
+        <?php } ?>
+        <script>
+            function Activar() {
+                var documento = document.getElementById('documento').value;
+                if (documento == '') {
+                    Modal();
+                }
+            }
+
+            function Modal() {
+                var myModal = new bootstrap.Modal(document.getElementById('miModal'), {
+                    keyboard: false
+                });
+                myModal.show();
+            }
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
         <script src="../../js/script.js"></script>
@@ -211,20 +295,7 @@
         <!-- Flatpickr JS -->
         <!-- Permite desplegar el calendario y al elegir una opcion se le pase al input o label -->
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script>
-            const seleccionInput = document.getElementById('seleccion');
-            const fechaIcon = document.getElementById('fecha');
-            const calendar = flatpickr(fechaIcon, {
-                onChange: function(selectedDates, dateStr, instance) {
-                    seleccionInput.value = dateStr;
-                },
-                enableTime: false,
-                dateFormat: "Y-m-d"
-            });
-            fechaIcon.addEventListener('click', () => {
-                calendar.open();
-            });
-        </script>
+
         <script>
             // Solo permite ingresar numeros.
             document.getElementById('documento').addEventListener('input', function(e) {

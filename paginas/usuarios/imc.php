@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSION['rol']) && isset($_SESSION['estado']) && isset($_SESSION['Email'])) {
+    if ($_SESSION['rol'] != '3') {
+        header('Location: ../view/bienvenida.php');
+    }
+    $nombre = $_SESSION['nombre'];
+} else {
+    header('Location: ../../index.php');
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 

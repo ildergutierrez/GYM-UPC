@@ -25,18 +25,14 @@ class seguimeintos
             } else {
                 $sql = "INSERT INTO `seguimeintos`(`id`, `fallas`) VALUES ('$this->documento','1')";
                 mysqli_query($this->conexion, $sql);
-
                 $stmt = $this->conexion->prepare("DELETE FROM `cupos` WHERE  `id` = ?");
                 $stmt->bind_param("s", $this->documento);
                 $stmt->execute();
             }
         }
-
     }
-
     private function Sumar()
     {
-
         $sql = "SELECT * FROM `seguimeintos` WHERE `id` = '$this->documento'";
         $respuesta = mysqli_query($this->conexion, $sql);
         if ($respuesta && mysqli_num_rows($respuesta) > 0) {
@@ -51,7 +47,6 @@ class seguimeintos
         }
         return 0;
     }
-
     private function Existe(): bool
     {
         $sql = "SELECT * FROM `cupos` WHERE `id` = '$this->documento'";
