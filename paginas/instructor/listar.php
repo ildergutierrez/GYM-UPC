@@ -1,19 +1,10 @@
 <?php
 session_start();
-// if (!isset($_SESSION['email'])) {
-//   header('Location: ../index.php');
-// }
-// $rol = $_SESSION['rol'];
-$rol = 1;
-include('../../php/Listar.php');
-include('../../php/Conexion_bc.php');
-$array = array();
-$conexion = conexion();
-$listar = new Listar($conexion);
-$array = $listar->Lista('1007246311');
-cerrar_conexion($conexion);
-
-
+if (!isset($_SESSION['Email'])) {
+    header('Location: ../../index.php');
+}
+$rol = $_SESSION['rol'];
+$nombre = $_SESSION['nombre'];
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +20,8 @@ cerrar_conexion($conexion);
     <link
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         rel="stylesheet" />
+        <!-- Importar el estili del jquery -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
     <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
@@ -66,7 +59,7 @@ cerrar_conexion($conexion);
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
                                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 95%; ">
-                                        <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                        <p><?php echo $nombre ?></p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -140,21 +133,7 @@ cerrar_conexion($conexion);
 
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php foreach ($array as $key => $value) {
-                            $datos = explode(";", $value);
-                        ?>
-                            <tr>
-                                <td scope="row"><?php echo $datos[0]; ?></td>
-                                <td><?php echo $datos[1]; ?></td>
-                                <td><?php echo $datos[2]; ?></td>
-                                <td><?php echo $datos[3]; ?></td>
-                                <td><?php echo $datos[4]; ?></td>
-                            </tr>
-                        <?php } ?>
-
-                    </tbody>
-
+                    <tbody id="tablebody_usuario"></tbody>
                 </table>
 
             </div>
@@ -210,6 +189,13 @@ cerrar_conexion($conexion);
 
             });
         </script>
+             <!-- Jquerry -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- data table -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+        <script src="../../js/instructor/Listado.js">  </script>
     </div>
 </body>
 
