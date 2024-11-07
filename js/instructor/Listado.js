@@ -3,6 +3,12 @@ let datat;
 let inicio = false;
 // Opciones de DataTables
 const dataopciones = {
+    columnDefs: [
+        { className: "centered", targets: [0, 2] },
+        { className: "justified", targets: [1] },
+        { orderable: false, targets: [0, 1, 2,3,4] },
+
+    ],
     searching: false,  // Deshabilita la búsqueda en la tabla, ya que se hará desde el input externo
     paging: true,            // Habilita la paginación
     pageLength: 5,           // Define el número de registros por página
@@ -42,15 +48,15 @@ const cargarUsuarios = async () => {
         console.log(usuarios);
         let contenido = ``;
         usuarios.forEach(user => {
-            if (user['lugar'] == '137') {
+            if (user['lugar_id'] == '137') {
                 user.lugar = 'Peso';
-            } else if (user['lugar'] == '125') {
+            } else if (user['lugar_id'] == '125') {
                 user.lugar = 'Cardio';
             } 
             contenido += `
                 <tr>
-                    <td>${user.id || ''}</td>
-                    <td>${user['nombre completo'] || ''}</td>
+                    <td>${user['id'] || ''}</td>
+                    <td>${user['nombre'] || ''}</td>
                     <td>${user.lugar || ''}</td>
                     <td> ${user['fecha'] || ''}</td>
                     <td>${user['hora'] || ''}</td>

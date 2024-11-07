@@ -130,12 +130,10 @@ $nombre = $_SESSION['nombre'];
                             <th scope="col">
                                 <center>Hora</center>
                             </th>
-
                         </tr>
                     </thead>
                     <tbody id="tablebody_usuario"></tbody>
                 </table>
-
             </div>
             <!-- Fin de la tabla -->
         </main>
