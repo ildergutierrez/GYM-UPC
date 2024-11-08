@@ -14,8 +14,7 @@ $dominio_especifico = "unicesar.edu.co";
 $codigo =  Token();
 $contrasena = Codificar($contrasena);
 
-
-
+//valida los datos
 if (Validar_datos() && Consulta($correo, $conexion) && Contrasena_guardar($contrasena)) {
     if ($rol === "3") {
         if (strpos($correo, "@" . $dominio_especifico) !== false) {
@@ -64,12 +63,19 @@ function Consulta($email, $conexion)
 function Registar()
 {
     global $documento, $nombre_completo, $correo, $celular, $genero, $contrasena, $sede, $rol, $codigo, $fecha, $conexion;
-    $query_usuarios = "INSERT INTO `usuarios`(`id`, `correo`, `contrasena`, `rol`, `estado`, `verificacion`) VALUES ('$documento','$correo','$contrasena','$rol','1','$codigo')";
+
+//registra los datos en las diferentes tablas de la base de datos
+    $query_verificar="INSERT INTO `verificaciones`(`id`, `correo`, `token`) VALUES ('$documento','$correo','$codigo')";
+    $query_usuarios = "INSERT INTO `usuarios`(`id`, `correo`, `contrasena`, `rol`, `estado`, `verificacion`) VALUES ('$documento','$correo','$contrasena','$rol','1','0')";
     $query_personas = "INSERT INTO `persona`(`documento`, `nombre completo`, `celular`, `sexo`, `fecha de ingreso`) VALUES ('$documento','$nombre_completo','$celular','$genero','$fecha')";
+   
+   //ejecuta las consultas
+    $ejecutar_vrificacion = mysqli_query($conexion, $query_verificar);
     $ejecutar_persona = mysqli_query($conexion, $query_personas);
     $ejecutar_usuarios = mysqli_query($conexion, $query_usuarios);
 
-    if ($ejecutar_persona && $ejecutar_usuarios) {
+
+    if ($ejecutar_persona && $ejecutar_usuarios && $ejecutar_vrificacion) {
         $email = base64_encode($correo);
         echo "<script>
         window.location ='vendor_validar.php?correo=$email&codigo=$codigo';

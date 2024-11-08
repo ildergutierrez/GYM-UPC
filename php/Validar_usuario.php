@@ -15,14 +15,21 @@ if (isset($_GET['correo']) && isset($_GET['codigo'])) {
     </script>';
     exit();
 }
-$qerry = "SELECT * FROM usuarios WHERE correo = '$correo'";
+
+echo $correo;
+
+$qerry = "SELECT * FROM verificaciones WHERE correo = '$correo'";
 $busqueda = mysqli_query($conexion, $qerry);
+
 
 if ($busqueda && mysqli_num_rows($busqueda) > 0) {
     $fila = mysqli_fetch_assoc($busqueda);
+    $id= $fila['id'];
 
-    if ($fila['verificacion'] == $token) {
-        $qerry = "UPDATE usuarios SET verificacion = '1' WHERE correo = '$correo'";
+    if ($fila['token'] == $token) {
+        $sql_verificacion ="DELETE FROM verificaciones WHERE id = '$id'";
+        $busqueda_v = mysqli_query($conexion, $sql_verificacion);
+        $qerry = "UPDATE usuarios SET verificacion = '1' WHERE id = '$id'";
         $busqueda = mysqli_query($conexion, $qerry);
         if ($busqueda) {
             header("Location: $direccion");
