@@ -68,7 +68,7 @@ function Registar()
     $query_verificar="INSERT INTO `verificaciones`(`id`, `correo`, `token`) VALUES ('$documento','$correo','$codigo')";
     $query_usuarios = "INSERT INTO `usuarios`(`id`, `correo`, `contrasena`, `rol`, `estado`, `verificacion`) VALUES ('$documento','$correo','$contrasena','$rol','1','0')";
     $query_personas = "INSERT INTO `persona`(`documento`, `nombre completo`, `celular`, `sexo`, `fecha de ingreso`) VALUES ('$documento','$nombre_completo','$celular','$genero','$fecha')";
-   
+
    //ejecuta las consultas
     $ejecutar_vrificacion = mysqli_query($conexion, $query_verificar);
     $ejecutar_persona = mysqli_query($conexion, $query_personas);
