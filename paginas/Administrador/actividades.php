@@ -1,15 +1,15 @@
 <?php
 //*debe ser corregido este archivo*
-// session_start();
-// if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
-//     $nombre = $_SESSION['nombre'];
-//     $rol = $_SESSION['rol'];
-//  if ($rol != 1) {
-//     header('Location: ../../index.php');
-//   }
-// } else {
-//     header('Location: ../../index.php');
-// }
+session_start();
+if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+    $nombre = $_SESSION['nombre'];
+    $rol = $_SESSION['rol'];
+ if ($rol != 1) {
+    header('Location: ../../index.php');
+  }
+} else {
+    header('Location: ../../index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -63,7 +63,7 @@
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
                                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                        <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                        <p><?php echo $nombre  ?></p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -127,14 +127,14 @@
                 <br>
             </div>
             <div class="formulario">
-                <form action="" method="$_POST">
+                <form action="" method="post">
                     <div class="row">
                         <div class="col-md">
                             <!-- Accion -->
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Acción *</label>
                                 <div class="input-group">
-                                    <input type="text" require id="s_lugar" disabled class="form-control" placeholder="Seleccionar Acción" aria-label="Lugar">
+                                    <input type="text" require name="accion" id="s_lugar" disabled class="form-control" placeholder="Seleccionar Acción" aria-label="Lugar">
                                     <div style="color: #E5E5E5;  width: 10%;"> <span id="lugar" onclick="Lugares()" class="input-group-text">
                                             <i class="material-icons">expand_more</i>
                                         </span>
@@ -150,36 +150,34 @@
                             <!-- Inicio Fecha -->
                             <div class="mb-3">
                                 <label class="form-label" style="color: #FFFFFF;">Inicio de restricción * </label>
-                                <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="text" id="seleccion_i" disabled style="width: 90%; border-radius: 0;" class="form-control">
-                                    <div style=" color: #E5E5E5;  width: 10%;">
-                                        <span class="material-symbols-outlined" style=" font-size: 24px;" id="fecha_i">
-                                            today
+                                <div class="input-group">
+                                    <input type="text" name="inicio" readonly required id="seleccion_i" class="form-control" aria-label="Lugar">
+                                    <div style=" color: #E5E5E5;  width: 10%;"> <span id="fecha_i" class="input-group-text">
+                                            <i class="material-icons" onclick="Fecha(document.getElementById('fecha_i'),document.getElementById('seleccion_i'))">today</i>
                                         </span>
                                     </div>
                                 </div>
+                                </div>
                             </div>
-
                             <!-- Fin fechas -->
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Fecha de finalización *</label>
                                 <div class="input-group">
-                                    <input type="text" readonly required id="seleccion" class="form-control" aria-label="Lugar">
-                                    <div style=" color: #E5E5E5;  width: 10%;"> <span class="input-group-text">
-                                            <i class="material-icons" id="fecha">today</i>
-
+                                    <input type="text" name="final" readonly required id="seleccion" class="form-control" aria-label="Lugar">
+                                    <div style=" color: #E5E5E5;  width: 10%;"> <span id="fecha" class="input-group-text">
+                                            <i class="material-icons" onclick="Fecha(document.getElementById('fecha'),document.getElementById('seleccion'))">today</i>
                                         </span>
-                                    </div><br>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br>
                     <div class="container s2">
-                        <center> <button type="submit" class="btn btn-success A_cupos ">Reactivar Afiliado</button>
+                        <center> <button type="submit" class="btn btn-success A_cupos ">Guardar</button>
                         </center>
                     </div>
                 </form>
+                <br><br>    
             </div>
         </main>
         <footer>
@@ -232,32 +230,17 @@
         <script src="../../js/usuarios/Apartar_cupos.js"></script>
 
         <script>
-            const seleccionInput = document.getElementById('seleccion');
-            const fechaIcon = document.getElementById('fecha');
+            // Funcion para seleccionar la fecha
+            function Fecha(fechaIcon, seleccionInput){
             const calendar = flatpickr(fechaIcon, {
                 onChange: function(selectedDates, dateStr, instance) {
                     seleccionInput.value = dateStr;
                 },
                 enableTime: false,
-                dateFormat: "Y-m-d"
+                dateFormat: "d-m-Y"
             });
-            fechaIcon.addEventListener('click', () => {
                 calendar.open();
-            });
-        </script>
-        <script>
-            const seleccionInput_i = document.getElementById('seleccion_i');
-            const fechaIcon_i = document.getElementById('fecha_i');
-            const calendar_i = flatpickr(fechaIcon_i, {
-                onChange: function(selectedDates, dateStr, instance) {
-                    seleccionInput_i.value = dateStr;
-                },
-                enableTime: false,
-                dateFormat: "Y-m-d"
-            });
-            fechaIcon_i.addEventListener('click', () => {
-                calendar_i.open();
-            });
+            }
         </script>
     </div>
 </body>

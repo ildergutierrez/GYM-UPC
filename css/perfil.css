@@ -204,7 +204,15 @@ input[type="select"] {
 }
 
 @media screen and (max-width: 500px) {
-
+    main .formulario {
+        margin: auto;
+        width: 100%;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 80px;
+        margin-bottom: 50px;
+    
+    }
     .form{
         width: 100%;
     }
@@ -261,6 +269,15 @@ input[type="select"] {
 }
 
 @media screen and (max-width: 800px) {
+    main .formulario {
+        margin: auto;
+        width: 100%;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 80px;
+        margin-bottom: 50px;
+    
+    }
 
     .form{
         width: 100%;
@@ -306,6 +323,15 @@ input[type="select"] {
 
 @media screen and (max-width: 900px) {
 
+    main .formulario {
+        margin: auto;
+        width: 100%;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
+    
     .form{
         width: 100%;
     }
@@ -361,10 +387,19 @@ input[type="select"] {
 }
 
 @media screen and (max-width: 1150px) {
+    main .formulario {
+        margin: auto;
+        width: 100%;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 80px;
+        margin-bottom: 50px;
+    
+    }
+
     .form{
         width: 100%;
     }
-
     main .container .d-flex img {
         position: fixed;
         top: 15px;

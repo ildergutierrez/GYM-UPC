@@ -1,5 +1,5 @@
 <?php
-include 'Conexion_bc.php';
+include '../Conexion_bc.php';
 $conn = conexion();
 
 // Comprobar si se recibió el número de documento

@@ -257,6 +257,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
     // Función que realiza la búsqueda cuando el usuario ingresa el número de documento
     document.getElementById('documento').addEventListener('input', function() {
         var documento = this.value;
+        
         if (documento.length > 0) { // Solo si hay texto (número) en el campo
             // Realizamos la petición AJAX
             var xhr = new XMLHttpRequest();
@@ -272,7 +273,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
                     document.querySelector('[name="nombre"]').value = response.nombre;
                     document.querySelector('[name="celular"]').value = response.telefono;
                 } else {
-                    document.querySelector('[name="nombre"]').value = "";
+                    document.querySelector('[name="nombre"]').value = "Instructor no encontrado";
                     document.querySelector('[name="celular"]').value = "";
                 }
             } catch (e) {

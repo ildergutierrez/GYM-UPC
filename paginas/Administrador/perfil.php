@@ -206,7 +206,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                                                 <?php } else { ?>
                                                     <input type="radio" required name="op" style="margin-top: 0; padding: 0;" value="0">
                                                 <?php } ?>
-                                            </div> &ensp; Masculino
+                                            </div> &ensp;Masculino
                                         </div>
                                     </div>
                                     <div class="col-4">
@@ -217,10 +217,10 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                                                 <?php } else { ?>
                                                     <input type="radio" required name="op" style="margin-top: 0; padding: 0;" value="1">
                                                 <?php } ?>
-                                            </div> &emsp; Fememino
+                                            </div>&ensp;Fememino
                                         </div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-4">
                                         <div class="row " title="No aplica / no especifica">
                                             <div class="col-2">
                                                 <?php if ($sexo === '2') { ?>
@@ -228,7 +228,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                                                 <?php } else { ?>
                                                     <input type="radio" required name="op" style="margin-top: 0; padding: 0;" value="2">
                                                 <?php } ?>
-                                            </div>&ensp; N/A
+                                            </div>&ensp;N/A
                                         </div>
                                     </div>
                                 </div>

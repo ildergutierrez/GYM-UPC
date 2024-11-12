@@ -10,11 +10,6 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
     header('Location: ../../index.php');
 }
 
-include '../../php/Conexion_bc.php';
-include '../../php/seguimientos.php';
-$conexion = conexion();
-$segimiento = new seguimeintos($conexion, $documento);
-cerrar_conexion($conexion);
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +85,7 @@ cerrar_conexion($conexion);
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
                                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                        <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                        <p><?php echo $nombre ?></p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -305,7 +300,7 @@ cerrar_conexion($conexion);
                                     document.querySelector('[name="fin"]').value = response.final;
                                     document.querySelector('[name="documento"]').value = response.id;
                                 } else {
-                                    document.querySelector('[name="inicio"]').value = "";
+                                    document.querySelector('[name="inicio"]').value = "Usuario no encontrado";
                                     document.querySelector('[name="fin"]').value = "";
                                     document.querySelector('[name="documento"]').value = "";
                                 }
