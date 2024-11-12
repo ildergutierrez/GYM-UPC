@@ -6,7 +6,7 @@ if (!isset($_SESSION['Email']) && !isset($_SESSION['nombre']) && !isset($_SESSIO
         header("location: ../view/bienvenida.php");
     
 }
-
+$nombre = $_SESSION['nombre'];
 $rol = $_SESSION['rol'];
     if ($rol !== "2") {
         header("location: ../view/bienvenida.php");
@@ -20,15 +20,12 @@ $actualizar = new Actualizar_cupos($conexion);
 $actualizar->Actualizar_cupos();
 cerrar_conexion($conexion)
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lector QR</title>
-
     <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet" />
@@ -43,9 +40,7 @@ cerrar_conexion($conexion)
     <link rel="icon" href="../../img/logo/Logo.png" />
     <script src="../../js/instructor/qrCode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
-
 <body style="background: #1e1e1e">
     <!-- Modal -->
     <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
@@ -104,7 +99,6 @@ cerrar_conexion($conexion)
         </div>
     </div>
     <!-- fin modal de informacion -->
-
     <!-- Modal de informacion -->
     <div class="modal fade" id="error" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -123,7 +117,6 @@ cerrar_conexion($conexion)
         </div>
     </div>
     <!-- fin modal de informacion -->
-
     <div class="container-fluid" style="padding: 0;">
         <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
@@ -133,7 +126,7 @@ cerrar_conexion($conexion)
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0" style="width: 250%">
+                        <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link active" href="../view/bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; "><span class="material-icons" style="vertical-align: middle">home</span>INICIO</a>
                             </li>
@@ -145,14 +138,13 @@ cerrar_conexion($conexion)
                             </li>
                         </ul>
                         <form
-                            class="d-flex justify-content-center align-items-center"
-                            style="width: 70%">
+                            class="d-flex justify-content-center align-items-center" >
                             <div class="container d-flex justify-content-center align-items-center" style=" width: 100%;  background: #ffcc53; font-weight: bold; border-radius: 10px; margin-bottom: 3px;  ">
                                 <div
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
                                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 95%; ">
-                                        <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                        <p><?php echo $nombre ?></p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>

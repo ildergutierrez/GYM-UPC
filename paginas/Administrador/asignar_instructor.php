@@ -1,6 +1,18 @@
+<?php
+session_start();
+if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+    $nombre = $_SESSION['nombre'];
+    $rol = $_SESSION['rol'];
+    if ($rol != 1) {
+        header('Location: ../../index.php');
+    }
+} else {
+    header('Location: ../../index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,7 +59,7 @@
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
                                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                        <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                        <p><?php echo $nombre ?></p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -111,14 +123,14 @@
                 <br>
             </div>
             <div class="formulario">
-                <form action="" method="$_POST">
+                <form action="" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <!-- Seccion -->
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Sección *</label>
                                 <div class="input-group">
-                                    <input type="text" required id="s_lugar" disabled class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
+                                    <input name="lugar" type="text" required id="s_lugar" disabled class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" onclick="Lugares()" class="input-group-text">
                                             <i class="material-icons">expand_more</i>
                                         </span>
@@ -135,7 +147,7 @@
                             <div class="mb-3">
                                 <label class="form-label" style="color: #FFFFFF;">Registro * </label>
                                 <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="text" disabled style="width: 90%; border-radius: 0;" class="form-control">
+                                    <input type="text" readonly style="width: 90%; border-radius: 0;" class="form-control">
                                     <div style=" color: #E5E5E5;  width: 10%;">
                                         <span class="material-symbols-outlined" style=" font-size: 24px;">
                                             today
@@ -150,7 +162,7 @@
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Encargado *</label>
                                 <div class="input-group">
-                                    <input type="text" id="documento" required class="form-control" aria-label="Lugar">
+                                    <input type="text"  name="documento" id="documento" required class="form-control" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" class="input-group-text" style=" font-size: 24px;">
                                             <i class="material-icons">tag</i>
                                         </span>
@@ -161,7 +173,7 @@
                             <div class="mb-3">
                                 <label for="hora" class="form-label" style="color: #FFFFFF;">Telefono *</label>
                                 <div class="input-group">
-                                    <input type="text" required disabled style="width:70%" class="form-control" aria-label="Lugar">
+                                    <input name="celular" type="text" required disabled style="width:70%" class="form-control" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%; ">
                                         <span class="input-group-text">
                                             <i class="material-icons">call</i>
@@ -173,7 +185,7 @@
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Nombre *</label>
                                 <div class="input-group">
-                                    <input type="text" required disabled class="form-control" aria-label="Lugar">
+                                    <input name="nombre" type="text" required disabled class="form-control" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" class="input-group-text" style=" font-size: 24px;">
                                             <i class="material-icons">person</i>
                                         </span>
@@ -241,6 +253,41 @@
                 this.value = this.value.replace(/[^0-9]/g, '');
             });
         </script>
+<script>
+    // Función que realiza la búsqueda cuando el usuario ingresa el número de documento
+    document.getElementById('documento').addEventListener('input', function() {
+        var documento = this.value;
+        if (documento.length > 0) { // Solo si hay texto (número) en el campo
+            // Realizamos la petición AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '../../php/Adm/asignar_instructor.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+            try {
+                var response = JSON.parse(xhr.responseText);
+                console.table(response);  // Muestra la respuesta ya parseada
+
+                if (response.success) {
+                    document.querySelector('[name="nombre"]').value = response.nombre;
+                    document.querySelector('[name="celular"]').value = response.telefono;
+                } else {
+                    document.querySelector('[name="nombre"]').value = "";
+                    document.querySelector('[name="celular"]').value = "";
+                }
+            } catch (e) {
+                console.error('Error al analizar JSON:', e);
+            }
+        }
+            };
+            xhr.send('documento=' + documento); // Enviar el número de documento al servidor
+        }else {
+                    document.querySelector('[name="nombre"]').value = "";
+                    document.querySelector('[name="celular"]').value = "";
+                }
+    });
+</script>
+
     </div>
 </body>
 

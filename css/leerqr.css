@@ -15,7 +15,9 @@
 html {
     scrollbar-width: none;
 }
-
+form{
+    width: 20%;
+}
 footer {
     position: absolute;
     bottom: 0;
@@ -100,7 +102,9 @@ header {
         left: 8px;
         width: 13%;
     }
-
+    form{
+        width: 100%;
+    }
     header .navbar {
         width: 100%;
         
@@ -116,7 +120,9 @@ header {
         left: 8px;
         width: 13%;
     }
-
+    form{
+        width: 100%;
+    }
     ul {
         width: 100%;
         display: none;

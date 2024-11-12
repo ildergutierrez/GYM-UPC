@@ -4,7 +4,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
     if ($_SESSION['rol'] != '3') {
         header('Location: ../view/bienvenida.php');
     }
-
     include('../../php/Conexion_bc.php');
     $conexion = conexion();
     function Estado($documento): int
@@ -18,7 +17,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
         }
         return 1;
     }
-
     $nombre = $_SESSION['nombre'];
     $documento = $_SESSION['documento'];
     $rol = $_SESSION['rol'];
@@ -52,7 +50,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
     <link rel="stylesheet" href="../../css/Apartarcupos.css" />
     <link rel="icon" href="../../img/logo/Logo.png" />
 </head>
-
 <body style="background: #1e1e1e">
     <!-- Modal -->
     <div class="modal fade" id="estado" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
@@ -94,7 +91,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
         </div>
     </div>
     <!-- fin modal -->
-
     <!-- Modal Registros -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <?php
@@ -130,7 +126,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
         </div>
     </div>
     <!-- fin modal -->
-
     <!-- Alertas -->
     <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == "0") { ?>
         <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: red;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
@@ -147,7 +142,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
 
         </div>
     <?php } ?>
-
     <!-- Fin de Alertas -->
     <div class="container-fluid" style="padding: 0;">
         <header>
@@ -379,7 +373,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                 </div>
             </div>
         </footer>
-
         <?php if ($estado === 0) { ?>
             <script>
                 var modal = document.getElementById('estado');
@@ -394,13 +387,10 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                 });
             </script>
         <?php } ?>
-
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
         <script src="../../js/usuarios/Apartar_cupos.js"></script>
         <script src="../../js/script.js"></script>
-
         <!-- Flatpickr JS -->
         <!-- Permite desplegar el calendario y al elegir una opcion se le pase al input o label -->
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

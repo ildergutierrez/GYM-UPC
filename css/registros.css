@@ -194,7 +194,9 @@ input[type="select"] {
 }
 
 @media screen and (max-width: 500px) {
-    
+    main .formulario {
+        width: 100%;
+    }
 
     main .container #nombre.d-flex.Bienvenida {
         top: 80px;
@@ -214,20 +216,11 @@ input[type="select"] {
         position: none;
     }
 
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
 
     .cabeza_cel {
@@ -245,25 +238,20 @@ input[type="select"] {
         padding: 0;
     }
 
+    main .formulario {
+        width: 100%;
+    }
+
     .nav-item.dropdown:hover .dropdown-menu {
         display: block;
         position: none;
     }
 
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
 
     .cabeza_cel {
@@ -274,6 +262,10 @@ input[type="select"] {
 }
 
 @media screen and (max-width: 900px) {
+    main .formulario {
+        width: 100%;
+    }
+
     main .container .d-flex img {
         position: fixed;
         top: 15px;
@@ -341,20 +333,11 @@ input[type="select"] {
         position: none;
     }
 
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
 
     .cabeza_cel {
@@ -370,6 +353,11 @@ input[type="select"] {
         top: 15px;
         left: 8px;
         width: 13%;
+    }
+
+    main .formulario {
+        width: 100%;
+        ;
     }
 
     .Bienvenida {
@@ -420,20 +408,11 @@ input[type="select"] {
         position: none;
     }
 
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
 
     .cabeza_cel {

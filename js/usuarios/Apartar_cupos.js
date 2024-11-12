@@ -13,10 +13,10 @@ function Lugares() {
         const selectedOptions = Array.from(lugarSelect.selectedOptions).map(option => option.text);
         //seleccionar solo un valor
         s_lugar.value = selectedOptions[0];
-
         opc.style.display = 'none';
     });
 }
+
 
 function Hora() {
     const s_hora = document.getElementById('s_hora');
@@ -43,9 +43,6 @@ function Hora() {
         opc.style.display = 'none';
     });}
 }
-
-
-
 
 function Horarios() {
     opcion = document.querySelectorAll('input[name="op"]');
@@ -85,8 +82,6 @@ function Horarios() {
             }
         }
         );
-
-
     });
 
 }

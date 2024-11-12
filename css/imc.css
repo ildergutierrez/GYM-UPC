@@ -6,7 +6,6 @@
     font-family: 'Roboto', sans-serif;
     /* backdrop-filter: blur(10px); */
 }
-
 /* Para navegadores basados en WebKit (Chrome, Safari) */
 ::-webkit-scrollbar {
     display: none;
@@ -15,15 +14,12 @@
 html {
     scrollbar-width: none;
 }
-
 footer {
     position: fixed;
     bottom: 0;
     z-index: 1000;
     width: 100%;
 }
-
-
 .nombre {
     background: rgba(255, 255, 255, 0.8);
     color: #000000;
@@ -34,18 +30,15 @@ footer {
     width: 50%;
     text-align: center;
 }
-
 header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
 }
-
 .nav-link:hover {
     border-bottom: solid 3px #ffcc53;
 }
-
 .dropdown-menu {
     background: #ffcc53;
 
@@ -83,7 +76,6 @@ main .formulario {
     margin-top: 80px;
     margin-bottom: 50px;
 }
-
 .calcular {
     background: #0b7f46;
     font-weight: bold;
@@ -129,6 +121,21 @@ main .formulario {
 }
 
 @media screen and (max-width: 500px) {
+
+    main .container #nombre.d-flex.Bienvenida {
+        top: 80px;
+        left: 20px;
+    }
+
+
+    main .formulario {
+        
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
+
     footer {
         position: fixed;
         margin: 0;
@@ -172,7 +179,12 @@ main .formulario {
         left: 8px;
         width: 13%;
     }
-
+    main .formulario {
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
     .Bienvenida {
         position: absolute;
         top: 80px;
@@ -188,7 +200,7 @@ main .formulario {
 
     main .container #nombre.d-flex.Bienvenida {
         top: 80px;
-        left: 10px;
+        left: 20px;
     }
 
     header .navbar .navbar-expand-lg .container-fluid {
@@ -239,6 +251,12 @@ main .formulario {
 }
 
 @media screen and (max-width: 1150px) {
+    main .formulario {
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
     main .container .d-flex img {
         position: fixed;
         top: 15px;
@@ -260,7 +278,7 @@ main .formulario {
     }
 
     main .container #nombre.d-flex.Bienvenida {
-        top: 80px;
+        top: 110px;
         left: 140px;
     }
 

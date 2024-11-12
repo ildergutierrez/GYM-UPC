@@ -56,10 +56,7 @@ if ($cantidad > 0) {
     <link rel="stylesheet" href="../../boostrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../css/qr.css" />
     <link rel="icon" href="../../img/logo/Logo.png" />
-
-
 </head>
-
 <body style="background: #1e1e1e">
     <div class="container-fluid" style="padding: 0;">
         <!-- Modal -->

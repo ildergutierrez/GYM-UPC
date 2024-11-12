@@ -1,3 +1,16 @@
+<?php
+//*debe ser corregido este archivo*
+// session_start();
+// if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+//     $nombre = $_SESSION['nombre'];
+//     $rol = $_SESSION['rol'];
+//  if ($rol != 1) {
+//     header('Location: ../../index.php');
+//   }
+// } else {
+//     header('Location: ../../index.php');
+// }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -244,12 +257,6 @@
             });
             fechaIcon_i.addEventListener('click', () => {
                 calendar_i.open();
-            });
-        </script>
-        <script>
-            // Solo permite ingresar numeros.
-            document.getElementById('documento').addEventListener('input', function(e) {
-                this.value = this.value.replace(/[^0-9]/g, '');
             });
         </script>
     </div>

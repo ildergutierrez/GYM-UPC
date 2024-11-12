@@ -9,19 +9,14 @@ if (!isset($_SESSION['Email'])) {
   $rol =  $_SESSION['rol'];
   $documento = $_SESSION['documento'];
 }
-
-include('../../php/Activar_Afiliado.php');
 include('../../php/Conexion_bc.php');
 include('../../php/seguimientos.php');
 $conexion = conexion();
 $segimiento = new seguimeintos($conexion, $documento);
-$Activar_Afiliado = new Activar_Afiliado($conexion);
 cerrar_conexion($conexion);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,7 +34,6 @@ cerrar_conexion($conexion);
   <link rel="stylesheet" href="../../css/bienvenida.css" />
   <link rel="icon" href="../../img/logo/Logo.png" />
 </head>
-
 <body style="background: #1e1e1e">
   <div class="container-fluid" style="padding: 0;">
     <header>
@@ -186,7 +180,7 @@ cerrar_conexion($conexion);
                         <li class="nav-item dropdown">
                           <a class="dropdown-item cabeza_cel" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> reduce_capacity </span> &ensp;
                             Capacidad</a>
-                          <ul class="dropdown-menu cel" aria-labelledby="navbarDropdownMenuLink">
+                          <ul class="dropdown-menu cel" aria-labelledby="navbarDropdownMenuLink"> 
                             <li><a class="dropdown-item" href="../Administrador/capacidad.php"> <span class="material-symbols-outlined" style="vertical-align:middle;">scatter_plot</span> &ensp; Cupos GYM</a></li>
                             <li><a class="dropdown-item" href="../Administrador/asignar_instructor.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> personal_places </span> &ensp; Asig Instructor</a></li>
                           </ul>

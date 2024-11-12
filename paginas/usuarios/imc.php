@@ -9,19 +9,14 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
     header('Location: ../../index.php');
 }
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IMC</title>
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
     <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet" />
@@ -35,7 +30,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
     <link rel="stylesheet" href="../../css/imc.css" />
     <link rel="icon" href="../../img/logo/Logo.png" />
 </head>
-
 <body style="background: #1e1e1e">
     <div class="container-fluid" style="padding: 0; ">
         <!-- Modal -->
@@ -85,7 +79,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
                                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                        <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                        <p><?php  echo $nombre ?></p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>

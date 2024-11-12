@@ -4,11 +4,9 @@ class Activar_Afiliado
     private $id;
     private $fecha;
     private $conexion;
-
     public function __construct($conexion)
     {
         $this->conexion = $conexion;
-
     }
     //Reactiva a los usuarios que tengan excepciones en la tabla restricciones, Acción exclusiva para el administrador
     public function Accion_Administrador($id)
@@ -21,15 +19,12 @@ class Activar_Afiliado
     {
         $fechaObj = new DateTime($fecha);
         $this->fecha = date("Y-m-d");
-
         $fecha1 = strtotime($fecha);
         $fecha2 = strtotime($this->fecha);
         $zonah = ($fecha1 - $fecha2) / 86400;
         if ($zonah >= 1) {
-
             return false;
         } else {
-
             return true;
         }
     }
@@ -63,11 +58,14 @@ class Activar_Afiliado
         }
     }
 }
-if (isset($_POST['id'])) {
+
+if (isset($_POST['documento'])) {
     include 'Conexion_bc.php';
     $conexion = conexion(); // Guarda la conexión en una variable
-    $id = $_POST['id'];
+    $id = $_POST['documento'];
     $activar = new Activar_Afiliado($conexion);
     $activar->Accion_Administrador($id);
-    header('Location: ../paginas/Administrador/activar_afiliados.php?activado=true');
-} 
+    header('Location: ../paginas//Administrador/activar_afiliados.php?activado=true');
+} else {
+    header('Location: ../paginas/Administrador/activar_afiliados.php?activado=false');
+}

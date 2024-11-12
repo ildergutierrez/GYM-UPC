@@ -1,3 +1,18 @@
+<?php
+session_start();
+if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+    $nombre = $_SESSION['nombre'];
+    $rol = $_SESSION['rol'];
+    if ($rol != 1) {
+        header('Location: ../../index.php');
+    }
+} else {
+    header('Location: ../../index.php');
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -47,7 +62,7 @@
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
                                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                        <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                        <p><?php echo $nombre ?></p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -111,14 +126,15 @@
                 <br>
             </div>
             <div class="formulario">
-                <form action="" method="$_POST">
-                    <div class="row">
-                        <div class="col-md-6">
+                >
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="" method="post">
                             <!-- Seccion -->
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Sección *</label>
                                 <div class="input-group">
-                                    <input type="text" required id="s_lugar" disabled class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
+                                    <input type="text" name="s_lugar" id="s_lugar" readonly class="form-control" placeholder="Seleccionar Lugar" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" onclick="Lugares()" class="input-group-text">
                                             <i class="material-icons">expand_more</i>
                                         </span>
@@ -131,37 +147,39 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- cantidad -->
-                            <div class="mb-3">
-                                <label class="form-label" style="color: #FFFFFF;">Registro * </label>
-                                <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="text" id="Numero" style="width: 90%; border-radius: 0;" class="form-control">
-                                    <div style=" color: #E5E5E5;  width: 10%;">
-                                        <span class="material-symbols-outlined" style=" font-size: 24px;">
-                                            tag
-                                        </span>
-                                    </div>
+                        </form>
+                        <!-- cantidad actual -->
+                        <div class="mb-3">
+                            <label class="form-label" style="color: #FFFFFF;">Cantidad Actual * </label>
+                            <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
+                                <input type="text"  name="actual" readonly style="width: 90%; border-radius: 0;" class="form-control">
+                                <div style=" color: #E5E5E5;  width: 10%;">
+                                    <span class="material-symbols-outlined" style=" font-size: 24px;">
+                                        tag
+                                    </span>
                                 </div>
                             </div>
-
-                        </div>
-                        <div class="col-md-6">
-                            <!-- Cantidad Actual -->
-                            <div class="mb-3">
-                                <label for="lugar" class="form-label" style="color: #FFFFFF;">Cantidad Actual *</label>
-                                <div class="input-group">
-                                    <input type="text" id="documento" required readonly class="form-control" aria-label="Lugar">
-                                    <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" class="input-group-text" style=" font-size: 24px;">
-                                            <i class="material-icons">tag</i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
-                    <br> <br><br><br>
+                    <div class="col-md-6">
+                        <!-- Cantidad -->
+                        <div class="mb-3">
+                            <label for="lugar" class="form-label" style="color: #FFFFFF;">Registro *</label>
+                            <div class="input-group">
+                                <input type="text" required  id="Numero" class="form-control" aria-label="Lugar">
+                                <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" class="input-group-text" style=" font-size: 24px;">
+                                        <i class="material-icons">tag</i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br> <br><br><br>
+                <form action="../../php/Adm/capacidad.php" method="post">
                     <div class="container" style="width: 50%;">
+                        <input type="hidden" name="capacidad">
+                        <input type="hidden" name="cantidad" id="envio">
                         <center> <button type="submit" class="btn btn-success A_cupos ">Guardar</button>
                         </center>
                     </div>
@@ -217,7 +235,58 @@
             document.getElementById('Numero').addEventListener('input', function(e) {
                 this.value = this.value.replace(/[^0-9]/g, '');
             });
+
         </script>
+
+    <script>
+          document.getElementById('Numero').addEventListener('input', function(e) { 
+        // Toma el valor del input con id "Numero" y lo pasa al input con id "envio"
+        document.getElementById("envio").value = document.getElementById("Numero").value;
+    });
+    </script>
+        <script>
+            // Función que realiza la búsqueda cuando el usuario ingresa el número de documento
+            document.getElementById('s_lugar').addEventListener('click', function() {
+                var documento = this.value;
+                console.log(documento);
+
+                if (documento.length > 0) { // Solo si hay texto (número) en el campo
+                    // Realizamos la petición AJAX
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.open('post', '../../php/Adm/capacidad.php', true);
+
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onload = function() {
+                        if (xhr.status == 200) {
+                            try {
+                                var response = JSON.parse(xhr.responseText);
+                                console.table(response); // Muestra la respuesta ya parseada
+
+                                if (response.success) {
+                                    document.querySelector('[name="capacidad"]').value = response.id;
+                                    document.querySelector('[name="cantidad"]').value = response.telefono;
+                                    document.querySelector('[name="actual"]').value = response.capacidad;
+                                } else {
+                                    document.querySelector('[name="capacidad"]').value = "";
+                                    document.querySelector('[name="cantidad"]').value = "";
+                                    document.querySelector('[name="actual"]').value = "";
+                                }
+                            } catch (e) {
+                                console.error('Error al analizar JSON:', e);
+                            }
+                        }
+                    };
+                    console.log('id=' + documento);
+                    xhr.send('nombre=' + documento); // Enviar el número de documento al servidor
+                } else {
+                    document.querySelector('[name="capacidad"]').value = "";
+                    document.querySelector('[name="cantidad"]').value = "";
+                    document.querySelector('[name="actual"]').value = "";
+                }
+            });
+        </script>
+
     </div>
 </body>
 

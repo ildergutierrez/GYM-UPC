@@ -132,7 +132,6 @@ main .formulario {
     border-radius: 15px;
     margin-top: 80px;
     margin-bottom: 50px;
-
 }
 
 .input-group {
@@ -153,8 +152,6 @@ main .formulario {
     width: 100%;
     z-index: 1000;
 }
-
-
 
 .input-group .form-control {
     border: none;
@@ -198,12 +195,26 @@ input[type="select"] {
 
 @media screen and (max-width: 500px) {
 
+    footer{
+        position: absolute;
+        margin: 0;
+        width: 100%;
+        padding: 0;
+        bottom: 0px;
+    }
 
+    main .formulario {
+        margin: auto;
+        width:  100%;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 0px;
+        margin-bottom: 50px;
+    }
     main .container #nombre.d-flex.Bienvenida {
         top: 80px;
         left: 10px;
     }
-
     body div.container-fluid {
         width: 100%;
         padding: 0;
@@ -211,26 +222,16 @@ input[type="select"] {
         left: 0;
         right: 0;
     }
-
     .nav-item.dropdown:hover .dropdown-menu {
         display: block;
         position: none;
     }
 
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
 
     .cabeza_cel {
@@ -241,34 +242,32 @@ input[type="select"] {
 }
 
 @media screen and (max-width: 800px) {
-    footer {
+    main .formulario {
+        margin: auto;
+        width:  100%;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 0px;
+        margin-bottom: 50px;
+    }
+    footer{
         position: absolute;
-        bottom: -950px;
         margin: 0;
+        width: 100%;
         padding: 0;
+        bottom: 0px;
     }
 
     .nav-item.dropdown:hover .dropdown-menu {
         display: block;
         position: none;
     }
-
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
-
     .cabeza_cel {
         border: solid 1px #ffffff;
         border-radius: 4px;
@@ -277,20 +276,27 @@ input[type="select"] {
 }
 
 @media screen and (max-width: 900px) {
+    main .formulario {
+        margin: auto;
+        width:  100%;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 0px;
+        margin-bottom: 50px;
+    }
     main .container .d-flex img {
         position: fixed;
         top: 15px;
         left: 2px;
         width: 30%;
     }
-
-    footer {
-        position: absolute;
-        bottom: -400px;
+    footer{
+        position:absolute;
+        margin: 0;
         width: 100%;
         padding: 0;
+        bottom: 0px;
     }
-
     .col-md-6 {
         margin-bottom: 20px;
         padding: 20px;
@@ -309,55 +315,11 @@ input[type="select"] {
         font-weight: bold;
         display: block;
     }
-
-    .carrusel {
-        margin: auto;
-        left: auto;
-        width: 90%;
-        padding: 0;
-        font-size: 15px;
-        overflow: hidden;
-        border-radius: 15px;
-        top: 200px;
-    }
-
-    .carousel-control-prev {
-        top: -60px;
-        left: -150px;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        position: relative;
-    }
-
-    .carousel-control-next {
-        top: -90px;
-        right: -150px;
-        padding: 0%;
-        margin: 0;
-        position: relative;
-        width: 100%;
-    }
-
-    .nav-item.dropdown:hover .dropdown-menu {
-        display: block;
-        position: none;
-    }
-
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
 
     .cabeza_cel {
@@ -368,20 +330,26 @@ input[type="select"] {
 }
 
 @media screen and (max-width: 1150px) {
+    main .formulario {
+        margin: auto;
+        width:  100%;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 0px;
+        margin-bottom: 50px;
+    }
     main .container .d-flex img {
         position: fixed;
         top: 15px;
         left: 8px;
         width: 13%;
     }
-
     .Bienvenida {
         position: absolute;
         top: 80px;
         left: 140px;
         width: 90%;
     }
-
     .s2 {
         width: 100%;
     }
@@ -391,27 +359,16 @@ input[type="select"] {
         font-weight: bold;
         display: block;
     }
-
-
     .nav-item.dropdown:hover .dropdown-menu {
         display: block;
         position: none;
     }
 
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
 
     .cabeza_cel {
@@ -425,12 +382,11 @@ input[type="select"] {
         width: 80%;
         font-weight: bold;
     }
-
-    footer {
-        position: static;
-        bottom: -500px;
+    footer{
+        position: absolute;
+        margin: 0;
         width: 100%;
         padding: 0;
-        margin: 0;
+        bottom: 0px;
     }
 }

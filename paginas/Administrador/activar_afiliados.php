@@ -1,25 +1,21 @@
 <?php
 session_start();
 if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
-  $nombre = $_SESSION['nombre'];
-  $rol =  $_SESSION['rol'];
- if ($rol != 1) {
-    header('Location: ../../index.php');
-  }
-
+    $nombre = $_SESSION['nombre'];
+    $rol = $_SESSION['rol'];
+    if ($rol != 1) {
+        header('Location: ../../index.php');
+    }
 } else {
-  header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
-include('../../php/Activar_Afiliado.php');
-include('../../php/Conexion_bc.php');
-include('../../php/seguimientos.php');
+
+include '../../php/Conexion_bc.php';
+include '../../php/seguimientos.php';
 $conexion = conexion();
 $segimiento = new seguimeintos($conexion, $documento);
-$Activar_Afiliado = new Activar_Afiliado($conexion);
 cerrar_conexion($conexion);
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -56,13 +52,12 @@ cerrar_conexion($conexion);
                     <?php if (isset($_GET['activado']) && $_GET['activado'] == 'true') { ?>
 
                         <div class="modal-body">
-                        <h5>El afiliado a  sido Reactivado de forma satisfactoria</h5>
-                    </div>
-                        <?php } 
-                        else {?>
-                    <div class="modal-body">
-                        <h5>Por favor, introduce el numero de identificación.</h5>
-                    </div><?php } ?>
+                            <h5>El afiliado a sido Reactivado de forma satisfactoria</h5>
+                        </div>
+                    <?php } else { ?>
+                        <div class="modal-body">
+                            <h5>upss, el usuario no ha sido reactivado.</h5>
+                        </div><?php } ?>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" style="background: #0b7f46;" data-bs-dismiss="modal">Cerrar</button>
                     </div>
@@ -159,22 +154,18 @@ cerrar_conexion($conexion);
                 <br>
             </div>
             <div class="formulario">
-
                 <div class="row">
                     <div class="col-md">
                         <!-- Docuento -->
-                        <form action="../../php/Adm/Buscar.php" method="POST">
+                        <form action="" method="post">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Documento * </label>
                                 <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <?php if (isset($_GET['id']) != null) { ?> <input value="<?php echo $_GET['id'] ?>" type="text" required id="documento" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    <?php } else { ?>
-                                        <input name="id" type="text" required id="documento" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                    <?php } ?> <div style=" color: #E5E5E5;  width: 10%;">
-                                        <button title="Buscar" type="submit" style="background: transparent; color: #FFFFFF; border: none;">
-                                            <span class="material-symbols-outlined" style=" font-size: 24px;">
+                                    <input name="id" type="text" required id="documento" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <div style=" color: #E5E5E5;  width: 10%;">
+                                        <span class="material-symbols-outlined" style=" font-size: 24px;">
                                                 tag
-                                            </span></button>
+                                            </span>
                                     </div>
                                 </div>
                             </div>
@@ -183,11 +174,8 @@ cerrar_conexion($conexion);
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Inicio de restricción * </label>
                             <div class="input-group-text" style=" padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                <?php if (isset($_GET['finicio']) != null) { ?>
-                                    <input type="text" value="<?php echo $_GET['finicio'] ?>" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <?php } else { ?>
-                                    <input type="text" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <?php } ?> <div style=" color: #E5E5E5;  width: 10%;">
+                                    <input name="inicio" type="text" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                 <div style=" color: #E5E5E5;  width: 10%;">
                                     <span class="material-symbols-outlined" style=" font-size: 24px;">
                                         today
                                     </span>
@@ -199,11 +187,8 @@ cerrar_conexion($conexion);
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Fecha de Finalización * </label>
                             <div class="input-group-text" style=" padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                <?php if (isset($_GET['ffin']) != null) { ?>
-                                    <input type="text" value="<?php echo $_GET['ffin'] ?>" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <?php } else { ?>
-                                    <input type="text" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <?php } ?> <div style=" color: #E5E5E5;  width: 10%;">
+                                    <input name="fin" type="text" disabled style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <div style=" color: #E5E5E5;  width: 10%;">
                                     <span class="material-symbols-outlined" style=" font-size: 24px;">
                                         today
                                     </span>
@@ -215,9 +200,7 @@ cerrar_conexion($conexion);
                 </div>
                 <br>
                 <form action="../../php/Activar_Afiliado.php" method="post">
-                    <?php if (isset($_GET['id']) != null) {
-                        $id = $_GET['id'];
-                    } ?><input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <input type="hidden" name="documento">
                     <div class="container s2">
                         <center> <button onclick="Activar()" type="submit" class="btn btn-success A_cupos ">Reactivar Afiliado</button>
                         </center>
@@ -265,7 +248,7 @@ cerrar_conexion($conexion);
                 </div>
             </div>
         </footer>
-        <?php if (isset($_GET['activado']) && $_GET['activado'] == 'true') { ?>
+        <?php if (isset($_GET['activado']) ) { ?>
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
                     var modal = new bootstrap.Modal(document.getElementById('miModal'));
@@ -300,6 +283,43 @@ cerrar_conexion($conexion);
             // Solo permite ingresar numeros.
             document.getElementById('documento').addEventListener('input', function(e) {
                 this.value = this.value.replace(/[^0-9]/g, '');
+            });
+        </script>
+        <script>
+            // Función que realiza la búsqueda cuando el usuario ingresa el número de documento
+            document.getElementById('documento').addEventListener('input', function() {
+                var documento = this.value;
+                if (documento.length > 0) { // Solo si hay texto (número) en el campo
+                    // Realizamos la petición AJAX
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '../../php/Adm/Buscar.php', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onload = function() {
+                        if (xhr.status == 200) {
+                            try {
+                                var response = JSON.parse(xhr.responseText);
+                                console.table(response); // Muestra la respuesta ya parseada
+
+                                if (response.success) {
+                                    document.querySelector('[name="inicio"]').value = response.inicio;
+                                    document.querySelector('[name="fin"]').value = response.final;
+                                    document.querySelector('[name="documento"]').value = response.id;
+                                } else {
+                                    document.querySelector('[name="inicio"]').value = "";
+                                    document.querySelector('[name="fin"]').value = "";
+                                    document.querySelector('[name="documento"]').value = "";
+                                }
+                            } catch (e) {
+                                console.error('Error al analizar JSON:', e);
+                            }
+                        }
+                    };
+                    xhr.send('documento=' + documento); // Enviar el número de documento al servidor
+                } else {
+                    document.querySelector('[name="inicio"]').value = "";
+                    document.querySelector('[name="fin"]').value = "";
+                    document.querySelector('[name="documento"]').value = "";
+                }
             });
         </script>
     </div>

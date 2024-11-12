@@ -5,7 +5,6 @@ if (isset($_SESSION['Email'])) {
     exit();
 }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,11 +39,10 @@ if (isset($_SESSION['Email'])) {
         overflow: auto;
     }
 </style>
-
 <body>
 
-    <?php if (isset($_GET['error']) && $_GET['error'] == "1") { ?>
-        <div class="alert alert-primary" role="alert" style="background: #0b7f46; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+    <?php if (isset($_GET['error']) && $_GET['error'] == "1") {?>
+        <div class="alert alert-primary" role="alert" style="background: red; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
             <center>
                 <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
                         warning
@@ -52,9 +50,9 @@ if (isset($_SESSION['Email'])) {
                 </div>
             </center>
         </div>
-    <?php } ?>
-    <?php if (isset($_GET['error']) && $_GET['error'] == "2") { ?>
-        <div class="alert alert-primary" role="alert" style="background: #0b7f46; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+    <?php }?>
+    <?php if (isset($_GET['error']) && $_GET['error'] == "2") {?>
+        <div class="alert alert-primary" role="alert" style="background: #ffcc53; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
             <center>
                 <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
                         warning
@@ -62,8 +60,8 @@ if (isset($_SESSION['Email'])) {
                 </div>
             </center>
         </div>
-    <?php } ?>
-    <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "1") { ?>
+    <?php }?>
+    <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "1") {?>
         <div class="alert alert-primary" role="alert" style="background: #0b7f46; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
             <center>
                 <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
@@ -72,9 +70,12 @@ if (isset($_SESSION['Email'])) {
                 </div>
             </center>
         </div>
-    <?php } ?>
+    <?php }?>
     <main>
-        <div id="Iniciar" class="container" style="margin-top: 0px; ">
+    <?php if ((isset($_GET['error']) && $_GET['error'] == "1") || (isset($_GET['error']) && $_GET['error'] == "2")) {?>
+        <div id="Iniciar" class="container" style="display: none; margin-top: 0px; ">
+            <?php } else {?>
+        <div id="Iniciar" class="container" style="margin-top: 0px; "> <?php }?>
             <!--Inicio de sesión  -->
             <div class="row" style=" border-radius: 15px; overflow: hidden;">
                 <div class="col-sm-6" style="background: #121A1C;">
@@ -98,9 +99,9 @@ if (isset($_SESSION['Email'])) {
                             <div style="background: #121A1C; border-radius: 100%; width: 30%; padding: 0;">
                                 <img src="img/user.png" alt="Icono" width="100%">
                             </div> <br> <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none;">Correo *</label>
-                            <?php if (isset($_GET['error']) && $_GET['error'] == "0") { ?>
+                            <?php if (isset($_GET['error']) && $_GET['error'] == "0") {?>
                                 <p style="color: red;">El usuario o la contraseña es incorrecta</p>
-                            <?php } ?>
+                            <?php }?>
                             <div class="input-group mb-3">
                                 <input name="usuario" type="email" required class="form-control">
                                 <div class="input-group-text" style="background: #121A1C; color: #E5E5E5;">
@@ -128,7 +129,11 @@ if (isset($_SESSION['Email'])) {
             <!-- fin inicio -->
 
         </div>
-        <div id="Registro" class="container" style="display: none; margin-top: 0px; ">
+        <?php if ((isset($_GET['error']) && $_GET['error'] == "1") || (isset($_GET['error']) && $_GET['error'] == "2")) {?>
+        <div id="Registro" class="container" style="display: block; margin-top: 0px; ">
+            <?php } else {?>
+                <div id="Registro" class="container" style="display: none; margin-top: 0px; ">
+                    <?php }?>
             <!--Registro  -->
             <div class="row" style=" border-radius: 15px; overflow: hidden;">
                 <div class="col-sm-6" style="background: #121A1C;">
@@ -297,8 +302,6 @@ if (isset($_SESSION['Email'])) {
             </div>
         </div>
     </footer>
-
-
     <script>
         document.getElementById('numeroIdentidad').addEventListener('input', function(e) {
             this.value = this.value.replace(/[^0-9]/g, '');
