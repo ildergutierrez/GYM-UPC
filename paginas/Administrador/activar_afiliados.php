@@ -1,15 +1,10 @@
 <?php
 session_start();
-if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
-    $nombre = $_SESSION['nombre'];
-    $rol = $_SESSION['rol'];
-    if ($rol != 1) {
-        header('Location: ../../index.php');
-    }
-} else {
+if (!isset($_SESSION['Email'], $_SESSION['nombre'], $_SESSION['rol']) || $_SESSION['rol'] != 1) {
     header('Location: ../../index.php');
+    exit();
 }
-
+$nombre = $_SESSION['nombre'];
 ?>
 
 <!DOCTYPE html>
@@ -196,6 +191,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
                 <br>
                 <form action="../../php/Activar_Afiliado.php" method="post">
                     <input type="hidden" name="documento">
+                    <input type="hidden" name="r" value="1">
                     <div class="container s2">
                         <center> <button onclick="Activar()" type="submit" class="btn btn-success A_cupos ">Reactivar Afiliado</button>
                         </center>

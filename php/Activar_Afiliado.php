@@ -9,10 +9,11 @@ class Activar_Afiliado
         $this->conexion = $conexion;
     }
     //Reactiva a los usuarios que tengan excepciones en la tabla restricciones, Acción exclusiva para el administrador
-    public function Accion_Administrador($id)
+    public function Accion_Administrador($id,$numero)
     {
         $this->id = $id;
-        $this->Accion($this->id);
+        $this->Accion($this->id,$numero);
+
     }
     //Valida si la fecha actual es mayor a la fecha de reactivacion
     private function Validar_Fecha($fecha): bool
@@ -39,14 +40,14 @@ class Activar_Afiliado
             while ($consulta) {
                 if ($this->Validar_Fecha($resultado['fecha_reactivacion'])) {
                     $this->id = $resultado['id'];
-                    $this->Accion($this->id);
+                    $this->Accion($this->id,'0');
                 }
             }
         }
     }
 
     //si la fecha supero la fecha de reactivacion, el sistema activa el usuario de forma automatica
-    private function Accion($id)
+    private function Accion($id,$n)
     {
         //se activa el usuario
         $sql = "UPDATE usuarios SET estado = 1 WHERE id = '$id'";
@@ -56,16 +57,16 @@ class Activar_Afiliado
             $sql_restriccione = "DELETE FROM restricciones WHERE id = '$id'";
             $this->conexion->query($sql_restriccione);
         }
+        if($n=='1')
+        header('Location: ../paginas/Administrador/activar_afiliados.php?activado=true');
     }
 }
-
-if (isset($_POST['documento'])) {
+if (isset($_POST['documento']) && isset($_POST['documento'])=='1') {
+    $numero=$_POST['documento'];
     include 'Conexion_bc.php';
     $conexion = conexion(); // Guarda la conexión en una variable
     $id = $_POST['documento'];
     $activar = new Activar_Afiliado($conexion);
-    $activar->Accion_Administrador($id);
-    header('Location: ../paginas//Administrador/activar_afiliados.php?activado=true');
-} else {
-    header('Location: ../paginas/Administrador/activar_afiliados.php?activado=false');
-}
+    $activar->Accion_Administrador($id,$numero);
+    header('Location: ../paginas/Administrador/activar_afiliados.php?activado=true');
+} 

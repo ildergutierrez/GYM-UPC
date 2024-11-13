@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
-  $nombre = $_SESSION['nombre'];
-  $rol =  $_SESSION['rol'];
-  $documento = $_SESSION['documento'];
+    $nombre = $_SESSION['nombre'];
+    $rol =  $_SESSION['rol'];
+    $documento = $_SESSION['documento'];
 } else {
-  header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
 include('../../php/Conexion_bc.php');
 include('../../php/seguimientos.php');
@@ -215,8 +215,8 @@ cerrar_conexion($conexion);
                 <div class="d-flex" style="z-index: 1000; position: fixed; top: 5px; margin-top: 0; padding: 0; left: 10px;  width: 25%;   ">
                     <img id="logo" style=" display: block;" src="../../img/logo/Logo.png" alt="Logo" width="50%" title="Logo" />
                 </div>
-                <div class="d-flex" style="z-index: 1000; position: fixed; top: 25px; left: 40px; width: 20%; ">
-                    <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="width: 25%; display: none" title="Logo" />
+                <div class="d-flex" style="z-index: 1000; position: fixed; top: 25px; left: 0px; width: 30%;">
+                    <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="left: auto; width: 100%; display: none" title="Logo" />
                 </div>
             </div>
             <!-- Fin posicion del logo -->

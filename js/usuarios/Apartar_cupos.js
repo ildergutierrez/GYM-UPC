@@ -15,8 +15,8 @@ function Lugares() {
         s_lugar.value = selectedOptions[0];
         opc.style.display = 'none';
     });
+  
 }
-
 
 function Hora() {
     const s_hora = document.getElementById('s_hora');

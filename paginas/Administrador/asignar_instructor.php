@@ -257,11 +257,10 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
     // Función que realiza la búsqueda cuando el usuario ingresa el número de documento
     document.getElementById('documento').addEventListener('input', function() {
         var documento = this.value;
-        
         if (documento.length > 0) { // Solo si hay texto (número) en el campo
             // Realizamos la petición AJAX
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '../../php/Adm/asignar_instructor.php', true);
+            xhr.open('post', '../../php/Adm/asignar_instructor.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function() {
                 if (xhr.status == 200) {

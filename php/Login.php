@@ -30,7 +30,7 @@ class Login
 
     //busca el nombre, celular y sexo dentro de la base de datos en la tabla persona
     function nombre($documento, $conexion)
-    {
+    {        
         $qerry = "SELECT * FROM persona WHERE documento = '$documento'";
         $busqueda = mysqli_query($conexion, $qerry);
         $fila = mysqli_fetch_assoc($busqueda);
@@ -110,7 +110,6 @@ class Login
         cerrar_conexion($this->conexion); // Cierra la conexión
     }
 }
-
 
 session_start();
 if (!isset($_POST['usuario']) || !isset($_POST['password'])) {

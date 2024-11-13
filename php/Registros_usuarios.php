@@ -1,7 +1,6 @@
 <?php
 include 'Conexion_bc.php';
 $conexion = conexion();
-
 class Registro
 {
     private $conexion;
@@ -30,7 +29,7 @@ class Registro
         $dominio_especifico = "unicesar.edu.co";
         $this->codigo = $this->Token();
         $this->contrasena = $this->Codificar($contrasena);
-//valida los datos
+        //valida los datos
         if ($this->Validar_datos() && $this->Consulta($this->correo, $this->conexion) && $this->Contrasena_guardar($this->contrasena)) {
             if ($this->rol === "3") {
                 if (strpos($this->correo, "@" . $dominio_especifico) !== false) {
@@ -40,14 +39,19 @@ class Registro
                 $this->Registar();
             }
         } else {
-            echo '<script>
-        window.location ="../index.php?error=1";
-        </script>';
+            if ($this->rol == '3') {
+                echo '<script>
+                window.location ="../index.php?error=1";
+                </script>';
+            } else {
+                echo "<script>
+                window.location ='../paginas/Administrador/registrar.php?mensaje=0';
+                </script>";
+            }
         }
     }
-
-//funciones
-//valida que los datos esten llenos
+    //funciones
+    //valida que los datos esten llenos
     private function Validar_datos()
     {
         //Valida que los datos esten llenos
@@ -83,24 +87,42 @@ class Registro
             $query_usuarios = "INSERT INTO `usuarios`(`id`, `correo`, `contrasena`, `rol`, `estado`, `verificacion`) VALUES ('$this->documento','$this->correo','$this->contrasena','$this->rol','1','0')";
             $query_personas = "INSERT INTO `persona`(`documento`, `nombre completo`, `celular`, `sexo`, `fecha de ingreso`) VALUES ('$this->documento','$this->nombre_completo','$this->celular','$this->genero','$this->fecha')";
             //ejecuta las consultas
-            $ejecutar_vrificacion = mysqli_query($this->conexion, $query_verificar);
             $ejecutar_persona = mysqli_query($this->conexion, $query_personas);
             $ejecutar_usuarios = mysqli_query($this->conexion, $query_usuarios);
-            if ($ejecutar_persona && $ejecutar_usuarios && $ejecutar_vrificacion) {
+            if ($ejecutar_persona && $ejecutar_usuarios) {
+                mysqli_query($this->conexion, $query_verificar);
                 $email = base64_encode($this->correo);
-                echo "<script>
-        window.location ='vendor_validar.php?correo=$email&codigo=$this->codigo';
-        </script>";
+                if ($this->rol == '3') {
+                    echo "<script>
+                    window.location ='vendor_validar.php?correo=$email&codigo=$this->codigo';
+                    </script>";
+                } else {
+                    echo "<script>
+                    window.location ='../paginas/Administrador/registrar.php?mensaje=1';
+                    </script>";
+                }
             } else {
-                echo '<script>
-        window.location ="../index.php?error=1";
-        </script>';
+                if ($this->rol == '3') {
+                    echo '<script>
+                    window.location ="../index.php?error=1";
+                    </script>';
+                } else {
+                    echo "<script>
+                    window.location ='../paginas/Administrador/registrar.php?mensaje=0';
+                    </script>";
+                }
             }
             cerrar_conexion($this->conexion);
         } catch (\Throwable $th) {
-            echo '<script>
-        window.location ="../index.php?error=1";
-        </script>';
+            if ($this->rol == '3') {
+                echo '<script>
+                window.location ="../index.php?error=1";
+                </script>';
+            } else {
+                echo "<script>
+                window.location ='../paginas/Administrador/registrar.php?mensaje=0';
+                </script>";
+            }
         }
     }
     //genera un token de 8 digitos
@@ -117,8 +139,10 @@ class Registro
     private function Contrasena_guardar($contrasena)
     {
         if (strlen($contrasena) >= 8) {
-            if (preg_match('/[A-Z]/', $contrasena) && preg_match('/[a-z]/', $contrasena) && preg_match('/[0-9]/', $contrasena)
-                && preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $contrasena)) {
+            if (
+                preg_match('/[A-Z]/', $contrasena) && preg_match('/[a-z]/', $contrasena) && preg_match('/[0-9]/', $contrasena)
+                && preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $contrasena)
+            ) {
                 return true;
             } else {
                 return false;
@@ -128,4 +152,15 @@ class Registro
         }
     }
 }
-new Registro($conexion, $_POST['documento'], $_POST['nombre'], $_POST['correo'], $_POST['celular'], $_POST['op'], $_POST['password'], $_POST['sede'], $_POST['rol']);
+if ($_POST['rol'] == "Administador") {
+    $rol = '1';
+    $sede = '1';
+} else if ($_POST['rol'] == "Instructor") {
+    $sede = '1';
+    $rol = '2';
+} else {
+    $rol = '3';
+    $sede = $_POST['sede'];
+}
+
+new Registro($conexion, $_POST['documento'], $_POST['nombre'], $_POST['correo'], $_POST['celular'], $_POST['op'], $_POST['password'], $sede, $rol);

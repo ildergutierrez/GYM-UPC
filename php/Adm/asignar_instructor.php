@@ -1,7 +1,6 @@
 <?php
 include '../Conexion_bc.php';
 $conn = conexion();
-
 // Comprobar si se recibió el número de documento
 if (isset($_POST['documento'])) {
     $documento = $_POST['documento'];

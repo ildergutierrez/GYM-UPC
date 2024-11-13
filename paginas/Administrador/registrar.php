@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['Email'], $_SESSION['nombre'], $_SESSION['rol']) || $_SESSION['rol'] != 1) {
+    header('Location: ../../index.php');
+    exit();
+}
+$nombre = $_SESSION['nombre'];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,6 +29,26 @@
 </head>
 
 <body>
+    <?php if (isset($_GET['mensaje']) ) { ?>
+        <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: #ffcc53;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 1100; margin-top: 0; width: 100%;">
+            <center>
+                <div class="container">
+                <?php if($_GET['mensaje'] == "0"){?>    
+                <span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                    </span> &ensp; !upss. ocurrio un error!<br> Verifica los datos
+                    <?php } else{ ?>
+                        <span class="material-symbols-outlined" style="vertical-align: middle;">
+                        check
+                    </span> &ensp; !Registro Exitoso!<br> ingrese al correo para la activacion de la cuenta
+                    <?php } ?>
+                    <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                        <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
+                    </button>
+                </div>
+            </center>
+        </div>
+    <?php } ?>
     <div class="container-fluid" style="padding: 0;">
         <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
@@ -47,7 +76,7 @@
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
                                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                        <p>Ilder Alberto Gutierrez Beleño</p> &ensp;
+                                        <p><?php echo $nombre ?></p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -111,14 +140,14 @@
                 <br>
             </div>
             <div class="formulario">
-                <form action="" method="$_POST">
+                <form action="../../php/Registros_usuarios.php" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <!-- Docuento -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Documento * </label>
                                 <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="text" id="documento" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input type="text" name="documento" id="documento" style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     <div style=" color: #E5E5E5;  width: 10%;">
                                         <span class="material-symbols-outlined" style=" font-size: 24px;">
                                             tag
@@ -130,7 +159,7 @@
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label" style="color: #FFFFFF;">Correo * </label>
                                 <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="email" required style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input type="email" name="correo" required style="width: 90%; border-radius: 0;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     <div style=" color: #E5E5E5;  width: 10%;">
                                         <span class="material-symbols-outlined" style=" font-size: 24px;">
                                             mail
@@ -170,7 +199,7 @@
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Contraseña *</label>
                                 <div class="input-group">
-                                    <input type="password" required id="pass" class="form-control" aria-label="Lugar">
+                                    <input type="password" name="password" required id="pass" class="form-control" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%;" onclick="Desifrado_adm()"> <span class="input-group-text">
                                             <i class="material-icons span" id="ojo" style="display: block;">key</i>
                                             <i class="material-icons span" id="ojo_cerrado" style="display: none;">key_off</i>
@@ -186,7 +215,7 @@
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Nombre completo *</label>
                                 <div class="input-group">
-                                    <input type="text" required class="form-control" aria-label="Lugar">
+                                    <input type="text" name="nombre" required class="form-control" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" class="input-group-text" style=" font-size: 24px;">
                                             <i class="material-icons">person</i>
                                         </span>
@@ -197,7 +226,7 @@
                             <div class="mb-3">
                                 <label for="hora" class="form-label" style="color: #FFFFFF;">Telefono *</label>
                                 <div class="input-group">
-                                    <input type="text" required style="width:70%" id="numerocel" class="form-control" aria-label="Lugar">
+                                    <input type="text" name="celular" required style="width:70%" id="numerocel" class="form-control" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%; ">
                                         <span id="lugar" class="input-group-text">
                                             <i class="material-icons">call</i>
@@ -205,11 +234,12 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <!-- Rol -->
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Rol *</label>
                                 <div class="input-group">
-                                    <input type="text" required id="s_lugar" disabled class="form-control" placeholder="Seleccionar Rol" aria-label="Lugar">
+                                    <input type="hidden" name="rol" value="1">
+                                    <input type="text" name="rol" required id="s_lugar" readonly class="form-control" placeholder="Seleccionar Rol" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" onclick="Lugares()" class="input-group-text">
                                             <i class="material-icons">expand_more</i>
                                         </span>

@@ -116,27 +116,16 @@ footer{
 }
 
 @media screen and (max-width: 500px) {
-    
-
     main .container .d-flex img {
         display: none;
     }
-
     main .col-8 {
         width: 100%;
     }
-
-    footer {
-        position: fixed;
-        bottom: 0;
-        margin-bottom: 0;
-    }
-
     main .container #nombre.d-flex.Bienvenida {
         top: 80px;
         left: 10px;
     }
-
     body div.container-fluid {
         width: 100%;
         padding: 0;
@@ -144,28 +133,16 @@ footer{
         left: 0;
         right: 0;
     }
-
     .nav-item.dropdown:hover .dropdown-menu {
         display: block;
         position: none;
     }
-
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
-
     .cabeza_cel {
         border: solid 1px #ffffff;
         border-radius: 4px;
@@ -174,49 +151,27 @@ footer{
 }
 
 @media screen and (max-width: 800px) {
-    
-    
     main .container .d-flex img {
         display: none;
     }
-
     .main {
-       
         width: 90%;
         border-radius: 15px;
         overflow: hidden;
     }
-
     main .col-8 {
         width: 100%;
     }
-
-    footer {
-        position: static;
-        bottom: 0;
-    }
-
     .nav-item.dropdown:hover .dropdown-menu {
         display: block;
         position: none;
     }
-
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
-
     .cabeza_cel {
         border: solid 1px #ffffff;
         border-radius: 4px;
@@ -225,54 +180,32 @@ footer{
 }
 
 @media screen and (max-width: 900px) {
- 
-    
     main .container .d-flex img {
         display: none;
     }
-
     main .col-8 {
         width: 100%;
     }
-
-    footer {
-        position: static;
-        bottom: 0;
-    }
-
     .Bienvenida {
         position: absolute;
         top: 130px;
         left: -100px;
         width: 90%;
     }
-
     .Bienvenida h1 {
         font-size: small;
         font-weight: bold;
         display: block;
     }
-
-
     .nav-item.dropdown:hover .dropdown-menu {
         display: block;
         position: none;
     }
-
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
 
     .cabeza_cel {
@@ -310,31 +243,16 @@ footer{
 
         /* Oculta el menú por defecto */
     }
-
-    .dropdown-menu {
-        display: block;
-        position: static;
-
-        /* Oculta el menú por defecto */
-    }
-
-    .dropdown-item {
-        display: block;
-    }
-
     .cel {
         background: #ffffff;
         border: solid 1px #000000;
+        display: block;
+        position: relative;
     }
 
     .cabeza_cel {
         border: solid 1px #ffffff;
         border-radius: 4px;
         background: linear-gradient(90deg, #0B7F46, #ffcc53);
-    }
-
-    footer {
-        position: static;
-        bottom: 0;
     }
 }

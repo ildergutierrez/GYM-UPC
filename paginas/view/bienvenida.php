@@ -1,18 +1,22 @@
 <?php
-session_start();
-//session_cache_expire(15); // 15 minutos de inactividad
+session_start(); //session_cache_expire(15); // 15 minutos de inactividad
 if (!isset($_SESSION['Email'])) {
-  header('Location: ../../index.php');
-  exit();
+    header('Location: ../../index.php');
+    exit();
 } else {
-  $nombre = $_SESSION['nombre'];
-  $rol =  $_SESSION['rol'];
-  $documento = $_SESSION['documento'];
+    $nombre = $_SESSION['nombre'];
+    $rol = $_SESSION['rol'];
+    $documento = $_SESSION['documento'];
 }
-include('../../php/Conexion_bc.php');
-include('../../php/seguimientos.php');
+include '../../php/Conexion_bc.php';
+include '../../php/Activar_Afiliado.php';
 $conexion = conexion();
-$segimiento = new seguimeintos($conexion, $documento);
+new Activar_Afiliado($conexion);
+if ($_SESSION['rol'] == '3') {
+    include '../../php/seguimientos.php';
+
+    $segimiento = new seguimeintos($conexion, $documento);
+}
 cerrar_conexion($conexion);
 ?>
 <!DOCTYPE html>
@@ -37,7 +41,7 @@ cerrar_conexion($conexion);
 <body style="background: #1e1e1e">
   <div class="container-fluid" style="padding: 0;">
     <header>
-      <?php if ($rol == 3) { ?>
+      <?php if ($rol == 3) {?>
         <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
           <div class="container-fluid" style="color: white">
             <a class="navbar-brand" href="#"></a>
@@ -89,8 +93,8 @@ cerrar_conexion($conexion);
             </div>
           </div>
         </nav>
-      <?php } ?>
-      <?php if ($rol == 2) { ?>
+      <?php }?>
+      <?php if ($rol == 2) {?>
         <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
           <div class="container-fluid" style="color: white">
             <a class="navbar-brand" href="#"></a>
@@ -138,8 +142,8 @@ cerrar_conexion($conexion);
             </div>
           </div>
         </nav>
-      <?php } ?>
-      <?php if ($rol == 1) { ?>
+      <?php }?>
+      <?php if ($rol == 1) {?>
         <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
           <div class="container-fluid" style="color: white">
             <a class="navbar-brand" href="#"></a>
@@ -166,7 +170,7 @@ cerrar_conexion($conexion);
                     class="container d-flex justify-content-center align-items-center"
                     style="padding: 0; width: 100%">
                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                      <p><?php echo  $nombre ?></p>&ensp;
+                      <p><?php echo $nombre ?></p>&ensp;
                     </div>
                     <div class="dropdown" style="color: #000000">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -180,7 +184,7 @@ cerrar_conexion($conexion);
                         <li class="nav-item dropdown">
                           <a class="dropdown-item cabeza_cel" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> reduce_capacity </span> &ensp;
                             Capacidad</a>
-                          <ul class="dropdown-menu cel" aria-labelledby="navbarDropdownMenuLink"> 
+                          <ul class="dropdown-menu cel" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="../Administrador/capacidad.php"> <span class="material-symbols-outlined" style="vertical-align:middle;">scatter_plot</span> &ensp; Cupos GYM</a></li>
                             <li><a class="dropdown-item" href="../Administrador/asignar_instructor.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> personal_places </span> &ensp; Asig Instructor</a></li>
                           </ul>
@@ -206,7 +210,7 @@ cerrar_conexion($conexion);
             </div>
           </div>
         </nav>
-      <?php } ?>
+      <?php }?>
     </header>
     <main>
       <!-- Logo -->
@@ -214,16 +218,17 @@ cerrar_conexion($conexion);
         <div class="d-flex" style="z-index: 1000; position: fixed; top: 5px; margin-top: 0; padding: 0; left: 10px;  width: 25%;   ">
           <img id="logo" style=" display: block;" src="../../img/logo/Logo.png" alt="Logo" width="50%" title="Logo" />
         </div>
-        <div class="d-flex" style="z-index: 1000; position: fixed; top: 25px; left: 40px; width: 20%; ">
-          <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="width: 25%; display: none" title="Logo" />
+        <div class="d-flex" style="z-index: 1000; position: fixed; top: 25px; left: 0px; width: 30%; ">
+          <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="left: auto; width: 30%; display: none" title="Logo" />
         </div>
+        
       </div>
       <!-- Fin posicion del logo -->
       <!-- Linea de nombre -->
       <div class="container" style="margin-top: 80px; ">
         <div id="nombre" class="d-flex Bienvenida" style="display: block;">
           <p>
-          <h1 id="x2">Bienvenido, <?php echo  $nombre ?></h1>
+          <h1 id="x2">Bienvenido, <?php echo $nombre ?></h1>
           </p>
         </div>
         <!-- Fin de linea de nombre -->
