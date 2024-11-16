@@ -12,7 +12,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
         $sql = "SELECT * FROM `usuarios` WHERE `id` = '$documento'";
         $result = mysqli_query($conexion, $sql);
         $mostrar = mysqli_fetch_array($result);
-        if ($mostrar['estado'] == 0) {
+        if ($mostrar['estado'] == 0 || $_SESSION['Suspencion']==0) {
             return 0;
         }
         return 1;
@@ -24,19 +24,15 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
 } else {
     header('Location: ../../index.php');
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apartar Cupos</title>
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
     <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet" />
@@ -60,11 +56,17 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <?php if($_SESSION['Suspencion']!=0){ ?> 
                     <p>El sistema a detectado que ha faltado a 3 citas en el GYM-UPC. <br>
                         Esa es la razón por la cual no puede apartar cupos. <br><br>
                         <b>Nota:</b> Si tiene alguna excusa justificable, por favor comuníquese con el administrador del sistema.
-
-                    </p>
+                        </p>  <?php } else{ ?>
+                            <p>
+                                El sistema detecto que se han suspendido las actividades de forma temporal, Si deseas apartar cupos debes esparar que finalice la fecha de suspención. <br>
+                            <b> Fecha de finalización: </b> <i> <?php echo $_SESSION['final']?></i>
+                            </p> 
+                        <?php } ?>
+                    
                 </div>
 
                 <div class="modal-footer">

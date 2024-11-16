@@ -1,6 +1,5 @@
 <?php
-
-class Reactivar_Actividad
+class Suspender_Actividades
 {
     private $conexion;
     private $accion;
@@ -13,7 +12,6 @@ class Reactivar_Actividad
         $this->accion = $accion;
         $this->f_actual = $f_actual;
         $this->f_final = $f_final;
-       
         if ($this->f_actual != "" && $this->f_final != "") {
             $this->Activacion();
         }
@@ -103,4 +101,5 @@ if (!isset($_SESSION['Email'])) {
 
 include 'Conexion_bc.php';
 $conexion = conexion();
-new Reactivar_Actividad($conexion, $_POST['accion'], $_POST['inicio'], $_POST['final']);
+new Suspender_Actividades
+($conexion, $_POST['accion'], $_POST['inicio'], $_POST['final']);

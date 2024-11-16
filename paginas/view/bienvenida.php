@@ -10,14 +10,17 @@ if (!isset($_SESSION['Email'])) {
 }
 include '../../php/Conexion_bc.php';
 include '../../php/Activar_Afiliado.php';
+include '../../php/Activacion.php';
 $conexion = conexion();
 new Activar_Afiliado($conexion);
 if ($_SESSION['rol'] == '3') {
     include '../../php/seguimientos.php';
-
     $segimiento = new seguimeintos($conexion, $documento);
 }
+$accion = new Activar_Automatica();
+$accion->Activavcion($conexion);
 cerrar_conexion($conexion);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -221,7 +224,7 @@ cerrar_conexion($conexion);
         <div class="d-flex" style="z-index: 1000; position: fixed; top: 25px; left: 0px; width: 30%; ">
           <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="left: auto; width: 30%; display: none" title="Logo" />
         </div>
-        
+
       </div>
       <!-- Fin posicion del logo -->
       <!-- Linea de nombre -->
