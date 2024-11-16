@@ -9,6 +9,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
 } else {
     header('Location: ../../index.php');
 }
+$fecha = date('d-m-Y');
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +34,37 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
 
 <body>
     <div class="container-fluid" style="padding: 0;">
+    <?php if (isset($_GET['respuesta'])) { ?>
+            <div id="accion" class="alert alert-primary" role="alert" style="display: block; border: solid 2px #0b7f46; background: #ffcc53; color:#ffffff; font-weight: bold; position: fixed; z-index: 1100; margin-top: 10px; width: 100%;">
+                <center>
+                    <?php if ($_GET['respuesta'] == '1') { ?>
+                        <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                                check
+                            </span> &ensp; !Inscripción exitosa!
+                            <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
+                            </button>
+                        </div>
+                        <?php } elseif ($_GET['respuesta'] == '2') { ?>
+                        <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                                check
+                            </span> &ensp; !Actualizacion exitosa!
+                            <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
+                            </button>
+                        </div>
+                    <?php } else { ?>
+                        <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                            </span> &ensp; !Ups, Ocurrio un problema!
+                            <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
+                            </button>
+                        </div>
+                    <?php } ?>
+                </center>
+            </div>
+        <?php } ?>
         <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
                 <div class="container-fluid" style="color: white">
@@ -147,7 +179,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
                             <div class="mb-3">
                                 <label class="form-label" style="color: #FFFFFF;">Registro * </label>
                                 <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="text" readonly style="width: 90%; border-radius: 0;" class="form-control">
+                                    <input type="text" readonly  value="<?php echo $fecha ?>" style="width: 90%; border-radius: 0;" class="form-control">
                                     <div style=" color: #E5E5E5;  width: 10%;">
                                         <span class="material-symbols-outlined" style=" font-size: 24px;">
                                             today
@@ -196,7 +228,11 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
                         </div>
                     </div>
                     <br>
-                    <div class="container" style="width: 50%;">
+                 </form> 
+                 <form action="../../php/Instrcutor.php" method="post">
+                 <div class="container" style="width: 50%;">
+                 <input type="hidden" name="id" id="envio">
+                 <input type="hidden" name="n_lugar" >
                         <center> <button type="submit" class="btn btn-success A_cupos ">Registrar</button>
                         </center>
                     </div>
@@ -251,6 +287,8 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
             // Solo permite ingresar numeros.
             document.getElementById('documento').addEventListener('input', function(e) {
                 this.value = this.value.replace(/[^0-9]/g, '');
+                
+
             });
         </script>
 <script>
@@ -288,6 +326,50 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
     });
 </script>
 
+<script>
+            document.getElementById('documento').addEventListener('input', function(e) {
+                // Toma el valor del input con id "Numero" y lo pasa al input con id "envio"
+                document.getElementById("envio").value = document.getElementById("documento").value;
+            });
+        </script>
+<script>
+            // Función que realiza la búsqueda cuando el usuario ingresa el número de documento
+            document.getElementById('s_lugar').addEventListener('selectionchange', function() {
+                var documento = this.value;
+                console.log(documento);
+                if (documento.length > 0) { // Solo si hay texto (número) en el campo
+                    // Realizamos la petición AJAX
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.open('post', '../../php/Adm/capacidad.php', true);
+
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onload = function() {
+                        if (xhr.status == 200) {
+                            try {
+                                var response = JSON.parse(xhr.responseText);
+                                console.table(response); // Muestra la respuesta ya parseada
+
+                                if (response.success) {
+                                    document.querySelector('[name="n_lugar"]').value = response.id;
+                                   
+                                } else {
+                                    document.querySelector('[name="n_lugar"]').value = " ";
+                                   
+                                }
+                            } catch (e) {
+                                console.error('Error al analizar JSON:', e);
+                            }
+                        }
+                    };
+                    xhr.send('nombre=' + documento); // Enviar el número de documento al servidor
+                } else {
+                    document.querySelector('[name="n_lugar"]').value = " ";
+                    
+                }
+
+            });
+        </script>
     </div>
 </body>
 

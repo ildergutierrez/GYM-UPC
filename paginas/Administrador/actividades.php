@@ -1,12 +1,9 @@
 <?php
 //*debe ser corregido este archivo*
 session_start();
-if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])==1) {
     $nombre = $_SESSION['nombre'];
     $rol = $_SESSION['rol'];
- if ($rol != 1) {
-    header('Location: ../../index.php');
-  }
 } else {
     header('Location: ../../index.php');
 }
@@ -37,6 +34,47 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
 
 <body>
     <div class="container-fluid" style="padding: 0;">
+
+    <?php if (isset($_GET['respuesta'])) { ?>
+            <div id="accion" class="alert alert-primary" role="alert" style="display: block; border: solid 2px #0b7f46; background: #ffcc53; color:#ffffff; font-weight: bold; position: fixed; z-index: 1100; margin-top: 10px; width: 100%;">
+                <center>
+                    <?php if ($_GET['respuesta'] == '1') { ?>
+                        <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                                check
+                            </span> &ensp; !Activación exitosa!
+                            <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
+                            </button>
+                        </div>
+                        <?php } elseif ($_GET['respuesta'] == '2') { ?>
+                        <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                                check
+                            </span> &ensp; !Suspencion Activada!
+                            <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
+                            </button>
+                        </div>
+                    <?php } elseif ($_GET['respuesta'] == '3') { ?>
+                        <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                                warning
+                            </span> &ensp; !ups, Ya hay una suspencion Activa!
+                            <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
+                            </button>
+                        </div>
+                    <?php } else { ?>
+                        <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                            </span> &ensp; !Ups, Ocurrio un problema!
+                            <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
+                            </button>
+                        </div>
+                    <?php } ?>
+                </center>
+            </div>
+        <?php } ?>
+
         <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
                 <div class="container-fluid" style="color: white">
@@ -127,14 +165,14 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
                 <br>
             </div>
             <div class="formulario">
-                <form action="" method="post">
+                <form action="../../php/Actividad.php" method="post">
                     <div class="row">
                         <div class="col-md">
                             <!-- Accion -->
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Acción *</label>
                                 <div class="input-group">
-                                    <input type="text" require name="accion" id="s_lugar" disabled class="form-control" placeholder="Seleccionar Acción" aria-label="Lugar">
+                                    <input type="text" require name="accion" id="s_lugar" readonly class="form-control" placeholder="Seleccionar Acción" aria-label="Lugar">
                                     <div style="color: #E5E5E5;  width: 10%;"> <span id="lugar" onclick="Lugares()" class="input-group-text">
                                             <i class="material-icons">expand_more</i>
                                         </span>
@@ -223,12 +261,10 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
         <script src="../../js/script.js"></script>
-
         <!-- Flatpickr JS -->
         <!-- Permite desplegar el calendario y al elegir una opcion se le pase al input o label -->
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script src="../../js/usuarios/Apartar_cupos.js"></script>
-
         <script>
             // Funcion para seleccionar la fecha
             function Fecha(fechaIcon, seleccionInput){
@@ -242,6 +278,28 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
                 calendar.open();
             }
         </script>
+
+        <!-- Si selecciona activar se cierra los otros input -->
+        <script>
+             document.getElementById('s_lugar').addEventListener('selectionchange', function() {
+
+                if (document.getElementById('s_lugar').value == 'Activar') {
+                    document.getElementById('seleccion_i').style.display = 'none';
+                    document.getElementById('fecha_i').style.display = 'none';
+                    document.getElementById('fecha').style.display = 'none';
+                    document.getElementById('seleccion_i').value = '';
+                    document.getElementById('seleccion').style.display = 'none';
+                    document.getElementById('seleccion').value = '';
+                } else {
+                    document.getElementById('seleccion_i').style.display = 'block';
+                    document.getElementById('seleccion').style.display = 'block';
+                    document.getElementById('fecha_i').style.display = 'block';
+                    document.getElementById('fecha').style.display = 'block';
+
+                }
+             });
+        </script>
+
     </div>
 </body>
 

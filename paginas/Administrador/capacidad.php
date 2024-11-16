@@ -36,6 +36,29 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
 
 <body>
     <div class="container-fluid" style="padding: 0;">
+        <?php if (isset($_GET['realizacion'])) { ?>
+            <div id="accion" class="alert alert-primary" role="alert" style="display: block; border: solid 2px #0b7f46; background: #ffcc53; color:#ffffff; font-weight: bold; position: fixed; z-index: 1100; margin-top: 10px; width: 100%;">
+                <center>
+                    <?php if ($_GET['realizacion'] == '1') { ?>
+                        <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                                check
+                            </span> &ensp; !Actualizacion exitosa!
+                            <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
+                            </button>
+                        </div>
+                    <?php } else { ?>
+                        <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                            </span> &ensp; !Ups, Ocurrio un problema!
+                            <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
+                            </button>
+                        </div>
+                    <?php } ?>
+                </center>
+            </div>
+        <?php } ?>
         <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
                 <div class="container-fluid" style="color: white">
@@ -77,7 +100,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
                                                 <a class="dropdown-item cabeza_cel" href="#"> <span class="material-symbols-outlined" style="vertical-align: middle;"> reduce_capacity </span> &ensp;
                                                     Capacidad</a>
                                                 <ul class="dropdown-menu cel" aria-labelledby="navbarDropdownMenuLink">
-                                                    <li><a class="dropdown-item"  href="#"> <span class="material-symbols-outlined" style="vertical-align:middle;">scatter_plot</span> &ensp; Cupos GYM</a></li>
+                                                    <li><a class="dropdown-item" href="#"> <span class="material-symbols-outlined" style="vertical-align:middle;">scatter_plot</span> &ensp; Cupos GYM</a></li>
                                                     <li><a class="dropdown-item" href="asignar_instructor.php"> <span class="material-symbols-outlined" style="vertical-align: middle;"> personal_places </span> &ensp; Asig Instructor</a></li>
                                                 </ul>
                                             </li>
@@ -152,7 +175,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
                         <div class="mb-3">
                             <label class="form-label" style="color: #FFFFFF;">Cantidad Actual * </label>
                             <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                <input type="text"  name="actual" readonly style="width: 90%; border-radius: 0;" class="form-control">
+                                <input type="text" name="actual" readonly style="width: 90%; border-radius: 0;" class="form-control">
                                 <div style=" color: #E5E5E5;  width: 10%;">
                                     <span class="material-symbols-outlined" style=" font-size: 24px;">
                                         tag
@@ -166,7 +189,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
                         <div class="mb-3">
                             <label for="lugar" class="form-label" style="color: #FFFFFF;">Registro *</label>
                             <div class="input-group">
-                                <input type="text" required  id="Numero" class="form-control" aria-label="Lugar">
+                                <input type="text" required id="Numero" class="form-control" aria-label="Lugar">
                                 <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" class="input-group-text" style=" font-size: 24px;">
                                         <i class="material-icons">tag</i>
                                     </span>
@@ -176,10 +199,11 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
                     </div>
                 </div>
                 <br> <br><br><br>
-                <form action="../../php/Adm/capacidad.php" method="post">
+                <form action="../../php/Capacidad.php" method="post">
                     <div class="container" style="width: 50%;">
                         <input type="hidden" name="capacidad">
-                        <input type="hidden" name="cantidad" id="envio">
+                        <input type="hidden" name="actualm">
+                        <input type="hidden" name="nueva" id="envio">
                         <center> <button type="submit" class="btn btn-success A_cupos ">Guardar</button>
                         </center>
                     </div>
@@ -235,21 +259,18 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
             document.getElementById('Numero').addEventListener('input', function(e) {
                 this.value = this.value.replace(/[^0-9]/g, '');
             });
-
         </script>
-
-    <script>
-          document.getElementById('Numero').addEventListener('input', function(e) { 
-        // Toma el valor del input con id "Numero" y lo pasa al input con id "envio"
-        document.getElementById("envio").value = document.getElementById("Numero").value;
-    });
-    </script>
+        <script>
+            document.getElementById('Numero').addEventListener('input', function(e) {
+                // Toma el valor del input con id "Numero" y lo pasa al input con id "envio"
+                document.getElementById("envio").value = document.getElementById("Numero").value;
+            });
+        </script>
         <script>
             // Función que realiza la búsqueda cuando el usuario ingresa el número de documento
-            document.getElementById('s_lugar').addEventListener('click', function() {
+            document.getElementById('s_lugar').addEventListener('selectionchange', function() {
                 var documento = this.value;
                 console.log(documento);
-
                 if (documento.length > 0) { // Solo si hay texto (número) en el campo
                     // Realizamos la petición AJAX
                     var xhr = new XMLHttpRequest();
@@ -265,25 +286,25 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
 
                                 if (response.success) {
                                     document.querySelector('[name="capacidad"]').value = response.id;
-                                    document.querySelector('[name="cantidad"]').value = response.telefono;
                                     document.querySelector('[name="actual"]').value = response.capacidad;
+                                    document.querySelector('[name="actualm"]').value = response.capacidad;
                                 } else {
                                     document.querySelector('[name="capacidad"]').value = "";
-                                    document.querySelector('[name="cantidad"]').value = "";
-                                    document.querySelector('[name="actual"]').value = "";
+                                    document.querySelector('[name="actual"]').value = " ";
+                                    document.querySelector('[name="actualm"]').value = " ";
                                 }
                             } catch (e) {
                                 console.error('Error al analizar JSON:', e);
                             }
                         }
                     };
-                    console.log('id=' + documento);
                     xhr.send('nombre=' + documento); // Enviar el número de documento al servidor
                 } else {
                     document.querySelector('[name="capacidad"]').value = "";
-                    document.querySelector('[name="cantidad"]').value = "";
-                    document.querySelector('[name="actual"]').value = "";
+                    document.querySelector('[name="actual"]').value = " ";
+                    document.querySelector('[name="actualm"]').value = " ";
                 }
+
             });
         </script>
 
