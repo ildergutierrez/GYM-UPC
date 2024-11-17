@@ -14,14 +14,17 @@ class Activar_Automatica{
             $f_actual = date('Y-m-d');
             $f_actual = strtotime($f_actual);
             $diff = ($f_actual - $this->fin)/86400;
-            $firs = ($this->inicio - $f_actual)/86400;
-            if($firs <= 0 && $diff>=0){
-                $_SESSION['Suspencion'] ='1';
-                $eliminar = "DELETE FROM actividades";
-                mysqli_query($conxion, $eliminar);
+            $firs = ( $this->inicio-$f_actual)/86400;
+            if($firs <= 0 && $diff >= 0 ){
+                    $eliminar = "DELETE FROM actividades";
+                    mysqli_query($conxion, $eliminar);
+                    $_SESSION['Suspencion'] ='1';
             }else{
+                if($firs > 0){
+                    $_SESSION['Suspencion'] ='1';
+                }else{
             $_SESSION['final'] =$fila['final'];
-            $_SESSION['Suspencion'] ='0';}
+            $_SESSION['Suspencion'] ='0';}}
         }else{
         $_SESSION['Suspencion'] ='1';}
     }

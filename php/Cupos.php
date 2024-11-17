@@ -1,15 +1,14 @@
 <?php
 session_start();
+include('Verificacion_fechas.php');
 if (!isset($_SESSION['documento']) && !isset($_SESSION['rol']) === "3") {
     header('Location: ../index.php');
     exit();
 }
-
 if (empty($_POST['documento']) || empty($_POST['sede'])  || empty($_POST['fecha']) || empty($_POST['hora'])) {
     header('Location: ../index.php');
     exit();
 }
-
 class Cupos
 {
     private $conexion;
@@ -37,7 +36,7 @@ class Cupos
         if ($this->Validar_Hora($this->hora) && $this->Validar_Fecha($this->fecha) >= 0) {
 
             if (!$this->Estado($this->documento, $this->conexion)) {
-
+                
                 if ($this->Registros($this->conexion)) {
 
                     header("Location: ../$this->url");
@@ -163,5 +162,13 @@ $fecha = $_POST['fecha'];
 $hora = $_POST['hora'];
 $hora = date("H:i ", strtotime($hora));
 //--------------------------------------------
-
+if(!verificacion($conexion, $fecha) ){
+    header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=2");
+    exit();
+}
+if(!Diferencia($fecha)){
+    header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=3");
+    exit();
+}else{
 $Cupos = new Cupos($conexion, $documento, $fecha, $hora, $sede,  $url);
+}

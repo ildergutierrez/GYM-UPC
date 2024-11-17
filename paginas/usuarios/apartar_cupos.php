@@ -129,12 +129,17 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
     </div>
     <!-- fin modal -->
     <!-- Alertas -->
-    <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == "0") { ?>
+    <?php if (isset($_GET['mensaje']) ) { ?>
         <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: red;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
             <center>
                 <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
                         warning
+                        <?php if($_GET['mensaje'] == "0"){ ?>
                     </span> &ensp; !upss. ocurrio un error!<br>Verifica Fecha y/o Hora. <br>Nota: Tal ves tu cupo ya fue apartado.
+                    <?php } elseif($_GET['mensaje'] == "2") {?>
+                        </span> &ensp; Verifica que la fecha selecionada  no este dentro del rango de fechas sin actividad en GYM. <br>No hay actvidades desde el día <?php echo $_SESSION['r_inicio'] ?> hasta <?php echo $_SESSION['r_final'] ?>
+                        <?php } elseif($_GET['mensaje'] == "3"){ ?>
+                            </span> &ensp; !upss. ocurrio un error!<br>Verifica que la fecha no sea mayor a 7 días.  <?php } ?>
                     <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
                         <p style="border-bottom: solid 2px #ffcc53; padding: 0;"> Cerrar</p>
                     </button>
@@ -382,7 +387,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                     // Aquí puedes realizar la acción que desees, por ejemplo redireccionar
                     window.location.href = '../view/bienvenida.php'; // Cambia esto según tu lógica
                 });
-
                 document.addEventListener('DOMContentLoaded', function() {
                     var modal = new bootstrap.Modal(document.getElementById('estado'));
                     modal.show();
