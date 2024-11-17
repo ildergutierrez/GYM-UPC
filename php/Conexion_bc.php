@@ -7,8 +7,12 @@ $host = 'localhost';
 $port = 3306;
 function conexion()
 {
+    try{
     $conexion = mysqli_connect($GLOBALS['host'], $GLOBALS['usuario'], $GLOBALS['contrasena'], $GLOBALS['basedd'], $GLOBALS['port']);
-    return $conexion;
+    return $conexion;}
+    catch (Exception $e){
+        header("location:../index.php?conexion=error");
+    }
 }
 function cerrar_conexion($conexion)
 {

@@ -4,11 +4,9 @@ if (isset($_SESSION['Email'])) {
     header("location: paginas/view/bienvenida.php");
     exit();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -40,33 +38,53 @@ if (isset($_SESSION['Email'])) {
     }
 </style>
 <body>
-
+<?php if (isset($_GET['conexion']) ) {?>
+        <div class="alert alert-primary" id="accion" role="alert" style="background: red; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%; display: block;">
+            <center>
+                <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        warning
+                    </span> &ensp; !Upssss, Ocurrio un error con la conexión!
+                    <button onclick="Cerrar_Alerta()" style="float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                        <p style="border-bottom: solid 2px #ffcc53; padding: 0;"> Cerrar</p>
+                    </button>
+                </div>
+            </center>
+        </div>    <?php }?>
     <?php if (isset($_GET['error']) && $_GET['error'] == "1") {?>
-        <div class="alert alert-primary" role="alert" style="background: red; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+        <div class="alert alert-primary" role="alert" id="accion" style="background: red; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%; display: block;">
             <center>
                 <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
                         warning
                     </span> &ensp; !Upssss, Ocurrio un error!
+                    <button onclick="Cerrar_Alerta()" style="float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                        <p style="border-bottom: solid 2px #ffcc53; padding: 0;"> Cerrar</p>
+                    </button>
                 </div>
             </center>
         </div>
     <?php }?>
     <?php if (isset($_GET['error']) && $_GET['error'] == "2") {?>
-        <div class="alert alert-primary" role="alert" style="background: #ffcc53; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+        <div class="alert alert-primary" id="accion" role="alert" style="background: #ffcc53; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%; display: block;">
             <center>
                 <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
                         warning
                     </span> &ensp; !Upssss, Ocurrio un error al enviar el correo!
+                    <button onclick="Cerrar_Alerta()" style="float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                        <p style="border-bottom: solid 2px #0B7F46; padding: 0;"> Cerrar</p>
+                    </button>
                 </div>
             </center>
         </div>
     <?php }?>
     <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "1") {?>
-        <div class="alert alert-primary" role="alert" style="background: #0b7f46; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
+        <div class="alert alert-primary" id="accion" role="alert" style="background: #0b7f46; color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%; display: block;">
             <center>
                 <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
                         check
                     </span> &ensp; !Registro exitoso!
+                    <button onclick="Cerrar_Alerta()" style="float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                        <p style="border-bottom: solid 2px #ffcc53; padding: 0;"> Cerrar</p>
+                    </button>
                 </div>
             </center>
         </div>
@@ -311,6 +329,7 @@ if (isset($_SESSION['Email'])) {
         });
     </script>
     <script src="js/script.js"></script>
+    <script src="js/Bienvenida.js"></script>
 </body>
 
 </html>
