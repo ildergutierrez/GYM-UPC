@@ -294,11 +294,11 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                 </center>
             </div>
             <!-- Fin Formulario -->
-             <!-- Cambiar contraseña -->
-             <div id="contra" class="container" style="display: none; height: 300px;">
+            <!-- Cambiar contraseña -->
+            <div id="contra" class="container" style="display: none; height: 300px;">
 
                 <form action="../../php/Actualizar_Contraseña.php" method="post" style="padding:40px">
-                <input name="Email" type="hidden" value="<?php echo $email ?>"> 
+                    <input name="Email" type="hidden" value="<?php echo $email ?>">
                     <input name="rol" type="hidden" value="<?php echo $rol ?>">
                     <input name="url" type="hidden" value="../paginas/instructor/perfil.php">
                     <div class="row">
@@ -343,6 +343,41 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                 </form>
             </div>
             <!-- fin de cambiar contraseña -->
+
+            <!-- Eliminar Cuenta -->
+            <form action="../../php/Eliminar_cuenta.php" method="post">
+                <input type="hidden" name="identidad" value="<?php echo $documento ?>">
+                <!-- Modal contraseña -->
+                <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="background: #121A1C;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel" style="color: #FFFFFF; font-weight: bold;">Ingrese la contraseña actual Para eliminar su cuenta</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <center>
+                                    <div style="padding: 0;" class="input-group mb-3">
+                                        <input id="password" name="contra" type="password" required class="form-control">
+                                        <div onclick="Desifrado( document.getElementById('password'))" id="ver" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block; cursor: pointer;">
+                                            <span class="material-symbols-outlined span"> key </span>
+                                        </div>
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary A_cupos" style="border: none;">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- fin modal de contraseña -->
+                <div class="container-md">
+                    <center> <a data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-success A_cupos">Eliminar Cuenta</a>
+                    </center>
+                </div>
+            </form>
+            <!-- fin eliminar cuenta -->
         </main> <br><br><br>
         <footer>
             <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
@@ -361,7 +396,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                                 style="color: #ffffff; margin-right: 16px; text-decoration: none;">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-
                             <!-- Pagina web -->
                             <a
                                 href="https://aguachica.unicesar.edu.co/"
@@ -371,7 +405,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                                     language
                                 </span>
                             </a>
-
                             <!-- Instagram -->
                             <a
                                 href="https://www.instagram.com/upcseccionalaguachica/"
@@ -395,7 +428,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
             });
         </script>
 
-        </div>
+    </div>
 </body>
 
 </html>

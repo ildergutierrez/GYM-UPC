@@ -96,31 +96,31 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
         <main>
 
             <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "1") { ?>
-                <div id="accion"  class="alert alert-primary" role="alert" style="display: block; border: solid 2px #ffcc53; background: #0b7f46; color:#ffffff; font-weight: bold; position: fixed; z-index: 1000; margin-top: 10px; width: 100%;">
+                <div id="accion" class="alert alert-primary" role="alert" style="display: block; border: solid 2px #ffcc53; background: #0b7f46; color:#ffffff; font-weight: bold; position: fixed; z-index: 1000; margin-top: 10px; width: 100%;">
                     <center>
-                        <div class="container"  ><span class="material-symbols-outlined" style="vertical-align: middle;">
+                        <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
                                 check
                             </span> &ensp; !Actualizacion exitosa!
                             <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
-                                    <p style="border-bottom: solid 2px #ffcc53; padding: 0;">  Cerrar</p>
-                                </button>
-                            
+                                <p style="border-bottom: solid 2px #ffcc53; padding: 0;"> Cerrar</p>
+                            </button>
+
                         </div>
                     </center>
 
                 </div>
             <?php } ?>
-           
+
             <?php if (isset($_GET['respuesta']) && $_GET['respuesta'] == "0") { ?>
                 <div id="accion" class="alert alert-primary" role="alert" style="display: block; background: red;  color:#ffffff; font-weight: bold; border: none; position: fixed; z-index: 999; margin-top: 0; width: 100%;">
                     <center>
-                        <div class="container"  ><span class="material-symbols-outlined" style="vertical-align: middle;">
-                        warning
+                        <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
+                                warning
                             </span> &ensp; !upss. ocurrio un error!
-                            <button onclick="Cerrar_Alerta()"  style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
-                                    <p style="border-bottom: solid 2px #ffcc53; padding: 0;">  Cerrar</p>
-                                </button>
-                            
+                            <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
+                                <p style="border-bottom: solid 2px #ffcc53; padding: 0;"> Cerrar</p>
+                            </button>
+
                         </div>
                     </center>
 
@@ -354,6 +354,40 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                 </form>
             </div>
             <!-- fin de cambiar contraseña -->
+            <!-- Eliminar Cuenta -->
+            <form action="../../php/Eliminar_cuenta.php" method="post">
+                <input type="hidden" name="identidad" value="<?php echo $documento ?>">
+                <!-- Modal contraseña -->
+                <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="background: #121A1C;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel" style="color: #FFFFFF; font-weight: bold;">Ingrese la contraseña actual Para eliminar su cuenta</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <center>
+                                    <div style="padding: 0;" class="input-group mb-3">
+                                        <input id="password" name="contra" type="password" required class="form-control">
+                                        <div onclick="Desifrado( document.getElementById('password'))" id="ver" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block; cursor: pointer;">
+                                            <span class="material-symbols-outlined span"> key </span>
+                                        </div>
+                                    </div>
+                                </center>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary A_cupos" style="border: none;">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- fin modal de contraseña -->
+                <div class="container-md">
+                    <center> <a data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-success A_cupos">Eliminar Cuenta</a>
+                    </center>
+                </div>
+            </form>
+            <!-- fin eliminar cuenta -->
         </main> <br><br><br>
         <footer>
             <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
@@ -408,8 +442,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                 if (opc.style.display === 'none') {
                     opc.style.display = 'block';
                     opc.style.position = 'absolute';
-
-
                 } else {
                     opc.style.display = 'none';
                 }
