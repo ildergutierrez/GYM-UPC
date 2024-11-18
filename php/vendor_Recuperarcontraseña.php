@@ -20,15 +20,22 @@ if (isset($_POST['correo'])) {
         // Configuración del servidor SMTP (asegúrate de configurar esto adecuadamente para tu entorno)
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
-        $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
+        $phpmailer->Host =  'smtp.gmail.com';//'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
-        $phpmailer->Port = 2525;
-        $phpmailer->Username = 'b32ba521884b30';
-        $phpmailer->Password = '438d448c90eb4b';
-        $phpmailer->setFrom('Recuperacontrasenagym@unicesar.edu.co', 'GYM - UPC');
+        // $phpmailer->Port = 2525;
+        $phpmailer->Username = 'ialbertogutierrez@unicesar.edu.co';
+        $phpmailer->Password = 'qchuvfykrdjdsnor';
+        $phpmailer->setFrom('ialbertogutierrez@unicesar.edu.co', 'GYM - UPC');
         $phpmailer->addAddress($correo);
         $phpmailer->Subject = 'Recuperar Cuenta';
-        $phpmailer->Body = "Haz solicitado recuperar tu cuenta, da click en el siguiente enlace para recuperar tu cuenta: http://localhost/GYM-UPC/paginas/index/NuevaContrasena.php?correo=$incrip";
+        $enlace = "http://gymupcaguachica.free.nf/paginas/index/NuevaContrasena.php?correo=" . urlencode($incrip);
+$phpmailer->Body = "
+    Recuperación de cuenta
+    Hola
+    Haz solicitado recuperar tu cuenta. Haz clic en el botón a continuación para crear una nueva contraseña:
+    '$enlace' 
+    Si no realizaste esta solicitud, puedes ignorar este mensaje.
+    Saludos,<br>Equipo GYM-UPC";
         if ($phpmailer->send()) {
             echo "<script>
             location.href ='../paginas/index/Olvidecontraseña.php?respuesta=2';

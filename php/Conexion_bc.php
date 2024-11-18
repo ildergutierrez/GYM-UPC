@@ -1,10 +1,9 @@
 <?php
-
-$basedd = 'gymupc';
-$usuario = 'root';
-$contrasena = '';
-$host = 'localhost';
-$port = 3306;
+$host = 'sql207.infinityfree.com';
+$usuario = 'if0_37735602';
+$contrasena = 'Jb1TDHK7tXtJ';
+$basedd = 'if0_37735602_gymupc';
+$port='3306';
 function conexion()
 {
     try{

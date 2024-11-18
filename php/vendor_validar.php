@@ -15,22 +15,23 @@ if (isset($_GET['correo']) && isset($_GET['codigo'])) {
     $correo = base64_decode($incrip);
     $consulta_email = "SELECT * FROM usuarios WHERE correo='$correo'";
     $Verificacion_email = mysqli_query($conexion, $consulta_email);
-    $direccion="http://localhost/GYM-UPC/php/Validar_usuario.php?";
+    $direccion="http://gymupcaguachica.free.nf/php/Validar_usuario.php?";
 
     if (mysqli_num_rows($Verificacion_email) > 0) {
         $phpmailer = new PHPMailer();
         // Configuración del servidor SMTP (asegúrate de configurar esto adecuadamente para tu entorno)
         $phpmailer = new PHPMailer();
         $phpmailer->isSMTP();
-        $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
+        $phpmailer->Host =  'smtp.gmail.com';//'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
-        $phpmailer->Port = 2525;
-        $phpmailer->Username = 'b32ba521884b30';
-        $phpmailer->Password = '438d448c90eb4b';
-        $phpmailer->setFrom('Serviciogym@unicesar.edu.co', 'GYM - UPC');
+        // $phpmailer->Port = 2525;
+        $phpmailer->Username = 'ialbertogutierrez@unicesar.edu.co';
+        $phpmailer->Password = 'qchuvfykrdjdsnor';
+        $phpmailer->setFrom('ialbertogutierrez@unicesar.edu.co', 'GYM - UPC');
         $phpmailer->addAddress($correo);
         $phpmailer->Subject = 'Activar Cuenta';
-        $phpmailer->Body = "Bienvenido/a; Tu codigo de verificación es: $token o Haz clic en el siguiente enlace para activar tu contraseña: $direccion.correo=$incrip&codigo=$token  ";
+        $phpmailer->Body = "
+        Bienvenido/a; Tu codigo de verificación es: $token o Haz clic en el siguiente enlace para activar tu contraseña: $direccion.correo=$incrip&codigo=$token  ";
         if ($phpmailer->send()) {
             echo "<script>
                     window.location ='../paginas/index/Verificacion_correo.php?correo=$incrip';
