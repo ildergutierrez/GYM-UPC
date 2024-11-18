@@ -1,12 +1,10 @@
 <?php
+require '../vendor/autoload.php'; // Usar la autocarga de Composer
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '..\vendor\phpmailer\phpmailer\src\Exception.php';
-require '..\vendor\phpmailer\phpmailer\src\PHPMailer.php';
-require '..\vendor\phpmailer\phpmailer\src\SMTP.php';
-
+include('Conexion_bc.php');
 include('Conexion_bc.php');
 $conexion = conexion();
 if (isset($_POST['correo'])) {
@@ -16,17 +14,18 @@ if (isset($_POST['correo'])) {
     $Verificacion_email = mysqli_query($conexion, $consulta_email);
 
     if (mysqli_num_rows($Verificacion_email) > 0) {
-        $phpmailer = new PHPMailer();
         // Configuración del servidor SMTP (asegúrate de configurar esto adecuadamente para tu entorno)
-        $phpmailer = new PHPMailer();
-        $phpmailer->isSMTP();
-        $phpmailer->Host =  'smtp.gmail.com';//'sandbox.smtp.mailtrap.io';
-        $phpmailer->SMTPAuth = true;
-        // $phpmailer->Port = 2525;
-        $phpmailer->Username = 'ialbertogutierrez@unicesar.edu.co';
-        $phpmailer->Password = 'qchuvfykrdjdsnor';
-        $phpmailer->setFrom('ialbertogutierrez@unicesar.edu.co', 'GYM - UPC');
-        $phpmailer->addAddress($correo);
+       // Configuración SMTP
+       $phpmailer->isSMTP();
+       $phpmailer->Host = 'smtp.gmail.com';
+       $phpmailer->SMTPAuth = true;
+       $phpmailer->Port = 587; // Asegúrate de usar el puerto correcto
+       $phpmailer->SMTPSecure = 'tls'; // O 'ssl' si el servidor lo requiere
+       $phpmailer->Username = 'ialbertogutierrez@unicesar.edu.co';
+       $phpmailer->Password = 'qchuvfykrdjdsnor';
+       // Configuración del correo
+       $phpmailer->setFrom('ialbertogutierrez@unicesar.edu.co', 'GYM - UPC');
+       $phpmailer->addAddress($correo);
         $phpmailer->Subject = 'Recuperar Cuenta';
         $enlace = "http://gymupcaguachica.free.nf/paginas/index/NuevaContrasena.php?correo=" . urlencode($incrip);
 $phpmailer->Body = "

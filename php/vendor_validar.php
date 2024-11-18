@@ -1,53 +1,55 @@
 <?php
+require '../vendor/autoload.php'; // Usar la autocarga de Composer
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-require '..\vendor\phpmailer\phpmailer\src\Exception.php';
-require '..\vendor\phpmailer\phpmailer\src\PHPMailer.php';
-require '..\vendor\phpmailer\phpmailer\src\SMTP.php';
 
 include('Conexion_bc.php');
 $conexion = conexion();
 if (isset($_GET['correo']) && isset($_GET['codigo'])) {
     $token = $_GET['codigo'];
     $incrip = $_GET['correo'];
+    $rol = $_SESSION['r'];
+    if ($rol == '3') {
+        $error = "../index.php?error=2";
+        $responder= "../paginas/index/Verificacion_correo.php?correo=$incrip";
+    } else {
+        $responder="../paginas/Administrador/registrar.php?mensaje=1";
+        $error = "../paginas/Administrador/registrar.php?mensaje=0";
+    }    
     $correo = base64_decode($incrip);
     $consulta_email = "SELECT * FROM usuarios WHERE correo='$correo'";
     $Verificacion_email = mysqli_query($conexion, $consulta_email);
-    $direccion="http://gymupcaguachica.free.nf/php/Validar_usuario.php?";
+    $direccion = "http://gymupcaguachica.free.nf/php/Validar_usuario.php?";
 
     if (mysqli_num_rows($Verificacion_email) > 0) {
-        $phpmailer = new PHPMailer();
-        // Configuración del servidor SMTP (asegúrate de configurar esto adecuadamente para tu entorno)
-        $phpmailer = new PHPMailer();
-        $phpmailer->isSMTP();
-        $phpmailer->Host =  'smtp.gmail.com';//'sandbox.smtp.mailtrap.io';
-        $phpmailer->SMTPAuth = true;
-        // $phpmailer->Port = 2525;
-        $phpmailer->Username = 'ialbertogutierrez@unicesar.edu.co';
-        $phpmailer->Password = 'qchuvfykrdjdsnor';
-        $phpmailer->setFrom('ialbertogutierrez@unicesar.edu.co', 'GYM - UPC');
-        $phpmailer->addAddress($correo);
-        $phpmailer->Subject = 'Activar Cuenta';
-        $phpmailer->Body = "
-        Bienvenido/a; Tu codigo de verificación es: $token o Haz clic en el siguiente enlace para activar tu contraseña: $direccion.correo=$incrip&codigo=$token  ";
-        if ($phpmailer->send()) {
-            echo "<script>
-                    window.location ='../paginas/index/Verificacion_correo.php?correo=$incrip';
-                </script>";
-            exit();
-        } else {
-            echo "<script>
-                    location.href ='../index.php?error=2';
-                </script>";
-            exit();
+        try {
+            $phpmailer = new PHPMailer(true); // Usar `true` para habilitar excepciones
+
+            // Configuración SMTP
+            $phpmailer->isSMTP();
+            $phpmailer->Host = 'smtp.gmail.com';
+            $phpmailer->SMTPAuth = true;
+            $phpmailer->Port = 587; // Asegúrate de usar el puerto correcto
+            $phpmailer->SMTPSecure = 'tls'; // O 'ssl' si el servidor lo requiere
+            $phpmailer->Username = 'ialbertogutierrez@unicesar.edu.co';
+            $phpmailer->Password = 'qchuvfykrdjdsnor';
+
+            // Configuración del correo
+            $phpmailer->setFrom('ialbertogutierrez@unicesar.edu.co', 'GYM - UPC');
+            $phpmailer->addAddress($correo);
+            $phpmailer->Subject = 'Activar Cuenta';
+            $phpmailer->Body = "Bienvenido/a; Tu código de verificación es: $token o haz clic en el siguiente enlace para activar tu cuenta: $direccion.correo=$incrip&codigo=$token";
+            // Enviar correo
+            $phpmailer->send();
+                echo "<script>window.location ='$responder';</script>";
+            
+        } catch (Exception $e) {
+            // Manejar error al enviar el correo
+            echo "Error al enviar correo: {$phpmailer->ErrorInfo}";
         }
     } else {
-        // Si el correo no existe en la base de datos
-        echo "<script>
-            location.href = ='../index.php?error=2';
-        </script>";
-        exit();
+        echo "<script>location.href ='$error';</script>";
     }
 }
+?>
