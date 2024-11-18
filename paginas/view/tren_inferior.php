@@ -1,20 +1,18 @@
 <?php
 session_start();
 if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
-  $nombre = $_SESSION['nombre'];
-  $rol =  $_SESSION['rol'];
-  $documento = $_SESSION['documento'];
+    $nombre = $_SESSION['nombre'];
+    $rol =  $_SESSION['rol'];
+    $documento = $_SESSION['documento'];
+    include('../../php/Conexion_bc.php');
+    include('../../php/seguimientos.php');
+    $conexion = conexion();
+    $segimiento = new seguimeintos($conexion, $documento);
+    cerrar_conexion($conexion);
 } else {
-  header('Location: ../../index.php');
+    header('Location: ../../index.php');
 }
-include('../../php/Conexion_bc.php');
-include('../../php/seguimientos.php');
-$conexion = conexion();
-$segimiento = new seguimeintos($conexion, $documento);
-cerrar_conexion($conexion);
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -217,8 +215,8 @@ cerrar_conexion($conexion);
                     <img id="logo" style=" display: block;" src="../../img/logo/Logo.png" alt="Logo" width="50%" title="Logo" />
                 </div>
                 <div class="d-flex" style="z-index: 1000; position: fixed; top: 25px; left: 0px; width: 30%;">
-          <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="left: auto; width: 100%; display: none" title="Logo" />
-        </div>
+                    <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="left: auto; width: 100%; display: none" title="Logo" />
+                </div>
             </div>
             <!-- Fin posicion del logo -->
             <!-- Linea de nombre -->
@@ -237,7 +235,7 @@ cerrar_conexion($conexion);
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                CUÁDRICEPT
+                                CUÁDRICEPS
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -245,12 +243,41 @@ cerrar_conexion($conexion);
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
-                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                            <img src="../../img/inferior/CUaDRICEPS.jpg" alt="" style="width: 100%; border-radius: 10px;">
                                         </div>
                                     </div>
                                     <div class="col-8" style="text-align: justify;">
-                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                        <h2><b>1. Sentadilla con barra</b></h2>
+                                        <p>&rarr; 4 series de 8-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90-120 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio compuesto fundamental, común en programas como *StrongLifts 5x5* y *Starting Strength*.</p>
+                                        <br>
+                                        <h2><b>2. Prensa de piernas</b></h2>
+                                        <p>&rarr; 4 series de 10-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Utilizado en gimnasios para trabajar cuádriceps y glúteos con soporte.</p>
+                                        <br>
+                                        <h2><b>3. Zancadas (Lunges)</b></h2>
+                                        <p>&rarr; 3 series de 10-12 repeticiones por pierna.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio funcional recomendado para equilibrio y fuerza unilateral.</p>
+                                        <br>
+                                        <h2><b>4. Extensiones de piernas en máquina</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio de aislamiento común en rutinas de hipertrofia.</p>
+                                        <br>
+                                        <h2><b>5. Front Squat (Sentadilla frontal)</b></h2>
+                                        <p>&rarr; 3 series de 8-10 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90-120 segundos entre series.</p>
+                                        <p><i>Origen:</i> Recomendado para enfatizar el trabajo en los cuádriceps.</p>
+                                        <br>
+                                        <h2><b>6. Step-ups con mancuernas</b></h2>
+                                        <p>&rarr; 3 series de 10-12 repeticiones por pierna.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio funcional para fuerza y estabilidad, popular en entrenamientos atléticos.</p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -266,12 +293,41 @@ cerrar_conexion($conexion);
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
-                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                            <img src="../../img/inferior/FEMORAL.gif" alt="" style="width: 100%; border-radius: 10px;">
                                         </div>
                                     </div>
                                     <div class="col-8" style="text-align: justify;">
-                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                        <h2><b>1. Peso muerto rumano</b></h2>
+                                        <p>&rarr; 4 series de 8-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90-120 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio compuesto clave para trabajar los femorales y glúteos, popular en programas como *Starting Strength*.</p>
+                                        <br>
+                                        <h2><b>2. Curl de piernas en máquina (Prone leg curl)</b></h2>
+                                        <p>&rarr; 4 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio de aislamiento utilizado en rutinas de culturismo para enfocarse en los músculos femorales.</p>
+                                        <br>
+                                        <h2><b>3. Curl de piernas tumbado con mancuerna (Dumbbell leg curl)</b></h2>
+                                        <p>&rarr; 3 series de 10-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Variante de curl de piernas enfocado en el trabajo unilateral de los femorales.</p>
+                                        <br>
+                                        <h2><b>4. Peso muerto convencional</b></h2>
+                                        <p>&rarr; 3 series de 6-8 repeticiones.</p>
+                                        <p>&rarr; Descanso: 2 minutos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio básico para trabajar los femorales, glúteos y espalda baja, común en entrenamientos de fuerza.</p>
+                                        <br>
+                                        <h2><b>5. Hip Thrust (Elevación de cadera)</b></h2>
+                                        <p>&rarr; 4 series de 10-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio excelente para trabajar glúteos y femorales, popularizado por estudios de biomecánica.</p>
+                                        <br>
+                                        <h2><b>6. Good Mornings (Buenos días)</b></h2>
+                                        <p>&rarr; 3 series de 8-10 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90-120 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio de aislamiento para femorales y espalda baja, utilizado en entrenamientos de fuerza y potencia.</p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -287,12 +343,41 @@ cerrar_conexion($conexion);
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
-                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                            <img src="../../img/inferior/PANTORRILLA.jpg" alt="" style="width: 100%; border-radius: 10px;">
                                         </div>
                                     </div>
                                     <div class="col-8" style="text-align: justify;">
-                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                        <h2><b>1. Elevación de talones de pie en máquina (Calf raise machine)</b></h2>
+                                        <p>&rarr; 4 series de 12-20 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio clásico para trabajar las pantorrillas, especialmente el gastrocnemio.</p>
+                                        <br>
+                                        <h2><b>2. Elevación de talones sentado en máquina (Seated calf raise)</b></h2>
+                                        <p>&rarr; 4 series de 12-20 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Este ejercicio se enfoca en el sóleo, músculo profundo de las pantorrillas.</p>
+                                        <br>
+                                        <h2><b>3. Elevación de talones con barra (Barbell calf raise)</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Variante de elevación de talones en pie, popular para desarrollar fuerza en las pantorrillas.</p>
+                                        <br>
+                                        <h2><b>4. Elevación de talones con mancuernas (Dumbbell calf raise)</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Variante similar a la elevación con barra, pero con mancuernas para un trabajo unilateral.</p>
+                                        <br>
+                                        <h2><b>5. Saltos de cuerda</b></h2>
+                                        <p>&rarr; 3 series de 1-2 minutos.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio cardiovascular que también fortalece las pantorrillas debido a la constante extensión de los talones.</p>
+                                        <br>
+                                        <h2><b>6. Elevación de talones en prensa de pierna</b></h2>
+                                        <p>&rarr; 3 series de 15-20 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Variante de la prensa de piernas, que permite un enfoque más aislado en las pantorrillas.</p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -308,12 +393,41 @@ cerrar_conexion($conexion);
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
-                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                            <img src="../../img/inferior/GLUTEOS.webp" alt="" style="width: 100%; border-radius: 10px;">
                                         </div>
                                     </div>
                                     <div class="col-8" style="text-align: justify;">
-                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                        <h2><b>1. Hip Thrust (Elevación de cadera)</b></h2>
+                                        <p>&rarr; 4 series de 10-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio esencial para el desarrollo de los glúteos, popularizado por estudios de biomecánica en entrenamiento de fuerza.</p>
+                                        <br>
+                                        <h2><b>2. Sentadillas (Squats)</b></h2>
+                                        <p>&rarr; 4 series de 8-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90-120 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio compuesto básico para el desarrollo de los glúteos y los cuádriceps, incluido en rutinas como *Starting Strength*.</p>
+                                        <br>
+                                        <h2><b>3. Zancadas (Lunges)</b></h2>
+                                        <p>&rarr; 3 series de 10-12 repeticiones por pierna.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio funcional que trabaja glúteos y piernas, popular en entrenamientos de resistencia.</p>
+                                        <br>
+                                        <h2><b>4. Prensa de piernas (Leg Press)</b></h2>
+                                        <p>&rarr; 4 series de 10-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio que permite enfocarse en los glúteos y cuádriceps de manera controlada y con carga pesada.</p>
+                                        <br>
+                                        <h2><b>5. Kickbacks en máquina</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones por pierna.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio de aislamiento que activa principalmente los glúteos, especialmente el glúteo mayor.</p>
+                                        <br>
+                                        <h2><b>6. Elevaciones de cadera con una pierna</b></h2>
+                                        <p>&rarr; 3 series de 10-12 repeticiones por pierna.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Variante del hip thrust, que aísla cada glúteo de manera unilateral.</p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

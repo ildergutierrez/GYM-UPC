@@ -3,7 +3,6 @@
 session_start();
 class Cerrar_Sesion
 {
-
     public function __construct()
     {
         $this->Destruir();

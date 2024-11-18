@@ -4,14 +4,14 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
     $nombre = $_SESSION['nombre'];
     $rol =  $_SESSION['rol'];
     $documento = $_SESSION['documento'];
+    include('../../php/Conexion_bc.php');
+    include('../../php/seguimientos.php');
+    $conexion = conexion();
+    $segimiento = new seguimeintos($conexion, $documento);
+    cerrar_conexion($conexion);
 } else {
     header('Location: ../../index.php');
 }
-include('../../php/Conexion_bc.php');
-include('../../php/seguimientos.php');
-$conexion = conexion();
-$segimiento = new seguimeintos($conexion, $documento);
-cerrar_conexion($conexion);
 ?>
 
 
@@ -29,8 +29,7 @@ cerrar_conexion($conexion);
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         rel="stylesheet" />
     <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+        rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
     <link rel="stylesheet" href="../../boostrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../css/rutinas.css" />
     <link rel="icon" href="../../img/logo/Logo.png" />
@@ -217,8 +216,8 @@ cerrar_conexion($conexion);
                     <img id="logo" style=" display: block;" src="../../img/logo/Logo.png" alt="Logo" width="50%" title="Logo" />
                 </div>
                 <div class="d-flex" style="z-index: 1000; position: fixed; top: 25px; left: 0px; width: 30%;">
-          <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="left: auto; width: 100%; display: none" title="Logo" />
-        </div>
+                    <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="left: auto; width: 100%; display: none" title="Logo" />
+                </div>
             </div>
             <!-- Fin posicion del logo -->
             <!-- Linea de nombre -->
@@ -245,11 +244,39 @@ cerrar_conexion($conexion);
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
-                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                            <img src="../../img/superior/espalda.webp" alt="" style="width: 100%; border-radius: 10px;">
                                         </div>
                                     </div>
                                     <div class="col-8" style="text-align: justify;">
-                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                        <h2><b>1. Dominadas</b></h2>
+                                        <p>&rarr; 4 series de 8-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio clásico de peso corporal, usado en calistenia y entrenamientos funcionales.</p>
+                                        <br>
+                                        <h2><b>2. Remo con barra</b></h2>
+                                        <p>&rarr; 4 series de 8-10 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Recomendado en libros como *Starting Strength* de Mark Rippetoe.</p>
+                                        <br>
+                                        <h2><b>3. Jalón al pecho</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Alternativa a las dominadas, común en gimnasios.</p>
+                                        <br>
+                                        <h2><b>4. Peso muerto</b></h2>
+                                        <p>&rarr; 4 series de 6-8 repeticiones.</p>
+                                        <p>&rarr; Descanso: 2 minutos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio compuesto fundamental en levantamiento de pesas.</p>
+                                        <br>
+                                        <h2><b>5. Remo con mancuerna</b></h2>
+                                        <p>&rarr; 3 series de 10-12 repeticiones por lado.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio accesorio para trabajar la espalda unilateralmente.</p>
+                                        <br>
+                                        <h2><b>6. Face Pull</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Recomendado para deltoides posteriores y postura, promovido por entrenadores como Jeff Cavaliere (Athlean-X).</p>
                                     </div>
                                 </div>
                             </div>
@@ -266,11 +293,39 @@ cerrar_conexion($conexion);
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
-                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                            <img src="../../img/superior/pecho.webp" alt="" style="width: 100%; border-radius: 10px;">
                                         </div>
                                     </div>
                                     <div class="col-8" style="text-align: justify;">
-                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                        <h2><b>1. Press de banca con barra</b></h2>
+                                        <p>&rarr; 4 series de 8-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio básico de culturismo, común en programas como *StrongLifts 5x5*.</p>
+                                        <br>
+                                        <h2><b>2. Press inclinado con mancuernas</b></h2>
+                                        <p>&rarr; 4 series de 10-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Trabaja la parte superior del pectoral mayor.</p>
+                                        <br>
+                                        <h2><b>3. Aperturas con mancuernas</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio de aislamiento, común para estiramiento muscular.</p>
+                                        <br>
+                                        <h2><b>4. Press declinado con barra</b></h2>
+                                        <p>&rarr; 4 series de 8-10 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Recomendado para trabajar la parte inferior del pecho.</p>
+                                        <br>
+                                        <h2><b>5. Fondos en paralelas</b></h2>
+                                        <p>&rarr; 3 series de 10-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio compuesto para pecho y tríceps, común en gimnasios.</p>
+                                        <br>
+                                        <h2><b>6. Cruces en polea</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio de aislamiento de pectorales, típico en rutinas de máquinas.</p>
                                     </div>
                                 </div>
                             </div>
@@ -287,12 +342,41 @@ cerrar_conexion($conexion);
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
-                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                            <img src="../../img/superior/triceps.png" alt="" style="width: 100%; border-radius: 10px;">
                                         </div>
                                     </div>
                                     <div class="col-8" style="text-align: justify;">
-                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                        <h2><b>1. Extensiones de tríceps en polea</b></h2>
+                                        <p>&rarr; 4 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio clásico en máquinas, ideal para aislamiento.</p>
+                                        <br>
+                                        <h2><b>2. Press francés con barra</b></h2>
+                                        <p>&rarr; 4 series de 10-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Incluido en *The Modern Bodybuilding Encyclopedia* de Arnold Schwarzenegger.</p>
+                                        <br>
+                                        <h2><b>3. Fondos en paralelas</b></h2>
+                                        <p>&rarr; 3 series de 8-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio compuesto que también involucra el pecho.</p>
+                                        <br>
+                                        <h2><b>4. Extensiones por encima de la cabeza con mancuerna</b></h2>
+                                        <p>&rarr; 4 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Popular para trabajar la cabeza larga del tríceps.</p>
+                                        <br>
+                                        <h2><b>5. Extensiones de tríceps con cuerda en polea alta</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Recomendado para un mayor rango de movimiento.</p>
+                                        <br>
+                                        <h2><b>6. Kickbacks con mancuerna</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones por brazo.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio clásico para la definición del tríceps.</p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -308,12 +392,41 @@ cerrar_conexion($conexion);
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
-                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                            <img src="../../img/superior/hombros.webp" alt="" style="width: 100%; border-radius: 10px;">
                                         </div>
                                     </div>
                                     <div class="col-8" style="text-align: justify;">
-                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                        <h2><b>1. Press militar con barra</b></h2>
+                                        <p>&rarr; 4 series de 8-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio compuesto fundamental, incluido en programas como *Starting Strength*.</p>
+                                        <br>
+                                        <h2><b>2. Elevaciones laterales con mancuernas</b></h2>
+                                        <p>&rarr; 4 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio básico para trabajar los deltoides laterales.</p>
+                                        <br>
+                                        <h2><b>3. Remo al mentón con barra</b></h2>
+                                        <p>&rarr; 3 series de 10-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Común en rutinas de culturismo, enfocado en deltoides y trapecios.</p>
+                                        <br>
+                                        <h2><b>4. Elevaciones frontales con mancuerna</b></h2>
+                                        <p>&rarr; 4 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Utilizado para trabajar los deltoides frontales.</p>
+                                        <br>
+                                        <h2><b>5. Face Pull con cuerda en polea alta</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Recomendado por fisioterapeutas y entrenadores como Jeff Cavaliere para deltoides posteriores.</p>
+                                        <br>
+                                        <h2><b>6. Press Arnold</b></h2>
+                                        <p>&rarr; 3 series de 8-10 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Introducido por Arnold Schwarzenegger, excelente para activar todas las cabezas del deltoide.</p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -329,12 +442,41 @@ cerrar_conexion($conexion);
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
-                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                            <img src="../../img/superior/Biceps.webp" alt="" style="width: 100%; border-radius: 10px;">
                                         </div>
                                     </div>
                                     <div class="col-8" style="text-align: justify;">
-                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                        <h2><b>1. Curl de bíceps con barra</b></h2>
+                                        <p>&rarr; 4 series de 8-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio básico incluido en programas de culturismo como los de Arnold Schwarzenegger.</p>
+                                        <br>
+                                        <h2><b>2. Curl alternado con mancuernas</b></h2>
+                                        <p>&rarr; 4 series de 10-12 repeticiones por brazo.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio popular para trabajar cada brazo de forma aislada.</p>
+                                        <br>
+                                        <h2><b>3. Curl de concentración</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones por brazo.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Recomendado por culturistas para lograr mayor enfoque en la contracción muscular.</p>
+                                        <br>
+                                        <h2><b>4. Curl martillo</b></h2>
+                                        <p>&rarr; 3 series de 8-10 repeticiones por brazo.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio ideal para trabajar el braquiorradial y fortalecer el antebrazo.</p>
+                                        <br>
+                                        <h2><b>5. Curl en banco inclinado</b></h2>
+                                        <p>&rarr; 3 series de 10-12 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60-90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Común en programas de entrenamiento para alargar el rango de movimiento del bíceps.</p>
+                                        <br>
+                                        <h2><b>6. Curl de bíceps en polea baja</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Utilizado para mantener tensión constante en los bíceps.</p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -350,12 +492,41 @@ cerrar_conexion($conexion);
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="d-flex justify-content-center align-items-center" style="padding: 20px;">
-                                            <img src="../../img/plan_habitos.jpg" alt="" style="width: 100%; border-radius: 10px;">
+                                            <img src="../../img/superior/antebrazo.png" alt="" style="width: 100%; border-radius: 10px;">
                                         </div>
                                     </div>
                                     <div class="col-8" style="text-align: justify;">
-                                        <h2><b>1. Alimentación balanceada</b></h2>
+                                        <h2><b>1. Curl de muñeca con barra</b></h2>
+                                        <p>&rarr; 4 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio básico recomendado para fortalecer los flexores del antebrazo.</p>
+                                        <br>
+                                        <h2><b>2. Curl inverso con barra</b></h2>
+                                        <p>&rarr; 3 series de 8-10 repeticiones.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Común en rutinas de fuerza para trabajar los extensores del antebrazo y el braquiorradial.</p>
+                                        <br>
+                                        <h2><b>3. Extensiones de muñeca con barra</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Incluido en programas de culturismo para trabajar los extensores del antebrazo.</p>
+                                        <br>
+                                        <h2><b>4. Hold con barra o mancuerna</b></h2>
+                                        <p>&rarr; 3 series de 30-45 segundos.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio isométrico recomendado para mejorar la fuerza de agarre.</p>
+                                        <br>
+                                        <h2><b>5. Rotaciones de muñeca con mancuernas</b></h2>
+                                        <p>&rarr; 3 series de 12-15 repeticiones por lado.</p>
+                                        <p>&rarr; Descanso: 60 segundos entre series.</p>
+                                        <p><i>Origen:</i> Utilizado en programas de rehabilitación y fortalecimiento del antebrazo.</p>
+                                        <br>
+                                        <h2><b>6. Farmer's Walk (Caminar con peso)</b></h2>
+                                        <p>&rarr; 3 series de 20-30 metros con mancuernas pesadas.</p>
+                                        <p>&rarr; Descanso: 90 segundos entre series.</p>
+                                        <p><i>Origen:</i> Ejercicio funcional popular para mejorar la fuerza de agarre y estabilidad del antebrazo.</p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -406,7 +577,7 @@ cerrar_conexion($conexion);
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
-     
+
     </div>
 </body>
 

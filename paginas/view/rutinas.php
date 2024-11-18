@@ -4,14 +4,14 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
   $nombre = $_SESSION['nombre'];
   $rol =  $_SESSION['rol'];
   $documento = $_SESSION['documento'];
+  include('../../php/Conexion_bc.php');
+  include('../../php/seguimientos.php');
+  $conexion = conexion();
+  $segimiento = new seguimeintos($conexion, $documento);
+  cerrar_conexion($conexion);
 } else {
   header('Location: ../../index.php');
 }
-include('../../php/Conexion_bc.php');
-include('../../php/seguimientos.php');
-$conexion = conexion();
-$segimiento = new seguimeintos($conexion, $documento);
-cerrar_conexion($conexion);
 ?>
 
 <!DOCTYPE html>
