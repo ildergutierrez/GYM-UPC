@@ -12,11 +12,9 @@ class Suspender_Actividades
         $this->accion = $accion;
         $this->f_actual = $f_actual;
         $this->f_final = $f_final;
-        if ($this->f_actual != "" && $this->f_final != "") {
-            $this->Activacion();
-        }
+        
+            $this->Activacion();           
     }
-
     private function Activacion()
     {
         try { 
@@ -28,7 +26,7 @@ class Suspender_Actividades
                     mysqli_query($this->conexion, $eliminar);
                     echo "<script>
                 window.location.href = '../paginas/Administrador/actividades.php?respuesta=2';
-                </script>";
+                </scrip>";
                 } else {
                     echo "<script>
                 window.location.href = '../paginas/Administrador/actividades.php?respuesta=4';
@@ -101,5 +99,4 @@ if (!isset($_SESSION['Email'])) {
 
 include 'Conexion_bc.php';
 $conexion = conexion();
-new Suspender_Actividades
-($conexion, $_POST['accion'], $_POST['inicio'], $_POST['final']);
+new Suspender_Actividades($conexion, $_POST['accion'], $_POST['inicio'], $_POST['final']);

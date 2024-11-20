@@ -61,7 +61,9 @@ class Activar_Afiliado
         header('Location: ../paginas/Administrador/activar_afiliados.php?activado=true');
     }
 }
-if (isset($_POST['documento']) && isset($_POST['documento'])=='1') {
+//Valida si se recibio el documento
+
+if (isset($_POST['documento']) && isset($_POST['r'])=='1') {
     $numero=$_POST['documento'];
     include 'Conexion_bc.php';
     $conexion = conexion(); // Guarda la conexión en una variable
@@ -70,3 +72,4 @@ if (isset($_POST['documento']) && isset($_POST['documento'])=='1') {
     $activar->Accion_Administrador($id,$numero);
     header('Location: ../paginas/Administrador/activar_afiliados.php?activado=true');
 } 
+

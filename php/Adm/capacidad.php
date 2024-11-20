@@ -1,8 +1,13 @@
 <?php
-include '../Conexion_bc.php';
-$conn = conexion();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-// Comprobar si se recibió el número de id
+include('../Conexion_json.php');
+
+$conn = conexion(); // Realiza la conexión a la base de datos
+
+// Comprobar si se recibió el nombre
 if (isset($_POST['nombre'])) {
     $nombre = trim($_POST['nombre']);
     $sql_lugar = "SELECT * FROM lugares WHERE nombre ='$nombre'";
@@ -36,5 +41,6 @@ if (isset($_POST['nombre'])) {
     echo json_encode(['success' => false]);
 }
 
-// Cerrar conexión
-cerrar_conexion($conn);
+// Cerrar la conexión
+mysqli_close($conn);
+?>

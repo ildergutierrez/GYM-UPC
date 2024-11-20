@@ -129,10 +129,10 @@ class Registro
     {
         if (strlen($contrasena) >= 8) {
             if (preg_match('/[A-Z]/', $contrasena) && preg_match('/[a-z]/', $contrasena) && preg_match('/[0-9]/', $contrasena)
-                && preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $contrasena)
+                && preg_match('/[\'^£$%&*()}.:{@#~?><>,;´¨¿?"°!¡`|=_+¬-]/', $contrasena)
             ) {
                 return true;
-        } }
+        } } 
             return false;
         
     }

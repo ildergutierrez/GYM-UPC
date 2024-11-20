@@ -14,6 +14,7 @@ $fecha = date('d-m-Y');
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +35,7 @@ $fecha = date('d-m-Y');
 
 <body>
     <div class="container-fluid" style="padding: 0;">
-    <?php if (isset($_GET['respuesta'])) { ?>
+        <?php if (isset($_GET['respuesta'])) { ?>
             <div id="accion" class="alert alert-primary" role="alert" style="display: block; border: solid 2px #0b7f46; background: #ffcc53; color:#ffffff; font-weight: bold; position: fixed; z-index: 1100; margin-top: 10px; width: 100%;">
                 <center>
                     <?php if ($_GET['respuesta'] == '1') { ?>
@@ -45,7 +46,7 @@ $fecha = date('d-m-Y');
                                 <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
                             </button>
                         </div>
-                        <?php } elseif ($_GET['respuesta'] == '2') { ?>
+                    <?php } elseif ($_GET['respuesta'] == '2') { ?>
                         <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
                                 check
                             </span> &ensp; !Actualizacion exitosa!
@@ -55,7 +56,7 @@ $fecha = date('d-m-Y');
                         </div>
                     <?php } else { ?>
                         <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
-                        warning
+                                warning
                             </span> &ensp; !Ups, Ocurrio un problema!
                             <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
                                 <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
@@ -179,7 +180,7 @@ $fecha = date('d-m-Y');
                             <div class="mb-3">
                                 <label class="form-label" style="color: #FFFFFF;">Registro * </label>
                                 <div class="input-group-text" style="background: #121A1C; padding: 0; margin: 0; width: 90%; overflow: hidden; border-radius: 5px; border: solid 1px #ffffff;">
-                                    <input type="text" readonly  value="<?php echo $fecha ?>" style="width: 90%; border-radius: 0;" class="form-control">
+                                    <input type="text" readonly value="<?php echo $fecha ?>" style="width: 90%; border-radius: 0;" class="form-control">
                                     <div style=" color: #E5E5E5;  width: 10%;">
                                         <span class="material-symbols-outlined" style=" font-size: 24px;">
                                             today
@@ -194,7 +195,7 @@ $fecha = date('d-m-Y');
                             <div class="mb-3">
                                 <label for="lugar" class="form-label" style="color: #FFFFFF;">Encargado *</label>
                                 <div class="input-group">
-                                    <input type="text"  name="documento" id="documento" required class="form-control" aria-label="Lugar">
+                                    <input type="text" name="documento" id="documento" required class="form-control" aria-label="Lugar">
                                     <div style=" color: #E5E5E5;  width: 10%;"> <span id="lugar" class="input-group-text" style=" font-size: 24px;">
                                             <i class="material-icons">tag</i>
                                         </span>
@@ -228,11 +229,11 @@ $fecha = date('d-m-Y');
                         </div>
                     </div>
                     <br>
-                 </form> 
-                 <form action="../../php/Instrcutor.php" method="post">
-                 <div class="container" style="width: 50%;">
-                 <input type="hidden" name="id" id="envio">
-                 <input type="hidden" name="n_lugar" >
+                </form>
+                <form action="../../php/Instrcutor.php" method="post">
+                    <div class="container" style="width: 50%;">
+                        <input type="hidden" name="id" id="envio">
+                        <input type="hidden" name="n_lugar">
                         <center> <button type="submit" class="btn btn-success A_cupos ">Registrar</button>
                         </center>
                     </div>
@@ -287,62 +288,18 @@ $fecha = date('d-m-Y');
             // Solo permite ingresar numeros.
             document.getElementById('documento').addEventListener('input', function(e) {
                 this.value = this.value.replace(/[^0-9]/g, '');
-                
+
 
             });
         </script>
-<script>
-    // Función que realiza la búsqueda cuando el usuario ingresa el número de documento
-    document.getElementById('documento').addEventListener('input', function() {
-        var documento = this.value;
-        if (documento.length > 0) { // Solo si hay texto (número) en el campo
-            // Realizamos la petición AJAX
-            var xhr = new XMLHttpRequest();
-            xhr.open('post', '../../php/Adm/asignar_instructor.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onload = function() {
-                if (xhr.status == 200) {
-            try {
-                var response = JSON.parse(xhr.responseText);
-                console.table(response);  // Muestra la respuesta ya parseada
-
-                if (response.success) {
-                    document.querySelector('[name="nombre"]').value = response.nombre;
-                    document.querySelector('[name="celular"]').value = response.telefono;
-                } else {
-                    document.querySelector('[name="nombre"]').value = "Instructor no encontrado";
-                    document.querySelector('[name="celular"]').value = "";
-                }
-            } catch (e) {
-                console.error('Error al analizar JSON:', e);
-            }
-        }
-            };
-            xhr.send('documento=' + documento); // Enviar el número de documento al servidor
-        }else {
-                    document.querySelector('[name="nombre"]').value = "";
-                    document.querySelector('[name="celular"]').value = "";
-                }
-    });
-</script>
-
-<script>
-            document.getElementById('documento').addEventListener('input', function(e) {
-                // Toma el valor del input con id "Numero" y lo pasa al input con id "envio"
-                document.getElementById("envio").value = document.getElementById("documento").value;
-            });
-        </script>
-<script>
+        <script>
             // Función que realiza la búsqueda cuando el usuario ingresa el número de documento
-            document.getElementById('s_lugar').addEventListener('selectionchange', function() {
+            document.getElementById('documento').addEventListener('input', function() {
                 var documento = this.value;
-                console.log(documento);
                 if (documento.length > 0) { // Solo si hay texto (número) en el campo
                     // Realizamos la petición AJAX
                     var xhr = new XMLHttpRequest();
-
-                    xhr.open('post', '../../php/Adm/capacidad.php', true);
-
+                    xhr.open('post', '../../php/Adm/asignar_instructor.php', true);
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                     xhr.onload = function() {
                         if (xhr.status == 200) {
@@ -351,25 +308,32 @@ $fecha = date('d-m-Y');
                                 console.table(response); // Muestra la respuesta ya parseada
 
                                 if (response.success) {
-                                    document.querySelector('[name="n_lugar"]').value = response.id;
-                                   
+                                    document.querySelector('[name="nombre"]').value = response.nombre;
+                                    document.querySelector('[name="celular"]').value = response.telefono;
                                 } else {
-                                    document.querySelector('[name="n_lugar"]').value = " ";
-                                   
+                                    document.querySelector('[name="nombre"]').value = "Instructor no encontrado";
+                                    document.querySelector('[name="celular"]').value = "";
                                 }
                             } catch (e) {
                                 console.error('Error al analizar JSON:', e);
                             }
                         }
                     };
-                    xhr.send('nombre=' + documento); // Enviar el número de documento al servidor
+                    xhr.send('documento=' + documento); // Enviar el número de documento al servidor
                 } else {
-                    document.querySelector('[name="n_lugar"]').value = " ";
-                    
+                    document.querySelector('[name="nombre"]').value = "";
+                    document.querySelector('[name="celular"]').value = "";
                 }
-
             });
         </script>
+
+        <script>
+            document.getElementById('documento').addEventListener('input', function(e) {
+                // Toma el valor del input con id "Numero" y lo pasa al input con id "envio"
+                document.getElementById("envio").value = document.getElementById("documento").value;
+            });
+        </script>
+    
     </div>
 </body>
 
