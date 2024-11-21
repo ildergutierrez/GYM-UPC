@@ -5,7 +5,6 @@ if (!isset($_SESSION['Email']) && !isset($_SESSION['nombre']) && !isset($_SESSIO
 include_once('Sancion.php');
 class seguimeintos
 {
-
     private $sancion;
     private $conexion;
     private $documento;
@@ -33,10 +32,10 @@ class seguimeintos
     }
     private function Sumar()
     {
+        $cont = 0;
         $sql = "SELECT * FROM `seguimeintos` WHERE `id` = '$this->documento'";
         $respuesta = mysqli_query($this->conexion, $sql);
         if ($respuesta && mysqli_num_rows($respuesta) > 0) {
-            $cont = 0;
             for ($i = 0; $i < mysqli_num_rows($respuesta); $i++) {
                 $fila = mysqli_fetch_array($respuesta);
                 if ($fila['id']) {
@@ -45,14 +44,17 @@ class seguimeintos
             }
             return $cont;
         }
-        return 0;
+        return $cont;
     }
     private function Existe(): bool
     {
         $sql = "SELECT * FROM `cupos` WHERE `id` = '$this->documento'";
         $respuesta = mysqli_query($this->conexion, $sql);
         if ($respuesta && mysqli_num_rows($respuesta) > 0) {
-            return true;
+            $fila = mysqli_fetch_array($respuesta);
+            if ($fila['lugar'] == 0) {
+                return true;
+            }
         }
         return false;
     }

@@ -12,7 +12,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
         $sql = "SELECT * FROM `usuarios` WHERE `id` = '$documento'";
         $result = mysqli_query($conexion, $sql);
         $mostrar = mysqli_fetch_array($result);
-        if ($mostrar['estado'] == 0 || $_SESSION['Suspencion']==0) {
+        if ($mostrar['estado'] == '0' || $_SESSION['Suspencion']=='0') {
             return 0;
         }
         return 1;

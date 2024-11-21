@@ -126,7 +126,7 @@ cerrar_conexion($conexion)
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0">
+                        <ul class="navbar-nav justify-content-end ms-auto mt-3 mb-2 mb-lg-0"  style="width: 70%">
                             <li class="nav-item">
                                 <a class="nav-link active" href="../view/bienvenida.php" style=" color: #ffffff; padding-right: 30px; font-weight: bold; "><span class="material-icons" style="vertical-align: middle">home</span>INICIO</a>
                             </li>
@@ -173,7 +173,7 @@ cerrar_conexion($conexion)
                     <img id="logo" style=" display: block;" src="../../img/logo/Logo.png" alt="Logo" width="50%" title="Logo" />
                 </div>
                 <div class="d-flex" style="z-index: 1000; position: fixed; top: 25px; left: 40px; width: 20%; ">
-                    <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="width: 15%; display: none" title="Logo" />
+                    <img id="logo_2" src="../../img/logo/Logo.png" alt="Logo" style="width: 25%; display: none" title="Logo" />
                 </div>
             </div>
             <!-- Fin posicion del logo -->
@@ -279,6 +279,7 @@ cerrar_conexion($conexion)
         <?php } ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/gh/LazarSoft/jsqrcode@latest/src/qr_packed.js"></script> -->
         <audio id="audioScaner" src="../../sonido/sonido.mp3"></audio>
         <script src="../../js/instructor/LeerQR.js"></script>
 

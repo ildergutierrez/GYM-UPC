@@ -70,9 +70,6 @@ class Suspender_Actividades
             cerrar_conexion($this->conexion);
         }
     }
-
-
-
     //Validar fecha, Comparar fecha actual con la fecha de la actividad y la fecha final
     private function Comparacion($inicio, $fin): bool
     {

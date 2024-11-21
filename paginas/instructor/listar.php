@@ -52,8 +52,7 @@ $nombre = $_SESSION['nombre'];
                             </li>
                         </ul>
                         <form
-                            class="d-flex justify-content-center align-items-center"
-                           >
+                            class="d-flex justify-content-center align-items-center">
                             <div class="container d-flex justify-content-center align-items-center" style=" background: #ffcc53; font-weight: bold; border-radius: 10px; margin-bottom: 3px;  ">
                                 <div
                                     class="container d-flex justify-content-center align-items-center"

@@ -15,10 +15,9 @@ $documento = $_SESSION['documento'];
 
 $nombre = $_SESSION['nombre'];
 $segimiento = new seguimeintos($conexion, $documento);
-//creacion de la cleses
+// creacion de la cleses
 $actualizar = new Actualizar_cupos($conexion);
 
-$actualizar->Actualizar_cupos();
 $qr = new Generar_qr();
 $datos = array();
 $datos = $qr->GenaraQR($documento, $conexion);
@@ -32,7 +31,7 @@ if ($cantidad > 0) {
     $fecha = $datos[2];
     $lugar = $datos[3];
     $limite = $datos[4];
-    $qr = "http://localhost/GYM-UPC/php/Leer_QR.php?documento=$documento&hora=$hora&fecha=$fecha&lugar=$lugar&limite=$limite";
+    $qr = "https://gymupcaguachica.free.nf/php/Leer_QR.php?documento=$documento&hora=$hora&fecha=$fecha&lugar=$lugar&limite=$limite";
 }
 
 ?>
@@ -187,8 +186,9 @@ if ($cantidad > 0) {
                             <p class="mb-0">Dirígete a la sección de apartar cupos y realiza el proceso.</p>
                         </div>
                     <?php } ?>
-                    <br><br><br><br>
+        <br><br><br><br><br><br><br><br> <br><br><br><br><br>
         </main>
+        
         <footer>
             <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
                 <div class="row">

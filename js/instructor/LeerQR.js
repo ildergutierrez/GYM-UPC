@@ -47,7 +47,7 @@ function scan() {
   try {
     qrcode.decode();
   } catch (e) {
-    setTimeout(scan, 300);
+    setTimeout(scan, 300);//
   }
 }
 
@@ -81,11 +81,9 @@ qrcode.callback = (respuesta) => {
   }
 };
 //evento para mostrar la camara sin el boton 
-window.addEventListener('load', (e) => {
-  encenderCamara();
-})
-
-
+// window.addEventListener('load', (e) => {
+//   encenderCamara();
+// })
 
 
 

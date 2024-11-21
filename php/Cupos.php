@@ -16,33 +16,40 @@ class Cupos
     private $fecha;
     private $hora;
     private $sede;
-
     private $url;
 
     public function __construct($conexion, $documento, $fecha, $hora, $sede,  $url)
-    {
+    {date_default_timezone_set('America/Bogota');
         $this->conexion = $conexion;
         $this->documento = $documento;
         $this->fecha = $fecha;
         $this->hora = $hora;
         $this->sede = $sede;
         $this->url = $url;
+        if($this->Validar_Fecha($this->fecha) == 0){
+            header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
+            exit();
+        }
+        
+        if($this->validar_hora($this->hora)==false){
+            header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
+            exit();
+        }
         $this->Accion();
     }
 
 
     private function Accion()
     {
-        if ($this->Validar_Hora($this->hora) && $this->Validar_Fecha($this->fecha) >= 0) {
+        if ($this->Validar_Hora($this->hora) ) {
 
             if (!$this->Estado($this->documento, $this->conexion)) {
                 
                 if ($this->Registros($this->conexion)) {
-
+                    cerrar_conexion($this->conexion);
                     header("Location: ../$this->url");
                     exit();
                 } else {
-
                     header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
                     exit();
                 }
@@ -60,66 +67,62 @@ class Cupos
 
     //Registrar cupos
     function Registros($conexion): bool
-    {
-       
+    {       
         $this->sede = $this->Retornar_id_lugar($this->sede);
         $hora_limite = date("H:i", strtotime($this->hora . "+ 15 minutes"));
         $sql = "INSERT INTO `cupos`(`id`, `fecha`, `hora`, `hora_limite`, `lugar`) VALUES ('$this->documento','$this->fecha','$this->hora','$hora_limite','$this->sede')";
-//revisar aca
-        $resultado = $conexion->query($sql);
+        
+        $resultado = mysqli_query($conexion, $sql);
         if ($resultado) {
-            cerrar_conexion($conexion);
             return true;
         } else {
-            cerrar_conexion($conexion);
             return false;
         }
     }
 
     //determinar diferencia entre las horas
     function Validar_Hora($hora): bool
-    {
-        global $fecha;
-        if ($this->Validar_Fecha($fecha) == 2) {
+    {  
+        $valido= $this->Validar_Fecha($this->fecha);
+        if ($valido == 2) {
             $hora_actual = date("H:i ");
             $hora1 = strtotime($hora);
             $hora2 = strtotime($hora_actual);
             $zonah = ($hora1 - $hora2) / 3600;
-
+            echo "<br> ".$zonah;
             if ($zonah >= 1) {
                 return true;
             } else {
                 return false;
             }
         }
-        return true;
+        if($valido == 1){
+            return true;
+        }
+        return false;
     }
 
     //validar fecha
-    private function Validar_Fecha($fecha): int|bool
-    {
-        $fechaObj = new DateTime($fecha);
-        $fecha_actual = date("Y-m-d");
-
-        $fecha1 = strtotime($fecha);
-        $diaSemana = $fechaObj->format('N');
-        $fecha2 = strtotime($fecha_actual);
-        $zonah = ($fecha1 - $fecha2) / 86400;
-
-
+    private function Validar_Fecha($fecha): int
+    {  
+        $fecha_actual = date("Y-m-d");//fecha actual
+        $fecha1 = strtotime($fecha);//fecha del formulario
+        $fecha2 = strtotime($fecha_actual);//fecha actual transfromada
+        $zonah = ($fecha1 - $fecha2) / 86400;//diferencia de dias
+        $diaSemana = date('N', strtotime($fecha));//numero de dia de la semana
+        // echo "<br> ".$fecha1;
+        // echo "<br> ".$fecha2;
+        // echo "<br> ".$zonah;
         if ($diaSemana == 6 || $diaSemana == 7) {
-            return 0;
+            return -1;
         }
-        if ($zonah === 0) {
+        if ($zonah == 0) {
             return 2;
         }
         if ($zonah >= 1) {
-
             return 1;
-        } else {
-
-            return 0;
         }
+        return -1;
     }
 
     private function Retornar_id_lugar($nombre): string
