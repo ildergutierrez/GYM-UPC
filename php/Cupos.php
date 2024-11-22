@@ -5,6 +5,7 @@ if (!isset($_SESSION['documento']) && !isset($_SESSION['rol']) === "3") {
     header('Location: ../index.php');
     exit();
 }
+
 if (empty($_POST['documento']) || empty($_POST['sede'])  || empty($_POST['fecha']) || empty($_POST['hora'])) {
     header('Location: ../index.php');
     exit();
@@ -26,11 +27,11 @@ class Cupos
         $this->hora = $hora;
         $this->sede = $sede;
         $this->url = $url;
-        if($this->Validar_Fecha($this->fecha) == 0){
+        if($this->Validar_Fecha($this->fecha) == -1){
             header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
             exit();
         }
-        
+        // die($this->Validar_Hora($this->hora));
         if($this->validar_hora($this->hora)==false){
             header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
             exit();
@@ -40,7 +41,23 @@ class Cupos
 
 
     private function Accion()
-    {
+    {if($this->Validar_Fecha($this->fecha) == 1){
+        if (!$this->Estado($this->documento, $this->conexion)) {
+                
+            if ($this->Registros($this->conexion)) {
+                cerrar_conexion($this->conexion);
+                header("Location: ../$this->url");
+                exit();
+            } else {
+                header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
+                exit();
+            }
+        } else {
+
+            header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
+            exit();
+        }
+    }else{
         if ($this->Validar_Hora($this->hora) ) {
 
             if (!$this->Estado($this->documento, $this->conexion)) {
@@ -62,7 +79,7 @@ class Cupos
 
             header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
             exit();
-        }
+        }}
     }
 
     //Registrar cupos
@@ -89,7 +106,7 @@ class Cupos
             $hora1 = strtotime($hora);
             $hora2 = strtotime($hora_actual);
             $zonah = ($hora1 - $hora2) / 3600;
-            echo "<br> ".$zonah;
+            // echo "<br>Hora ".$zonah;
             if ($zonah >= 1) {
                 return true;
             } else {
@@ -110,16 +127,18 @@ class Cupos
         $fecha2 = strtotime($fecha_actual);//fecha actual transfromada
         $zonah = ($fecha1 - $fecha2) / 86400;//diferencia de dias
         $diaSemana = date('N', strtotime($fecha));//numero de dia de la semana
-        // echo "<br> ".$fecha1;
-        // echo "<br> ".$fecha2;
-        // echo "<br> ".$zonah;
-        if ($diaSemana == 6 || $diaSemana == 7) {
+        // echo "<br>Formulario ".$fecha1;
+        // echo "<br>Actual ".$fecha2;
+        // echo "<br>Dife ".$zonah;
+        // echo "<br>semana ".$diaSemana;
+        if($diaSemana == 6 || $diaSemana == 7) {
             return -1;
         }
         if ($zonah == 0) {
             return 2;
         }
         if ($zonah >= 1) {
+            // echo "<br>Fecha valida";
             return 1;
         }
         return -1;

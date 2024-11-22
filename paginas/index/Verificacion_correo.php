@@ -27,7 +27,7 @@ if (isset($_SESSION['usuario'])) {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         rel="stylesheet" />
     <link rel="stylesheet" href="../../boostrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../css/estilos Recuperar.css" />
+    <link rel="stylesheet" href="../../css/estilos_Recuperar.css" />
 </head>
 <style>
     /* Para navegadores basados en WebKit (Chrome, Safari) */

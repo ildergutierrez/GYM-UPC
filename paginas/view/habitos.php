@@ -7,6 +7,8 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
 } else {
   header('Location: ../../index.php');
 }
+include '../../php/destruir_sesion.php';
+verificar_inactividad($rol);
 include('../../php/Conexion_bc.php');
 include('../../php/seguimientos.php');
 $conexion = conexion();

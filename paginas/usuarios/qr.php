@@ -6,16 +6,15 @@ if (!isset($_SESSION['documento']) || $_SESSION['rol'] != 3) {
 
 //clases
 include('../../php/Conexion_bc.php');
-require_once('../../php/usuario/Actualizar_cupos.php');
+
 include('../../php/Generar_qr.php');
-include('../../php/seguimientos.php');
 $conexion = conexion();
-
 $documento = $_SESSION['documento'];
-
 $nombre = $_SESSION['nombre'];
+require('../../php/seguimientos.php');
 $segimiento = new seguimeintos($conexion, $documento);
 // creacion de la cleses
+require('../../php/usuario/Actualizar_cupos.php');
 $actualizar = new Actualizar_cupos($conexion);
 
 $qr = new Generar_qr();
@@ -33,6 +32,7 @@ if ($cantidad > 0) {
     $limite = $datos[4];
     $qr = "https://gymupcaguachica.free.nf/php/Leer_QR.php?documento=$documento&hora=$hora&fecha=$fecha&lugar=$lugar&limite=$limite";
 }
+$qr = "https://gymupcaguachica.free.nf";
 
 ?>
 <!DOCTYPE html>
@@ -56,6 +56,7 @@ if ($cantidad > 0) {
     <link rel="stylesheet" href="../../css/qr.css" />
     <link rel="icon" href="../../img/logo/Logo.png" />
 </head>
+
 <body style="background: #1e1e1e">
     <div class="container-fluid" style="padding: 0;">
         <!-- Modal -->
@@ -70,7 +71,7 @@ if ($cantidad > 0) {
                         <p>El sistema a detectado que ha faltado a su cita en el GYM-UPC. <br>Se procede a asignarle una falla, si se acomulan 3, no podra volver a sacar cita hasta que se levante la sanción. <br>Nota: si tiene excusa justificable debe dirigirse al administrador</p>
                     </div>
                     <?php
-                    if($lugar === "0"){
+                    if ($lugar === "0") {
                         $segimiento = new seguimeintos($conexion, $documento);
                     }
                     ?>
@@ -80,7 +81,9 @@ if ($cantidad > 0) {
                 </div>
             </div>
         </div>
-        <?php cerrar_conexion($conexion); ?>
+        <?php
+        cerrar_conexion($conexion);
+        ?>
         <!-- fin modal -->
         <header>
             <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
@@ -112,7 +115,9 @@ if ($cantidad > 0) {
                                     class="container d-flex justify-content-center align-items-center"
                                     style="padding: 0; width: 100%">
                                     <div class="d-flex justify-content-center align-items-center" style=" margin-top: 10px; color: #000000; font-size: 12px; width: 100%; ">
-                                        <p> <?php echo $nombre ?></p> &ensp;
+                                        <p> <?php
+                                            echo $nombre
+                                            ?></p> &ensp;
                                     </div>
                                     <div class="dropdown" style="color: #000000">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
@@ -155,7 +160,9 @@ if ($cantidad > 0) {
                 <!-- Fin de linea de nombre -->
                 <br>
             </div>
-            <?php if ($cantidad > 0 && $lugar !== "0") { ?>
+            <?php
+            if ($cantidad > 0 && $lugar !== "0") {
+            ?>
                 <!-- Generador QR -->
                 <div class="container" style="margin-top: 80px;">
                     <div class="row" style="padding-left:0; padding-right: 0; position: static; width: 40%; margin: 0 auto;border-radius: 10px;  border-bottom: solid 5px #0b7f46; text-align: center; background: #ffffff;">
@@ -170,13 +177,17 @@ if ($cantidad > 0) {
                     </div>
                     <br>
                     <div class="d-flex justify-content-center align-items-center">
-                        <input type="hidden" id="input-link" value="<?php echo $qr ?>">
-                        <div id="qr-container">
-                            <canvas id="qrcode" style="border:solid 2px #1e1e1e; border-radius: 5px;"></canvas>
+                        <div style="padding:12px; background: #ffffff;  margin: auto;">
+                            <input type="hidden" id="input-link" value="<?php echo $qr ?>">
+                            <div id="qr-container">
+                                <canvas id="qrcode" style="border:solid 2px #1e1e1e; border-radius: 5px;"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div> <!-- Fin Generador QR -->
-            <?php } else { ?>
+            <?php
+            } else {
+            ?>
                 <div class="container" style="margin-top: 80px;">
                     <div class="d-flex justify-content-center align-items-center">
                         <div class="alert alert-danger" role="alert">
@@ -185,10 +196,11 @@ if ($cantidad > 0) {
                             <hr>
                             <p class="mb-0">Dirígete a la sección de apartar cupos y realiza el proceso.</p>
                         </div>
-                    <?php } ?>
-        <br><br><br><br><br><br><br><br> <br><br><br><br><br>
+                    <?php
+                } ?>
+                    <br><br><br><br><br><br><br><br> <br><br><br><br><br>
         </main>
-        
+
         <footer>
             <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
                 <div class="row">
@@ -229,18 +241,21 @@ if ($cantidad > 0) {
                 </div>
             </div>
         </footer>
-
-         <!-- Activa el modal de advectencia -->
-          <?php if(count($datos) > 0){ 
-            if ($lugar==="0") { ?>
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    var modal = new bootstrap.Modal(document.getElementById('miModal'));
-                    modal.show();
-                });
-            </script>
-        <?php } }?>
-
+        <!-- Activa el modal de advectencia -->
+        <?php
+        if (count($datos) > 0) {
+            if ($lugar === "0") {
+        ?>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var modal = new bootstrap.Modal(document.getElementById('miModal'));
+                        modal.show();
+                    });
+                </script>
+        <?php
+            }
+        } ?>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="../../js/Bienvenida.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>

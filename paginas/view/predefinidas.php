@@ -4,6 +4,8 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
     $nombre = $_SESSION['nombre'];
     $rol =  $_SESSION['rol'];
     $documento = $_SESSION['documento'];
+    include '../../php/destruir_sesion.php';
+    verificar_inactividad($rol);
     include('../../php/Conexion_bc.php');
     include('../../php/seguimientos.php');
     $conexion = conexion();

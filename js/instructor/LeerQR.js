@@ -36,10 +36,9 @@ const encenderCamara = () => {
 
 //funciones para levantar las funiones de encendido de la camara
 function tick() {
-  canvasElement.height = video.videoHeight;
-  canvasElement.width = video.videoWidth;
+  canvasElement.height = video.videoHeight;//alto del video
+  canvasElement.width = video.videoWidth;//ancho del video
   canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-
   scanning && requestAnimationFrame(tick);
 }
 
@@ -47,7 +46,7 @@ function scan() {
   try {
     qrcode.decode();
   } catch (e) {
-    setTimeout(scan, 300);//
+    setTimeout(scan, 300);// tiempo de espera para volver a leer el codigo
   }
 }
 

@@ -1,21 +1,26 @@
 <?php
-session_start(); //session_cache_expire(15); // 15 minutos de inactividad
+session_start();
+$tiempoInactividad = 15 * 60;
+//session_cache_expire(15); // 15 minutos de inactividad
+
 if (!isset($_SESSION['Email'])) {
-    header('Location: ../../index.php');
-    exit();
+  header('Location: ../../index.php');
+  exit();
 } else {
-    $nombre = $_SESSION['nombre'];
-    $rol = $_SESSION['rol'];
-    $documento = $_SESSION['documento'];
+  $nombre = $_SESSION['nombre'];
+  $rol = $_SESSION['rol'];
+  $documento = $_SESSION['documento'];
 }
+include '../../php/destruir_sesion.php';
+verificar_inactividad($rol);
 include '../../php/Conexion_bc.php';
 include '../../php/Activar_Afiliado.php';
 include '../../php/Activacion.php';
 $conexion = conexion();
 new Activar_Afiliado($conexion);
 if ($_SESSION['rol'] == '3') {
-    include '../../php/seguimientos.php';
-    $segimiento = new seguimeintos($conexion, $documento);
+  include '../../php/seguimientos.php';
+  $segimiento = new seguimeintos($conexion, $documento);
 }
 $accion = new Activar_Automatica();
 $accion->Activavcion($conexion);
@@ -24,6 +29,7 @@ cerrar_conexion($conexion);
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,10 +47,11 @@ cerrar_conexion($conexion);
   <link rel="stylesheet" href="../../css/bienvenida.css" />
   <link rel="icon" href="../../img/logo/Logo.png" />
 </head>
+
 <body style="background: #1e1e1e">
   <div class="container-fluid" style="padding: 0;">
     <header>
-      <?php if ($rol == 3) {?>
+      <?php if ($rol == 3) { ?>
         <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
           <div class="container-fluid" style="color: white">
             <a class="navbar-brand" href="#"></a>
@@ -96,8 +103,8 @@ cerrar_conexion($conexion);
             </div>
           </div>
         </nav>
-      <?php }?>
-      <?php if ($rol == 2) {?>
+      <?php } ?>
+      <?php if ($rol == 2) { ?>
         <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
           <div class="container-fluid" style="color: white">
             <a class="navbar-brand" href="#"></a>
@@ -145,8 +152,8 @@ cerrar_conexion($conexion);
             </div>
           </div>
         </nav>
-      <?php }?>
-      <?php if ($rol == 1) {?>
+      <?php } ?>
+      <?php if ($rol == 1) { ?>
         <nav class="navbar navbar-expand-lg" style="padding-top: 30px; padding-bottom: 0px; background: #0b7f46; border-top: solid 4px #ffcc53;">
           <div class="container-fluid" style="color: white">
             <a class="navbar-brand" href="#"></a>
@@ -213,7 +220,7 @@ cerrar_conexion($conexion);
             </div>
           </div>
         </nav>
-      <?php }?>
+      <?php } ?>
     </header>
     <main>
       <!-- Logo -->
