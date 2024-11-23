@@ -1,6 +1,5 @@
 <?php
 
-$rol = $_POST['rol'];
 if ($rol !== '0') {
     session_start();
     if (!isset($_SESSION['Email'])) {
@@ -105,6 +104,7 @@ class Actualizar_Contraseña
         }
     }
 }
+
 
 $conexion = conexion();
 $actualizar = new Actualizar_Contraseña($conexion, $_POST['rol'], $_POST['url'], $_POST['password'],  $_POST['password_new'], $_POST['Email']);
