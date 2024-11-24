@@ -11,12 +11,11 @@ include('../../php/Generar_qr.php');
 $conexion = conexion();
 $documento = $_SESSION['documento'];
 $nombre = $_SESSION['nombre'];
-require('../../php/seguimientos.php');
-$segimiento = new seguimeintos($conexion, $documento);
 // creacion de la cleses
 require('../../php/usuario/Actualizar_cupos.php');
 $actualizar = new Actualizar_cupos($conexion);
-
+require('../../php/seguimientos.php');
+$segimiento = new seguimeintos($conexion, $documento);
 $qr = new Generar_qr();
 $datos = array();
 $datos = $qr->GenaraQR($documento, $conexion);

@@ -21,6 +21,7 @@ class seguimeintos
     private function  Fallas()
     {
         // echo "<br> Existe: <br>".$this->Existe()."Existencia <br>";
+       
         if ($this->Existe()) {
             if ($this->Sumar() >= 3) {
                 $this->sancion = new Sancion($this->conexion, $this->documento);
@@ -32,8 +33,8 @@ class seguimeintos
                 $stmt->execute();
             }
         }
+        
     }
-
     private function Sumar()
     {
         $cont = 0;

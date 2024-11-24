@@ -4,7 +4,7 @@ if (!isset($_GET['correo'])) {
     header("location: ../../index.php");
 }
 $correo = base64_decode($_GET['correo']);
-
+// die($correo);
 ?>
 <!DOCTYPE html>
 <html lang="es">
