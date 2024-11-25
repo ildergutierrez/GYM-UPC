@@ -1,10 +1,10 @@
 # Summary
 
-Date : 2024-11-24 20:05:02
+Date : 2024-11-25 11:16:20
 
 Directory c:\\xampp\\htdocs\\GYM-UPC
 
-Total : 117 files,  67899 codes, 2636 comments, 5945 blanks, all 76480 lines
+Total : 117 files,  67925 codes, 2642 comments, 5948 blanks, all 76515 lines
 
 Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
@@ -13,7 +13,7 @@ Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-
 | :--- | ---: | ---: | ---: | ---: | ---: |
 | CSS | 32 | 44,683 | 163 | 4,030 | 48,876 |
 | JavaScript | 17 | 12,740 | 1,893 | 1,270 | 15,903 |
-| PHP | 64 | 10,367 | 580 | 640 | 11,587 |
+| PHP | 64 | 10,393 | 586 | 643 | 11,622 |
 | JSON | 1 | 90 | 0 | 1 | 91 |
 | Ini | 2 | 14 | 0 | 0 | 14 |
 | Markdown | 1 | 5 | 0 | 4 | 9 |
@@ -21,7 +21,7 @@ Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 117 | 67,899 | 2,636 | 5,945 | 76,480 |
+| . | 117 | 67,925 | 2,642 | 5,948 | 76,515 |
 | . (Files) | 1 | 398 | 3 | 13 | 414 |
 | boostrap | 23 | 53,204 | 1,951 | 4,520 | 59,675 |
 | boostrap\\Js | 6 | 12,239 | 1,835 | 1,205 | 15,279 |
@@ -41,8 +41,8 @@ Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-
 | paginas\\instructor | 3 | 881 | 3 | 39 | 923 |
 | paginas\\usuarios | 4 | 1,349 | 5 | 51 | 1,405 |
 | paginas\\view | 7 | 2,910 | 0 | 74 | 2,984 |
-| php | 29 | 1,611 | 170 | 159 | 1,940 |
-| php (Files) | 22 | 1,379 | 131 | 115 | 1,625 |
+| php | 29 | 1,637 | 176 | 162 | 1,975 |
+| php (Files) | 22 | 1,405 | 137 | 118 | 1,660 |
 | php\\Adm | 4 | 115 | 25 | 31 | 171 |
 | php\\Instructor | 1 | 26 | 5 | 6 | 37 |
 | php\\index | 1 | 18 | 0 | 2 | 20 |

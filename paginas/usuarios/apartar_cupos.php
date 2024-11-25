@@ -49,7 +49,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
     <link rel="icon" href="../../img/logo/Logo.png" />
 </head>
 <body style="background: #1e1e1e">
-    <!-- Modal -->
+    <!-- Modal Suspencion-->
     <div class="modal fade" id="estado" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">
@@ -77,7 +77,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
             </div>
         </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal Advertencia-->
     <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">
@@ -111,7 +111,6 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                 $peso++;
             }
         }
-
         ?>
         <div class="modal-dialog">
             <div class="modal-content" style="background: #121A1C; color: #E5E5E5;">

@@ -1,10 +1,10 @@
 # Details
 
-Date : 2024-11-24 20:05:02
+Date : 2024-11-25 11:16:20
 
 Directory c:\\xampp\\htdocs\\GYM-UPC
 
-Total : 117 files,  67899 codes, 2636 comments, 5945 blanks, all 76480 lines
+Total : 117 files,  67925 codes, 2642 comments, 5948 blanks, all 76515 lines
 
 [Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
@@ -98,7 +98,7 @@ Total : 117 files,  67899 codes, 2636 comments, 5945 blanks, all 76480 lines
 | [php/Capacidad.php](/php/Capacidad.php) | PHP | 53 | 4 | 2 | 59 |
 | [php/Conexion_bc.php](/php/Conexion_bc.php) | PHP | 20 | 6 | 2 | 28 |
 | [php/Conexion_json.php](/php/Conexion_json.php) | PHP | 15 | 1 | 5 | 21 |
-| [php/Cupos.php](/php/Cupos.php) | PHP | 168 | 17 | 16 | 201 |
+| [php/Cupos.php](/php/Cupos.php) | PHP | 194 | 23 | 19 | 236 |
 | [php/Eliminar_cuenta.php](/php/Eliminar_cuenta.php) | PHP | 36 | 1 | 1 | 38 |
 | [php/Generar_qr.php](/php/Generar_qr.php) | PHP | 22 | 2 | 2 | 26 |
 | [php/Instrcutor.php](/php/Instrcutor.php) | PHP | 51 | 2 | 4 | 57 |
