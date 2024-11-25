@@ -5,6 +5,8 @@ if (!isset($_SESSION['Email']) || $rol != '1') {
     header('Location: ../../index.php');
 }
 $nombre = $_SESSION['nombre'];
+include '../../php/destruir_sesion.php';
+verificar_inactividad();
 ?>
 
 <!DOCTYPE html>

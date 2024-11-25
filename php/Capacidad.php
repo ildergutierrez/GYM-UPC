@@ -1,4 +1,5 @@
 <?php
+//Clase para guardar la capacidad de un lugar
 class Capacidad
 {
     private $cantidad;
@@ -12,9 +13,11 @@ class Capacidad
         $this->actual = $actual;
         $this->conexion = $conexion;
     }
+    //Funcion para ser llamada el guardar la capacidad
     public function accion(): bool{
         return $this->Guardar();
     }
+    //Funcion para guardar la capacidad
     private function Guardar(): bool
     {
         if ($this->actual > 0) {
@@ -29,6 +32,7 @@ class Capacidad
         return false;
     }
 }
+//Inicio de sesion
 session_start();
 include 'Conexion_bc.php';
 if (isset($_POST['capacidad']) || isset($_POST['actualm']) || isset($_POST['nueva']) && is_int($_POST['nueva'])) {
@@ -36,7 +40,7 @@ if (isset($_POST['capacidad']) || isset($_POST['actualm']) || isset($_POST['nuev
         $conexion = conexion();
         $guardar = new Capacidad($conexion, $_POST['actualm'], $_POST['nueva'], $_POST['capacidad']);
         if($guardar->accion()){
-           cerrar_conexion($conexion);
+        cerrar_conexion($conexion);
             echo "<script>
     window.location.href = '../paginas/Administrador/capacidad.php?realizacion=1';
     </script>";

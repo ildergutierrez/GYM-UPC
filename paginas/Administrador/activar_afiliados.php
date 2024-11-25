@@ -4,6 +4,8 @@ if (!isset($_SESSION['Email'], $_SESSION['nombre'], $_SESSION['rol']) || $_SESSI
     header('Location: ../../index.php');
     exit();
 }
+include '../../php/destruir_sesion.php';
+verificar_inactividad();
 $nombre = $_SESSION['nombre'];
 ?>
 

@@ -4,6 +4,8 @@ session_start();
 if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])==1) {
     $nombre = $_SESSION['nombre'];
     $rol = $_SESSION['rol'];
+    include '../../php/destruir_sesion.php';
+verificar_inactividad();
 } else {
     header('Location: ../../index.php');
 }

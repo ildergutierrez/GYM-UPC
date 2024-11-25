@@ -1,8 +1,5 @@
 <?php
 session_start();
-$tiempoInactividad = 15 * 60;
-//session_cache_expire(15); // 15 minutos de inactividad
-
 if (!isset($_SESSION['Email'])) {
   header('Location: ../../index.php');
   exit();
@@ -13,8 +10,8 @@ if (!isset($_SESSION['Email'])) {
 }
 include '../../php/destruir_sesion.php';
 verificar_inactividad($rol);
-include '../../php/Conexion_bc.php';
-include '../../php/Activar_Afiliado.php';
+include '../../php/Conexion_bc.php'; 
+include '../../php/Activar_Afiliado.php'; 
 include '../../php/Activacion.php';
 $conexion = conexion();
 new Activar_Afiliado($conexion);

@@ -21,6 +21,8 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
     $documento = $_SESSION['documento'];
     $rol = $_SESSION['rol'];
     $estado = Estado($documento);
+    include '../../php/destruir_sesion.php';
+    verificar_inactividad();
 } else {
     header('Location: ../../index.php');
 }

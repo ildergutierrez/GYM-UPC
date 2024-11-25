@@ -5,6 +5,8 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
         header('Location: ../view/bienvenida.php');
     }
     $nombre = $_SESSION['nombre'];
+    include '../../php/destruir_sesion.php';
+verificar_inactividad();
 } else {
     header('Location: ../../index.php');
 }

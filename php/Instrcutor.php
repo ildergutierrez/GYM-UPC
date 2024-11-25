@@ -1,4 +1,5 @@
 <?php
+//Archivo para asignar un instructor a un lugar
 session_start();
 if (!isset($_SESSION['Email'])) {
     header('Location: ../index.php');
@@ -10,10 +11,8 @@ if (isset($_POST['id']) || isset($_POST['n_lugar'])) {
     $lugar = $_POST['n_lugar'];
     $sql = "SELECT * FROM instructores WHERE id='$id'";
     $result = mysqli_query($conexion, $sql); 
-
-    if ($result && mysqli_num_rows($result) > 0) {
-       
-       
+//Se verifica si el instructor ya tiene un lugar asignado
+    if ($result && mysqli_num_rows($result) > 0) {       
         $actualizar = "UPDATE instructores SET lugar='$lugar' WHERE id='$id'";
         mysqli_query($conexion, $actualizar);
         try { if ($actualizar) {
@@ -31,10 +30,10 @@ if (isset($_POST['id']) || isset($_POST['n_lugar'])) {
             Cerrar_conexion($conexion);
         }
     } else {
-       
+
         $insertar = "INSERT INTO instructores (id, lugar) VALUES ('$id','$lugar')";
         $resultado = mysqli_query($conexion, $insertar);
-       
+
         try {
             if ($resultado) {
                 echo "<script>

@@ -17,7 +17,7 @@ class seguimeintos
         // die($this->Fallas());
         $this->Fallas();
     }
-
+// Función para verificar las fallas
     private function  Fallas()
     {
         // echo "<br> Existe: <br>".$this->Existe()."Existencia <br>";
@@ -35,6 +35,7 @@ class seguimeintos
         }
         
     }
+    // Función para sumar las fallas
     private function Sumar()
     {
         $cont = 0;
@@ -51,6 +52,7 @@ class seguimeintos
         }
         return $cont;
     }
+    // Función para verificar si existe el usuario
     private function Existe(): bool
     {
         $sql = "SELECT * FROM `cupos` WHERE `id` = '$this->documento'";

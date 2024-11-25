@@ -3,7 +3,8 @@ session_start();
 if (!isset($_SESSION['documento']) || $_SESSION['rol'] != 3) {
     header('Location: ../../index.php');
 }
-
+include '../../php/destruir_sesion.php';
+verificar_inactividad();
 //clases
 include('../../php/Conexion_bc.php');
 

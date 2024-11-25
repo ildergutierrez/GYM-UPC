@@ -1,5 +1,5 @@
 <?php
-
+// Incluimos los archivos necesarios
 if ($rol !== '0') {
     session_start();
     if (!isset($_SESSION['Email'])) {
@@ -8,9 +8,9 @@ if ($rol !== '0') {
     }
 }
 include('Conexion_bc.php');
+// Clase para actualizar la contraseña
 class Actualizar_Contraseña
 {
-
     private $correo;
     private  $conexion;
     private $rol;
@@ -28,8 +28,6 @@ class Actualizar_Contraseña
         $this->correo = $correo;
         $this->Update();
     }
-
-
     // Funciones
     // Funcion para validar los datos, si la contraseña actual es correcta o no
     function Validar_pass(): bool
@@ -79,7 +77,7 @@ class Actualizar_Contraseña
             return false;
         }
     }
-
+// Funcion para actualizar la contraseña
     private function Update()
     {
         if ($this->rol !== '0') {
@@ -105,6 +103,6 @@ class Actualizar_Contraseña
     }
 }
 
-
+// Instancia de la clase
 $conexion = conexion();
 $actualizar = new Actualizar_Contraseña($conexion, $_POST['rol'], $_POST['url'], $_POST['password'],  $_POST['password_new'], $_POST['Email']);

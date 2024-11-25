@@ -2,9 +2,10 @@
 if (!isset($_SESSION['documento']) || $_SESSION['rol'] != 3) {
     header('Location: ../../index.php');
 }
-
+// clase para generar el qr
 class Generar_qr
 {
+    //fubcion para generar el qr, es la informacion que se va a guardar en el qr
     function GenaraQR($documento, $conexion): array|bool
     {
         $devolver = array();

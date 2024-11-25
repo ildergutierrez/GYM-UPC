@@ -1,0 +1,132 @@
+# Details
+
+Date : 2024-11-24 20:05:02
+
+Directory c:\\xampp\\htdocs\\GYM-UPC
+
+Total : 117 files,  67899 codes, 2636 comments, 5945 blanks, all 76480 lines
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [boostrap/Js/bootstrap.bundle.js](/boostrap/Js/bootstrap.bundle.js) | JavaScript | 5,064 | 655 | 596 | 6,315 |
+| [boostrap/Js/bootstrap.bundle.min.js](/boostrap/Js/bootstrap.bundle.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [boostrap/Js/bootstrap.esm.js](/boostrap/Js/bootstrap.esm.js) | JavaScript | 3,568 | 578 | 302 | 4,448 |
+| [boostrap/Js/bootstrap.esm.min.js](/boostrap/Js/bootstrap.esm.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [boostrap/Js/bootstrap.js](/boostrap/Js/bootstrap.js) | JavaScript | 3,604 | 584 | 307 | 4,495 |
+| [boostrap/Js/bootstrap.min.js](/boostrap/Js/bootstrap.min.js) | JavaScript | 1 | 6 | 0 | 7 |
+| [boostrap/css/bootstrap-grid.css](/boostrap/css/bootstrap-grid.css) | CSS | 3,893 | 6 | 192 | 4,091 |
+| [boostrap/css/bootstrap-grid.min.css](/boostrap/css/bootstrap-grid.min.css) | CSS | 1 | 5 | 0 | 6 |
+| [boostrap/css/bootstrap-grid.rtl.css](/boostrap/css/bootstrap-grid.rtl.css) | CSS | 3,886 | 6 | 192 | 4,084 |
+| [boostrap/css/bootstrap-grid.rtl.min.css](/boostrap/css/bootstrap-grid.rtl.min.css) | CSS | 1 | 5 | 0 | 6 |
+| [boostrap/css/bootstrap-reboot.css](/boostrap/css/bootstrap-reboot.css) | CSS | 518 | 14 | 65 | 597 |
+| [boostrap/css/bootstrap-reboot.min.css](/boostrap/css/bootstrap-reboot.min.css) | CSS | 1 | 5 | 0 | 6 |
+| [boostrap/css/bootstrap-reboot.rtl.css](/boostrap/css/bootstrap-reboot.rtl.css) | CSS | 524 | 6 | 64 | 594 |
+| [boostrap/css/bootstrap-reboot.rtl.min.css](/boostrap/css/bootstrap-reboot.rtl.min.css) | CSS | 1 | 5 | 0 | 6 |
+| [boostrap/css/bootstrap-utilities.css](/boostrap/css/bootstrap-utilities.css) | CSS | 4,891 | 8 | 503 | 5,402 |
+| [boostrap/css/bootstrap-utilities.min.css](/boostrap/css/bootstrap-utilities.min.css) | CSS | 1 | 5 | 0 | 6 |
+| [boostrap/css/bootstrap-utilities.rtl.css](/boostrap/css/bootstrap-utilities.rtl.css) | CSS | 4,887 | 6 | 500 | 5,393 |
+| [boostrap/css/bootstrap-utilities.rtl.min.css](/boostrap/css/bootstrap-utilities.rtl.min.css) | CSS | 1 | 5 | 0 | 6 |
+| [boostrap/css/bootstrap.css](/boostrap/css/bootstrap.css) | CSS | 11,136 | 24 | 897 | 12,057 |
+| [boostrap/css/bootstrap.min.css](/boostrap/css/bootstrap.min.css) | CSS | 2 | 4 | 0 | 6 |
+| [boostrap/css/bootstrap.rtl.css](/boostrap/css/bootstrap.rtl.css) | CSS | 11,138 | 6 | 886 | 12,030 |
+| [boostrap/css/bootstrap.rtl.min.css](/boostrap/css/bootstrap.rtl.min.css) | CSS | 2 | 4 | 0 | 6 |
+| [boostrap/css/style.css](/boostrap/css/style.css) | CSS | 82 | 2 | 16 | 100 |
+| [css/Apartarcupos.css](/css/Apartarcupos.css) | CSS | 305 | 2 | 72 | 379 |
+| [css/activar_afiliados.css](/css/activar_afiliados.css) | CSS | 342 | 3 | 47 | 392 |
+| [css/bienvenida.css](/css/bienvenida.css) | CSS | 332 | 3 | 59 | 394 |
+| [css/configuracion.css](/css/configuracion.css) | CSS | 214 | 2 | 46 | 262 |
+| [css/estilos.css](/css/estilos.css) | CSS | 52 | 1 | 14 | 67 |
+| [css/estilos_Recuperar.css](/css/estilos_Recuperar.css) | CSS | 79 | 1 | 22 | 102 |
+| [css/imc.css](/css/imc.css) | CSS | 258 | 8 | 48 | 314 |
+| [css/leerqr.css](/css/leerqr.css) | CSS | 143 | 4 | 33 | 180 |
+| [css/listado.css](/css/listado.css) | CSS | 328 | 3 | 52 | 383 |
+| [css/perfil.css](/css/perfil.css) | CSS | 382 | 3 | 74 | 459 |
+| [css/plan.css](/css/plan.css) | CSS | 235 | 4 | 62 | 301 |
+| [css/qr.css](/css/qr.css) | CSS | 107 | 3 | 24 | 134 |
+| [css/registros.css](/css/registros.css) | CSS | 359 | 3 | 69 | 431 |
+| [css/rutinas.css](/css/rutinas.css) | CSS | 223 | 4 | 31 | 258 |
+| [css/seccionrutinas.css](/css/seccionrutinas.css) | CSS | 359 | 3 | 62 | 424 |
+| [img/desktop.ini](/img/desktop.ini) | Ini | 7 | 0 | 0 | 7 |
+| [img/logo/desktop.ini](/img/logo/desktop.ini) | Ini | 7 | 0 | 0 | 7 |
+| [index.php](/index.php) | PHP | 398 | 3 | 13 | 414 |
+| [js/Adm/Listado.js](/js/Adm/Listado.js) | JavaScript | 59 | 6 | 7 | 72 |
+| [js/Bienvenida.js](/js/Bienvenida.js) | JavaScript | 19 | 0 | 3 | 22 |
+| [js/enlistar.js](/js/enlistar.js) | JavaScript | 11 | 1 | 1 | 13 |
+| [js/instructor/LeerQR.js](/js/instructor/LeerQR.js) | JavaScript | 58 | 13 | 19 | 90 |
+| [js/instructor/Listado.js](/js/instructor/Listado.js) | JavaScript | 62 | 7 | 8 | 77 |
+| [js/instructor/qrCode.min.js](/js/instructor/qrCode.min.js) | JavaScript | 88 | 19 | 0 | 107 |
+| [js/script.js](/js/script.js) | JavaScript | 43 | 0 | 5 | 48 |
+| [js/usuarios/Apartar_cupos.js](/js/usuarios/Apartar_cupos.js) | JavaScript | 75 | 2 | 10 | 87 |
+| [js/usuarios/Configuracion_user.js](/js/usuarios/Configuracion_user.js) | JavaScript | 23 | 0 | 1 | 24 |
+| [js/usuarios/Generar_Qr.js](/js/usuarios/Generar_Qr.js) | JavaScript | 19 | 10 | 9 | 38 |
+| [js/usuarios/imc.js](/js/usuarios/imc.js) | JavaScript | 44 | 0 | 2 | 46 |
+| [paginas/Administrador/activar_afiliados.php](/paginas/Administrador/activar_afiliados.php) | PHP | 300 | 3 | 18 | 321 |
+| [paginas/Administrador/actividades.php](/paginas/Administrador/actividades.php) | PHP | 291 | 2 | 15 | 308 |
+| [paginas/Administrador/asignar_instructor.php](/paginas/Administrador/asignar_instructor.php) | PHP | 322 | 4 | 16 | 342 |
+| [paginas/Administrador/capacidad.php](/paginas/Administrador/capacidad.php) | PHP | 296 | 4 | 16 | 316 |
+| [paginas/Administrador/enlistar.php](/paginas/Administrador/enlistar.php) | PHP | 212 | 1 | 12 | 225 |
+| [paginas/Administrador/perfil.php](/paginas/Administrador/perfil.php) | PHP | 435 | 0 | 21 | 456 |
+| [paginas/Administrador/registrar.php](/paginas/Administrador/registrar.php) | PHP | 311 | 1 | 11 | 323 |
+| [paginas/index/NuevaContrasena.php](/paginas/index/NuevaContrasena.php) | PHP | 151 | 2 | 15 | 168 |
+| [paginas/index/Olvidecontraseña.php](/paginas/index/Olvidecontrase%C3%B1a.php) | PHP | 149 | 1 | 16 | 166 |
+| [paginas/index/Verificacion_correo.php](/paginas/index/Verificacion_correo.php) | PHP | 144 | 3 | 15 | 162 |
+| [paginas/instructor/leer_qr.php](/paginas/instructor/leer_qr.php) | PHP | 275 | 2 | 12 | 289 |
+| [paginas/instructor/listar.php](/paginas/instructor/listar.php) | PHP | 190 | 1 | 9 | 200 |
+| [paginas/instructor/perfil.php](/paginas/instructor/perfil.php) | PHP | 416 | 0 | 18 | 434 |
+| [paginas/usuarios/Configuracion.php](/paginas/usuarios/Configuracion.php) | PHP | 443 | 1 | 23 | 467 |
+| [paginas/usuarios/apartar_cupos.php](/paginas/usuarios/apartar_cupos.php) | PHP | 410 | 2 | 11 | 423 |
+| [paginas/usuarios/imc.php](/paginas/usuarios/imc.php) | PHP | 242 | 0 | 5 | 247 |
+| [paginas/usuarios/qr.php](/paginas/usuarios/qr.php) | PHP | 254 | 2 | 12 | 268 |
+| [paginas/view/bienvenida.php](/paginas/view/bienvenida.php) | PHP | 347 | 0 | 9 | 356 |
+| [paginas/view/habitos.php](/paginas/view/habitos.php) | PHP | 318 | 0 | 13 | 331 |
+| [paginas/view/predefinidas.php](/paginas/view/predefinidas.php) | PHP | 488 | 0 | 8 | 496 |
+| [paginas/view/rutinas.php](/paginas/view/rutinas.php) | PHP | 350 | 0 | 7 | 357 |
+| [paginas/view/tren_inferior.php](/paginas/view/tren_inferior.php) | PHP | 475 | 0 | 12 | 487 |
+| [paginas/view/tren_superior.php](/paginas/view/tren_superior.php) | PHP | 572 | 0 | 14 | 586 |
+| [paginas/view/valores.php](/paginas/view/valores.php) | PHP | 360 | 0 | 11 | 371 |
+| [php/Activacion.php](/php/Activacion.php) | PHP | 36 | 4 | 4 | 44 |
+| [php/Activar_Afiliado.php](/php/Activar_Afiliado.php) | PHP | 63 | 9 | 5 | 77 |
+| [php/Actividad.php](/php/Actividad.php) | PHP | 93 | 5 | 4 | 102 |
+| [php/Actualizar_Contraseña.php](/php/Actualizar_Contrase%C3%B1a.php) | PHP | 94 | 8 | 7 | 109 |
+| [php/Adm/Buscar.php](/php/Adm/Buscar.php) | PHP | 26 | 7 | 6 | 39 |
+| [php/Adm/Listar.php](/php/Adm/Listar.php) | PHP | 22 | 4 | 10 | 36 |
+| [php/Adm/asignar_instructor.php](/php/Adm/asignar_instructor.php) | PHP | 32 | 8 | 9 | 49 |
+| [php/Adm/capacidad.php](/php/Adm/capacidad.php) | PHP | 35 | 6 | 6 | 47 |
+| [php/Capacidad.php](/php/Capacidad.php) | PHP | 53 | 4 | 2 | 59 |
+| [php/Conexion_bc.php](/php/Conexion_bc.php) | PHP | 20 | 6 | 2 | 28 |
+| [php/Conexion_json.php](/php/Conexion_json.php) | PHP | 15 | 1 | 5 | 21 |
+| [php/Cupos.php](/php/Cupos.php) | PHP | 168 | 17 | 16 | 201 |
+| [php/Eliminar_cuenta.php](/php/Eliminar_cuenta.php) | PHP | 36 | 1 | 1 | 38 |
+| [php/Generar_qr.php](/php/Generar_qr.php) | PHP | 22 | 2 | 2 | 26 |
+| [php/Instrcutor.php](/php/Instrcutor.php) | PHP | 51 | 2 | 4 | 57 |
+| [php/Instructor/Listar.php](/php/Instructor/Listar.php) | PHP | 26 | 5 | 6 | 37 |
+| [php/Leer_QR.php](/php/Leer_QR.php) | PHP | 89 | 6 | 5 | 100 |
+| [php/Login.php](/php/Login.php) | PHP | 113 | 8 | 13 | 134 |
+| [php/Registros_usuarios.php](/php/Registros_usuarios.php) | PHP | 148 | 23 | 5 | 176 |
+| [php/Sancion.php](/php/Sancion.php) | PHP | 41 | 3 | 5 | 49 |
+| [php/Validar_usuario.php](/php/Validar_usuario.php) | PHP | 50 | 0 | 3 | 53 |
+| [php/Verificacion_fechas.php](/php/Verificacion_fechas.php) | PHP | 29 | 0 | 2 | 31 |
+| [php/destruir_sesion.php](/php/destruir_sesion.php) | PHP | 21 | 6 | 4 | 31 |
+| [php/index/cerrar_sesion.php](/php/index/cerrar_sesion.php) | PHP | 18 | 0 | 2 | 20 |
+| [php/perfil.php](/php/perfil.php) | PHP | 102 | 4 | 13 | 119 |
+| [php/seguimientos.php](/php/seguimientos.php) | PHP | 59 | 8 | 4 | 71 |
+| [php/usuario/Actualizar_cupos.php](/php/usuario/Actualizar_cupos.php) | PHP | 73 | 9 | 5 | 87 |
+| [php/vendor_Recuperarcontraseña.php](/php/vendor_Recuperarcontrase%C3%B1a.php) | PHP | 41 | 9 | 5 | 55 |
+| [php/vendor_validar.php](/php/vendor_validar.php) | PHP | 35 | 5 | 4 | 44 |
+| [vendor/autoload.php](/vendor/autoload.php) | PHP | 20 | 1 | 5 | 26 |
+| [vendor/composer/ClassLoader.php](/vendor/composer/ClassLoader.php) | PHP | 286 | 235 | 59 | 580 |
+| [vendor/composer/InstalledVersions.php](/vendor/composer/InstalledVersions.php) | PHP | 178 | 133 | 49 | 360 |
+| [vendor/composer/autoload_classmap.php](/vendor/composer/autoload_classmap.php) | PHP | 6 | 1 | 4 | 11 |
+| [vendor/composer/autoload_namespaces.php](/vendor/composer/autoload_namespaces.php) | PHP | 5 | 1 | 4 | 10 |
+| [vendor/composer/autoload_psr4.php](/vendor/composer/autoload_psr4.php) | PHP | 6 | 1 | 4 | 11 |
+| [vendor/composer/autoload_real.php](/vendor/composer/autoload_real.php) | PHP | 25 | 4 | 10 | 39 |
+| [vendor/composer/autoload_static.php](/vendor/composer/autoload_static.php) | PHP | 28 | 1 | 8 | 37 |
+| [vendor/composer/installed.json](/vendor/composer/installed.json) | JSON | 90 | 0 | 1 | 91 |
+| [vendor/composer/installed.php](/vendor/composer/installed.php) | PHP | 32 | 0 | 1 | 33 |
+| [vendor/composer/platform_check.php](/vendor/composer/platform_check.php) | PHP | 21 | 1 | 5 | 27 |
+| [vendor/phpmailer/phpmailer/docs/README.md](/vendor/phpmailer/phpmailer/docs/README.md) | Markdown | 5 | 0 | 4 | 9 |
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

@@ -6,6 +6,8 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
     if ($rol != 1) {
         header('Location: ../../index.php');
     }
+    include '../../php/destruir_sesion.php';
+verificar_inactividad();
 } else {
     header('Location: ../../index.php');
 }

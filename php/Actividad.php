@@ -1,11 +1,12 @@
 <?php
+//Clase para suspender o activar actividades
 class Suspender_Actividades
 {
     private $conexion;
     private $accion;
     private $f_actual;
     private $f_final;
-
+//Constructor de la clase
     public function __construct($conexion, $accion, $f_actual, $f_final)
     {
         $this->conexion = $conexion;
@@ -15,6 +16,7 @@ class Suspender_Actividades
         
             $this->Activacion();           
     }
+    //Funcion para activar o suspender actividades
     private function Activacion()
     {
         try { 
@@ -88,7 +90,7 @@ class Suspender_Actividades
         }
     }
 }
-
+//Validar sesion
 session_start();
 if (!isset($_SESSION['Email'])) {
     header('Location: ../index.php');

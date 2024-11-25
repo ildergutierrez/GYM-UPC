@@ -5,6 +5,8 @@ if (!isset($_SESSION['Email'], $_SESSION['nombre'], $_SESSION['rol']) || $_SESSI
     exit();
 }
 $nombre = $_SESSION['nombre'];
+include '../../php/destruir_sesion.php';
+verificar_inactividad();
 ?>
 
 <!DOCTYPE html>

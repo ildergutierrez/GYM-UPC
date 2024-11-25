@@ -36,6 +36,7 @@ private function Accion(){
         } 
     }
 
+    // Función para bloquear el usuario
     private function Bloqueo(): void
     {
         $sql = "INSERT INTO `restricciones`(`id`, `fecha_inicio`, `fecha_reactivacion`) VALUES ('$this->documento','$this->hoy','$this->fecha')";

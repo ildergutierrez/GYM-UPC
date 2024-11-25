@@ -7,6 +7,8 @@ if (!isset($_GET['documento']) && !isset($_GET['fecha']) && !isset($_GET['hora']
     header('Location: ../index.php');
 }
 require_once('seguimientos.php');
+
+//class para leer el qr
 class Leer_QR
 {
     private $segimiento;
@@ -44,7 +46,6 @@ class Leer_QR
                     } else {
                         //Sanciona  al afiliado
                         $this->segimiento = new seguimeintos($this->conexion, $this->documento);
-
                         $accion = "DELETE FROM `cupos` WHERE `id` = '$this->documento'";
                         $respuesta = mysqli_query($this->conexion, $accion);
                         header("location: ../paginas/instructor/leer_qr.php?mensaje=2&documento=$this->documento&hora=$this->hora&fecha=$this->fecha&lugar=$this->sede&limite=$this->limite");
@@ -61,14 +62,16 @@ class Leer_QR
             $this->Proceso();
         }
     }
+    //Proceso de eliminacion
     private function Proceso():void
     {
         $this->segimiento = new seguimeintos($this->conexion, $this->documento);
         $accion = "DELETE FROM `cupos` WHERE `id` = '$this->documento'";
-        $respuesta = mysqli_query($this->conexion, $accion);
+        mysqli_query($this->conexion, $accion);
         header("location: ../paginas/instructor/leer_qr.php?mensaje=2&documento=$this->documento&hora=$this->hora&fecha=$this->fecha&lugar=$this->sede&limite=$this->limite");
         exit();
     }
+    //Validar la hora
     private function Validar_Hora($limite): bool
     {
         $hora_actual = date("H:i ");
@@ -77,6 +80,7 @@ class Leer_QR
         $diferncia = ($hora - $hora_actual) / 3600;
         return $diferncia >= 0;
     }
+    //Validar la fecha
     private function Validar_Fecha($limite): bool
     {
         $fecha_actual = date("Y-m-d");

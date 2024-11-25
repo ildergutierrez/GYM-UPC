@@ -12,6 +12,8 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
     $sede = "Aguachica";
     $telefono = $_SESSION['telefono'];
     $sexo = $_SESSION['genero'];
+    include '../../php/destruir_sesion.php';
+verificar_inactividad();
 } else {
     header('Location: ../../index.php');
 }

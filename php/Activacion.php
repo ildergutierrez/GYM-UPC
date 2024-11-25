@@ -1,4 +1,5 @@
 <?php
+//la clase Activar_Automatica se encarga de activar o desactivar a los afiliados la pagina web de forma automatica
 class Activar_Automatica
 {
     private $inicio;
@@ -15,7 +16,6 @@ class Activar_Automatica
             $this->inicio = strtotime($this->inicio->format('Y-m-d'));//Se convierte la fecha a un formato de tiempo
             $this->fin = new DateTime($fila['final']);//Se crea un objeto de tipo DateTime
             $this->fin = strtotime($this->fin->format('Y-m-d'));//Se convierte la fecha a un formato de tiempo
-
             $f_actual = date('Y-m-d');//Se obtiene la fecha actual
             $f_actual = strtotime($f_actual);//Se convierte la fecha a un formato de tiempo
 

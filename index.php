@@ -43,7 +43,7 @@ if(isset($_GET['usuario'])){
 
 <body>
 <?php if (isset($_GET['usuario'])) { ?>
-    <?php if($_GET['usuario']=="session_expired"){ ?>
+    <?php if($_GET['usuario']=="session_expired "){ ?>
         <div class="alert alert-primary" id="accion" role="alert" style="border-top: none; border-bottom: solid 2px #ffcc53; border-right: solid 2px #0B7F46; border-left: solid 2px #0B7F46; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; background: #121A1C; color:#ffffff;  position: fixed; z-index: 999; margin-top: 0; width: 100%; display: block;">
             <center>
                 <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
