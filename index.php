@@ -214,7 +214,7 @@ if(isset($_GET['usuario'])){
                                         </div>
                                     </div>
                                     <!-- nombre -->
-                                    <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none; font-size: 12px;">Nombre Completo* </label>
+                                    <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none; font-size: 12px;">Nombres y apellidos* </label>
                                     <div class="input-group mb-3">
                                         <input style="height: 26px;" type="text" name="nombre" id="documento" required class="form-control" aria-label="Text input with checkbox">
                                         <div class="input-group-text" style=" height: 26px; background: #121A1C; color: #E5E5E5;">
@@ -247,7 +247,7 @@ if(isset($_GET['usuario'])){
                                         <div id="Remplazo" onclick="Desifrado( document.getElementById('contra'))" class="input-group-text" style="background: #121A1C; color: #E5E5E5; display: block;  height: 30px; cursor: pointer;">
                                             <span style="height: 26px;" class="material-symbols-outlined span"> key </span>
                                         </div>
-
+                                        <div style="display: none; color: red; font-weight: bold;" id="razon"><p><i>Debe contener minimo 8  caracteres conformados por: Numero, mayusculas, menusculas y caractere especial</i></p></div>
                                     </div>
                                     <!-- Sede -->
                                     <label class="form-control" style=" text-align: left; background: transparent; padding: 0; border: none; font-size: 12px;">Sede * </label>
@@ -352,6 +352,14 @@ if(isset($_GET['usuario'])){
     <script>
         document.getElementById('numeroIdentidad').addEventListener('input', function(e) {
             this.value = this.value.replace(/[^0-9]/g, '');
+        });
+        document.getElementById('contra').addEventListener('input', function(e) {
+            if(this.value.length  >0){
+                document.getElementById('razon').style.display = 'block'; // Ocultar mensaje
+                }
+                else{
+                    document.getElementById('razon').style.display = 'none';
+                }
         });
         document.getElementById('numerocel').addEventListener('input', function(e) {
             this.value = this.value.replace(/[^0-9]/g, '');

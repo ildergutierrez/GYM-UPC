@@ -129,9 +129,6 @@ verificar_inactividad();
                     <div class="col-md-7">
                         <h4><b>Afiliados</b></h4>
                     </div>
-                    <div class="col-md-5">
-                        <input type="text" id="filtro" placeholder="  Buscar" onkeyup="filtrarTabla()">
-                    </div>
                 </div>
                 <table class="usuarios" id="tabla">
                     <thead>
@@ -159,6 +156,7 @@ verificar_inactividad();
                      <tbody id="tablebody_usuario"></tbody>
                 </table>
             </div>
+            <br><br><br><br><br><br><br>
             <!-- Fin de la tabla -->
         </main>
         <footer>

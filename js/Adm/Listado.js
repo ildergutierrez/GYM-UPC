@@ -3,12 +3,16 @@ let datat;
 let inicio = false;
 // Opciones de DataTables
 const dataopciones = {
-    searching: false,  // Deshabilita la búsqueda en la tabla, ya que se hará desde el input externo
+    searching: true,  // Deshabilita la búsqueda en la tabla, ya que se hará desde el input externo
     paging: true,            // Habilita la paginación
     pageLength: 10,           // Define el número de registros por página
-    info: false,             // Oculta el texto de información (ej. "Mostrando de _START_ a _END_ de _TOTAL_ registros")
+    info: true,             // Oculta el texto de información (ej. "Mostrando de _START_ a _END_ de _TOTAL_ registros")
     lengthChange: false,     // Oculta el selector de cantidad de registros
     language: {              // Configuración del texto de la paginación
+        info: "Mostrando de _START_ a _END_ de un total de _TOTAL_ registros",
+        infoEmpty: "Ningún Usuario encontrado",
+        infoFiltered: "(filtrados desde _MAX_ registros totales)",
+        search: "Documento",
         paginate: {
             first: "Primero",
             last: "Último",

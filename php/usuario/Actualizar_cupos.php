@@ -21,9 +21,9 @@ class Actualizar_cupos
                 $id = $cupos['id'];
                 $fecha = $cupos['fecha'];
                 $hora = $cupos['hora_limite'];
-                echo "<br>id".$id."<br>fecha".$fecha."<br>hora".$hora."<br><br>";
+                // echo "<br>id".$id."<br>fecha".$fecha."<br>hora".$hora."<br><br>";
                 $d=$this->Hora($hora, $fecha);
-                echo "<br> llamada hora".$d;
+                // echo "<br> llamada hora".$d;
                 // die();
                 if ($d < 0) {
                     // Si la hora o fecha no son válidas, actualiza el registro
@@ -43,10 +43,11 @@ class Actualizar_cupos
 
     //validar hora
     function Hora($hora, $fecha):int
-    {  echo "<br>Hora (hora)".$hora;
-        echo "<br>Fecha".$fecha;
+    {  
+        // echo "<br>Hora (hora)".$hora;
+        // echo "<br>Fecha".$fecha;
         $fecha_estado = $this->Fecha($fecha);
-        echo "<br>".$fecha_estado."sss<br>";
+        // echo "<br>".$fecha_estado."sss<br>";
         if ($fecha_estado > 1) {
             return 1;
         }
@@ -55,7 +56,7 @@ class Actualizar_cupos
             $hora1 = strtotime($hora);//hora de la base de datos
             $hora2 = strtotime($hora_actual);//hora actual
             $zonah = ($hora1 - $hora2) / 3600;
-            echo "<br>Diferencia horas".$zonah;
+            // echo "<br>Diferencia horas".$zonah;
             if ($zonah < 0) {
                 return -1;
             }

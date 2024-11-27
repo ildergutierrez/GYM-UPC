@@ -105,11 +105,9 @@ $nombre = $_SESSION['nombre'];
             <div class="container tablas">
                 <div class="row" style="padding: 9px;">
                     <div class="col-md-7">
-                        <h4><b>Afiliados</b></h4>
+                        <h4><b>Reservaciones</b></h4>
                     </div>
-                    <div class="col-md-5">
-                        <input type="text" id="filtro" placeholder="  Buscar" onkeyup="filtrarTabla()">
-                    </div>
+                    
                 </div>
                 <table class="usuarios" id="tabla">
                     <thead>
@@ -134,6 +132,7 @@ $nombre = $_SESSION['nombre'];
                     <tbody id="tablebody_usuario"></tbody>
                 </table>
             </div>
+            <br><br><br><br><br><br><br>
             <!-- Fin de la tabla -->
         </main>
         <footer>

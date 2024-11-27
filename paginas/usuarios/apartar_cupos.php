@@ -136,7 +136,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                 <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
                         warning
                         <?php if($_GET['mensaje'] == "0"){ ?>
-                    </span> &ensp; !upss. ocurrio un error!<br>Verifica Fecha y/o Hora. <br>Nota: Tal ves tu cupo ya fue apartado.
+                    </span> &ensp; !upss. ocurrio un error!<br>Verifica Fecha y/o Hora. <br>Nota: Tal ves tu cupo ya fue apartado. <br>Intenta con otra fecha y/o hora. Es posible que la fecha y hora seleccionada ya esten al limite de cupos.
                     <?php } elseif($_GET['mensaje'] == "2") {?>
                         </span> &ensp; Verifica que la fecha selecionada  no este dentro del rango de fechas sin actividad en GYM. <br>No hay actvidades desde el día <?php echo $_SESSION['r_inicio'] ?> hasta <?php echo $_SESSION['r_final'] ?>
                         <?php } elseif($_GET['mensaje'] == "3"){ ?>

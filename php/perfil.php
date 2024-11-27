@@ -1,67 +1,80 @@
 <?php
+// echo "Hola";
 session_start();
 if (!isset($_POST['documento']) && !isset($_POST['rol'])) {
-
     header('Location: ../index.php');
     exit();
 }
-include('Conexion_bc.php');
 
 class Perfil
 {
     private  $conexion; // Guarda la conexión en una variable
-    private $rol ;
-    private $documento ;
-    private $correo ;
+    private $rol;
+    private $documento;
+    private $correo;
     private $nombre;
     private $celular;
-    private $genero ;
-    private $sede ;
-    private $contrasena ;
+    private $genero;
+    private $sede;
+    private $contrasena;
 
-    public function __construct($conexion, $documento, $correo, $nombre, $celular, $genero, $sede, $contrasena,$rol)
+    public function __construct($conexion, $documento, $correo, $nombre, $celular, $genero, $sede, $contrasena, $rol)
     {
+        // echo $sede;
+        // echo $rol;
         $this->conexion = $conexion;
         $this->documento = trim($documento);
         $this->correo = trim($correo);
         $this->nombre = $nombre;
         $this->celular = $celular;
         $this->genero = $genero;
+        // die($this->Sede($sede));
         $this->sede = $this->Sede($sede);
         $this->contrasena = $contrasena;
-        $this->rol = $rol;
+        $this->rol =$this->VRol( $rol);
+        // echo $this->rol."-";
+        // die($this->validar_datos());
         $this->Reescribir();
     }
 
     // Funciones
     private function Sede($sede): int
     {
-        if ($this->sede === "Aguachica") {
-            return 1;
+        $valor = 0;
+        // echo "Hola-s";
+        if ($sede == 'Aguachica' || $sede == "") {
+            $valor = 1;
         } else {
-            return 2;
+            $valor = 2;
         }
+        // echo $valor;
+        return $valor;
     }
     // Funcion para validar los datos, si estan vacios o no
     function Validar_Datos(): bool
     {
-        if (empty($this->correo) || empty($this->nombre) || empty($$this->elular) || empty($this->genero) || empty($this->sede) || empty($this->contrasena) || empty($this->documento) || empty($this->rol)) {
-            if ($this->rol === "3" && str_contains($this->correo, "@unicesar.edu.co") && $this->sede === 1) {
+        if (empty($this->correo) || empty($this->nombre) || empty($this->elular) || empty($this->genero) || empty($this->sede) || empty($this->contrasena) || empty($this->documento) || empty($this->rol)) {
+            if ($this->rol == 3 && str_contains($this->correo, "@unicesar.edu.co") && $this->sede == 1) {
                 return true;
-            } else {
-                return false;
             }
-            if ($rol !== "3") {
+            if ($this->rol !== 3) {
                 return true;
             }
         }
         return false;
     }
 
+    private function VRol($rol)
+    {
+        if ($rol == "Administrador")
+            return 1;
+        if ($rol == "Instructor")
+            return 2;
+        return 3;
+    }
     //funcion para validar la contraseña
     function Contrasena_actual($contrasena): bool
     {
-
         $qerry = "SELECT * FROM usuarios WHERE id = '$this->documento'";
         $busqueda = mysqli_query($this->conexion, $qerry);
         if ($busqueda && mysqli_num_rows($busqueda) > 0) {
@@ -95,11 +108,13 @@ class Perfil
     }
     private function Reescribir()
     {
+        echo $this->Validar_Datos();
+        // die($this->Contrasena_actual($this->contrasena));
         if ($this->Validar_Datos() && $this->Contrasena_actual($this->contrasena)) {
 
             if ($this->Actualizar_Datos()) {
                 $_SESSION['Email'] = $this->correo;
-                $_SESSION['nombre'] = strtoupper($this->nombre);
+                $_SESSION['nombre'] = ucwords(strtolower($this->nombre));
                 $_SESSION['documento'] = trim($this->documento);
                 $_SESSION['telefono'] = trim($this->celular);
                 $_SESSION['genero'] = trim($this->genero);
@@ -114,5 +129,6 @@ class Perfil
         }
     }
 }
-
-$perfil = new Perfil($conexion, $_POST['documento'], $_POST['correo'], $_POST['nombre'], $_POST['celular'], $_POST['op'], $_POST['sede'], $_POST['password'], $_POST['rol']);
+require('Conexion_bc.php');
+$conexion = conexion();
+new Perfil($conexion, $_POST['documento'], $_POST['correo'], $_POST['nombre'], $_POST['celular'], $_POST['op'], $_POST['sede'], $_POST['password'], $_POST['rol']);

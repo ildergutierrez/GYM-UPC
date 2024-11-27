@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
   $nombre = $_SESSION['nombre'];
-  $rol =  $_SESSION['rol'];
+  $rol = $_SESSION['rol'];
   $documento = $_SESSION['documento'];
   include '../../php/destruir_sesion.php';
   verificar_inactividad($rol);
@@ -307,7 +307,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
             </div>
           </div>
         </div>
-        <br><br>
+        <br><br><br><br><br> <br><br><br><br><br><br><br>
     </main>
     <footer>
       <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">

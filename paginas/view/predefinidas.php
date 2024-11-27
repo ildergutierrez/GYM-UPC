@@ -446,6 +446,7 @@ if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['
             </div>
         </div>
     </div>
+    <br><br><br>
 </div>
 </main>
         <footer>

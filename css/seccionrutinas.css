@@ -1,424 +1,487 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    /* backdrop-filter: blur(10px); */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  /* backdrop-filter: blur(10px); */
 }
 
 /* Para navegadores basados en WebKit (Chrome, Safari) */
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 html {
-    scrollbar-width: none;
-}
-
-footer {
-    position: absolute;
-    bottom: -70%;
-    width: 100%;
+  scrollbar-width: none;
 }
 
 .nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-    right: 180px;
-    position: absolute;
-    top: 0;
+  display: block;
+  right: 180px;
+  position: absolute;
+  top: 0;
 }
 
 .planes a {
-    text-decoration: none;
-
+  text-decoration: none;
 }
 
 .dropdown-menu {
-    display: none;
-    /* Oculta el menú por defecto */
+  display: none;
+  /* Oculta el menú por defecto */
 }
 
 body {
-    overflow: auto;
+  overflow: auto;
 }
 
 .planes {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .fondo_superior {
-    background-image: url(../img/tren\ s.jpg);
-    height: 200px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-    border-radius: 15px;
-    overflow: hidden;
+  background-image: url(../img/tren\ s.jpg);
+  height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .fondo_inferior {
-    background-image: url(../img/Tren-Inferior.png);
-    height: 200px;
+  background-image: url(../img/Tren-Inferior.png);
+  height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.fondo_predeterminado {
+  background-image: url(../img/DEFINIDAS.jpg);
+  height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.color {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.planes .row .col-md-6 a {
+  color: #000000;
+  font-size: 20px;
+  margin: 0px;
+  border-radius: 15px;
+  text-decoration: none;
+}
+
+.nombre {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000000;
+  border-bottom-right-radius: 25px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  width: 50%;
+  text-align: center;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-link:hover {
+  border-bottom: solid 3px #ffcc53;
+}
+
+.dropdown-menu {
+  background: #ffcc53;
+}
+
+.dropdown-item {
+  color: #000000;
+  border-bottom: solid 0.5px #ffffff;
+  font-weight: bold;
+}
+
+.dropdown-item:hover {
+  background: #0b7f46;
+  color: #ffffff;
+  border: solid 1px #ffffff;
+  border-radius: 5px;
+}
+
+.Bienvenida {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  width: 70%;
+  display: block;
+  border-bottom: solid 3px #fff;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.carrusel {
+  margin: 0;
+  left: auto;
+  width: 90%;
+  padding: 0;
+  font-size: 15px;
+  overflow: hidden;
+  border-radius: 15px;
+  margin: auto;
+  max-height: 300px;
+}
+
+footer {
+position: fixed  ;
+        bottom: 0;
+        width: 100%;
+    }
+
+@media screen and (max-width: 500px) {
+  footer {
+    position: absolute;
+    margin: 0;
+    width: 100%;
+    bottom: 800px;
+  }
+
+  main .container #nombre.d-flex.Bienvenida {
+    top: 80px;
+    left: 10px;
+  }
+
+  body div.container-fluid {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    position: none;
+  }
+
+  .cel {
+    background: #ffffff;
+    border: solid 1px #000000;
+    display: block;
+    position: relative;
+  }
+
+  .cabeza_cel {
+    border: solid 1px #ffffff;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #0b7f46, #ffcc53);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  footer {
+    position: absolute;
+    bottom: -950px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    position: none;
+  }
+
+  .cel {
+    background: #ffffff;
+    border: solid 1px #000000;
+    display: block;
+    position: relative;
+  }
+
+  .cabeza_cel {
+    border: solid 1px #ffffff;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #0b7f46, #ffcc53);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  main .container .d-flex img {
+    position: fixed;
+    top: 15px;
+    left: 2px;
+    width: 30%;
+  }
+
+  footer {
+    position: absolute;
+    margin-top: 25%;
+  }
+
+  .col-md-4 {
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  .fondo_superior {
+    background-image: url(../img/tren\ s.jpg);
+    height: 100px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
     border-radius: 15px;
-    overflow: hidden;
-}
+    width: 70%;
+    margin: auto;
+  }
 
-.fondo_predeterminado {
+  .fondo_inferior {
+    background-image: url(../img/Tren-Inferior.png);
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    border-radius: 15px;
+    width: 70%;
+    margin: auto;
+  }
+
+  .fondo_predeterminado {
     background-image: url(../img/DEFINIDAS.jpg);
-    height: 200px;
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    border-radius: 15px;
+    width: 70%;
+    margin: auto;
+  }
+
+  .fondo_habitos {
+    background-image: url(../img/habitos.webp);
+    height: 100px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 15px;
-    overflow: hidden;
-}
-
-.color {
-    background: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
-}
-
-.planes .row .col-md-6 a {
-    color: #000000;
-    font-size: 20px;
-    margin: 0px;
-    border-radius: 15px;
-    text-decoration: none;
-}
-
-.nombre {
-    background: rgba(255, 255, 255, 0.8);
-    color: #000000;
-    border-bottom-right-radius: 25px;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 16px;
-    width: 50%;
-    text-align: center;
-}
-
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-.nav-link:hover {
-    border-bottom: solid 3px #ffcc53;
-}
-
-.dropdown-menu {
-    background: #ffcc53;
-
-}
-
-.dropdown-item {
-    color: #000000;
-    border-bottom: solid 0.5px #ffffff;
-    font-weight: bold;
-}
-
-.dropdown-item:hover {
-    background: #0B7F46;
-    color: #ffffff;
-    border: solid 1px #ffffff;
-    border-radius: 5px;
-}
-
-.Bienvenida {
-    position: absolute;
-    top: 100px;
-    left: 200px;
     width: 70%;
-    display: block;
-    border-bottom: solid 3px #fff;
-    color: #ffffff;
-    font-size: 15px;
-}
+    margin: auto;
+    overflow: hidden;
+  }
 
-.carrusel {
-    margin: 0;
+  .Bienvenida {
+    position: absolute;
+    top: 130px;
+    left: -100px;
+    width: 90%;
+  }
+
+  .Bienvenida h1 {
+    font-size: small;
+    font-weight: bold;
+    display: block;
+  }
+
+  .carrusel {
+    margin: auto;
     left: auto;
     width: 90%;
     padding: 0;
     font-size: 15px;
     overflow: hidden;
     border-radius: 15px;
-    margin: auto;
-    max-height: 300px;
+    top: 200px;
+  }
 
-}
+  .carousel-control-prev {
+    top: -60px;
+    left: -150px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative;
+  }
 
-@media screen and (max-width: 500px) {
-    footer {
-        position: absolute;
-        margin: 0;
-        width: 100%;
-        bottom: 800px;
-    }
+  .carousel-control-next {
+    top: -90px;
+    right: -150px;
+    padding: 0%;
+    margin: 0;
+    position: relative;
+    width: 100%;
+  }
 
-    main .container #nombre.d-flex.Bienvenida {
-        top: 80px;
-        left: 10px;
-    }
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    position: none;
+  }
+  .cel {
+    background: #ffffff;
+    border: solid 1px #000000;
+    display: block;
+    position: relative;
+  }
 
-    body div.container-fluid {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        left: 0;
-        right: 0;
-    }
-
-    .nav-item.dropdown:hover .dropdown-menu {
-        display: block;
-        position: none;
-    }
-
-    .cel {
-        background: #ffffff;
-        border: solid 1px #000000;
-        display: block;
-        position: relative;
-    }
-
-    .cabeza_cel {
-        border: solid 1px #ffffff;
-        border-radius: 4px;
-        background: linear-gradient(90deg, #0B7F46, #ffcc53);
-    }
-}
-
-@media screen and (max-width: 800px) {
-    footer {
-        position: absolute;
-        bottom: -950px;
-        margin: 0;
-        padding: 0;
-    }
-
-    .nav-item.dropdown:hover .dropdown-menu {
-        display: block;
-        position: none;
-    }
-
-    .cel {
-        background: #ffffff;
-        border: solid 1px #000000;
-        display: block;
-        position: relative;
-    }
-
-    .cabeza_cel {
-        border: solid 1px #ffffff;
-        border-radius: 4px;
-        background: linear-gradient(90deg, #0B7F46, #ffcc53);
-    }
-}
-
-@media screen and (max-width: 900px) {
-    main .container .d-flex img {
-        position: fixed;
-        top: 15px;
-        left: 2px;
-        width: 30%;
-    }
-
-    footer {
-        position: absolute;
-        margin-top: 25%;
-    }
-
-
-
-    .col-md-4 {
-        margin-bottom: 20px;
-        padding: 20px;
-
-    }
-
-    .fondo_superior {
-        background-image: url(../img/tren\ s.jpg);
-        height: 100px;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: top;
-        border-radius: 15px;
-        width: 70%;
-        margin: auto;
-
-    }
-
-    .fondo_inferior {
-        background-image: url(../img/Tren-Inferior.png);
-        height: 100px;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: top;
-        border-radius: 15px;
-        width: 70%;
-        margin: auto;
-    }
-
-    .fondo_predeterminado {
-        background-image: url(../img/DEFINIDAS.jpg);
-        height: 100px;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: bottom;
-        border-radius: 15px;
-        width: 70%;
-        margin: auto;
-    }
-
-    .fondo_habitos {
-        background-image: url(../img/habitos.webp);
-        height: 100px;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 15px;
-        width: 70%;
-        margin: auto;
-        overflow: hidden;
-    }
-
-    .Bienvenida {
-        position: absolute;
-        top: 130px;
-        left: -100px;
-        width: 90%;
-    }
-
-    .Bienvenida h1 {
-        font-size: small;
-        font-weight: bold;
-        display: block;
-    }
-
-    .carrusel {
-        margin: auto;
-        left: auto;
-        width: 90%;
-        padding: 0;
-        font-size: 15px;
-        overflow: hidden;
-        border-radius: 15px;
-        top: 200px;
-    }
-
-    .carousel-control-prev {
-        top: -60px;
-        left: -150px;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        position: relative;
-    }
-
-    .carousel-control-next {
-        top: -90px;
-        right: -150px;
-        padding: 0%;
-        margin: 0;
-        position: relative;
-        width: 100%;
-    }
-
-    .nav-item.dropdown:hover .dropdown-menu {
-        display: block;
-        position: none;
-    }
-    .cel {
-        background: #ffffff;
-        border: solid 1px #000000;
-        display: block;
-        position: relative;
-    }
-
-    .cabeza_cel {
-        border: solid 1px #ffffff;
-        border-radius: 4px;
-        background: linear-gradient(90deg, #0B7F46, #ffcc53);
-    }
+  .cabeza_cel {
+    border: solid 1px #ffffff;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #0b7f46, #ffcc53);
+  }
 }
 
 @media screen and (max-width: 1150px) {
-    main .container .d-flex img {
-        position: fixed;
-        top: 15px;
-        left: 8px;
-        width: 13%;
-    }
+  main .container .d-flex img {
+    position: fixed;
+    top: 15px;
+    left: 8px;
+    width: 13%;
+  }
 
-    .Bienvenida {
-        position: absolute;
-        top: 80px;
-        left: 140px;
-        width: 90%;
-    }
+  .Bienvenida {
+    position: absolute;
+    top: 80px;
+    left: 140px;
+    width: 90%;
+  }
 
-    .Bienvenida h1 {
-        font-size: small;
-        font-weight: bold;
-        display: block;
-    }
+  .Bienvenida h1 {
+    font-size: small;
+    font-weight: bold;
+    display: block;
+  }
 
-    .carrusel {
-        margin: auto;
-        left: auto;
-        width: 90%;
-        padding: 0;
-        font-size: 15px;
-        overflow: hidden;
-        border-radius: 15px;
-        top: 200px;
-    }
+  .carrusel {
+    margin: auto;
+    left: auto;
+    width: 90%;
+    padding: 0;
+    font-size: 15px;
+    overflow: hidden;
+    border-radius: 15px;
+    top: 200px;
+  }
 
-    .carousel-control-prev {
-        top: -80px;
-        left: -300px;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        position: relative;
-    }
+  .carousel-control-prev {
+    top: -80px;
+    left: -300px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative;
+  }
 
-    .carousel-control-next {
-        top: -120px;
-        right: -300px;
-        padding: 0%;
-        margin: 0;
-        position: relative;
-        width: 100%;
+  .carousel-control-next {
+    top: -120px;
+    right: -300px;
+    padding: 0%;
+    margin: 0;
+    position: relative;
+    width: 100%;
+  }
 
-    }
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    position: none;
+  }
+  .cel {
+    background: #ffffff;
+    border: solid 1px #000000;
+    display: block;
+    position: relative;
+  }
 
-    .nav-item.dropdown:hover .dropdown-menu {
-        display: block;
-        position: none;
-    }
-    .cel {
-        background: #ffffff;
-        border: solid 1px #000000;
-        display: block;
-        position: relative;
-    }
+  .cabeza_cel {
+    border: solid 1px #ffffff;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #0b7f46, #ffcc53);
+  }
 
-    .cabeza_cel {
-        border: solid 1px #ffffff;
-        border-radius: 4px;
-        background: linear-gradient(90deg, #0B7F46, #ffcc53);
-    }
-
-    footer {
-        position: static;
-        margin-top: 25%;
-    }
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
 }
+
+@media screen and (max-width: 2000px) {
+  .carousel-control-prev {
+    height: 500px;
+  }
+  .carousel-control-next {
+    height: 500px;
+  }
+  main .container .d-flex img {
+    position: fixed;
+    top: 15px;
+    left: 8px;
+    width: 13%;
+  }
+
+  .Bienvenida {
+    position: absolute;
+    top: 80px;
+    left: 200px;
+    width: 90%;
+  }
+
+  .Bienvenida h1 {
+    font-size: small;
+    font-weight: bold;
+    display: block;
+  }
+
+  footer {
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+/* @media screen and (max-width: 3000px) {
+  .carousel-control-prev {
+    height: 700px;
+  }
+  .carousel-control-next {
+    height: 700px;
+  }
+  main .container .d-flex img {
+    position: fixed;
+    top: 15px;
+    left: 8px;
+    width: 13%;
+  }
+
+  .Bienvenida {
+    position: absolute;
+    top: 100px;
+    left: 250px;
+    width: 90%;
+  }
+
+  .Bienvenida h1 {
+    font-size: small;
+    font-weight: bold;
+    display: block;
+  }
+
+  footer {
+    margin: 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+} */
