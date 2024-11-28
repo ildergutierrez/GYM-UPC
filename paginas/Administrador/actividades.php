@@ -1,11 +1,11 @@
 <?php
 //*debe ser corregido este archivo*
 session_start();
-if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])==1) {
+if (isset($_SESSION['Email']) && isset($_SESSION['nombre']) && isset($_SESSION['rol']) == 1) {
     $nombre = $_SESSION['nombre'];
     $rol = $_SESSION['rol'];
     include '../../php/destruir_sesion.php';
-verificar_inactividad();
+    verificar_inactividad();
 } else {
     header('Location: ../../index.php');
 }
@@ -36,8 +36,7 @@ verificar_inactividad();
 
 <body>
     <div class="container-fluid" style="padding: 0;">
-
-    <?php if (isset($_GET['respuesta'])) { ?>
+        <?php if (isset($_GET['respuesta'])) { ?>
             <div id="accion" class="alert alert-primary" role="alert" style="display: block; border: solid 2px #0b7f46; background: #ffcc53; color:#ffffff; font-weight: bold; position: fixed; z-index: 1100; margin-top: 10px; width: 100%;">
                 <center>
                     <?php if ($_GET['respuesta'] == '1') { ?>
@@ -48,7 +47,7 @@ verificar_inactividad();
                                 <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
                             </button>
                         </div>
-                        <?php } elseif ($_GET['respuesta'] == '2') { ?>
+                    <?php } elseif ($_GET['respuesta'] == '2') { ?>
                         <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
                                 check
                             </span> &ensp; !Suspencion Activada!
@@ -66,7 +65,7 @@ verificar_inactividad();
                         </div>
                     <?php } else { ?>
                         <div class="container"><span class="material-symbols-outlined" style="vertical-align: middle;">
-                        warning
+                                warning
                             </span> &ensp; !Ups, Ocurrio un problema!
                             <button onclick="Cerrar_Alerta()" style=" float: inline-end; margin-top: 0px; background: transparent; border: none;  color: #FFFFFF; font-weight: bold;">
                                 <p style="border-bottom: solid 2px #0b7f46; padding: 0;"> Cerrar</p>
@@ -197,79 +196,80 @@ verificar_inactividad();
                                         </span>
                                     </div>
                                 </div>
-                                </div>
                             </div>
-                            <!-- Fin fechas -->
-                            <div class="mb-3">
-                                <label for="lugar" class="form-label" style="color: #FFFFFF;">Fecha de finalización *</label>
-                                <div class="input-group">
-                                    <input type="text" name="final" readonly required id="seleccion" class="form-control" aria-label="Lugar">
-                                    <div style=" color: #E5E5E5;  width: 10%;"> <span id="fecha" class="input-group-text">
-                                            <i class="material-icons" onclick="Fecha(document.getElementById('fecha'),document.getElementById('seleccion'))">today</i>
-                                        </span>
-                                    </div>
+                        </div>
+                        <!-- Fin fechas -->
+                        <div class="mb-3">
+                            <label for="lugar" class="form-label" style="color: #FFFFFF;">Fecha de finalización *</label>
+                            <div class="input-group">
+                                <input type="text" name="final" readonly required id="seleccion" class="form-control" aria-label="Lugar">
+                                <div style=" color: #E5E5E5;  width: 10%;"> <span id="fecha" class="input-group-text">
+                                        <i class="material-icons" onclick="Fecha(document.getElementById('fecha'),document.getElementById('seleccion'))">today</i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="container s2">
                         <center> <button type="submit" class="btn btn-success A_cupos ">Guardar</button>
                         </center>
                     </div>
                 </form>
-                <br><br>    
             </div>
-        </main>
-        <footer>
-            <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
-                <div class="row">
-                    <div class="col-8" style="color: #ffffff; text-align: end">
-                        <h6>
-                            © copyright: <a href="../view/valores.php" style="text-decoration: none; color: #ffffff;">Universidad Popular del Cesar, seccional Aguachica</a>
-                        </h6>
-                    </div>
-                    <div class="col-4 d-flex justify-content-end">
-                        <div class="social-icons">
-                            <!-- Facebook -->
-                            <a
-                                href="https://www.facebook.com/seccionalupcaguachica"
-                                target="_blank"
-                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
+            <br><br>
+    </div>
+    </main>
+    <footer>
+        <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">
+            <div class="row">
+                <div class="col-8" style="color: #ffffff; text-align: end">
+                    <h6>
+                        © copyright: <a href="../view/valores.php" style="text-decoration: none; color: #ffffff;">Universidad Popular del Cesar, seccional Aguachica</a>
+                    </h6>
+                </div>
+                <div class="col-4 d-flex justify-content-end">
+                    <div class="social-icons">
+                        <!-- Facebook -->
+                        <a
+                            href="https://www.facebook.com/seccionalupcaguachica"
+                            target="_blank"
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
 
-                            <!-- Pagina web -->
-                            <a
-                                href="https://aguachica.unicesar.edu.co/"
-                                target="_blank"
-                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
-                                <span class="material-symbols-outlined" style="vertical-align: middle;">
-                                    language
-                                </span>
-                            </a>
+                        <!-- Pagina web -->
+                        <a
+                            href="https://aguachica.unicesar.edu.co/"
+                            target="_blank"
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                            <span class="material-symbols-outlined" style="vertical-align: middle;">
+                                language
+                            </span>
+                        </a>
 
-                            <!-- Instagram -->
-                            <a
-                                href="https://www.instagram.com/upcseccionalaguachica/"
-                                target="_blank"
-                                style="color: #ffffff; margin-right: 16px; text-decoration: none;">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
+                        <!-- Instagram -->
+                        <a
+                            href="https://www.instagram.com/upcseccionalaguachica/"
+                            target="_blank"
+                            style="color: #ffffff; margin-right: 16px; text-decoration: none;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="../../js/Bienvenida.js"></script>
-        <script src="../../js/script.js"></script>
-        <!-- Flatpickr JS -->
-        <!-- Permite desplegar el calendario y al elegir una opcion se le pase al input o label -->
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="../../js/usuarios/Apartar_cupos.js"></script>
-        <script>
-            // Funcion para seleccionar la fecha
-            function Fecha(fechaIcon, seleccionInput){
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="../../js/Bienvenida.js"></script>
+    <script src="../../js/script.js"></script>
+    <!-- Flatpickr JS -->
+    <!-- Permite desplegar el calendario y al elegir una opcion se le pase al input o label -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="../../js/usuarios/Apartar_cupos.js"></script>
+    <script>
+        // Funcion para seleccionar la fecha
+        function Fecha(fechaIcon, seleccionInput) {
             const calendar = flatpickr(fechaIcon, {
                 onChange: function(selectedDates, dateStr, instance) {
                     seleccionInput.value = dateStr;
@@ -277,30 +277,30 @@ verificar_inactividad();
                 enableTime: false,
                 dateFormat: "d-m-Y"
             });
-                calendar.open();
+            calendar.open();
+        }
+    </script>
+
+    <!-- Si selecciona activar se cierra los otros input -->
+    <script>
+        document.getElementById('s_lugar').addEventListener('selectionchange', function() {
+
+            if (document.getElementById('s_lugar').value == 'Activar') {
+                document.getElementById('seleccion_i').style.display = 'none';
+                document.getElementById('fecha_i').style.display = 'none';
+                document.getElementById('fecha').style.display = 'none';
+                document.getElementById('seleccion_i').value = '';
+                document.getElementById('seleccion').style.display = 'none';
+                document.getElementById('seleccion').value = '';
+            } else {
+                document.getElementById('seleccion_i').style.display = 'block';
+                document.getElementById('seleccion').style.display = 'block';
+                document.getElementById('fecha_i').style.display = 'block';
+                document.getElementById('fecha').style.display = 'block';
+
             }
-        </script>
-
-        <!-- Si selecciona activar se cierra los otros input -->
-        <script>
-             document.getElementById('s_lugar').addEventListener('selectionchange', function() {
-
-                if (document.getElementById('s_lugar').value == 'Activar') {
-                    document.getElementById('seleccion_i').style.display = 'none';
-                    document.getElementById('fecha_i').style.display = 'none';
-                    document.getElementById('fecha').style.display = 'none';
-                    document.getElementById('seleccion_i').value = '';
-                    document.getElementById('seleccion').style.display = 'none';
-                    document.getElementById('seleccion').value = '';
-                } else {
-                    document.getElementById('seleccion_i').style.display = 'block';
-                    document.getElementById('seleccion').style.display = 'block';
-                    document.getElementById('fecha_i').style.display = 'block';
-                    document.getElementById('fecha').style.display = 'block';
-
-                }
-             });
-        </script>
+        });
+    </script>
 
     </div>
 </body>

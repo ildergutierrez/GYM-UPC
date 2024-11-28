@@ -13,10 +13,7 @@ if (isset($_POST['identidad']) && isset($_POST['contra'])) {
         $fila = mysqli_fetch_assoc($busqueda);
         $contrasena_almacenada = $fila['contrasena'];
         if (password_verify($contrasena, $contrasena_almacenada)) {
-            $qerry = "
-            DELETE usuarios, persona
-            FROM usuarios
-            INNER JOIN persona ON usuarios.id = persona.documento
+            $qerry = "DELETE usuarios, persona FROM usuarios INNER JOIN persona ON usuarios.id = persona.documento
             WHERE usuarios.id = '$documento';
         ";//Se elimina la persona
             $eliminar = mysqli_query($conexion, $qerry);//Se elimina la cuenta

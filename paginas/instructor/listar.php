@@ -132,7 +132,7 @@ $nombre = $_SESSION['nombre'];
                     <tbody id="tablebody_usuario"></tbody>
                 </table>
             </div>
-            <br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br> <br><br><br><br><br>
             <!-- Fin de la tabla -->
         </main>
         <footer>

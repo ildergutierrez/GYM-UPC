@@ -60,7 +60,7 @@ main {
 
 }
 
-@media screen and (max-width: 2000px) {
+@media screen and (min-width: 1200px) {
     footer{
         margin: 0;
         position: fixed;
@@ -71,16 +71,7 @@ main {
     
 }
 
-@media screen and (max-width: 3000px) {
-    footer{
-        margin: 0;
-        position: fixed;
-        padding-top: 20px;
-        bottom: 0;
-        width: 100%;
-    }
-    
-}
+
 #Iniciar {
     animation: logo 1.5s;
 }

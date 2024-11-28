@@ -378,6 +378,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                     </center>
                 </div>
             </form>
+            <br><br><br><br><br><br><br>
             <!-- fin eliminar cuenta -->
         </main> <br><br><br>
         <footer>

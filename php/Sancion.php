@@ -4,11 +4,9 @@ if (!isset($_SESSION['Email']) && !isset($_SESSION['nombre']) && !isset($_SESSIO
 }
 
 class Sancion
-{
-    private $conexion;
-    private $documento;
-    private $fecha;
-    private $hoy;
+{// Clase para sancionar a un usuario
+    private $conexion;    private $documento;
+    private $fecha;    private $hoy;
     public function __construct($conexion, $documento)
     {
         $this->hoy = date("Y-m-d");
@@ -17,11 +15,10 @@ class Sancion
         $this->documento = $documento;
         $this->Accion();
     }
-
-private function Accion(){
+    private function Accion()
+    {
         $this->Bloqueo();
-}
-
+    }
     private function Eliminar_segimineto(): void
     {
         // Preparar la consulta para eliminar seguimientos
@@ -33,9 +30,8 @@ private function Accion(){
             $stmt = $this->conexion->prepare("UPDATE `usuarios` SET `estado` = '0' WHERE `id` = ?");
             $stmt->bind_param("s", $this->documento);
             $stmt->execute();
-        } 
+        }
     }
-
     // Función para bloquear el usuario
     private function Bloqueo(): void
     {

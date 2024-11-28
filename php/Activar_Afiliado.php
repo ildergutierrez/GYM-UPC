@@ -1,5 +1,6 @@
 <?php
-//las clase Activar_Afiliado se encarga de activar a los usuarios que de ya cumplieron la fecha o que  el administrador lo active
+//las clase Activar_Afiliado se encarga de activar a los usuarios que de ya cumplieron la fecha o que  
+//el administrador lo active
 class Activar_Afiliado
 {
     private $id;

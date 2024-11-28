@@ -8,7 +8,8 @@ if (!isset($_GET['documento']) && !isset($_GET['fecha']) && !isset($_GET['hora']
 }
 require_once('seguimientos.php');
 
-//class para leer el qr
+//class para leer el qr y registrar la asistencia
+//Se valida la fecha y la hora para registrar la asistencia del afiliado y se valida si el afiliado ya asistio a la clase
 class Leer_QR
 {
     private $segimiento;
@@ -48,7 +49,8 @@ class Leer_QR
                         $this->segimiento = new seguimeintos($this->conexion, $this->documento);
                         $accion = "DELETE FROM `cupos` WHERE `id` = '$this->documento'";
                         $respuesta = mysqli_query($this->conexion, $accion);
-                        header("location: ../paginas/instructor/leer_qr.php?mensaje=2&documento=$this->documento&hora=$this->hora&fecha=$this->fecha&lugar=$this->sede&limite=$this->limite");
+                        header("location: ../paginas/instructor/leer_qr.php?mensaje=2&documento=$this->documento&
+                        hora=$this->hora&fecha=$this->fecha&lugar=$this->sede&limite=$this->limite");
                         exit();
                     }
                 } else {
@@ -68,7 +70,8 @@ class Leer_QR
         $this->segimiento = new seguimeintos($this->conexion, $this->documento);
         $accion = "DELETE FROM `cupos` WHERE `id` = '$this->documento'";
         mysqli_query($this->conexion, $accion);
-        header("location: ../paginas/instructor/leer_qr.php?mensaje=2&documento=$this->documento&hora=$this->hora&fecha=$this->fecha&lugar=$this->sede&limite=$this->limite");
+        header("location: ../paginas/instructor/leer_qr.php?mensaje=2&documento=$this->documento&
+        hora=$this->hora&fecha=$this->fecha&lugar=$this->sede&limite=$this->limite");
         exit();
     }
     //Validar la hora

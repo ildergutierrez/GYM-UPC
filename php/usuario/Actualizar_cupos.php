@@ -6,25 +6,19 @@ class Actualizar_cupos
 
     public function __construct($conexion)
     { date_default_timezone_set('America/Bogota');
-        $this->conexion = $conexion;
-        // echo "Actualizar cupos";
-    //    die($this->Actualizar_cupos());
+        $this->conexion = $conexion; 
     }   
     //Actualizar cupos
     public function Actualizar_cupos()
     {
-        $sql = "SELECT * FROM `cupos`";
-        // echo $sql;
+        $sql = "SELECT * FROM `cupos`"; 
         $resultado = mysqli_query($this->conexion, $sql);
         if ($resultado) {
             while ($cupos = mysqli_fetch_array($resultado)) {
                 $id = $cupos['id'];
                 $fecha = $cupos['fecha'];
-                $hora = $cupos['hora_limite'];
-                // echo "<br>id".$id."<br>fecha".$fecha."<br>hora".$hora."<br><br>";
-                $d=$this->Hora($hora, $fecha);
-                // echo "<br> llamada hora".$d;
-                // die();
+                $hora = $cupos['hora_limite']; 
+                $d=$this->Hora($hora, $fecha); 
                 if ($d < 0) {
                     // Si la hora o fecha no son válidas, actualiza el registro
                     $sql_update = "UPDATE `cupos` SET `lugar`='0' WHERE id = ?";
@@ -36,18 +30,14 @@ class Actualizar_cupos
                     }
                 }
             }
-            mysqli_free_result($resultado);//liberar memoria
-            // die("Cupos actualizados");
+            mysqli_free_result($resultado);//liberar memoria 
         }
     }
 
     //validar hora
     function Hora($hora, $fecha):int
-    {  
-        // echo "<br>Hora (hora)".$hora;
-        // echo "<br>Fecha".$fecha;
-        $fecha_estado = $this->Fecha($fecha);
-        // echo "<br>".$fecha_estado."sss<br>";
+    {   
+        $fecha_estado = $this->Fecha($fecha); 
         if ($fecha_estado > 1) {
             return 1;
         }
@@ -55,8 +45,7 @@ class Actualizar_cupos
             $hora_actual = date("H:i ");//hora actual
             $hora1 = strtotime($hora);//hora de la base de datos
             $hora2 = strtotime($hora_actual);//hora actual
-            $zonah = ($hora1 - $hora2) / 3600;
-            // echo "<br>Diferencia horas".$zonah;
+            $zonah = ($hora1 - $hora2) / 3600; //diferencia de horas
             if ($zonah < 0) {
                 return -1;
             }

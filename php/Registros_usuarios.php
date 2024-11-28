@@ -29,13 +29,7 @@ class Registro
         $dominio_especifico = "unicesar.edu.co";
         $this->codigo = $this->Token();
         $this->contrasena = $contrasena;
-        //valida los datos
-        // echo $this->correo."<br>" . $this->documento. "<br>". $this->nombre_completo. "<br>". $this->celular. "<br>". $this->genero. "<br>". $this->contrasena. "<br>". $this->sede. "<br>". $this->rol. "<br>". $this->fecha. "<br>". $this->codigo. "<br>". $this->contrasena. "<br>";
-        // echo $this->Consulta($this->correo, $this->conexion);
-        // echo $this->Contrasena_guardar($this->contrasena);
-        // die($this->Validar_datos());
         if ($this->Validar_datos() && $this->Consulta($this->correo, $this->conexion) && $this->Contrasena_guardar($this->contrasena)) {
-            // echo $this->contrasena;
             if ($this->rol === "3") {
                 if (strpos($this->correo, "@" . $dominio_especifico) !== false) {
                     $this->Registar();
@@ -60,14 +54,14 @@ class Registro
     //valida que los datos esten llenos
     private function Validar_datos()
     {
-        if (empty($this->documento) || empty(trim($this->nombre_completo)) || empty($this->correo)|| empty($this->celular) || empty($this->genero) || empty($this->contrasena) || empty($this->sede ) || empty($this->rol )) {
-        //    echo "error-1";
-        //    echo "<br>1". $this->documento. "<br>2". $this->nombre_completo. "<br>3". $this->correo. "<br>4". $this->celular. "<br>5". $this->genero. "<br>6". $this->contrasena. "<br>7". $this->sede. "<br>8". $this->rol. "<br>9". $this->fecha. "<br>10". $this->codigo. "<br>11". $this->contrasena. "<br>";
+        if (empty($this->documento) || empty(trim($this->nombre_completo)) || empty($this->correo)
+        || empty($this->celular)  || empty($this->genero) || empty($this->contrasena) 
+        || empty($this->sede ) || empty($this->rol )) {
             return true;
         }
         return false;
     }
-    //verifica que el correo sea de la universidad
+    //verifica que el correo no este en la base de datos para evitar duplicados
     private function Consulta($email, $conexion)
     {
         //verificación de correo y usuario
@@ -84,12 +78,13 @@ class Registro
     {
         // echo $this->documento;
         try {
-            if (Envio_Token( $this->correo, $this->codigo, $this->nombre_completo)) {
+            if (Envio_Token( $this->correo, $this->codigo, $this->nombre_completo)) {//envia el correo con el token
                 //registra los datos en las diferentes tablas de la base de datos
                 $query_verificar = "INSERT INTO `verificaciones`(`id`, `correo`, `token`) VALUES ('$this->documento','$this->correo','$this->codigo')";
-                // die($query_verificar);
-                $query_usuarios = "INSERT INTO `usuarios`(`id`, `correo`, `contrasena`, `rol`, `estado`, `verificacion`) VALUES ('$this->documento','$this->correo','$this->contrasena','$this->rol','1','0')";
-                $query_personas = "INSERT INTO `persona`(`documento`, `nombre completo`, `celular`, `sexo`, `fecha de ingreso`) VALUES ('$this->documento','$this->nombre_completo','$this->celular','$this->genero','$this->fecha')";
+                $query_usuarios = "INSERT INTO `usuarios`(`id`, `correo`, `contrasena`, `rol`, `estado`, `verificacion`) VALUES ('$this->documento',
+                '$this->correo','$this->contrasena','$this->rol','1','0')";
+                $query_personas = "INSERT INTO `persona`(`documento`, `nombre completo`, `celular`, `sexo`, `fecha de ingreso`) VALUES ('$this->documento',
+                '$this->nombre_completo','$this->celular','$this->genero','$this->fecha')";
                 //ejecuta las consultas
                 $ejecutar_persona = mysqli_query($this->conexion, $query_personas);
                 $ejecutar_usuarios = mysqli_query($this->conexion, $query_usuarios);
@@ -98,39 +93,24 @@ class Registro
                     $email = base64_encode($this->correo);
                     if ($this->rol == '3') {
                         $error = "../index.php?error=2";
-                        echo "<script>
-                            window.location ='../paginas/index/Verificacion_correo.php?correo=$email';
-                            </script>";
-                    } else {
-                        echo "<script>
-                    window.location ='../paginas/Administrador/registrar.php?mensaje=1';
-                    </script>";
+                        echo "<script>   window.location ='../paginas/index/Verificacion_correo.php?correo=$email';   </script>";
+                    } else {   echo "<script>   window.location ='../paginas/Administrador/registrar.php?mensaje=1';   </script>";
                     }
                     
                 } else {
                     if ($this->rol == '3') {
-                        echo '<script>
-                    window.location ="../index.php?error=1";
-                    </script>';
+                        echo '<script> window.location ="../index.php?error=1";  </script>';
                     } else {
-                        echo "<script>
-                    window.location ='../paginas/Administrador/registrar.php?mensaje=0';
-                    </script>";
+                        echo "<script>  window.location ='../paginas/Administrador/registrar.php?mensaje=0'; </script>";
                     }
                 }
             }
             cerrar_conexion($this->conexion);
         } catch (\Throwable $th) {
             if ($this->rol == '3') {
-                // echo $th;
-                // die();
-                echo '<script>
-                window.location ="../index.php?error=1";
-                </script>';
+                echo '<script>  window.location ="../index.php?error=1";  </script>';
             } else {
-                echo "<script>
-                window.location ='../paginas/Administrador/registrar.php?mensaje=0';
-                </script>";
+                echo "<script> window.location ='../paginas/Administrador/registrar.php?mensaje=0';  </script>";
             }
         }
     }
@@ -147,14 +127,12 @@ class Registro
     //verifica la contraseña
     private function Contrasena_guardar($contrasena)
     {
-
-        // echo "<br>La contra es". $contrasena;
         if (strlen($contrasena) >= 8) {
             if (
                 preg_match('/[A-Z]/', $contrasena) && preg_match('/[a-z]/', $contrasena) && preg_match('/[0-9]/', $contrasena)
                 && preg_match('/[\'^£$%&*()}.:{@#~?><>,;´¨¿?"°!¡`|=_+¬-]/', $contrasena)
             ) {
-                // echo "Contraseña válida para longitud: 8 o más caracteres<br>";
+              
                 $this->contrasena = $this->Codificar($contrasena);
                 return true;
             }else{
@@ -177,14 +155,5 @@ if ($_POST['rol'] == "Administador") {
     $rol = '3';
     $sede = $_POST['sede'];
 }
-
-// echo $_POST['documento']."<br>";
-// echo $_POST['nombre']."<br>";
-// echo $_POST['correo']."<br>";
-// echo $_POST['celular']."<br>";
-// echo $_POST['op']."<br>";
-// echo $_POST['password']."<br>";
-// echo $_POST['rol']."<br>";
-// echo $_POST['sede'];
 
 new Registro($conexion, $_POST['documento'], $_POST['nombre'], $_POST['correo'], $_POST['celular'], $_POST['op'], $_POST['password'], $sede, $rol);

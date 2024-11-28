@@ -1,4 +1,5 @@
 <?php
+// Verificar si la fecha de la actividad está dentro del rango de fechas de la actividad
 function Verificacion($conexion, $fecha)
 {
     $consulta = "SELECT * FROM actividades";
@@ -15,7 +16,7 @@ function Verificacion($conexion, $fecha)
     }
     return true;
 }
-
+// Verificar si la fecha de la actividad está dentro del rango de fechas de la actividad
 function Diferencia($fecha)
 {
     $fecha = new DateTime($fecha);

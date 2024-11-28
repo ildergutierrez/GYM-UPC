@@ -4,8 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once('../Conexion_json.php');
-$conn = conexion();
-// $_POST['documento']="1007246311";
+$conn = conexion(); 
 // Comprobar si se recibió el número de documento
 if (isset($_POST['documento'])) {
     $documento = $_POST['documento'];

@@ -185,7 +185,7 @@ verificar_inactividad();
                     </div>
                 </div><br><br><br><br>
             </div>
-            <br><br><br><br><br> <!-- Fin Formulario -->
+            <br><br><br><br><br> <br><br><br><br><br> <!-- Fin Formulario -->
         </main>
         <footer>
             <div class="container-fluid" style=" margin-bottom: 0; width: 100%;  background-color: #0b7f46;  padding-top: 25px;  padding-bottom: 25px;  border-top: solid 4px #ffcc53;  bottom: 0; ">

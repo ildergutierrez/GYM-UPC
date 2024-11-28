@@ -17,8 +17,8 @@ html {
 }
 
 footer {
-    position: absolute;
-    bottom: -70%;
+    position: fixed;
+    bottom: 0;
     width: 100%;
 }
 
@@ -142,7 +142,7 @@ header {
 
 @media screen and (max-width: 500px) {
     footer {
-        position: absolute;
+        position: fixed;
         margin: 0;
         width: 100%;
         bottom: 800px;
@@ -183,8 +183,8 @@ header {
 
 @media screen and (max-width: 800px) {
     footer {
-        position: absolute;
-        bottom: -950px;
+        position: fixed;
+        bottom: 0px;
         margin: 0;
         padding: 0;
     }
@@ -217,8 +217,8 @@ header {
     }
 
     footer {
-        position: absolute;
-        bottom: -400px;
+        position: fixed;
+        bottom: 0px;
         width: 100%;
         padding: 0;
     }
@@ -386,15 +386,15 @@ header {
 
     footer {
         padding-top: 20px;
-        position: static;
-        bottom: -500px;
+        position: fixed;
+        bottom: 0px;
         width: 100%;
         padding: 0;
         margin: 0;
     }
 }
 
-@media screen and (max-width: 2000px) {
+/* @media screen and (min-width: 1200px) {
     .carousel-control-prev{
         height: 500px;
     }
@@ -410,7 +410,7 @@ header {
 
     .Bienvenida {
         position: absolute;
-        top: 80px;
+        top: 100px;
         left: 200px;
         width: 90%;
     }
@@ -424,46 +424,9 @@ header {
     footer{
         padding-top: 20px;
         margin: 0;
-        position: static;
-        bottom: 0;
-        width: 100%;
-    }
-    
-}
-
-@media screen and (max-width: 3000px) {
-    .carousel-control-prev{
-        height: 700px;
-    }
-    .carousel-control-next{
-        height: 700px;
-    }
-    main .container .d-flex img {
         position: fixed;
-        top: 15px;
-        left: 8px;
-        width: 13%;
-    }
-
-    .Bienvenida {
-        position: absolute;
-        top: 100px;
-        left: 250px;
-        width: 90%;
-    }
-
-    .Bienvenida h1 {
-        font-size: small;
-        font-weight: bold;
-        display: block;
-    }
-
-    footer{
-        padding-top: 20px;
-        margin: 0;
-        position: static;
         bottom: 0;
         width: 100%;
     }
     
-}
+} */

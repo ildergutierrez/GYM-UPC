@@ -339,6 +339,7 @@ if (isset($_SESSION['nombre']) && isset($_SESSION['documento']) && isset($_SESSI
                 </div>
             </div>
             </form>
+            <br><br><br><br><br>
             <!-- Fin Formulario -->
         </main>
         <footer>

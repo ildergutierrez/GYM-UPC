@@ -53,7 +53,8 @@ class Actualizar_Contraseña
     {
         if (strlen($this->n_contrasena) >= 8) {
             if (
-                preg_match('/[A-Z]/', $this->n_contrasena) && preg_match('/[a-z]/', $this->n_contrasena) &&  preg_match('/[0-9]/', $this->n_contrasena)
+                preg_match('/[A-Z]/', $this->n_contrasena) && preg_match('/[a-z]/', $this->n_contrasena) 
+                &&  preg_match('/[0-9]/', $this->n_contrasena)
                 && preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $this->n_contrasena)
             ) {
                 return true;

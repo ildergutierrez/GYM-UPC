@@ -398,6 +398,7 @@ verificar_inactividad();
                     </center>
                 </div>
             </form>
+            <br><br><br><br><br><br><br>
             <!-- fin eliminar cuenta -->
         </main> <br><br><br>
         <footer>

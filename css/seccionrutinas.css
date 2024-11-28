@@ -147,17 +147,17 @@ header {
 }
 
 footer {
-position: fixed  ;
-        bottom: 0;
-        width: 100%;
+  position: fixed  ;
+  bottom: 0;
+  width: 100%;
     }
 
 @media screen and (max-width: 500px) {
   footer {
-    position: absolute;
+    position: fixed;
     margin: 0;
     width: 100%;
-    bottom: 800px;
+    bottom: 0px;
   }
 
   main .container #nombre.d-flex.Bienvenida {
@@ -194,8 +194,8 @@ position: fixed  ;
 
 @media screen and (max-width: 800px) {
   footer {
-    position: absolute;
-    bottom: -950px;
+    position: fixed;
+    bottom: 0px;
     margin: 0;
     padding: 0;
   }
@@ -228,7 +228,8 @@ position: fixed  ;
   }
 
   footer {
-    position: absolute;
+    position: fixed;
+    bottom: 0;
     margin-top: 25%;
   }
 
@@ -416,7 +417,7 @@ position: fixed  ;
   }
 }
 
-@media screen and (max-width: 2000px) {
+/* @media screen and (min-width: 1200px) {
   .carousel-control-prev {
     height: 500px;
   }
@@ -449,7 +450,7 @@ position: fixed  ;
     bottom: 0;
     width: 100%;
   }
-}
+} */
 
 /* @media screen and (max-width: 3000px) {
   .carousel-control-prev {

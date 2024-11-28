@@ -13,15 +13,11 @@ class seguimeintos
     {
         $this->conexion = $conexion;
         $this->documento = $documento;
-        // echo $this->documento . "<br> Seguimientos";
-        // die($this->Fallas());
         $this->Fallas();
     }
 // Función para verificar las fallas
     private function  Fallas()
     {
-        // echo "<br> Existe: <br>".$this->Existe()."Existencia <br>";
-       
         if ($this->Existe()) {
             if ($this->Sumar() >= 3) {
                 $this->sancion = new Sancion($this->conexion, $this->documento);
@@ -58,13 +54,11 @@ class seguimeintos
         $sql = "SELECT * FROM `cupos` WHERE `id` = '$this->documento'";
         $respuesta = mysqli_query($this->conexion, $sql);
         if ($respuesta && mysqli_num_rows($respuesta) > 0) {
-            $fila = mysqli_fetch_array($respuesta);
-            // echo $fila['lugar'];
+            $fila = mysqli_fetch_array($respuesta); 
             if ($fila['lugar'] == 0) {
                 return true;
             }
         }
-        // echo "No existe";
         return false;
     }
 }

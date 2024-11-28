@@ -49,11 +49,9 @@ class Suspender_Actividades
                         $fin= new DateTime($this->f_final);
                         $inicio = $inicio->format('Y-m-d');
                         $fin = $fin->format('Y-m-d');
-                      
-                            $guardar = "INSERT INTO `actividades`(`inicio`, `final`) VALUES ('$inicio','$fin')";
-                            mysqli_query($this->conexion, $guardar);
-                            echo "<script>
-                            window.location.href = '../paginas/Administrador/actividades.php?respuesta=2';
+                        $guardar = "INSERT INTO `actividades`(`inicio`, `final`) VALUES ('$inicio','$fin')";
+                        mysqli_query($this->conexion, $guardar);
+                        echo "<script> window.location.href = '../paginas/Administrador/actividades.php?respuesta=2';
                             </script>";
                         }
                 }
@@ -65,8 +63,7 @@ class Suspender_Actividades
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
-            echo "<script>
-                    window.location.href = '../paginas/Administrador/actividades.php?respuesta=4';
+            echo "<script> window.location.href = '../paginas/Administrador/actividades.php?respuesta=4';
                     </script>";
         } finally {
             cerrar_conexion($this->conexion);

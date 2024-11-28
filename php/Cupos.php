@@ -46,22 +46,16 @@ class Cupos
 
     private function Accion()
     {
-        if ($this->Validar_Fecha($this->fecha) == 1) {
-            // die("entro");       
+        if ($this->Validar_Fecha($this->fecha) == 1) {     
             if (!$this->Estado($this->documento, $this->conexion)) {
-
                 if ($this->Registros($this->conexion)) {
                     cerrar_conexion($this->conexion);
-                    header("Location: ../$this->url");
-                    exit();
+                    header("Location: ../$this->url");   exit();
                 } else {
-                    header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
-                    exit();
+                    header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0"); exit();
                 }
             } else {
-
-                header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
-                exit();
+                header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");  exit();
             }
         } else {
             if ($this->Validar_Hora($this->hora)) {
@@ -73,40 +67,38 @@ class Cupos
                         header("Location: ../$this->url");
                         exit();
                     } else {
-                        header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
-                        exit();
+                        header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");  exit();
                     }
                 } else {
 
-                    header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
-                    exit();
+                    header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");  exit();
                 }
             } else {
 
-                header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0");
-                exit();
+                header("Location: ../paginas/usuarios/apartar_cupos.php?mensaje=0"); exit();
             }
         }
     }
 
-    //Registrar cupos
+    //Registrar cupos en la base de datos
     function Registros($conexion): bool
     {
         $this->sede = $this->Retornar_id_lugar($this->sede);
-        // die($this->Estado_Capacidad($this->hora, $this->fecha, $this->sede));
         if($this->Estado_Capacidad($this->hora,$this->fecha,$this->sede)){
         $hora_limite = date("H:i", strtotime($this->hora . "+ 15 minutes"));
-        $sql = "INSERT INTO `cupos`(`id`, `fecha`, `hora`, `hora_limite`, `lugar`) VALUES ('$this->documento','$this->fecha','$this->hora','$hora_limite','$this->sede')";
+        $sql = "INSERT INTO `cupos`(`id`, `fecha`, `hora`, `hora_limite`, `lugar`) VALUES ('$this->documento',}
+        '$this->fecha','$this->hora','$hora_limite','$this->sede')";
         $resultado = mysqli_query($conexion, $sql);
         if ($resultado) {
             return true;
         } else {
             return false;
-        }}else
+        }
+    }else
         return false;
     }
 
-    //determinar diferencia entre las horas
+    //determinar diferencia entre las horas de la fecha actual y la fecha del formulario
     function Validar_Hora($hora): bool
     {
         $valido = $this->Validar_Fecha($this->fecha);
@@ -128,7 +120,7 @@ class Cupos
         return false;
     }
 
-    //validar fecha
+    //validar fecha del formulario
     private function Validar_Fecha($fecha): int
     {
         $fecha_actual = date("Y-m-d"); //fecha actual
@@ -136,10 +128,6 @@ class Cupos
         $fecha2 = strtotime($fecha_actual); //fecha actual transfromada
         $zonah = ($fecha1 - $fecha2) / 86400; //diferencia de dias
         $diaSemana = date('N', strtotime($fecha)); //numero de dia de la semana
-        // echo "<br>Formulario ".$fecha1;
-        // echo "<br>Actual ".$fecha2;
-        // echo "<br>Dife ".$zonah;
-        // echo "<br>semana ".$diaSemana;
         if ($diaSemana == 6 || $diaSemana == 7) {
             return -1;
         }
@@ -153,6 +141,7 @@ class Cupos
         return -1;
     }
 
+    //Retornar el id del lugar
     private function Retornar_id_lugar($nombre): string
     {
         $nombre = trim($nombre);
@@ -181,13 +170,8 @@ class Cupos
             $cupos = "SELECT fecha, hora FROM cupos WHERE fecha ='$fecha' AND  hora ='$hora'";
             $consulta_cupos  = mysqli_query($this->conexion, $cupos);
             if ($consulta_cupos) {
-                $filas = mysqli_num_rows($consulta_cupos);
-                // echo "El número de filas es: " . $filas;
-                // echo "El número de capacidad  es: " . $this->capacidad;
+                $filas = mysqli_num_rows($consulta_cupos); 
             }
-
-            // echo "<br> retorno: ";
-
             if ($filas >= $this->capacidad)
                 return false;
             else

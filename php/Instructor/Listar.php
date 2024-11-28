@@ -15,7 +15,8 @@ if ($resultado) {
     $identificador = $row['lugar'];
 // Arreglo para almacenar los resultados de la consulta
 // Consulta SQL para obtener datos de persona y correo de usuario
-    $sql = "SELECT cupos.id, persona.`nombre completo` AS nombre, cupos.fecha,  cupos.hora, lugares.id AS lugar_id FROM   cupos JOIN     persona ON cupos.id = persona.documento
+    $sql = "SELECT cupos.id, persona.`nombre completo` AS nombre, cupos.fecha,  cupos.hora,
+    lugares.id AS lugar_id FROM   cupos JOIN     persona ON cupos.id = persona.documento
 JOIN    lugares ON cupos.lugar = lugares.id WHERE    lugares.id = '$identificador'";
 
 // Ejecuta la consulta y verifica si tiene éxito

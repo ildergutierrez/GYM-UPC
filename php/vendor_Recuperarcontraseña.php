@@ -34,13 +34,16 @@ if (isset($_POST['correo'])) {
         $phpmailer->isHTML(true); // Habilitar HTML
     
         $phpmailer->Body = "
-       <div style='font-family: Arial, sans-serif; background: #1e1e1e; color: #ffffff; line-height: 1.6; max-width: 600px; margin: auto; border: solid 2px #333; border-radius: 12px;  padding: 15px;'>
+       <div style='font-family: Arial, sans-serif; background: #1e1e1e; color: #ffffff; line-height: 1.6; 
+       max-width: 600px; margin: auto; border: solid 2px #333; border-radius: 12px;  padding: 15px;'>
         <h1 style='color: #4CAF50; text-align: center;'>Recuperación de Cuenta</h1>
         <p>Hola,</p>
         <p>Haz solicitado recuperar tu cuenta. Por favor, haz clic en el boton a continuación para crear una nueva contraseña:</p>
         <br>
         <p style='text-align: center;'>
-            <button style='border-radius: 8px; box-shadow: 10px 10px 20px 0px #ffcc53 ; background-color: #0b7f46; color: white; padding: 10px 20px;'><a href='$enlace' style='background-color: #0b7f46; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>Crear Nueva Contraseña</a></button>
+            <button style='border-radius: 8px; box-shadow: 10px 10px 20px 0px #ffcc53 ; background-color: #0b7f46; color: white; 
+            padding: 10px 20px;'><a href='$enlace' style='background-color: #0b7f46; color: white; padding: 10px 20px; text-decoration: none;
+             border-radius: 5px;'>Crear Nueva Contraseña</a></button>
         </p>
         <br>
         <p>Si no realizaste esta solicitud, puedes ignorar este mensaje.</p>
@@ -57,7 +60,8 @@ if (isset($_POST['correo'])) {
         ";
     
         // Alternativa para clientes que no soporten HTML
-        $phpmailer->AltBody = "Hola, Haz solicitado recuperar tu cuenta. Haz clic en el enlace para crear una nueva contraseña: $enlace. Si no realizaste esta solicitud, puedes ignorar este mensaje. Saludos, Equipo GYM-UPC";       
+        $phpmailer->AltBody = "Hola, Haz solicitado recuperar tu cuenta. Haz clic en el enlace para crear una nueva 
+        contraseña: $enlace. Si no realizaste esta solicitud, puedes ignorar este mensaje. Saludos, Equipo GYM-UPC";       
         if ($phpmailer->send()) { 
             // die("El mensaje ha sido enviado");
             echo "<script>

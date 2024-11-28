@@ -25,7 +25,8 @@ function Envio_Token( $correo, $token,  $nombre)
         $phpmailer->Subject = 'Activar Cuenta';
         $phpmailer->isHTML(true); // Habilitar HTML
         $phpmailer->Body = "
-            <div style='font-family: Arial, sans-serif; background: #1e1e1e; color: #ffffff; line-height: 1.6; max-width: 600px; margin: auto; border: solid 2px #333; border-radius: 12px;  padding: 15px;'>
+            <div style='font-family: Arial, sans-serif; background: #1e1e1e; color: #ffffff; line-height: 1.6; 
+            max-width: 600px; margin: auto; border: solid 2px #333; border-radius: 12px;  padding: 15px;'>
             <h1 style='color: #4CAF50; text-align: center;'>¡Bienvenido/a a GYM - UPC!</h1>
             <p>Hola, $nombre</p>
             <p>Estamos muy emocionados de tenerte con nosotros.</p>
@@ -34,14 +35,17 @@ function Envio_Token( $correo, $token,  $nombre)
             <h2 style='font-size: 24px; font-weight: bold; text-align: center; color: #4CAF50;'>$token</h2>
             <p>O puedes activar tu cuenta haciendo clic en el botón a continuación:</p>
             <p style='text-align: center; margin-top: 20px;'>
-            <a href='$direccion?correo=$incrip&codigo=$token' style='box-shadow: 10px 10px 20px 0px #ffcc53; background-color: #0b7f46; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;'>Activar Mi Cuenta</a>
+            <a href='$direccion?correo=$incrip&codigo=$token' style='box-shadow: 10px 10px 20px 0px #ffcc53; 
+            background-color: #0b7f46; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; 
+            font-size: 16px;'>Activar Mi Cuenta</a>
             </p>
             <br>
             <p>Si tienes alguna duda, no dudes en contactarnos. Estamos aquí para ayudarte.</p>
             <p style='text-align: center; margin-top: 20px;'>
                 <img src='https://gymupcaguachica.free.nf/img/logo/Logo.png' alt='GYM - UPC' style='width: 150px; height: auto;'>
             </p>
-            <p style='text-align: center; font-size: 14px; color: #777;'>Gracias por unirte a nuestra comunidad. ¡Esperamos verte pronto en el gimnasio!</p>
+            <p style='text-align: center; font-size: 14px; color: #777;'>Gracias por unirte a nuestra comunidad. 
+            // +¡Esperamos verte pronto en el gimnasio!</p>
             <br>
             <p style='text-align: center; margin-top: 20px; font-size: 12px; color: #aaa;'>
                 Este correo es generado automáticamente. Por favor, no respondas a este mensaje.
@@ -58,11 +62,9 @@ function Envio_Token( $correo, $token,  $nombre)
         // Enviar correo
         $phpmailer->send();
         // Redirigir
-        // echo "correo enviado";
         return true;
     } catch (Exception $e) {
-        // Manejar error al enviar el correo
-        // echo "Error al enviar el correo: {$phpmailer->ErrorInfo}";
+        
         return false;
     }
 }

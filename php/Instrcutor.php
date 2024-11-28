@@ -10,23 +10,22 @@ if (isset($_POST['id']) || isset($_POST['n_lugar'])) {
     $id = $_POST['id'];
     $lugar = $_POST['n_lugar'];
     $sql = "SELECT * FROM instructores WHERE id='$id'";
-    $result = mysqli_query($conexion, $sql); 
-//Se verifica si el instructor ya tiene un lugar asignado
-    if ($result && mysqli_num_rows($result) > 0) {       
+    $result = mysqli_query($conexion, $sql);
+    //Se verifica si el instructor ya tiene un lugar asignado
+    if ($result && mysqli_num_rows($result) > 0) {
         $actualizar = "UPDATE instructores SET lugar='$lugar' WHERE id='$id'";
         mysqli_query($conexion, $actualizar);
-        try { if ($actualizar) {
-            echo "<script>
+        try {
+            if ($actualizar) {
+                echo "<script>
         window.location.href = '../paginas/Administrador/asignar_instructor.php?respuesta=2';
         </script>";
-        }
-
+            }
         } catch (Exception $e) {
             echo "<script>
             window.location.href = '../paginas/Administrador/asignar_instructor.php?respuesta=0';
             </script>";
-        }
-        finally {
+        } finally {
             Cerrar_conexion($conexion);
         }
     } else {
@@ -40,14 +39,13 @@ if (isset($_POST['id']) || isset($_POST['n_lugar'])) {
             window.location.href = '../paginas/Administrador/asignar_instructor.php?respuesta=1';
             </script>";
             }
-    } catch (Exception $e) {
-        echo "<script>
+        } catch (Exception $e) {
+            echo "<script>
         window.location.href = '../paginas/Administrador/asignar_instructor.php?respuesta=0';
         </script>";
-    }
-    finally {
-        Cerrar_conexion($conexion);
-    }
+        } finally {
+            Cerrar_conexion($conexion);
+        }
     }
 } else {
 
