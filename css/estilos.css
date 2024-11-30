@@ -63,7 +63,7 @@ main {
 @media screen and (min-width: 1200px) {
     footer{
         margin: 0;
-        position: fixed;
+        /* position: fixed; */
         bottom: 0;
         padding-top: 20px;
         width: 100%;

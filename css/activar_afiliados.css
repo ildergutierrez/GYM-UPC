@@ -17,7 +17,7 @@ html {
 }
 
 footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     width: 100%;
 }
@@ -196,7 +196,7 @@ input[type="select"] {
 @media screen and (max-width: 500px) {
 
     footer{
-        position: fixed;
+        /* position: fixed; */
         margin: 0;
         width: 100%;
         padding: 0;
@@ -251,7 +251,7 @@ input[type="select"] {
         margin-bottom: 50px;
     }
     footer{
-        position: fixed;
+        /* position: fixed; */
         margin: 0;
         width: 100%;
         padding: 0;
@@ -291,7 +291,7 @@ input[type="select"] {
         width: 30%;
     }
     footer{
-        position:fixed;
+        /* position:fixed; */
         margin: 0;
         width: 100%;
         padding: 0;
@@ -383,7 +383,7 @@ input[type="select"] {
         font-weight: bold;
     }
     footer{
-        position: fixed;
+        /* position: fixed; */
         margin: 0;
         width: 100%;
         padding: 0;

@@ -147,14 +147,14 @@ header {
 }
 
 footer {
-  position: fixed  ;
+  /* position: fixed  ; */
   bottom: 0;
   width: 100%;
     }
 
 @media screen and (max-width: 500px) {
   footer {
-    position: fixed;
+    /* position: fixed; */
     margin: 0;
     width: 100%;
     bottom: 0px;
@@ -194,7 +194,7 @@ footer {
 
 @media screen and (max-width: 800px) {
   footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0px;
     margin: 0;
     padding: 0;
@@ -228,7 +228,7 @@ footer {
   }
 
   footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     margin-top: 25%;
   }
@@ -411,7 +411,7 @@ footer {
   }
 
   footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     width: 100%;
   }

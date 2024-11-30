@@ -17,9 +17,9 @@ html {
 }
 
 footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
-   width: 100%;
+    width: 100%;
 }
 
 body {
@@ -127,7 +127,7 @@ main{
 
 
     footer {
-        position: fixed;
+        /* position: fixed; */
         bottom: 0;
         margin-bottom: 0;
         width: 100%;

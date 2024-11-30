@@ -17,7 +17,7 @@ html {
 }
 
 footer {
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     width: 100%;
 }
@@ -174,7 +174,7 @@ input[type="select"] {
 
 @media screen and (max-width: 500px) {
     footer {
-        position: fixed;
+        /* position: fixed; */
         margin: 0;
         width: 100%;
         bottom: 800px;
@@ -326,7 +326,7 @@ input[type="select"] {
 
 
     footer {
-        position: fixed;
+        /* position: fixed; */
         bottom: 0;
         width: 100%;
 
@@ -371,7 +371,7 @@ input[type="select"] {
     }
 
     footer {
-        position: fixed;
+        /* position: fixed; */
         bottom: 0;
         width: 100%;
     }

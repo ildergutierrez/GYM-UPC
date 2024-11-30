@@ -124,7 +124,8 @@ header {
     }
 
     footer {
-        position: fixed;
+        /* position: fixed; */
+        width: 100%;
         bottom: 0;
     }
 
@@ -181,7 +182,8 @@ header {
     }
 
     footer {
-        position: fixed;
+        /* position: fixed; */
+        width: 100%;
         bottom: 0;
     }
 
@@ -216,8 +218,9 @@ header {
     }
 
     footer {
-        position: fixed;
+        /* position: fixed; */
         bottom: 0;
+        width: 100%;
     }
 
     .Bienvenida {
@@ -295,7 +298,8 @@ header {
     }
 
     footer {
-        position: fixed;
+        /* position: fixed; */
+        width: 100%;
         bottom: 0;
     }
 }

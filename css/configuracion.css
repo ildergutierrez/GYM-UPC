@@ -180,7 +180,7 @@ input[type="select"] {
 @media screen and (max-width: 500px) {
 
     footer {
-        position: fixed;
+        /* position: fixed; */
         width: 100%;
         bottom: 0;
     }
@@ -222,7 +222,7 @@ input[type="select"] {
     }
 
     footer {
-        position: fixed;
+        /* position: fixed; */
         width: 100%;
         bottom: 0;
     }
@@ -253,7 +253,7 @@ input[type="select"] {
 
     
     footer {
-        position: fixed;
+        /* position: fixed; */
         bottom: 0;
         width: 100%;
 

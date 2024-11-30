@@ -16,8 +16,26 @@ html {
     scrollbar-width: none;
 }
 
-footer {
+.Arbol{
+    width: 60px;
+    height:  60px;
+    border: solid 2px #ffcc53;
+    box-shadow: 10px 15px 10px #b6b2aa;
+    border-radius: 100%;
     position: fixed;
+    z-index: 1000;
+    background-color: #0b7f46; 
+    color: #ffffff;
+    right: 30px;
+    top: 70%;
+}
+.Arbol:hover{
+    background-color: #2bd884;
+    color: #000000;
+    box-shadow: 10px 15px 10px #ffffff;
+}
+footer {
+    /* position: fixed; */
     bottom: 0;
     width: 100%;
 }
@@ -142,7 +160,7 @@ header {
 
 @media screen and (max-width: 500px) {
     footer {
-        position: fixed;
+        /* position: fixed; */
         margin: 0;
         width: 100%;
         bottom: 800px;
@@ -183,7 +201,7 @@ header {
 
 @media screen and (max-width: 800px) {
     footer {
-        position: fixed;
+        /* position: fixed; */
         bottom: 0px;
         margin: 0;
         padding: 0;
@@ -217,7 +235,7 @@ header {
     }
 
     footer {
-        position: fixed;
+        /* position: fixed; */
         bottom: 0px;
         width: 100%;
         padding: 0;
@@ -386,7 +404,6 @@ header {
 
     footer {
         padding-top: 20px;
-        position: fixed;
         bottom: 0px;
         width: 100%;
         padding: 0;
