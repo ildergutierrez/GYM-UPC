@@ -7,8 +7,9 @@ function conexion()
     $basedd = 'if0_37735602_gymupc';
     $port = '3306';
     try {
-        $conexion = mysqli_connect($host, $usuario, $contrasena, $basedd, $port);
-        mysqli_set_charset($conexion, "utf8mb4");
+        $conexion = mysqli_connect("localhost", "root", "", "gymupc");
+        // $conexion = mysqli_connect($host, $usuario, $contrasena, $basedd, $port);
+        // mysqli_set_charset($conexion, "utf8mb4");
         return $conexion;
     } catch (Exception $e) {
         header("location:../index.php?conexion=error");

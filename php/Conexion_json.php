@@ -6,8 +6,8 @@ function conexion()
     $contrasena = 'Jb1TDHK7tXtJ';
     $basedd = 'if0_37735602_gymupc';
     $port = '3306';
-
-    $conexion = mysqli_connect($host, $usuario, $contrasena, $basedd, $port);
+    $conexion = mysqli_connect("localhost", "root", "", "gymupc");
+    // $conexion = mysqli_connect($host, $usuario, $contrasena, $basedd, $port);
 
     if (!$conexion) {
         die("Error de conexión: " . mysqli_connect_error());
