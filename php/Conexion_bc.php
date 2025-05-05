@@ -1,23 +1,12 @@
 <?php
+require_once 'sigleton.php';
 function conexion()
 {
-    $host = 'sql207.infinityfree.com';
-    $usuario = 'if0_37735602';
-    $contrasena = 'Jb1TDHK7tXtJ';
-    $basedd = 'if0_37735602_gymupc';
-    $port = '3306';
-    try {
-        $conexion = mysqli_connect("localhost", "root", "", "gymupc");
-        // $conexion = mysqli_connect($host, $usuario, $contrasena, $basedd, $port);
-        // mysqli_set_charset($conexion, "utf8mb4");
-        return $conexion;
-    } catch (Exception $e) {
-        header("location:../index.php?conexion=error");
-    }
+    return ConexionSingleton::getInstancia()->getConexion();
 }
 function cerrar_conexion($conexion)
 {
-    mysqli_close($conexion);
+    return ConexionSingleton::getInstancia()->cerrarConexion();
 }
 
 // $conexion = mysqli_connect("localhost", "root", "", "gymupc");
